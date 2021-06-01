@@ -19,9 +19,11 @@ _Task requirements that will **definitely** complete_
       - I.e. technology stack experience along with length of experience (eg. Java, 4 months)
       - Create Gaussian distribution using random number generator to create mock coding test scores
 2. Create authenticated login for recruiters
+![Create authenticated login for recruiters](assets/prototypes/low-fi-home-page.jpg)
    1. Select and implement third party authentication platform to host and authenticate user login (i.e. Firebase)
    2. Implement create-account forms for users to create an account
 3. Create job-posting creator
+![Create job-posting creator](assets/prototypes/low-fi-job-create-page.jpg)
    1. Design the user experience flow for how users will be creating a job posting
    2. Design the user interface for how users will be creating job posting which will include but are not limited to:
       - Component hover/active/focus states
@@ -34,6 +36,7 @@ _Task requirements that will **definitely** complete_
 _Task requirements that will **most likely** complete_
 
 1. Create dashboard to show gaussian distribution (this is just a feature of a general graphical feature → being able to see details of applicants)
+![Create dashboard to show gaussian distribution (this is just a feature of a general graphical feature → being able to see details of applicants)](assets/prototypes/low-fi-analytics-page.jpg)
 2. Create a ‘Home’ dashboard to see all job postings from all other recruiters
 3. Create a ‘job posting summary page’ that showcases how well job matches demographic data
 4. Create a matching algorithm that will score mock applicant users to job postings
