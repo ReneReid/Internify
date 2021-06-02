@@ -4,7 +4,7 @@ import {
   ButtonOutlined,
   ButtonClear,
 } from "./components/atoms/Button";
-import { StarPlain, StarColoured } from "./components/atoms/Icon";
+import { StarPlain, StarColoured, Add} from "./components/atoms/Icon";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <ButtonClear>Hello World</ButtonClear>
         <StarPlain />
         <StarColoured />
+        <Add />
       </header>
     </div>
   );

@@ -27,3 +27,16 @@ export const StarColoured = withStyles(() => ({
         },
     }
 }))(Grade);
+
+export const Add = withStyles(() => ({
+    root: {
+        cursor: "pointer",
+        color: "#E61A4D",
+        borderRadius: "50px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        "&:hover": {
+            borderRadius: "50px",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+        },
+    }
+}))(AddCircle);
