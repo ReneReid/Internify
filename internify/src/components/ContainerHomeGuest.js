@@ -1,11 +1,16 @@
 import React from 'react'
+import Button from './Button.js'
 
 const Container_Home_Guest = () => {
+
+    const getStarted = () => {
+        console.log('getStarted')
+    }
+
     return (
         <div className="container_home_guest">
 
             <div className="container_one">
-
                 <div className="container_one_left">
                     <p>
                         Make job postings with gradual feedback that help guide you to make better job postings
@@ -16,13 +21,37 @@ const Container_Home_Guest = () => {
                     <img src="../react_assets/Home(guest)/create-mobile.png" alt="Unable to display" />
                 </div>
 
-                <p>
-                    Progressional feedback that helps you add the right details.
-                </p>
-                
+                <div className="container_one_text">
+                    <p>Progressional feedback that helps you add the right details.</p>
+                </div>
             </div>
 
+            <div className="container_two">
+                <img src="../react_assets/Home(guest)/triplets-display.png" alt="Unable to display" />
+            </div>
 
+            <div className="container_three">
+                <div className="container_three_left">
+                    <p>Draw inspiration! Take a look at how other recruiters are making their job posts.</p>
+                </div>
+
+                <div className="container_three_right">
+                    <img src="../react_assets/Home(guest)/other-posts.png" alt="Unable to display" />
+                </div>
+            </div>
+
+            <div className="container_four">
+                <div className="container_four_text">
+                    <p>Mobile-ready, so you can create your job posting on the go, comfortably</p>
+                </div>
+
+                <Button
+                    className='get_started' 
+                    color='white'
+                    text='Get Started'
+                    onClick={getStarted}
+                />
+            </div>
         </div>
     )
 }
