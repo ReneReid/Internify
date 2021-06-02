@@ -10,7 +10,6 @@ function App() {
       <HeaderHomeGuest />
       <ContainerHomeGuest />
       <FooterHomeGuest />
-
     </div>
   );
 }
