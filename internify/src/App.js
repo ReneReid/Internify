@@ -1,5 +1,5 @@
 import './App.css';
-import { ButtonFilled } from "./components/atoms/Button";
+import { ButtonFilled, ButtonOutlined, ButtonClear } from "./components/atoms/Button";
 
 function App() {
   return (
@@ -8,6 +8,12 @@ function App() {
         <ButtonFilled>
           Hello World
         </ButtonFilled>
+        <ButtonOutlined>
+          Hello World
+        </ButtonOutlined>
+        <ButtonClear>
+          Hello World
+        </ButtonClear>
       </header>
     </div>
   );
