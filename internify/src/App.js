@@ -3,9 +3,8 @@ import ContainerHomeGuest from "./components/ContainerHomeGuest.js";
 
 function App() {
   return (
-    <div className="Home-Guest">
-      <NavBarMain />
-      <ContainerHomeGuest />
+    <div className="home_guest">
+      
     </div>
   );
 }
