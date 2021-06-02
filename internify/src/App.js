@@ -1,7 +1,11 @@
+import NavBarMain from "./components/NavbarMain.js";
+import ContainerHomeGuest from "./components/ContainerHomeGuest.js";
+
 function App() {
   return (
     <div className="Home-Guest">
-      <h1>Internify</h1>
+      <NavBarMain />
+      <ContainerHomeGuest />
     </div>
   );
 }
