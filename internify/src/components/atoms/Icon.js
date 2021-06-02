@@ -13,6 +13,9 @@ export const StarPlain = withStyles(() => ({
         "&:hover": {
             opacity: 0.7,
         },
+        "&:active": {
+            opacity: 1.0,
+        },
     }
 }))(Grade);
 
@@ -24,6 +27,9 @@ export const StarColoured = withStyles(() => ({
         strokeWidth: "2px",
         "&:hover": {
             opacity: 0.7,
+        },
+        "&:active": {
+            opacity: 1.0,
         },
     }
 }))(Grade);
@@ -37,6 +43,9 @@ export const Add = withStyles(() => ({
         "&:hover": {
             borderRadius: "50px",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+        },
+        "&:active": {
+            opacity: 0.8,
         },
     }
 }))(AddCircle);
