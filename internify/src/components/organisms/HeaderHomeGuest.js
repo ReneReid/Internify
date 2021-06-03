@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from './atoms/Button'
-import "./HeaderHomeGuest.css"
+import Button from '../atoms/Button.js'
+import "./styles/HeaderHomeGuest.css"
 
 const header_home = () => {
 

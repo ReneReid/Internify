@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from './atoms/Button.js'
-import "./ContainerHomeGuest.css"
+import Button from '../atoms/Button.js'
+import "./styles/ContainerHomeGuest.css"
 
 const Container_Home_Guest = () => {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./FooterHomeGuest.css"
+import "./styles/FooterHomeGuest.css"
 
 
 const FooterHomeGuest = () => {

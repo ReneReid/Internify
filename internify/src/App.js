@@ -1,7 +1,7 @@
-import NavBarMain from "./components/NavbarMain"
-import HeaderHomeGuest from "./components/HeaderHomeGuest"
-import ContainerHomeGuest from "./components/ContainerHomeGuest"
-import FooterHomeGuest from "./components/FooterHomeGuest"
+import NavBarMain from "./components/organisms/NavbarMain"
+import HeaderHomeGuest from "./components/organisms/HeaderHomeGuest"
+import ContainerHomeGuest from "./components/organisms/ContainerHomeGuest"
+import FooterHomeGuest from "./components/organisms/FooterHomeGuest"
 
 function App() {
   return (
