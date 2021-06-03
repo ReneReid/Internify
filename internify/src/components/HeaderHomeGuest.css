@@ -1,0 +1,14 @@
+.header_home_guest {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 241px;
+}
+
+.left_home_guest {
+  flex: 2;
+}
+
+.right_home_guest {
+  flex: 1;
+}
