@@ -1,16 +1,8 @@
-import NavBarMain from "./components/organisms/NavbarMain"
-import HeaderHomeGuest from "./components/organisms/HeaderHomeGuest"
-import ContainerHomeGuest from "./components/organisms/ContainerHomeGuest"
-import FooterHomeGuest from "./components/organisms/FooterHomeGuest"
+import Landing from "./components/pages/Landing"
 
 function App() {
   return (
-    <div className="home_guest">
-      <NavBarMain />
-      <HeaderHomeGuest />
-      <ContainerHomeGuest />
-      <FooterHomeGuest />
-    </div>
+    <Landing/>
   );
 }
 
