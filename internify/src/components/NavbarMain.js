@@ -15,10 +15,14 @@ const NavBar_Main = () => {
                 </ul>
             </div>
 
-            <p className="internify-logo">Internify</p>
+            <div className="navbar_home_guest_centre">
+                <p className="internify-logo">Internify</p>
+            </div>
 
-            <a href="/" className="sign_in">Sign In</a> 
-            
+            <div className="navbar_home_guest_right">
+                <p className="sign_in"><a href="/">Sign In</a></p>
+            </div>
+        
         </div>
     )
 }

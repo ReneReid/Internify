@@ -20,10 +20,10 @@ const Container_Home_Guest = () => {
                 <div className="container_one_right">
                     <img src="../react_assets/Home(guest)/create-mobile.png" alt="Unable to display" />
                 </div>
+            </div>
 
-                <div className="container_one_text">
+            <div className="container_home_text">
                     <p>Progressional feedback that helps you add the right details.</p>
-                </div>
             </div>
 
             <div className="container_two">
@@ -41,16 +41,18 @@ const Container_Home_Guest = () => {
             </div>
 
             <div className="container_four">
-                <div className="container_four_text">
+                <div className="container_four_left">
                     <p>Mobile-ready, so you can create your job posting on the go, comfortably</p>
                 </div>
 
-                <Button
-                    className='get_started' 
-                    color='white'
-                    text='Get Started'
-                    onClick={getStarted}
-                />
+                <div className="container_four_right">
+                    <Button
+                        className='get_started' 
+                        color='white'
+                        text='Get Started'
+                        onClick={getStarted}
+                    />
+                </div>
             </div>
         </div>
     )

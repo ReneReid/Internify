@@ -2,6 +2,7 @@ import NavBarMain from "./components/NavbarMain"
 import HeaderHomeGuest from "./components/HeaderHomeGuest"
 import ContainerHomeGuest from "./components/ContainerHomeGuest"
 import FooterHomeGuest from "./components/FooterHomeGuest"
+import "./App.css";
 
 function App() {
   return (

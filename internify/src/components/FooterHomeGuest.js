@@ -3,9 +3,9 @@ import React from 'react'
 
 const FooterHomeGuest = () => {
     return (
-        <div>
-            <div className="footer_homeguest_left">
-                <ul className="home_guest_list">
+        <div className="footer_home_guest">
+            <div className="footer_home_guest_left">
+                <ul className="home_guest_list_footer">
                     <li className="footer_item">
                         <a href="thing1" className="navbar_main_link1">About us</a></li>
                     <li className="footer_item"> 
