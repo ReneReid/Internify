@@ -53,7 +53,7 @@ const Container_Home_Guest = () => {
 
             <div className="container_four">
                 <div className="container_four_left">
-                    <p>Mobile-ready, so you can create your job posting on the go, comfortably</p>
+                    <p>Mobile-ready, so you can create your job posting <strong>on the go</strong>.</p>
                 </div>
 
                 <div className="container_four_right">

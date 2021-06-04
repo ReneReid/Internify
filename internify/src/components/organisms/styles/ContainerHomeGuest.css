@@ -69,8 +69,13 @@
 
 .container_four_left {
   flex: 1;
+  font-family: Helvetica;
+  font-size: 1.25em;
+  margin-left: 37%;
+  margin-top: 8%;
 }
 
 .container_four_right {
   flex: 1;
+  margin-left: 46%;
 }

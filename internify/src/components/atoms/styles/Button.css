@@ -45,3 +45,20 @@
 .continue_with_email:hover {
   cursor: pointer;
 }
+
+.get_started {
+  font-weight: bold;
+  font-size: 18px;
+  width: 178px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: Helvetica;
+  color: black;
+}
+
+.get_started:hover {
+  /*On cursor hover over button, very light blue lightup*/
+  cursor: pointer;
+}
