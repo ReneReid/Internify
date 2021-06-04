@@ -19,7 +19,11 @@ const header_home = () => {
     return (
         <div className="header_home_guest">
             <div className="left_home_guest">
-                <h1 className="app_slogon">Find better candidates with better job postings</h1>
+                <div className="app_slogan">
+                    <h1 className="slogan1">Find better candidates</h1>
+                    <h1 className="slogan2">with better job postings</h1>
+                    <img src="../../assets/medallion.png" alt="NA" />
+                </div>
                 <div className = 'buttons'>
                     <Button
                     className='learn_more' 
