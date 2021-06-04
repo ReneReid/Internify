@@ -14,3 +14,26 @@
   background-color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
 }
+
+.continue_with_Google {
+  width: 325px;
+  height: 40px;
+  font-weight: bold;
+  color: grey;
+  border-radius: 5px;
+  font-family: Helvetica;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.continue_with_email {
+  width: 325px;
+  height: 40px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
