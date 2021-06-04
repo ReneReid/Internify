@@ -47,15 +47,6 @@
   text-align: right;
 }
 
-.sign_in a {
-  color: linear-gradient(
-      237.32deg,
-      #e61a4d -23.01%,
-      rgba(255, 255, 255, 0) 70.47%
-    ),
-    #043a74;
-}
-
 .navbar_home_guest_right a {
   text-decoration: none;
   margin-right: 40px;

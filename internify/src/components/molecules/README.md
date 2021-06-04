@@ -11,3 +11,4 @@ In interfaces, molecules are relatively simple groups of UI elements functioning
 - Forms
 - Breadcrumbs
 - Tables
+- Sub-components of an organism
