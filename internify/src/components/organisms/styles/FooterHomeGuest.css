@@ -3,6 +3,13 @@
   flex-direction: row;
   width: 100%;
   height: 110px;
+  margin-top: 6%;
+  background: linear-gradient(
+      237.32deg,
+      #e61a4d -23.01%,
+      rgba(255, 255, 255, 0) 70.47%
+    ),
+    #043a74;
 }
 
 .footer_home_guest_left {
@@ -12,17 +19,21 @@
 
 .footer_home_guest_left li {
   list-style-type: none;
+  font-family: Helvetica;
+  margin-top: 1.2%;
 }
 
 .footer_home_guest_left a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .footer_homeguest_right {
   flex: 1;
   font-family: Helvetica;
-  font-size: 28px;
+  font-size: 2em;
   font-weight: bold;
   text-align: right;
+  color: white;
+  margin-right: 2%;
 }
