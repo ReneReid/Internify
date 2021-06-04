@@ -6,7 +6,7 @@
   background-image: url("../../../assets/Landing/background-banner.png");
   background-size: cover;
   margin: 0px;
-  padding: 0px;
+  padding: 0px 12%;
 }
 
 /* Left container: text, medallion and learn more*/
@@ -31,4 +31,6 @@
 /* Right container: input form, continue buttons*/
 .right_home_guest {
   flex: 1;
+  margin-top: 80px;
+  margin-right: 85px;
 }

@@ -21,22 +21,17 @@ const header_home = () => {
             <div className="left_home_guest">
                 <div className="app_slogan">
                     <h1 className="slogan1">Find better candidates</h1>
-                    <h1 className="slogan2">with better job postings</h1>
-                    <img src="../../assets/medallion.png" alt="NA" />
+                    <h1 className="slogan2">with better job postings 🥇</h1>
                 </div>
-                <div className = 'buttons'>
-                    <Button
+                <Button
                     className='learn_more' 
-                    color='white'
                     text='Learn More'
                     onClick={learnMore}
-                    />
-                </div>
+                />
             </div>
             <div className="right_home_guest">
                 <Button
                     className='continue_with_Google' 
-                    color='white'
                     text='Continue with Google'
                     onClick={continueWGoogle}
 
@@ -49,7 +44,6 @@ const header_home = () => {
                 </form>
                 <Button
                     className='continue_with_email' 
-                    color='white'
                     text='Continue with Email'
                     onClick={continueWEmail}
                 />
