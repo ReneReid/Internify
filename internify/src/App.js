@@ -1,4 +1,4 @@
-import Landing from "./components/pages/Landing";
+import Landing from "./old-components/pages/Landing";
 import "./App.css";
 
 function App() {
