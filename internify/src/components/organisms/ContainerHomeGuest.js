@@ -1,6 +1,9 @@
 import React from 'react'
 import Button from '../atoms/Button.js'
 import "./styles/ContainerHomeGuest.css"
+import createMobile from "../../assets/Landing/create-mobile.png"
+import triplets from "../../assets/Landing/triplets-display.png"
+import other from "../../assets/Landing/other-posts.png"
 
 const Container_Home_Guest = () => {
 
@@ -13,31 +16,38 @@ const Container_Home_Guest = () => {
 
             <div className="container_one">
                 <div className="container_one_left">
-                    <p>
-                        Make job postings with gradual feedback that help guide you to make better job postings
-                    </p>
+                    <ul>
+                        <li>Make job postings with</li>
+                        <li>gradual <strong><u>feedback</u></strong> that help</li>
+                        <li>guide you to make better</li>
+                        <li>job postings.</li>
+                    </ul>
                 </div>
 
                 <div className="container_one_right">
-                    <img src="../react_assets/Home(guest)/create-mobile.png" alt="Unable to display" />
+                    <img src={createMobile} alt="Unable to display" />
                 </div>
             </div>
 
             <div className="container_home_text">
-                    <p>Progressional feedback that helps you add the right details.</p>
+                    <p>Dynamic feedback that helps you add the <strong><u>right details</u>.</strong></p>
             </div>
 
             <div className="container_two">
-                <img src="../react_assets/Home(guest)/triplets-display.png" alt="Unable to display" />
+                <img src={triplets} alt="Unable to display" />
             </div>
 
             <div className="container_three">
                 <div className="container_three_left">
-                    <p>Draw inspiration! Take a look at how other recruiters are making their job posts.</p>
+                    <ul>
+                        <li>Draw <strong><u>inspiration</u>!</strong> Take a </li>
+                        <li>look at how other recruiters</li>
+                        <li>are making their job posts.</li>
+                    </ul>
                 </div>
 
                 <div className="container_three_right">
-                    <img src="../react_assets/Home(guest)/other-posts.png" alt="Unable to display" />
+                    <img src={other} alt="Unable to display" />
                 </div>
             </div>
 

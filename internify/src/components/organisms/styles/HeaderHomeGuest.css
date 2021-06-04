@@ -36,7 +36,7 @@
   border-left: 1.5px solid white;
   height: 200px;
   position: absolute;
-  left: 50%;
+  left: 51%;
   margin-top: 200px;
   top: 0;
 }
@@ -45,7 +45,7 @@
 .right_home_guest {
   flex: 1;
   margin-top: 110px;
-  margin-right: 80px;
+  margin-right: 160px;
 }
 
 .linebreak {
