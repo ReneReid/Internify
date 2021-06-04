@@ -7,12 +7,13 @@
   background-size: cover;
   margin: 0px;
   padding: 0px 12%;
+  margin-left: -7px;
 }
 
 /* Left container: text, medallion and learn more*/
 .left_home_guest {
   flex: 2;
-  margin-left: 85px;
+  margin-left: 0px;
   margin-top: 50px;
   color: whitesmoke;
   font-family: Helvetica;
@@ -33,4 +34,10 @@
   flex: 1;
   margin-top: 80px;
   margin-right: 85px;
+}
+
+.continue_with_Google {
+  width: 250px;
+  height: 30px;
+  font-family: Helvetica;
 }

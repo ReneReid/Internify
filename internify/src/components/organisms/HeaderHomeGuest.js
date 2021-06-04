@@ -37,10 +37,8 @@ const header_home = () => {
 
                 />
                 <form>
-                    <label htmlFor="fEmail">Create an account with Email</label><br></br>
-                    <input className="fEmail" type="text" id="fEmail" name="fEmail"></input><br></br>
-                    <label htmlFor="fPassword">Password</label><br></br>
-                    <input className="fPassword" type="text" id="fPassword" name="fPassword"></input><br></br>
+                    <input className="fEmail" type="text" id="fEmail" name="fEmail" placeholder="Create an account with Email"></input><br></br>
+                    <input className="fPassword" type="text" id="fPassword" name="fPassword" placeholder="Password"></input><br></br>
                 </form>
                 <Button
                     className='continue_with_email' 
