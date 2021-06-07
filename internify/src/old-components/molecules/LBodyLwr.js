@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/LBodyLwr.css'
+import './styles/LBodyLwr.css';
 
 
 const LBodyLwr = () => {
@@ -14,7 +14,7 @@ const LBodyLwr = () => {
                     <li className='footer_item'>
                         <a href='placeholder2' className="navbar_login_link2">Our mission</a>
                     </li>
-                    <li>
+                    <li className='footer_item'>
                         <a href='placeholder3' className="navbar_login_link3">Contact us</a>
                     </li>
                 </ul>
