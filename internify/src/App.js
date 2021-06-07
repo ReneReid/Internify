@@ -4,6 +4,7 @@ import CheckboxTemp from './components/atoms/CheckboxTemp';
 import RadioTemp from './components/atoms/RadioTemp';
 import InputFormJobHeader from './components/molecules/InputFormJobHeader';
 import PositionSubHeader from './components/molecules/PositionSubHeader';
+import LengthSubHeader from './components/molecules/LengthSubHeader';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <RadioTemp value={"4 months"} label={"4 months"}/>
         <InputFormJobHeader />
         <PositionSubHeader />
+        <LengthSubHeader />
     </div>
   );
 }
