@@ -1,5 +1,7 @@
 import React from 'react'
 import Button from '../atoms/Button'
+import './styles/LBodyUpr.css'
+import '../atoms/styles/Button.css'
 
 const LBodyUpr = () => {
 
@@ -26,7 +28,7 @@ const LBodyUpr = () => {
                         onClick={continueWGoogle}
                     />
                     <div className="linebreak">
-                        <p>─────────────── or ───────────────</p>
+                        <p>────────── or ──────────</p>
                     </div>
                     <form>
                         <input className="fEmail" type="text" id="fEmail" name="fEmail" placeholder="Email"></input><br></br>

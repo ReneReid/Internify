@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/LBodyLwr.css'
 
 
 const LBodyLwr = () => {
