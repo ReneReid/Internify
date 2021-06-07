@@ -1,6 +1,7 @@
 import TextFieldTemp from "../atoms/TextFieldTemp";
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import './styles/InputFormJobHeader.css';
 
 function InputFormJobHeader(props) {
     return (
