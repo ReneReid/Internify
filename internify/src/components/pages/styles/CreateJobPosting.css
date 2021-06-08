@@ -1,0 +1,12 @@
+
+.page-row {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12rem;
+}
+
+.btn-div {
+    padding-top: 5%;
+}
+
+
