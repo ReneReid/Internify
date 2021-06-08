@@ -5,7 +5,7 @@ function PositionSubHeader(props) {
     return(
         <div>
             <div>
-            <h2>Position</h2>
+            <h3>Position</h3>
             <CheckboxTemp name={"Internship"} color={"primary"} label={"Internship"}/>
             <CheckboxTemp name={"Co-op"} color={"primary"} label={"Co-op"}/>
             <CheckboxTemp name={"New Grad"} color={"primary"} label={"New Grad"}/>
