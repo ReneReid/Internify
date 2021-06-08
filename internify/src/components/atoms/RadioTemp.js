@@ -5,7 +5,7 @@ function RadioTemp(props) {
     return (
         <FormControlLabel 
         value={props.value}
-        control={<Radio color="primary"/>} 
+        control={<Radio color={props.color}/>} 
         label={props.label} />
     )
 }

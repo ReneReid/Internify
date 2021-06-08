@@ -11,7 +11,7 @@ function App() {
     <div className="App">
         <ContinueBtn />
         <CheckboxTemp name={"posCheck"} color={"primary"} label={"Position"}/>
-        <RadioTemp value={"4 months"} label={"4 months"}/>
+        <RadioTemp value={"4 months"} color={"primary"} label={"4 months"}/>
         <InputFormJobHeader />
         <PositionSubHeader />
         <LengthSubHeader />
