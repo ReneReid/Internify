@@ -5,6 +5,13 @@ import {
   ButtonClear,
 } from "./components/atoms/Button";
 import { StarPlain, StarColoured, Add} from "./components/atoms/Icon";
+import { BasicTable } from "./components/molecules/Table";
+
+const data = [{
+  "title": "Software Developer",
+  "dateCreated": new Date("05/25/2021").toLocaleDateString(),
+  "score": "Good"
+}];
 
 function App() {
   return (
@@ -16,6 +23,7 @@ function App() {
         <StarPlain />
         <StarColoured />
         <Add />
+        <BasicTable data={data} />
       </header>
     </div>
   );
