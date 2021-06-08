@@ -1,9 +1,8 @@
 
 .input-title-form {
-    display: block;
-    margin-top: 64px;
-    align-items: right;
-    flex-direction: right;
+    display: flex;
+    margin-top: 1%;
+    flex-direction: column;
 }
 
 .row {
@@ -21,7 +20,7 @@
 }
 
 .i-form-outer {
-    width: 100%;
+    width: 250%;
 }
 
 .i-form-inner {
