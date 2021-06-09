@@ -1,40 +1,27 @@
-.lbody_lwr_list {
-    display: flex;
-    height: 110px;
-    margin-top: 6%;
-}z
-
-.lbody_lwr_left {
-    flex: 1;
-    float: left;
+.footer_container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
 }
 
 .footer_item {
-    list-style-type: none;
-    font-family: Helvetica;
-    margin-top: 1.2%;
-    color: white;
-}
-
-
-.navbar_login_link1 {
-    text-decoration: none;
+  list-style-type: none;
+  font-family: Helvetica;
+  margin: 1em 0;
   color: white;
 }
 
-.navbar_login_link2 {
-    text-decoration: none;
+.navbar_login_link {
+  text-decoration: none;
   color: white;
 }
 
-.navbar_login_link3 {
-    text-decoration: none;
-    color: white;
+.footer_logo {
+  margin-top: 0.5em;
+  margin-right: 1.5em;
+  font-family: Helvetica;
+  color: white;
+  font-size: 24px;
 }
-
-.lbody_lwr_name {
-    float: right;
-    flex: 1;
-}
-
-

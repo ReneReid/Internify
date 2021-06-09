@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   // instead of using empty divs, use margins
   return (
-    <div className="login-container">
+    <div className="login_container">
       <div className="welcome_message">
         <p className="welcome_text">Welcome back 👋</p>
       </div>
