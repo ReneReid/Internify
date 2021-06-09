@@ -1,6 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 
-function TextFieldTemp(props) {
+function TextFieldInput(props) {
     return(
         <TextField 
         className={props.className}
@@ -16,4 +16,4 @@ function TextFieldTemp(props) {
     )
 }
 
-export default TextFieldTemp;
+export default TextFieldInput;
