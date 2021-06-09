@@ -1,17 +1,18 @@
 import React from 'react';
-import LBodyUpr from '../molecules/LBodyUpr';
-import LBodyLwr from '../molecules/LBodyLwr';
+import LoginForm from '../molecules/LoginForm';
+import Footer from '../molecules/Footer';
 import './styles/LoginBody.css'
 
 
 const LoginBody = () => {
     return (
         <div className='login_body'>
-            <div className='login_body_upper'>
-                <LBodyUpr />
-            </div>
+            {/* rename this to "Login Form" */}
+            <LoginForm />
+            
+            {/* rename LBodyLwr to "Footer" */}
             <div className='login_body_lower'>
-                <LBodyLwr />
+                <Footer />
             </div>
         </div>
     )

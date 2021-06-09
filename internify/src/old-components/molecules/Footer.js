@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/LBodyLwr.css';
 
 
-const LBodyLwr = () => {
+const Footer = () => {
 
     return (
         <div className='lbody_lwr'>
@@ -27,4 +27,4 @@ const LBodyLwr = () => {
     )
 }
 
-export default LBodyLwr
+export default Footer

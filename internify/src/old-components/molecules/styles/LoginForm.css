@@ -9,11 +9,11 @@
     flex: 1;
 }
 
-.l_body_upr_cntr {
+/* .l_body_upr_cntr {
     flex: 1;
     margin-top: -8%;
     min-width: 380px;
-}
+} */
 
 .welcome_message {
     color: whitesmoke;

@@ -3,7 +3,7 @@ import Button from '../atoms/Button'
 import './styles/LBodyUpr.css'
 import '../atoms/styles/Button.css'
 
-const LBodyUpr = () => {
+const LoginForm = () => {
 
     const continueWGoogle = () => {
         console.log('continue with google')
@@ -13,10 +13,10 @@ const LBodyUpr = () => {
         console.log('login')
     }
 
-
+// instead of using empty divs, use margins
     return (
         <div className='login_body_upper'>
-            <div className='l_body_upr_left'></div>
+            {/* <div className='l_body_upr_left'></div>  */}
             <div className='l_body_upr_cntr'>
                 <div className='welcome_message'>
                     <p className='welcome_text'>Welcome back</p>
@@ -49,9 +49,9 @@ const LBodyUpr = () => {
                     </div>
                 </div>
             </div>
-            <div className='l_body_upr_right'></div>      
+            {/* <div className='l_body_upr_right'></div>       */}
         </div>
     )
 }
 
-export default LBodyUpr
+export default LoginForm
