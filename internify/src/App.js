@@ -21,16 +21,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ButtonFilled>Hello World</ButtonFilled>
-        <ButtonOutlined>Hello World</ButtonOutlined>
-        <ButtonClear>Hello World</ButtonClear>
-        <StarPlain />
-        <StarColoured />
-        <Add />
-        <TableBasic data={data} />
-        <TableStar data={data} />
-        <ChipBasic label="Hello"/>
-        <ChipClickable label="Hello"/>
       </header>
     </div>
   );
