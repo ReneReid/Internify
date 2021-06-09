@@ -1,8 +1,7 @@
 .login_body {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: column;
   width: 100%;
-  min-height: 800px;
   background: linear-gradient(
       66.05deg,
       #e61a4d -19.05%,
@@ -10,20 +9,4 @@
     ),
     linear-gradient(199.29deg, #e61a4d -2.31%, rgba(255, 255, 255, 0) 77.09%),
     #043a74;
-  background-size: cover;
-  margin: 0px;
-  padding: 0 40%;
-  margin-left: -7px;
 }
-
-.login_body_upper {
-  margin-top: 5%;
-
-
-}
-
-
-.login_body_lower {
-  margin-top: 45%;
-}
-

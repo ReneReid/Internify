@@ -1,48 +1,31 @@
-.login_body_upper {
-    display: flex;
-    flex-direction: row;
-    width: 100%
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 
 .l_body_upr_left {
-    flex: 1;
+  flex: 1;
 }
 
-/* .l_body_upr_cntr {
-    flex: 1;
-    margin-top: -8%;
-    min-width: 380px;
-} */
-
 .welcome_message {
-    color: whitesmoke;
-    font-family: Helvetica;
-    font-size: 30px;
-    margin-right: -50%;
+  color: whitesmoke;
+  font-family: Helvetica;
+  font-size: 30px;
 }
 
 .welcome_text {
-    padding: 50px;
-}
-
-
-.fields_buttons {
-    margin-right: -50%;
-    margin-top: 10%;
-
+  padding: 25px;
 }
 
 .fEmail {
-
-    margin-top: 5px;
-    margin-bottom: 10px;
-
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .fPassword {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .login_button {
@@ -54,40 +37,30 @@
   margin-top: 10px;
   border-radius: 5px;
   border: none;
-
 }
 
-
 .l_body_upr_right {
-    flex: 1;
+  flex: 1;
 }
 
 .create_forgot {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 13px;
-    font-family: Helvetica;
-    min-width: 330px;
+  font-size: 14px;
+  font-family: Helvetica;
+  display: flex;
+  margin-top: 20px;
+  min-width: 330px;
 }
 
 .create_account {
-    flex: 1;
+  flex: 1;
 }
 
 .create_account_link {
-    text-decoration: none;
-    color: whitesmoke;
-
-}
-
-.forgot_password{
-    flex: 1;
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 .forgot_password_link {
-    margin-left: -80px;
-    color: whitesmoke;
-
+  margin-left: -80px;
+  color: whitesmoke;
 }
