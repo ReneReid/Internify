@@ -4,15 +4,18 @@ import {
   ButtonOutlined,
   ButtonClear,
 } from "./components/atoms/Button";
-import { StarPlain, StarColoured, Add} from "./components/atoms/Icon";
+import { StarPlain, StarColoured, Add } from "./components/atoms/Icon";
+import { ChipBasic, ChipClickable } from "./components/atoms/Chips";
 import { TableBasic, TableStar } from "./components/molecules/Table";
 
-const data = [{
-  "isStarred": false,
-  "title": "Software Developer",
-  "dateCreated": new Date("05/25/2021").toLocaleDateString(),
-  "score": "Good"
-}];
+const data = [
+  {
+    isStarred: false,
+    title: "Software Developer",
+    dateCreated: new Date("05/25/2021").toLocaleDateString(),
+    score: "Good",
+  },
+];
 
 function App() {
   return (
@@ -26,6 +29,8 @@ function App() {
         <Add />
         <TableBasic data={data} />
         <TableStar data={data} />
+        <ChipBasic label="Hello"/>
+        <ChipClickable label="Hello"/>
       </header>
     </div>
   );
