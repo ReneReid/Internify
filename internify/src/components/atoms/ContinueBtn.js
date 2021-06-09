@@ -30,5 +30,3 @@ function ContinueBtn() {
 }
 
 export default ContinueBtn;
-
-
