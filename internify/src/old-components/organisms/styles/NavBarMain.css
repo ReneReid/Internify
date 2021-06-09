@@ -2,7 +2,6 @@
 .navbar_home_guest {
   display: flex;
   flex-direction: row;
-  width: 100vw;
   height: 80px;
   list-style-type: none;
   text-decoration: none;
@@ -17,9 +16,8 @@
 .home_guest_list li {
   list-style-type: none;
   display: inline-block;
-  margin-left: -15px;
-  padding: 10px 30px;
-  font-size: 24px;
+  padding: 10px 10px;
+  font-size: 20px;
   font-family: Helvetica;
 }
 
@@ -30,7 +28,6 @@
 
 .navbar_home_guest_centre {
   flex: 1;
-  min-width: 375px;
   margin-top: -20px;
   margin-left: 50px;
   font-family: Helvetica;
@@ -42,9 +39,9 @@
 
 .navbar_home_guest_right {
   flex: 1;
-  min-width: 350px;
   font-size: 20px;
   text-align: right;
+  padding-left: 1em;
 }
 
 .navbar_home_guest_right a {
