@@ -25,7 +25,7 @@ const NavBar_Main = () => {
       </div>
 
       <div className="navbar_home_guest_centre">
-        <p className="internify-logo">Internify</p>
+        <p className="internify_logo">Internify</p>
       </div>
 
       <div className="navbar_home_guest_right">
