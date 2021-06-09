@@ -40,6 +40,10 @@
   border: none;
 }
 
+.login_button:hover {
+  cursor: pointer;
+}
+
 .l_body_upr_right {
   flex: 1;
 }
