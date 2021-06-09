@@ -3,6 +3,7 @@ import NavBarMain from "../organisms/NavbarMain"
 import HeaderHomeGuest from "../organisms/HeaderHomeGuest"
 import ContainerHomeGuest from "../organisms/ContainerHomeGuest"
 import FooterHomeGuest from "../organisms/FooterHomeGuest"
+import "./styles/Landing.css"
 
 const Landing = () => {
     return (

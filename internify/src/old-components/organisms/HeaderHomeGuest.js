@@ -34,7 +34,7 @@ const header_home = () => {
                 />
             </div>
 
-            <div class="vl"></div>
+            {/* <div class="vl"></div> */}
 
             <div className="right_home_guest">
                 <Button

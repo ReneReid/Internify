@@ -14,6 +14,7 @@
   margin: 0px;
   padding: 0px 12%;
   margin-left: -7px;
+  overflow: hidden;
 }
 
 /* Left container: text, medallion and learn more*/
@@ -23,7 +24,7 @@
   margin-top: 60px;
   color: whitesmoke;
   font-family: Helvetica;
-  font-size: 50px;
+  font-size: 45px;
   font-weight: bold;
 }
 
