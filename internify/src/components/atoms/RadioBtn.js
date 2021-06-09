@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function RadioTemp(props) {
+function RadioBtn(props) {
     const classes = useStyles();
 
     return (
@@ -19,4 +19,4 @@ function RadioTemp(props) {
     )
 }
 
-export default RadioTemp;
+export default RadioBtn;
