@@ -1,15 +1,15 @@
-import InputFormJobHeader from '../molecules/InputFormJobHeader';
-import LengthSubHeader from '../molecules/LengthSubHeader';
-import PositionSubHeader from '../molecules/PositionSubHeader';
+import InputFormJobHeader from '../../molecules/InputFormJobHeader';
+import LengthSubHeader from '../../molecules/LengthSubHeader';
+import PositionSubHeader from '../../molecules/PositionSubHeader';
 import Container from '@material-ui/core/Container';
-import { ButtonFilled, ButtonOutlined } from '../atoms/Button';
-import Stepper from '../molecules/Stepper';
+import { ButtonFilled, ButtonOutlined } from '../../atoms/Button';
+import Stepper from '../../molecules/Stepper';
 
-import './styles/CreateJobPosting.css';
+import './styles/Create.css';
 
 function CreateJobPosting(props){
     return(
-        <div className="CreateJobPosting">
+        <div className="Create">
             <Container maxWidth="md" className={"container"}>
                 <div className="stepper-row">
                     <Stepper stepNumber={0}/>

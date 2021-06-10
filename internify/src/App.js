@@ -1,5 +1,5 @@
 import "./App.css";
-import Create from './components/pages/Create';
+import Create from './components/pages/CreateJobHeader/Create';
 
 const data = [
   {
