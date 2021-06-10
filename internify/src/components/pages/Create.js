@@ -2,7 +2,7 @@ import InputFormJobHeader from '../molecules/InputFormJobHeader';
 import LengthSubHeader from '../molecules/LengthSubHeader';
 import PositionSubHeader from '../molecules/PositionSubHeader';
 import Container from '@material-ui/core/Container';
-import ContinueBtn from '../atoms/ContinueBtn';
+import { ButtonFilled, ButtonOutlined } from '../atoms/Button';
 import Stepper from '../molecules/Stepper';
 
 import './styles/CreateJobPosting.css';
@@ -27,8 +27,8 @@ function CreateJobPosting(props){
                 <div className="page-row subheader-div">
                     <PositionSubHeader />
                 </div>
-                <div className="page-row btn-div">
-                <ContinueBtn />
+                <div className="btn-div">
+                <ButtonFilled>Continue</ButtonFilled>
                 </div>
             </div>
             </Container>
