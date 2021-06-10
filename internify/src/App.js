@@ -1,12 +1,5 @@
 import "./App.css";
-import {
-  ButtonFilled,
-  ButtonOutlined,
-  ButtonClear,
-} from "./components/atoms/Button";
-import { StarPlain, StarColoured, Add } from "./components/atoms/Icon";
-import { ChipBasic, ChipClickable } from "./components/atoms/Chips";
-import { TableBasic, TableStar } from "./components/molecules/Table";
+import Create from './components/pages/Create';
 
 const data = [
   {
