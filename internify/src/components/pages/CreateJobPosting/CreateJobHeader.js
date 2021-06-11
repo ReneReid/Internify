@@ -2,12 +2,12 @@ import InputFormJobHeader from '../../molecules/InputFormJobHeader';
 import LengthSubHeader from '../../molecules/LengthSubHeader';
 import PositionSubHeader from '../../molecules/PositionSubHeader';
 import Container from '@material-ui/core/Container';
-import { ButtonFilled, ButtonOutlined } from '../../atoms/Button';
+import { ButtonFilled } from '../../atoms/Button';
 import Stepper from '../../molecules/Stepper';
 
-import './styles/Create.css';
+import './styles/CreateJobHeader.css';
 
-function CreateJobPosting(props){
+function CreateJobHeader(props){
     return(
         <div className="Create">
             <Container maxWidth="md" className={"container"}>
@@ -36,4 +36,4 @@ function CreateJobPosting(props){
     )
 }
 
-export default CreateJobPosting;
+export default CreateJobHeader;
