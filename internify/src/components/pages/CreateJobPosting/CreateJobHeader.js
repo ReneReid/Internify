@@ -1,10 +1,12 @@
-import InputFormJobHeader from '../../molecules/InputFormJobHeader';
-import LengthSubHeader from '../../molecules/LengthSubHeader';
-import PositionSubHeader from '../../molecules/PositionSubHeader';
+import React from "react";
 import Container from '@material-ui/core/Container';
-import { ButtonFilled } from '../../atoms/Button';
-import Stepper from '../../molecules/Stepper';
-
+import {
+    PositionSubHeader,
+    InputFormJobHeader,
+    LengthSubHeader,
+    Stepper,
+  } from "../../molecules/index";
+  import { ButtonFilled } from "../../atoms/Button";
 import './styles/CreateJobHeader.css';
 
 function CreateJobHeader(props){
