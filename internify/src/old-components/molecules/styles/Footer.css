@@ -1,0 +1,27 @@
+.footer_container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.footer_item {
+  list-style-type: none;
+  font-family: Helvetica;
+  margin: 1em 0;
+  color: white;
+}
+
+.navbar_login_link {
+  text-decoration: none;
+  color: white;
+}
+
+.footer_logo {
+  margin-top: 0.5em;
+  margin-right: 1.5em;
+  font-family: Helvetica;
+  color: white;
+  font-size: 24px;
+}
