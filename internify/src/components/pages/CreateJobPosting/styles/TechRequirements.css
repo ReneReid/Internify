@@ -1,0 +1,12 @@
+.create_container {
+    padding: 0 5em;
+}
+
+.gpa_radio {
+    margin-bottom: 3em;
+}
+
+.gpa_slider {
+    padding-left: 1em;
+    width: 90%;
+}
