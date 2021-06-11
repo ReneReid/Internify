@@ -1,11 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Create from './components/pages/CreateJobHeader/Create';
+
+const data = [
+  {
+    isStarred: false,
+    title: "Software Developer",
+    dateCreated: new Date("05/25/2021").toLocaleDateString(),
+    score: "Good",
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <Create />
     </div>
   );
 }

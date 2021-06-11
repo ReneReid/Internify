@@ -1,0 +1,29 @@
+
+.input-title-form {
+    display: flex;
+    margin-top: 1%;
+    flex-direction: column;
+}
+
+.row {
+    padding: 10px;
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    margin-left: 5px;
+}
+
+.col:first-child {
+    margin-left: 0px;
+}
+
+.i-form-outer {
+    width: 250%;
+}
+
+.i-form-inner {
+    width: 100%;
+}
+
