@@ -43,7 +43,7 @@ const header_home = () => {
                     onClick={continueWGoogle}
                 />
                 <div className="linebreak">
-                    <p>─────────────── or ───────────────</p>
+                    <p>────────── or ──────────</p>
                 </div>
                 <form>
                     <input className="fEmail" type="text" id="fEmail" name="fEmail" placeholder="Create an account with Email"></input><br></br>
