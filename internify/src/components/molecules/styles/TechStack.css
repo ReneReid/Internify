@@ -1,0 +1,8 @@
+.tech_stack_checkbox_container {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.tech_stack_container {
+    margin-bottom: 2em;
+}
