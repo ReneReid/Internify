@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, RadioGroup, FormControl, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
-import RadioBtn from "../../atoms/RadioBtn";
+import RadioButton from "../../atoms/RadioButton";
 import { ButtonFilled } from "../../atoms/Button";
 import "./styles/TechRequirements.css";
 
@@ -15,11 +15,11 @@ const WorkingExperience = () => {
           name="work-experience-radio-group"
         >
           <div>
-            <RadioBtn value={0} label={"none"} />
-            <RadioBtn value={4} label={"≥ 4 months"} />
-            <RadioBtn value={8} label={"≥ 8 months"} />
-            <RadioBtn value={12} label={"≥ 12 months"} />
-            <RadioBtn value={24} label={"≥ 2 years"} />
+            <RadioButton value={0} label={"none"} />
+            <RadioButton value={4} label={"≥ 4 months"} />
+            <RadioButton value={8} label={"≥ 8 months"} />
+            <RadioButton value={12} label={"≥ 12 months"} />
+            <RadioButton value={24} label={"≥ 2 years"} />
           </div>
         </RadioGroup>
       </FormControl>
@@ -59,7 +59,7 @@ const GradePoint = (props) => {
     <React.Fragment>
       <h3>GPA</h3>
       <div className="gpa_radio">
-        <RadioBtn value={false} label={"Required"} />
+        <RadioButton value={false} label={"Required"} />
       </div>
       <div className="gpa_slider">
         <Slider
