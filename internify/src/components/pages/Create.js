@@ -12,8 +12,8 @@ const mockTechStackData = {
 
 function Create (props) {
     return (
-        // <CreateJobHeader/>
-        <TechRequirements data={mockTechStackData}/>
+        <CreateJobHeader/>
+        // <TechRequirements data={mockTechStackData}/>
     );
 };
 
