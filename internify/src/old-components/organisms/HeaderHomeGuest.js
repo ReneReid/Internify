@@ -1,10 +1,6 @@
 import React from 'react'
 import Button from '../atoms/Button.js'
 import "./styles/HeaderHomeGuest.css"
-import mail from "../../assets/Landing/email.png"
-import lock from "../../assets/Landing/lock.png"
-import google from "../../assets/Landing/google.png"
-import line from "../../assets/Landing/line.png"
 
 const header_home = () => {
 
