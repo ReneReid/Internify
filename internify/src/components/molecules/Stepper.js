@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '70%',
   },
+  stepper: {
+    paddingLeft: "0",
+  },
   button: {
     marginRight: theme.spacing(1),
   },
@@ -26,10 +29,9 @@ export default function HorizontalLinearStepper(props) {
   const classes = useStyles();
   const steps = getSteps();
 
-
   return (
     <div className={classes.root}>
-      <Stepper style={{ paddingLeft: "0" }} activeStep={props.stepNumber}>
+      <Stepper className={classes.stepper} activeStep={props.stepNumber}>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};

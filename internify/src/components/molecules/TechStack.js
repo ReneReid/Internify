@@ -9,11 +9,6 @@ const TechStack = (props) => {
   const workTools = props.workTools;
   const csConcepts = props.csConcepts;
 
-  console.log(languages);
-  console.log(frameworks);
-  console.log(workTools);
-  console.log(csConcepts);
-
   return (
     <React.Fragment>
       <h2>Tech stack</h2>
