@@ -11,8 +11,8 @@ const WorkingExperience = () => {
       <h3>Years of working experience</h3>
       <FormControl component="fieldset">
         <RadioGroup
-          aria-label="position-length"
-          name="work-experience-radio-group"
+          aria-label="position_length"
+          name="work_experience_radio_group"
         >
           <div>
             <RadioButton value={0} label={"none"} />
