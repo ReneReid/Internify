@@ -1,0 +1,64 @@
+.learn_more {
+  font-weight: bold;
+  font-size: 18px;
+  width: 178px;
+  height: 46px;
+  background-color: transparent;
+  border: 2px solid #fffcff;
+  border-radius: 3px;
+  font-family: Helvetica;
+  color: white;
+}
+
+.learn_more:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.continue_with_Google {
+  width: 325px;
+  height: 40px;
+  font-weight: bold;
+  color: grey;
+  border-radius: 5px;
+  font-family: Helvetica;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.continue_with_Google:hover {
+  cursor: pointer;
+}
+
+.continue_with_email {
+  width: 325px;
+  height: 40px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.continue_with_email:hover {
+  cursor: pointer;
+}
+
+.get_started {
+  font-weight: bold;
+  font-size: 18px;
+  width: 178px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: Helvetica;
+  color: black;
+}
+
+.get_started:hover {
+  /*On cursor hover over button, very light blue lightup*/
+  cursor: pointer;
+}

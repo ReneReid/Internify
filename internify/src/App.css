@@ -35,3 +35,11 @@
     transform: rotate(360deg);
   }
 }
+
+p {
+  color: linear-gradient(
+    106.26deg,
+    #e61a4d 11.83%,
+    rgba(255, 255, 255, 0) 126.88%
+  );
+}

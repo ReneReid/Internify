@@ -1,0 +1,71 @@
+.login_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em 0;
+}
+
+.l_body_upr_left {
+  flex: 1;
+}
+
+.welcome_message {
+  color: whitesmoke;
+  font-family: Helvetica;
+  font-size: 30px;
+}
+
+.welcome_text {
+  padding: 25px;
+}
+
+.fEmail {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.fPassword {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login_button {
+  width: 330px;
+  height: 40px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.login_button:hover {
+  cursor: pointer;
+}
+
+.l_body_upr_right {
+  flex: 1;
+}
+
+.create_forgot {
+  font-size: 14px;
+  font-family: Helvetica;
+  display: flex;
+  margin-top: 20px;
+  min-width: 330px;
+}
+
+.create_account {
+  flex: 1;
+}
+
+.create_account_link {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.forgot_password_link {
+  margin-left: -80px;
+  color: whitesmoke;
+}
