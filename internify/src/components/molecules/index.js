@@ -4,6 +4,7 @@ import LengthSubHeader from "./LengthSubHeader";
 import RadioButtonsGroup from "./RadioButtonsGroup";
 import Stepper from "./Stepper";
 import { TableBasic, TableStar } from "./Table";
+import TechStack from "./TechStack";
 
 export {
     PositionSubHeader,
@@ -12,5 +13,6 @@ export {
     RadioButtonsGroup,
     Stepper,
     TableBasic,
-    TableStar
+    TableStar,
+    TechStack
 };
