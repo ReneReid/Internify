@@ -12,7 +12,7 @@ function App() {
     <Router>
        <Switch>
           <Route path="/home">
-            <Login />
+            <Landing />
           </Route>
           <Route path="/login">
             <Login />
@@ -21,7 +21,7 @@ function App() {
            <h2>Hello from create page</h2>
           </Route>
           <Route path="/">
-            <Login />
+            <Landing />
           </Route>
         </Switch>
     </Router>
