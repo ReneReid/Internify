@@ -2,6 +2,7 @@ import React from "react";
 import { Container, RadioGroup, FormControl, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioBtn from "../../atoms/RadioBtn";
+import { ButtonFilled } from "../../atoms/Button";
 import "./styles/TechRequirements.css";
 
 const WorkingExperience = () => {
@@ -81,7 +82,7 @@ function TechRequirements(props) {
   return (
     <div className="Create">
       <Container maxWidth="md" style={{ padding: "0 10em" }}>
-        <Stepper className="stepper" stepNumber={1} />
+        <Stepper stepNumber={1} />
         <h1>2. Technical Requirements</h1>
         <WorkingExperience />
         <GradePoint />
@@ -91,6 +92,7 @@ function TechRequirements(props) {
           workTools={data.workTools}
           csConcepts={data.csConcepts}
         />
+        <ButtonFilled>Continue</ButtonFilled>
       </Container>
     </div>
   );
