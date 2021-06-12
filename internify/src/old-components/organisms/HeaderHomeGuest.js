@@ -1,10 +1,6 @@
 import React from 'react'
 import Button from '../atoms/Button.js'
 import "./styles/HeaderHomeGuest.css"
-import mail from "../../assets/Landing/email.png"
-import lock from "../../assets/Landing/lock.png"
-import google from "../../assets/Landing/google.png"
-import line from "../../assets/Landing/line.png"
 
 const header_home = () => {
 
@@ -43,7 +39,7 @@ const header_home = () => {
                     onClick={continueWGoogle}
                 />
                 <div className="linebreak">
-                    <p>─────────────── or ───────────────</p>
+                    <p>────────── or ──────────</p>
                 </div>
                 <form>
                     <input className="fEmail" type="text" id="fEmail" name="fEmail" placeholder="Create an account with Email"></input><br></br>
