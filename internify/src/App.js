@@ -1,14 +1,5 @@
 import "./App.css";
-import Create from './components/pages/CreateJobHeader/Create';
-
-const data = [
-  {
-    isStarred: false,
-    title: "Software Developer",
-    dateCreated: new Date("05/25/2021").toLocaleDateString(),
-    score: "Good",
-  },
-];
+import Create from './components/pages/Create';
 
 function App() {
   return (

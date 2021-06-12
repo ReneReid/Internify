@@ -1,21 +1,21 @@
 
-.input-title-form {
+.input_title_form {
     display: flex;
     margin-top: 1%;
     flex-direction: column;
 }
 
-.row {
-    padding: 10px;
+.input_title_row {
+    padding: 10px 0;
     display: flex;
 }
 
-.col {
+.input_title_col {
     flex: 1;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
-.col:first-child {
+.input_title_col:first-child {
     margin-left: 0px;
 }
 

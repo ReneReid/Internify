@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function RadioBtn(props) {
+function RadioButton(props) {
     const classes = useStyles();
 
     return (
@@ -19,4 +19,4 @@ function RadioBtn(props) {
     )
 }
 
-export default RadioBtn;
+export default RadioButton;
