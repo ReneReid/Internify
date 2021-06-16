@@ -1,8 +1,8 @@
 import React from 'react'
 import { ButtonWhite } from '../atoms/index.js'
-import "./styles/HeaderHomeGuest.css"
+import "./styles/Hero.css"
 
-const header_home = () => {
+const Hero = () => {
 
     const learnMore = () => {
         console.log('learn more')
@@ -56,4 +56,4 @@ const header_home = () => {
     )
 }
 
-export default header_home
+export default Hero
