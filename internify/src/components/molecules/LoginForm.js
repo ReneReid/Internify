@@ -14,49 +14,47 @@ const LoginForm = () => {
   // instead of using empty divs, use margins
   return (
     <div className="login_container">
-      <div className="welcome_message">
-        <p className="welcome_text">Welcome back 👋</p>
-      </div>
-      <div className="fields_buttons">
-        <ButtonWhite
-          className="continue_with_Google"
-          label="Continue with Google"
-          onClick={continueWGoogle}
-        />
+      <p className="login_header">Welcome back 👋</p>
+      <div className="login_form_container">
+        <ButtonWhite style={{ width: "100%" }} onClick={continueWGoogle}>
+          Continue with Google
+        </ButtonWhite>
         <div className="linebreak">
           <p>────────── or ──────────</p>
         </div>
         <form>
           <input
-            className="fEmail"
+            className="login_form_input"
             type="text"
-            id="fEmail"
+            id="login_email"
             name="fEmail"
             placeholder="Email"
           />
           <br></br>
           <input
-            className="fPassword"
+            className="login_form_input"
             type="text"
-            id="fPassword"
+            id="login_password"
             name="fPassword"
             placeholder="Password"
           ></input>
           <br></br>
         </form>
-        <ButtonWhite className="login_button" label="Login" onClick={login} />
-        <div className="create_forgot">
-        <div className="create_account">
-          <a href="placeholder1" className="create_account_link">
-            Create an account
-          </a>
+        <div className="login_form_button">
+          <ButtonWhite style={{ width: "100%" }} onClick={login}>Login</ButtonWhite>
         </div>
-        <div className="forgot_password">
-          <a href="placeholder2" className="forgot_password_link">
-            Forgot your password?
-          </a>
+        <div className="login_help_container">
+          <div className="login_create_account">
+            <a href="placeholder1" className="create_account_link">
+              Create an account
+            </a>
+          </div>
+          <div className="login_forget_password">
+            <a href="placeholder2" className="forgot_password_link">
+              Forgot your password?
+            </a>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

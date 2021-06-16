@@ -25,9 +25,8 @@ const Hero = () => {
                 </div>
                 <ButtonWhite
                     className='learn_more' 
-                    label='Learn More'
                     onClick={learnMore}
-                />
+                >Learn More</ButtonWhite>
             </div>
 
             {/* <div class="vl"></div> */}
@@ -35,9 +34,8 @@ const Hero = () => {
             <div className="right_home_guest">
                 <ButtonWhite
                     className='continue_with_Google' 
-                    label='Continue with Google'
                     onClick={continueWGoogle}
-                />
+                >Continue with Google</ButtonWhite>
                 <div className="linebreak">
                     <p>────────── or ──────────</p>
                 </div>
@@ -47,9 +45,8 @@ const Hero = () => {
                 </form>
                 <ButtonWhite
                     className='continue_with_email' 
-                    label='Continue with Email'
                     onClick={continueWEmail}
-                />
+                >Continue with Email</ButtonWhite>
             </div>
  
         </div>
