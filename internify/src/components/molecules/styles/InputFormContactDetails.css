@@ -5,14 +5,14 @@
 }
 
 .input_title_row {
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
 }
 
 .i-form-outer {
-  width: 250%;
+  width: 50%;
 }
 
-.i-form-inner {
+.i-form-alt {
   width: 100%;
 }
