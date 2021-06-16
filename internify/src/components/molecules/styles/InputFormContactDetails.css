@@ -1,18 +1,12 @@
-.input_title_form {
-  display: flex;
-  margin-top: 1%;
-  flex-direction: column;
-}
-
-.input_title_row {
-  padding: 20px 0;
-  display: flex;
+.input_contact_row {
+  margin-bottom: 3%;
 }
 
 .i-form-outer {
-  width: 50%;
+  width: 75%;
 }
 
 .i-form-alt {
-  width: 100%;
+  width: 75%;
+  height: 150%;
 }

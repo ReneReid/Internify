@@ -16,6 +16,7 @@ const ContactDetails = () => {
                     <InputFormContactDetails />
                 </div>
                 <ButtonFilled>Continue</ButtonFilled>
+                <br/>
                 </Container>
         </div>
     )
