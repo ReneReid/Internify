@@ -1,8 +1,9 @@
 import React from 'react';
 import TextFieldInput from "../atoms/TextFieldInput";
+import "./styles/InputFormContactDetails.css";
 
 
-const InputFormContactDetails = () => {
+function InputFormContactDetails(props){
     return (
         <div className="input_contact_form">
 

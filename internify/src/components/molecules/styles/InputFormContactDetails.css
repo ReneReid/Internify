@@ -1,0 +1,18 @@
+.input_title_form {
+  display: flex;
+  margin-top: 1%;
+  flex-direction: column;
+}
+
+.input_title_row {
+  padding: 10px 0;
+  display: flex;
+}
+
+.i-form-outer {
+  width: 250%;
+}
+
+.i-form-inner {
+  width: 100%;
+}
