@@ -1,11 +1,11 @@
 import React from 'react'
 import { ButtonWhite } from '../atoms/index.js'
-import "./styles/ContainerHomeGuest.css"
+import "./styles/LandingCopy.css"
 import createMobile from "../../assets/Landing/create-mobile.png"
 import triplets from "../../assets/Landing/triplets-display.png"
 import other from "../../assets/Landing/other-posts.png"
 
-const Container_Home_Guest = () => {
+const LandingCopy = () => {
 
     const getStarted = () => {
         console.log('getStarted')
@@ -69,4 +69,4 @@ const Container_Home_Guest = () => {
     )
 }
 
-export default Container_Home_Guest
+export default LandingCopy;

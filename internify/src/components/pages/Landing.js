@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from "../organisms/Navbar"
 import Hero from "../organisms/Hero"
-import ContainerHomeGuest from "../organisms/ContainerHomeGuest"
+import LandingCopy from "../organisms/LandingCopy"
 import Footer from "../organisms/Footer"
 import "./styles/Landing.css"
 
@@ -10,7 +10,7 @@ const Landing = () => {
       <div className="landing_page">
         <Navbar />
         <Hero />
-        <ContainerHomeGuest />
+        <LandingCopy />
         <Footer />
     </div>
     )
