@@ -3,28 +3,28 @@ import "./styles/Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footer_container">
-      <div className="footer_links">
-        <ul className="footer_list">
+    <div className="footer">
+      <div className="footer_links_container">
+        <ul className="footer_links">
           <li className="footer_item">
-            <a href="placeholder1" className="navbar_login_link">
+            <a href="thing1" className="navbar_main_link1">
               About us
             </a>
           </li>
           <li className="footer_item">
-            <a href="placeholder2" className="navbar_login_link">
+            <a href="thing2" className="navbar_main_link2">
               Our mission
             </a>
           </li>
           <li className="footer_item">
-            <a href="placeholder3" className="navbar_login_link">
+            <a href="thing3" className="navbar_main_link3">
               Contact us
             </a>
           </li>
         </ul>
       </div>
-      <div className="footer_logo">
-        <h3 className="appNameFooter">Internify</h3>
+      <div className="footer_logo_container">
+        <h4 className="footer_logo">Internify</h4>
       </div>
     </div>
   );
