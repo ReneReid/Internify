@@ -1,11 +1,11 @@
 import React from 'react'
-import NavBarMain from "../organisms/NavbarMain"
+import Navbar from "../organisms/Navbar"
 import LoginBody from "../organisms/LoginBody"
 
 const Login = () => {
     return (
         <div>
-            <NavBarMain />
+            <Navbar />
             <LoginBody />
         </div>
     )

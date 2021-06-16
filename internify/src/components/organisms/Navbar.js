@@ -1,7 +1,7 @@
 import React from "react";
-import "./styles/NavBarMain.css";
+import "./styles/Navbar.css";
 
-const NavBar_Main = () => {
+const Navbar = () => {
   return (
     <div className="navbar_home_guest">
       <div className="navbar_home_guest_left">
@@ -37,4 +37,4 @@ const NavBar_Main = () => {
   );
 };
 
-export default NavBar_Main;
+export default Navbar;
