@@ -5,6 +5,7 @@ import {
     Stepper,
     InputFormContactDetails
   } from "../../molecules/index";
+import "./styles/ContactDetails.css";
 
 const ContactDetails = () => {
     return (
