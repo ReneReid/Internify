@@ -1,14 +1,17 @@
-import React from 'react'
-import Navbar from "../organisms/Navbar"
-import LoginBody from "../organisms/LoginBody"
+import React from "react";
+import Navbar from "../organisms/Navbar";
+import Footer from "../organisms/Footer";
+import LoginForm from "../molecules/LoginForm";
+import "./styles/Login.css";
 
 const Login = () => {
-    return (
-        <div>
-            <Navbar />
-            <LoginBody />
-        </div>
-    )
-}
+  return (
+    <div className="login">
+      <Navbar />
+      <LoginForm />
+      <Footer />
+    </div>
+  );
+};
 
-export default Login
+export default Login;

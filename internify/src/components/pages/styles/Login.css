@@ -1,9 +1,4 @@
-.login_body {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
+.login {
     background: linear-gradient(
         66.05deg,
         #e61a4d -19.05%,

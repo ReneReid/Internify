@@ -4,6 +4,7 @@
     flex-direction: row;
     height: 80px;
     align-items: center;
+    background-color: white;
   }
   
   .navbar_home_guest_left {
