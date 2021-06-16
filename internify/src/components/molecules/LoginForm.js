@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "../atoms/Button";
+import { ButtonWhite } from "../atoms/index.js";
 import "./styles/LoginForm.css";
-import "../atoms/styles/Button.css";
 
 const LoginForm = () => {
   const continueWGoogle = () => {
@@ -19,9 +18,9 @@ const LoginForm = () => {
         <p className="welcome_text">Welcome back 👋</p>
       </div>
       <div className="fields_buttons">
-        <Button
+        <ButtonWhite
           className="continue_with_Google"
-          text="Continue with Google"
+          label="Continue with Google"
           onClick={continueWGoogle}
         />
         <div className="linebreak">
@@ -45,7 +44,7 @@ const LoginForm = () => {
           ></input>
           <br></br>
         </form>
-        <Button className="login_button" text="Login" onClick={login} />
+        <ButtonWhite className="login_button" label="Login" onClick={login} />
         <div className="create_forgot">
         <div className="create_account">
           <a href="placeholder1" className="create_account_link">

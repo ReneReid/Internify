@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../atoms/Button.js'
+import { ButtonWhite } from '../atoms/index.js'
 import "./styles/ContainerHomeGuest.css"
 import createMobile from "../../assets/Landing/create-mobile.png"
 import triplets from "../../assets/Landing/triplets-display.png"
@@ -57,10 +57,10 @@ const Container_Home_Guest = () => {
                 </div>
 
                 <div className="container_four_right">
-                    <Button
+                    <ButtonWhite
                         className='get_started' 
                         color='white'
-                        text='Get Started'
+                        label='Get Started'
                         onClick={getStarted}
                     />
                 </div>

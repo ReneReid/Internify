@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../atoms/Button.js'
+import { ButtonWhite } from '../atoms/index.js'
 import "./styles/HeaderHomeGuest.css"
 
 const header_home = () => {
@@ -23,9 +23,9 @@ const header_home = () => {
                     <p className="slogan1">Find better candidates</p>
                     <p className="slogan2">with better job postings 🥇</p>
                 </div>
-                <Button
+                <ButtonWhite
                     className='learn_more' 
-                    text='Learn More'
+                    label='Learn More'
                     onClick={learnMore}
                 />
             </div>
@@ -33,9 +33,9 @@ const header_home = () => {
             {/* <div class="vl"></div> */}
 
             <div className="right_home_guest">
-                <Button
+                <ButtonWhite
                     className='continue_with_Google' 
-                    text='Continue with Google'
+                    label='Continue with Google'
                     onClick={continueWGoogle}
                 />
                 <div className="linebreak">
@@ -45,9 +45,9 @@ const header_home = () => {
                     <input className="fEmail" type="text" id="fEmail" name="fEmail" placeholder="Create an account with Email"></input><br></br>
                     <input className="fPassword" type="text" id="fPassword" name="fPassword" placeholder="Password"></input><br></br>
                 </form>
-                <Button
+                <ButtonWhite
                     className='continue_with_email' 
-                    text='Continue with Email'
+                    label='Continue with Email'
                     onClick={continueWEmail}
                 />
             </div>
