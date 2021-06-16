@@ -36,16 +36,18 @@
     color: black;
   }
   
-  .navbar_home_guest_centre {
-    flex: 30%;
-    margin-right: 10%;
-    font-family: Helvetica;
+  .navbar_logo {
     font-size: 34px;
     font-weight: bold;
     text-align: center;
+    text-decoration: none;
+  }
+
+  .navbar_logo:hover {
+    opacity: 0.9;
   }
   
-  .internify_logo {
+  .navbar_internify {
     background: linear-gradient(
         106.26deg,
         #e61a4d 11.83%,
@@ -56,18 +58,24 @@
     -webkit-text-fill-color: transparent;
   }
   
-  .navbar_home_guest_right {
-    flex: 30%;
+  .navbar_login {
+    flex: 25%;
     font-size: 20px;
-    text-align: right;
-  }
-  
-  .navbar_home_guest_right a {
-    text-decoration: none;
-    margin-right: 30%;
-    color: black;
     font-weight: bold;
-    font-size: 24px;
-    font-family: Helvetica;
+    text-align: right;
+    text-decoration: none;
+    padding-right: 5%;
+    color: black;
   }
-  
+
+  .navbar_login:hover {
+    flex: 25%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    text-decoration: none;
+    padding-right: 5%;
+    color: black;
+    opacity: 0.8;
+    text-decoration-line: underline;
+  }

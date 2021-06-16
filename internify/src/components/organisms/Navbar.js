@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 
 const Navbar = () => {
@@ -24,15 +25,13 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar_home_guest_centre">
-        <p className="internify_logo">Internify</p>
-      </div>
+      <Link className="navbar_logo" to="/">
+        <p className="navbar_internify">Internify</p>
+      </Link>
 
-      <div className="navbar_home_guest_right">
-        <p className="sign_in">
-          <a href="/">Sign In</a>
-        </p>
-      </div>
+      <Link className="navbar_login" to="/login">
+          <p>Sign In</p>
+      </Link>
     </div>
   );
 };
