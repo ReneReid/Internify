@@ -1,8 +1,8 @@
 import React from 'react'
-import "./styles/FooterHomeGuest.css"
+import "./styles/Footer.css"
 
 
-const FooterHomeGuest = () => {
+const Footer = () => {
     return (
         <div className="footer_home_guest">
             <div className="footer_home_guest_left">
@@ -23,4 +23,4 @@ const FooterHomeGuest = () => {
     )
 }
 
-export default FooterHomeGuest
+export default Footer;

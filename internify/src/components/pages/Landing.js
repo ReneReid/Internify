@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from "../organisms/Navbar"
 import Hero from "../organisms/Hero"
 import ContainerHomeGuest from "../organisms/ContainerHomeGuest"
-import FooterHomeGuest from "../organisms/FooterHomeGuest"
+import Footer from "../organisms/Footer"
 import "./styles/Landing.css"
 
 const Landing = () => {
@@ -11,7 +11,7 @@ const Landing = () => {
         <Navbar />
         <Hero />
         <ContainerHomeGuest />
-        <FooterHomeGuest />
+        <Footer />
     </div>
     )
 }
