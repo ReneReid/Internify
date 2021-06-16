@@ -5,6 +5,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import Stepper from "./Stepper";
 import { TableBasic, TableStar } from "./Table";
 import TechStack from "./TechStack";
+import InputFormContactDetails from "./InputFormContactDetails"
 
 export {
     PositionSubHeader,
@@ -14,5 +15,6 @@ export {
     Stepper,
     TableBasic,
     TableStar,
-    TechStack
+    TechStack,
+    InputFormContactDetails
 };
