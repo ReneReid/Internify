@@ -1,4 +1,4 @@
-.footer_home_guest {
+.footer {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -8,23 +8,23 @@
     overflow: hidden;
   }
   
-  .footer_home_guest_left {
+  .footer_links_container {
     flex: 1;
     text-align: left;
   }
   
-  .footer_home_guest_left li {
+  .footer_links_container li {
     list-style-type: none;
     font-family: Helvetica;
     margin-top: 1.2%;
   }
   
-  .footer_home_guest_left a {
+  .footer_links_container a {
     text-decoration: none;
     color: white;
   }
   
-  .footer_homeguest_right {
+  .footer_logo_container {
     flex: 1;
     font-family: Helvetica;
     font-size: 2em;
