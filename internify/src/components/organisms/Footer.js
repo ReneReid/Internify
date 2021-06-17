@@ -6,19 +6,14 @@ const Footer = () => {
     <div className="footer">
       <div className="footer_links_container">
         <ul className="footer_links">
-          <li className="footer_item">
+          <li className="footer_item1">
             <a href="thing1" className="navbar_main_link1">
-              About us
+              Made with ❤️ in Vancouver, BC
             </a>
           </li>
-          <li className="footer_item">
-            <a href="thing2" className="navbar_main_link2">
-              Our mission
-            </a>
-          </li>
-          <li className="footer_item">
-            <a href="thing3" className="navbar_main_link3">
-              Contact us
+          <li className="footer_item2">
+            <a href="https://github.com/aleemer/Internify" className="navbar_main_link2">
+              Github repo
             </a>
           </li>
         </ul>
