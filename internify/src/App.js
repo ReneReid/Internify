@@ -1,5 +1,5 @@
-import Landing from "./old-components/pages/Landing";
-import Login from "./old-components/pages/Login";
+import Landing from "./components/pages/Landing";
+import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import './App.css';

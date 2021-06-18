@@ -5,42 +5,34 @@
   padding: 3em 0;
 }
 
+.login_form_container {
+  width: 330px;
+}
+
 .l_body_upr_left {
   flex: 1;
 }
 
-.welcome_message {
+.login_header {
+  padding: 25px;
   color: whitesmoke;
   font-family: Helvetica;
   font-size: 30px;
 }
 
-.welcome_text {
-  padding: 25px;
-}
-
-.fEmail {
+.login_form_input {
   margin-top: 5px;
   margin-bottom: 10px;
-}
-
-.fPassword {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.login_button {
-  width: 330px;
+  width: 322px;
   height: 40px;
-  font-family: Helvetica;
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 10px;
   border-radius: 5px;
-  border: none;
 }
 
-.login_button:hover {
+.login_form_button {
+  margin-top: 10px;
+}
+
+.login_form_button:hover {
   cursor: pointer;
 }
 
@@ -48,15 +40,12 @@
   flex: 1;
 }
 
-.create_forgot {
-  font-size: 14px;
-  font-family: Helvetica;
+.login_help_container {
   display: flex;
   margin-top: 20px;
-  min-width: 330px;
 }
 
-.create_account {
+.login_create_account {
   flex: 1;
 }
 

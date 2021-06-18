@@ -1,0 +1,9 @@
+.login {
+    background: linear-gradient(
+        66.05deg,
+        #e61a4d -19.05%,
+        rgba(255, 255, 255, 0) 42.54%
+      ),
+      linear-gradient(199.29deg, #e61a4d -2.31%, rgba(255, 255, 255, 0) 77.09%),
+      #043a74;
+  }
