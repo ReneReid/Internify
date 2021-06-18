@@ -1,0 +1,65 @@
+.auth_navbar_container {
+
+    height: 80px;
+    padding-top: 20px;
+}
+
+
+.auth_navbar_link {
+    text-decoration: none;
+    color: black;
+  }
+
+  .auth_navbar_item {
+    float: right;
+  }
+
+  .auth_navbar_links {
+
+    position: absolute;
+    right: 50px;
+
+  }
+
+
+
+  .auth_navbar_item {
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+    padding-left: 25px;
+    font-size: 20px;
+    font-family: Helvetica;
+  }
+
+  .auth_navbar_link {
+    text-decoration: none;
+    color: black;
+  }
+
+
+.auth_navbar_logo {
+    position: absolute;
+    left: 100px;
+    margin-left: -67px;
+    padding-top: 10px;
+
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(
+        106.26deg,
+        #e61a4d 11.83%,
+        rgba(255, 255, 255, 0) 126.88%
+      ),
+      linear-gradient(0deg, #043a74, #043a74);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .auth_navbar_logo:hover {
+    opacity: 0.9;
+  }
+
+
