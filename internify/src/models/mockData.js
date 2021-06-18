@@ -7,4 +7,11 @@ const mockJobDetailData = {
     "coopReq": ["Yes", "No"]
   };
 
-  export default mockJobDetailData;
+const mockTechStackData = {
+    "languages": ["Java", "JavaScript", "C++", "C"],
+    "frameworks": ["React", "Angular", "HTML", "CSS"],
+    "workTools": ["Jira", "Asana", "Confluence", "Notion"],
+    "csConcepts": ["Object Oriented Programming", "Functional Programming", "Recursion"],
+  };
+
+  export { mockJobDetailData, mockTechStackData};
