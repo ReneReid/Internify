@@ -1,0 +1,57 @@
+import React from "react";
+import { CheckBox, RadioButton } from "../atoms";
+
+function ApplicantDetails(props){
+    const location = props.location;
+    const payment = props.payment;
+    const citizenship = props.citizenship;
+    const academicReq = props.academicReq;
+    const coopReq = props.coopReq;
+
+    return (
+        <React.Fragment>
+        <div className="job_details_container">
+        <h3>Is this position remote?*</h3>
+        <div className="job_details_radio_container">
+          {location.map((x) => {
+            return <RadioButton value={x} label={x} />;
+          })}
+        </div>
+        </div>
+        <div className="job_details_container">
+        <h3>How will this position pay?*</h3>
+        <div className="job_details_radio_container">
+          {payment.map((x) => {
+            return <RadioButton value={x} label={x} />;
+          })}
+        </div>
+        </div>
+        <div className="job_details_container">
+        <h3>What candidates will this position accept?*</h3>
+        <div className="job_details_radio_container">
+          {citizenship.map((x) => {
+            return <RadioButton value={x} label={x} />;
+          })}
+        </div>
+        </div>
+        <div className="job_details_container">
+        <h3>Are there academic requirements?*</h3>
+        <div className="job_details_radio_container">
+          {academicReq.map((x) => {
+            return <CheckBox value={x} label={x} />;
+          })}
+        </div>
+        </div>
+        <div className="job_details_container">
+        <h3>Is co-op enrollment required?*</h3>
+        <div className="job_details_radio_container">
+          {coopReq.map((x) => {
+            return <RadioButton value={x} label={x} />;
+          })}
+        </div>
+        </div>
+        </React.Fragment>
+    )
+}
+
+export default ApplicantDetails;
