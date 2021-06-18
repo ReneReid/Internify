@@ -10,14 +10,15 @@
     color: black;
   }
 
-  .auth_navbar_item {
+  /* .auth_navbar_item {
     float: right;
-  }
+  } */
 
   .auth_navbar_links {
 
-    position: absolute;
-    right: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -30px;
 
   }
 
@@ -25,8 +26,8 @@
 
   .auth_navbar_item {
     display: block;
-    text-align: center;
-    padding: 10px 10px;
+    text-align: left;
+    /* padding: 10px 10px; */
     padding-left: 25px;
     font-size: 20px;
     font-family: Helvetica;
@@ -39,11 +40,10 @@
 
 
 .auth_navbar_logo {
-    position: absolute;
+   
     left: 100px;
-    margin-left: -67px;
+    margin-left: -25px;
     padding-top: 10px;
-
     font-size: 34px;
     font-weight: bold;
     text-align: center;
