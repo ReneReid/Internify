@@ -6,13 +6,13 @@ import { ButtonFilled } from "../../atoms/Button";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
 
-const data = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
+const workExpData = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
 
 const WorkingExperience = () => {
   return (
     <React.Fragment>
       <h3>Years of working experience</h3>
-      <RadioButtonsGroup data={data}/>
+      <RadioButtonsGroup data={workExpData}/>
     </React.Fragment>
   );
 };
@@ -45,11 +45,13 @@ const GradePoint = (props) => {
     },
   ];
 
+  const gpaData = ["Required", "Optional"]
+
   return (
     <React.Fragment>
       <h3>GPA</h3>
       <div className="gpa_radio">
-        <RadioButton value={false} label={"Required"} />
+        <RadioButtonsGroup data={gpaData} />
       </div>
       <div className="gpa_slider">
         <Slider
