@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckBox, RadioButton } from "../atoms";
+import RadioButtonsGroup from "./RadioButtonsGroup";
 
 function ApplicantDetails(props){
     const location = props.location;
@@ -13,25 +14,19 @@ function ApplicantDetails(props){
         <div className="job_details_container">
         <h3>Is this position remote?*</h3>
         <div className="job_details_radio_container">
-          {location.map((x) => {
-            return <RadioButton value={x} label={x} />;
-          })}
+          <RadioButtonsGroup data={location}/>
         </div>
         </div>
         <div className="job_details_container">
         <h3>How will this position pay?*</h3>
         <div className="job_details_radio_container">
-          {payment.map((x) => {
-            return <RadioButton value={x} label={x} />;
-          })}
+          <RadioButtonsGroup data={payment}/>
         </div>
         </div>
         <div className="job_details_container">
         <h3>What candidates will this position accept?*</h3>
         <div className="job_details_radio_container">
-          {citizenship.map((x) => {
-            return <RadioButton value={x} label={x} />;
-          })}
+          <RadioButtonsGroup data={citizenship}/>
         </div>
         </div>
         <div className="job_details_container">
@@ -45,9 +40,7 @@ function ApplicantDetails(props){
         <div className="job_details_container">
         <h3>Is co-op enrollment required?*</h3>
         <div className="job_details_radio_container">
-          {coopReq.map((x) => {
-            return <RadioButton value={x} label={x} />;
-          })}
+          <RadioButtonsGroup data={coopReq}/>
         </div>
         </div>
         </React.Fragment>
