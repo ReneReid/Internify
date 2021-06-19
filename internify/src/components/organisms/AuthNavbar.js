@@ -1,83 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/AuthNavbar.css";
-import MenuIcon from '@material-ui/icons/Menu';
-
+import MenuIcon from "@material-ui/icons/Menu";
+import Container from "@material-ui/core/Container";
+import Grid from '@material-ui/core/Grid';
 
 
 const Navbar = () => {
   return (
-    <div className="auth_navbar_container">
-      <div className="auth_navbar_logo_div">
-      <Link className="auth_navbar_logo" to="/">
-        Internify
-      </Link>
-      </div>
-      {/* <Link className="auth_navbar_logo" to="/">
-        Internify
-      </Link> */}
+    <Container>
+      <Grid container className = "navbar_container">
 
-      <div className="auth_navbar_links_div">
-      <ul className="auth_navbar_links">
-          <li className="auth_navbar_item">
-            <a href="thing1" className="auth_navbar_link">
-                <MenuIcon className='auth_navbar_menuIcon'></MenuIcon>
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing2" className="auth_navbar_link">
-                Profile
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing3" className="auth_navbar_link">
-                Analytics
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing4" className="auth_navbar_link">
-                Browse
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing5" className="auth_navbar_link">
-                Home
-            </a>
-          </li>
+        <Grid item xs = {6} sm = {6} md = {6} style={{height: 70, width: '100%'}} className="logo">
+          <Link className = "auth_navbar_logo" to="/">
+            Internify
+          </Link>
 
-      </ul>
-      </div>
 
-      {/* <ul className="auth_navbar_links">
-          <li className="auth_navbar_item">
-            <a href="thing1" className="auth_navbar_link">
-                <MenuIcon className='auth_navbar_menuIcon'></MenuIcon>
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing2" className="auth_navbar_link">
-                Profile
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing3" className="auth_navbar_link">
-                Analytics
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing4" className="auth_navbar_link">
-                Browse
-            </a>
-          </li>
-          <li className="auth_navbar_item">
-            <a href="thing5" className="auth_navbar_link">
-                Home
-            </a>
-          </li>
+        </Grid>
+        <Grid container xs = {6} sm = {6} md = {6} className="auth_navbar_right_items">
+          <Grid className="auth_navbar_right_item">
+          <Link className="auth_navbar_item" to="placeHolder">
+              Home
+            </Link>
+          </Grid>
 
-      </ul> */}
+          <Grid className="auth_navbar_right_item">
+            <Link className="auth_navbar_item" to="placeHolder">
+              Browse
+            </Link>
+          </Grid>
+          <Grid className="auth_navbar_right_item">
+            <Link className="auth_navbar_item" to="placeHolder">
+              Analytics
+            </Link>
+          </Grid>
 
-    </div>
+          <Grid className="auth_navbar_right_item">
+            <Link className="auth_navbar_item" to="placeHolder">
+            Profile
+              </Link>
+          </Grid>
+
+          <Grid className="auth_navbar_right_item">
+            <Link className="auth_navbar_item" to="placeHolder">
+
+                <MenuIcon className="auth_navbar_item"></MenuIcon>
+            </Link>
+          </Grid>
+
+        </Grid>
+
+      </Grid>
+      
+    </Container>
   );
 };
 

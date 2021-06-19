@@ -8,9 +8,6 @@
   color: black;
 }
 
-/* .auth_navbar_item {
-    float: right;
-  } */
 
 .auth_navbar_links {
   display: flex;
@@ -21,21 +18,16 @@
 .auth_navbar_item {
   display: block;
   text-align: left;
-  /* padding: 10px 10px; */
   padding-left: 25px;
   font-size: 20px;
   font-family: Helvetica;
-}
-
-.auth_navbar_link {
   text-decoration: none;
   color: black;
 }
 
+
 .auth_navbar_logo {
-  left: 100px;
   margin-left: -25px;
-  padding-top: 10px;
   font-size: 34px;
   font-weight: bold;
   text-align: center;
@@ -53,3 +45,16 @@
 .auth_navbar_logo:hover {
   opacity: 0.9;
 }
+
+.navbar_container {
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+
+
+.logo {
+  padding-top: 10px;
+}
+
+
