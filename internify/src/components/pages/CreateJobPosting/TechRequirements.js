@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, RadioGroup, FormControl, Slider } from "@material-ui/core";
+import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
-import RadioButton from "../../atoms/RadioButton";
 import { ButtonFilled } from "../../atoms/Button";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
