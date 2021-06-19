@@ -1,6 +1,7 @@
 import React from "react";
-import { CheckBox, RadioButton } from "../atoms";
+import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
+import { TextField } from "@material-ui/core";
 
 function ApplicantDetails(props){
     const location = props.location;
@@ -35,6 +36,7 @@ function ApplicantDetails(props){
           {academicReq.map((x) => {
             return <CheckBox value={x} label={x} />;
           })}
+          <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
         </div>
         <div className="job_details_container">
