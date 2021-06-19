@@ -3,26 +3,16 @@ import { Container, RadioGroup, FormControl, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButton from "../../atoms/RadioButton";
 import { ButtonFilled } from "../../atoms/Button";
+import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
+
+const data = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
 
 const WorkingExperience = () => {
   return (
     <React.Fragment>
       <h3>Years of working experience</h3>
-      <FormControl component="fieldset">
-        <RadioGroup
-          aria-label="position_length"
-          name="work_experience_radio_group"
-        >
-          <div>
-            <RadioButton value={0} label={"none"} />
-            <RadioButton value={4} label={"≥ 4 months"} />
-            <RadioButton value={8} label={"≥ 8 months"} />
-            <RadioButton value={12} label={"≥ 12 months"} />
-            <RadioButton value={24} label={"≥ 2 years"} />
-          </div>
-        </RadioGroup>
-      </FormControl>
+      <RadioButtonsGroup data={data}/>
     </React.Fragment>
   );
 };
