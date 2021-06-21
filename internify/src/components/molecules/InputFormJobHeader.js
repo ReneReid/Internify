@@ -3,6 +3,9 @@ import React from "react";
 import "./styles/InputFormJobHeader.css";
 
 function InputFormJobHeader(props) {
+
+  const data = props.jobData;
+
   return (
     <form className="input_title_form">
       <div className="input_title_row">
@@ -12,6 +15,7 @@ function InputFormJobHeader(props) {
           label={"Job Title"}
           defaultValue={"Front-End Developer"}
           type={"text"}
+          onChange={(e) => {data.jobTitle = e.target.value}}
         />
       </div>
       <div className="input_title_row">
@@ -21,6 +25,7 @@ function InputFormJobHeader(props) {
           label={"Company"}
           defaultValue={"Astra Galatica Technologies"}
           type={"text"}
+          onChange={(e) => {data.companyName = e.target.value}}
         />
       </div>
       <div className="input_title_row">
@@ -31,6 +36,7 @@ function InputFormJobHeader(props) {
             label={"Location"}
             defaultValue={"Vancouver, BC"}
             type={"text"}
+            onChange={(e) => {data.companyAddress = e.target.value}}
           />
         </div>
         <div className="input_title_col">
@@ -40,6 +46,7 @@ function InputFormJobHeader(props) {
             label={"Start Date"}
             type={"date"}
             defaultValue={"2021-05-24"}
+            onChange={(e) => {data.startDate = e.target.value}}
           />
         </div>
       </div>
