@@ -12,6 +12,7 @@ function TextFieldInput(props) {
         InputLabelProps={{
             shrink: true,
           }}
+        onChange={props.onChange}
         />
     )
 }
