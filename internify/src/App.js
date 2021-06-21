@@ -1,3 +1,6 @@
+import { Provider } from 'react-redux';
+import store from './store/store';
+
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
@@ -13,7 +16,8 @@ import {
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
       <header className="App-header">
       <Router>
        <Switch>
@@ -36,6 +40,7 @@ function App() {
     </Router>
       </header>
     </div>
+    </Provider>
   );
 }
 
