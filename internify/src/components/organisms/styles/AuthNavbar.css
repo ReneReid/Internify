@@ -1,19 +1,8 @@
-.auth_navbar_container {
-  height: 80px;
-  padding-top: 20px;
-}
-
 .auth_navbar_link {
   text-decoration: none;
   color: black;
 }
 
-
-.auth_navbar_links {
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: -30px;
-}
 
 .auth_navbar_item {
   display: block;
@@ -27,7 +16,7 @@
 
 
 .auth_navbar_logo {
-  margin-left: 20%;
+  margin-left: 10%;
   font-size: 34px;
   font-weight: bold;
   text-align: center;
@@ -49,14 +38,14 @@
 .navbar_container {
   padding-top: 10px;
   margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-
+.auth_navbar_right_items {
+ padding-right: 30px;
+}
 
 .logo {
   padding-top: 10px;
 }
 
-hr.new1 {
-  border-top: 5 px solid blue;
-}
