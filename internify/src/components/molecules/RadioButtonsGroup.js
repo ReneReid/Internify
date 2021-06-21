@@ -10,7 +10,7 @@ function RadioButtonsGroup(props) {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    jobData.property = event.target.value;
+    jobData[props.property] = event.target.value;
   };
 
   return (
