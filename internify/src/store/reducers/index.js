@@ -6,5 +6,5 @@ import JobPostingReducer from './JobPostingReducer';
 
 export default combineReducers({
     user: userReducer,
-    jobPostReducer: JobPostingReducer
+    jobs: JobPostingReducer
 });
