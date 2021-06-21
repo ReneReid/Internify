@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Container from "@material-ui/core/Container";
 import {
   PositionSubHeader,
@@ -10,7 +10,11 @@ import {
 import { ButtonFilled } from "../../atoms/Button";
 import "./styles/CreateJobHeader.css";
 
-function CreateJobHeader() {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addJobsData } from '../../../store/actions/jobPostActions';
+
+function CreateJobHeader(props) {
 
   const [jobPosting, setJobPosting] = useState({
         jobTitle: "",
@@ -22,7 +26,7 @@ function CreateJobHeader() {
   });
   
   function updateStore(){
-    console.log("Job Posting: ", jobPosting);
+    props.actions.addJobsData(jobPosting);
   }
 
   return (
@@ -41,4 +45,16 @@ function CreateJobHeader() {
   );
 }
 
-export default CreateJobHeader;
+function mapStateToProps(state){
+  return {
+      jobs: state.jobs
+  };
+};
+
+function matchDispatchToProps(dispatch){
+   return {
+       actions: bindActionCreators({addJobsData: addJobsData}, dispatch)
+   };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(CreateJobHeader);
