@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import Container from "@material-ui/core/Container";
 import {
   PositionSubHeader,
@@ -9,18 +10,32 @@ import {
 import { ButtonFilled } from "../../atoms/Button";
 import "./styles/CreateJobHeader.css";
 
-function CreateJobHeader(props) {
+function CreateJobHeader() {
+
+  const [jobPosting, setJobPosting] = useState({
+        jobTitle: "",
+        companyName: "",
+        companyAddress: "",
+        startDate: "",
+        positionLength: "",
+        positionType: [],
+  });
+  
+  function updateStore(){
+    console.log("Job Posting: ", jobPosting);
+  }
+
   return (
     <div className="create">
       <Container maxWidth="md" className={"container"}>
         <Stepper stepNumber={0} />
         <div className="create_job_header_container">
           <h1>1. Create a Job Header</h1>
-          <InputFormJobHeader />
-          <LengthSubHeader />
-          <PositionSubHeader />
+          <InputFormJobHeader jobData={jobPosting}/>
+          <LengthSubHeader jobData={jobPosting}/>
+          <PositionSubHeader jobData={jobPosting}/>
         </div>
-        <ButtonFilled>Continue</ButtonFilled>
+        <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
       </Container>
     </div>
   );
