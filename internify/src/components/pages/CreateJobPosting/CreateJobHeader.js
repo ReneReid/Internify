@@ -13,8 +13,8 @@ import "./styles/CreateJobHeader.css";
 function CreateJobHeader(props) {
   return (
     <div className="create">
-      <Container maxWidth="md" className={"container"}>
-        <AuthNavbar />
+      <AuthNavbar/>
+      <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
         <Stepper stepNumber={0} />
         <div className="create_job_header_container">
           <h1>1. Create a Job Header</h1>
