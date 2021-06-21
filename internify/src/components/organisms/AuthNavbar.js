@@ -52,6 +52,7 @@ const Navbar = () => {
         </Grid>
 
       </Grid>
+      <hr></hr> 
       
     </Container>
   );
