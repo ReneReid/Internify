@@ -9,7 +9,7 @@ function LengthSubHeader(props) {
         <div>
             <div>
             <h3>Length</h3>
-            <RadioButtonsGroup data={jobData}/>
+            <RadioButtonsGroup jobData={jobData} data={data}/>
             </div>
         </div>
     )
