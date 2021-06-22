@@ -3,19 +3,14 @@ import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
+import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
+import { mockJobDetailData, mockTechStackData } from "./models/mockData";
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-
-const mockTechStackData = {
-  "languages": ["Java", "JavaScript", "C++", "C"],
-  "frameworks": ["React", "Angular", "HTML", "CSS"],
-  "workTools": ["Jira", "Asana", "Confluence", "Notion"],
-  "csConcepts": ["Object Oriented Programming", "Functional Programming", "Recursion"],
-};
 
 function App() {
   return (
@@ -31,6 +26,9 @@ function App() {
           </Route>
           <Route path="/create2">
            <TechRequirements data={mockTechStackData}/>
+          </Route>
+          <Route path="/create3">
+           <JobDetail data={mockJobDetailData}/>
           </Route>
           <Route path="/create4">
             <ContactDetails />
