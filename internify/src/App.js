@@ -2,6 +2,7 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
+import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
 import { mockJobDetailData, mockTechStackData } from "./models/mockData";
 import './App.css';
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/create3">
            <JobDetail data={mockJobDetailData}/>
+          </Route>
+          <Route path="/create4">
+            <ContactDetails />
           </Route>
           <Route path="/">
             <Landing />
