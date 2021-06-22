@@ -6,12 +6,14 @@ import {
   LengthSubHeader,
   Stepper,
 } from "../../molecules/index";
+import AuthNavbar from "../../organisms/AuthNavbar";
 import { ButtonFilled } from "../../atoms/Button";
 import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
   return (
     <div className="create">
+      <AuthNavbar/>
       <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
         <Stepper stepNumber={0} />
         <div className="create_job_header_container">

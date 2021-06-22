@@ -3,6 +3,7 @@ import { Container} from "@material-ui/core";
 import { Stepper } from "../../molecules/index";
 import ApplicantDetails from "../../molecules/ApplicantDetails";
 import MultiLineTextField from "../../atoms/MultiLineTextField";
+import AuthNavbar from "../../organisms/AuthNavbar";
 import "./styles/JobDetail.css";
 
 function JobDetail(props){
@@ -10,6 +11,7 @@ function JobDetail(props){
 
     return (
         <div className="Create">
+            <AuthNavbar/>
             <Container maxWidth="md" style={{ padding: "0 10em" }}>
                 <Stepper stepNumber={2} />
                 <h1>3. Job Details</h1>

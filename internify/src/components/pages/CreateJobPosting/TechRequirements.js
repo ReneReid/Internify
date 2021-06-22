@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import { ButtonFilled } from "../../atoms/Button";
+import AuthNavbar from "../../organisms/AuthNavbar";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
 
@@ -72,7 +73,9 @@ function TechRequirements(props) {
 
   return (
     <div className="Create">
+      <AuthNavbar />
       <Container maxWidth="md" style={{ padding: "0 10em" }}>
+      {/* <AuthNavbar /> */}
         <Stepper stepNumber={1} />
         <h1>2. Technical Requirements</h1>
         <WorkingExperience />
