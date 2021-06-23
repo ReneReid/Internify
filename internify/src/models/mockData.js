@@ -46,7 +46,7 @@ const mockJobPosting = {
     concepts: ["Object Oriented Programming", "Functional Programming", "Computer Networks"],
   },
   details: {
-    description: "",
+    description: "This is an amazing opportunity to work wit Edible Tech! Get a jumpstart in tech by working for us.",
     position: "Remote",
     pay: "Salary",
     candidates: "Citizens & PR",
