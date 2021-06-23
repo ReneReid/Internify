@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 const Navbar = () => {
   return (
-      <Grid container xs = {12} sm = {12} md = {12} className = "navbar_container">
+      <Grid container xs = {12} sm = {12} md = {12} className = "auth_navbar_container">
 
         <Grid item xs = {4} sm = {4} md = {4} style={{height: 70, width: '100%'}} className="logo" >
           <Link className = "auth_navbar_logo" to="/">
