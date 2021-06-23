@@ -44,10 +44,15 @@ const mockJobPosting = {
     languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
     frameworks: ["React", "Angular", "MaterialUI"],
     workTools: ["GitHub", "Jira", "Azure", "Kubernetes"],
-    csConcepts: ["Object Oriented Programming", "Functional Programming", "Computer Networks"],
+    csConcepts: [
+      "Object Oriented Programming",
+      "Functional Programming",
+      "Computer Networks",
+    ],
   },
   details: {
-    description: "This is an amazing opportunity to work wit Edible Tech! Get a jumpstart in tech by working for us.",
+    description:
+      "This is an amazing opportunity to work wit Edible Tech! Get a jumpstart in tech by working for us.",
     position: "Remote",
     pay: "Salary",
     candidates: "Citizens & PR",
@@ -60,7 +65,7 @@ const mockJobPosting = {
     linkedIn: "linkedin.com/in/maheshswarani",
     other: "+1 (601) 234 5678",
     applicationSteps: "Apply via LinkedIn",
-  }
+  },
 };
 
 export { mockJobDetailData, mockTechStackData, mockJobPosting };
