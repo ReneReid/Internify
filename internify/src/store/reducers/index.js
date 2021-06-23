@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import JobPostingReducer from './JobPostingReducer';
+import JobPostingReducer from './jobPostingReducer';
 
 export default combineReducers({
     user: userReducer,
