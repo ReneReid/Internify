@@ -5,16 +5,18 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import Stepper from "./Stepper";
 import { TableBasic, TableStar } from "./Table";
 import TechStack from "./TechStack";
-import InputFormContactDetails from "./InputFormContactDetails"
+import InputFormContactDetails from "./InputFormContactDetails";
+import JobPosting from "./JobPosting";
 
 export {
-    PositionSubHeader,
-    InputFormJobHeader,
-    LengthSubHeader,
-    RadioButtonsGroup,
-    Stepper,
-    TableBasic,
-    TableStar,
-    TechStack,
-    InputFormContactDetails
+  PositionSubHeader,
+  InputFormJobHeader,
+  LengthSubHeader,
+  RadioButtonsGroup,
+  JobPosting,
+  Stepper,
+  TableBasic,
+  TableStar,
+  TechStack,
+  InputFormContactDetails,
 };

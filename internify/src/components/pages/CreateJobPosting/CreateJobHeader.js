@@ -12,7 +12,7 @@ import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
   return (
-    <div className="create">
+    <div className="create_form_container">
       <AuthNavbar/>
       <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
         <Stepper stepNumber={0} />

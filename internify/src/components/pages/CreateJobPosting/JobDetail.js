@@ -10,7 +10,7 @@ function JobDetail(props){
     const data = props.data;
 
     return (
-        <div className="Create">
+        <div className="create_form_container">
             <AuthNavbar/>
             <Container maxWidth="md" style={{ padding: "0 10em" }}>
                 <Stepper stepNumber={2} />
