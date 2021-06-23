@@ -35,7 +35,7 @@ function CreateJobHeader(props) {
         <Stepper stepNumber={0} />
         <div className="create_job_header_container">
           <h1>1. Create a Job Header</h1>
-          <InputFormJobHeader jobData={jobPosting}/>
+          <InputFormJobHeader handle={setJobPosting} jobData={jobPosting}/>
           <LengthSubHeader jobData={jobPosting}/>
           <PositionSubHeader jobData={jobPosting}/>
         </div>
