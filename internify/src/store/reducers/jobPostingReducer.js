@@ -1,32 +1,22 @@
 
+import { ADD_JOB_HEADER } from "../actions/types/jobPostTypes";
+
 const initialState = {
-    jobPosting = {
-        id: 0,
-        jobTitle: String,
-        companyName: String,
-        companyAddress: String,
-        startDate: Date,
-        positionLength: String,
-        positionType: String,
-        experienceLength: String,
-        gpaRequired: Boolean,
-        gpaPercentage: String,
-        codingLanguages: Array,
-        frameworks: Array,
-        workTools: Array,
-        compSciConcepts: Array,
-        jobDescription: String,
-        locationType: String,
-        salary: String,
-        citizenshipReqs: String,
-        academicReqs: Array,
-        coopReqs: Boolean
-    },
-    jobPostingsList: []
+    jobHeaderData: [],
+    techStackData: [],
+    jobDetailsData: [],
+    contactDetailsData: [],
+    finalJobPostingsList: []
 }
 
 export default function(state = initialState, action) {
-    switch(action.type) {   
+    switch(action.type) { 
+        case ADD_JOB_HEADER:
+            initialState.jobHeaderData.push(action.payload);
+            return {
+                ...state,
+                jobHeaderData: initialState.jobHeaderData
+            } 
         default:
             return state;
     }
