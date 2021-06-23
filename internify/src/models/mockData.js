@@ -41,9 +41,10 @@ const mockJobPosting = {
   requirements: {
     experience: "≥ 4 months",
     gpa: null,
-    techStack: ["JavaScript", "TypeScript", "HTML", "CSS", "MaterialUI"],
-    tools: ["GitHub", "Jira", "Azure", "Kubernetes"],
-    concepts: ["Object Oriented Programming", "Functional Programming", "Computer Networks"],
+    languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
+    frameworks: ["React", "Angular", "MaterialUI"],
+    workTools: ["GitHub", "Jira", "Azure", "Kubernetes"],
+    csConcepts: ["Object Oriented Programming", "Functional Programming", "Computer Networks"],
   },
   details: {
     description: "This is an amazing opportunity to work wit Edible Tech! Get a jumpstart in tech by working for us.",
