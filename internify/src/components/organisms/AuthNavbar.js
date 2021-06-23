@@ -14,7 +14,7 @@ const Navbar = () => {
             Internify
           </Link>
         </Grid>
-        <Grid container xs = {8} sm = {8} md = {8} className="auth_navbar_right_items" justify='flex-end'>
+        <Grid container xs = {8} sm = {8} md = {8} className="auth_navbar_right_items" justify="flex-end" alignItems="center">
           <Grid className="auth_navbar_right_item">
           <Link className="auth_navbar_item" to="placeHolder">
               Home

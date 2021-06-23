@@ -4,6 +4,7 @@ import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader
 import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
+import Review from "./components/pages/CreateJobPosting/Review";
 import { mockJobDetailData, mockTechStackData } from "./models/mockData";
 import './App.css';
 import {
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/create4">
             <ContactDetails />
+          </Route>
+          <Route path="/create5">
+            <Review />
           </Route>
           <Route path="/">
             <Landing />
