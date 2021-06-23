@@ -1,0 +1,15 @@
+.job_posting_container {
+    border: 0.75px solid #000000;
+    padding: 1em 1.5em;
+    font-size: 16px;
+}
+
+.job_posting_title {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+}
+.job_posting_subheader {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
