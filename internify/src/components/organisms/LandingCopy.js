@@ -77,7 +77,6 @@ const LandingCopy = () => {
         <div className="container_four_right">
           <ButtonOutlined
             className="get_started_button"
-            color="white"
             onClick={getStarted}
           >
             Get Started

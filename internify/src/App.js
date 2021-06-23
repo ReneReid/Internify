@@ -5,7 +5,7 @@ import TechRequirements from "./components/pages/CreateJobPosting/TechRequiremen
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
 import Review from "./components/pages/CreateJobPosting/Review";
-import { mockJobDetailData, mockTechStackData } from "./models/mockData";
+import { mockJobDetailData, mockTechStackData, mockJobPosting } from "./models/mockData";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -35,7 +35,7 @@ function App() {
             <ContactDetails />
           </Route>
           <Route path="/create5">
-            <Review />
+            <Review data={mockJobPosting} />
           </Route>
           <Route path="/">
             <Landing />
