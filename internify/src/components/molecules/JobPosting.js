@@ -1,4 +1,6 @@
 import React from "react";
+import { ButtonFilled } from "../atoms/index";
+import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 
 const JobPosting = ({ data }) => {
@@ -105,6 +107,10 @@ const JobPosting = ({ data }) => {
         <li>{contact.linkedIn}</li>
         <li>{contact.other ? contact.other : null}</li>
       </ul>
+
+      <div className="job_posting_submit">
+        <ButtonFilled startIcon={<AddCircleOutline />}>Create</ButtonFilled>
+      </div>
     </div>
   );
 };

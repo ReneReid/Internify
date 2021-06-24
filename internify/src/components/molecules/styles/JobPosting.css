@@ -2,6 +2,7 @@
   border: 0.75px solid #000000;
   padding: 2em 1.5em;
   font-size: 16px;
+  margin-bottom: 7em;
 }
 
 .job_posting_title {
@@ -48,4 +49,10 @@
 
 .job_posting_contact_name {
     margin-bottom: 1em;
+}
+
+.job_posting_submit {
+    position: fixed;
+    bottom: 5vh;
+    left: 45vw;
 }
