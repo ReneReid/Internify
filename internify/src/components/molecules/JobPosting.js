@@ -1,3 +1,4 @@
+import { DetailsOutlined } from "@material-ui/icons";
 import React from "react";
 import "./styles/JobPosting.css";
 
@@ -21,14 +22,79 @@ const JobPosting = ({ data }) => {
       <p className="job_posting_subheader">{header.location}</p>
       <p className="job_posting_description">{details.description}</p>
 
-      <h4 className="job_posting_points">Job points</h4>
-      <ul className="job_posting_points_list">
+      <h4 className="job_posting_subheader">Job points</h4>
+      <ul className="job_posting_list">
         {jobPoints.map((list) => {
           return <li>{list}</li>;
         })}
+        {details.coOp ? (
+          <li>Must be enrolled in an accredited Co-op program</li>
+        ) : null}
       </ul>
 
-      <h4 className="job_posting_technical_requirements">Technical Requirements</h4>
+      <h4 className="job_posting_subheader">Technical Requirements</h4>
+      <ul className="job_posting_list_2">
+        {requirements.experience ? (
+          <li>
+            Must have <b>{requirements.experience}</b> of working experience
+          </li>
+        ) : (
+          <li>No prior work experience is required</li>
+        )}
+        {details.academicReq ? (
+          <li>
+            Obtained or is currently enrolled in a <b>{details.academicReq}</b>
+          </li>
+        ) : null}
+        {details.academicReq && requirements.gpa ? (
+          <li>
+            Must have at least or is at <b>{requirements.gpa} GPA</b> standing or
+            equivalent
+          </li>
+        ) : null}
+        <li style={{ marginBottom: "0.25em" }}>
+          Experience with the following programming languages:
+        </li>
+        <ul className="job_posting_list_nested">
+          {requirements.languages.map((language) => {
+            return (
+              <li>
+                <b>{language}</b>
+              </li>
+            );
+          })}
+        </ul>
+        <li>Experience with the following frameworks:</li>
+        <ul className="job_posting_list_nested">
+          {requirements.frameworks.map((framework) => {
+            return (
+              <li>
+                <b>{framework}</b>
+              </li>
+            );
+          })}
+        </ul>
+        <li>Experience with the following work tools:</li>
+        <ul className="job_posting_list_nested">
+          {requirements.workTools.map((tool) => {
+            return (
+              <li>
+                <b>{tool}</b>
+              </li>
+            );
+          })}
+        </ul>
+        <li>Understanding and comprehension of:</li>
+        <ul className="job_posting_list_nested">
+          {requirements.csConcepts.map((concept) => {
+            return (
+              <li>
+                <b>{concept}</b>
+              </li>
+            );
+          })}
+        </ul>
+      </ul>
     </div>
   );
 };
