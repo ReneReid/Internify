@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addJobsData } from '../../store/actions/jobPostActions';
 import { Container } from "@material-ui/core";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const mockTechStackData = {
@@ -21,7 +22,7 @@ function Create (props) {
 
     const [currentStep, setCurrentStep] = useState(1);
     const [jobData, setJobData] = useState({
-        id: 0,
+        id: uuidv4(),
         jobTitle: "",
         companyName: "",
         companyAddress: "",
