@@ -1,4 +1,3 @@
-import { DetailsOutlined } from "@material-ui/icons";
 import React from "react";
 import "./styles/JobPosting.css";
 
@@ -48,8 +47,8 @@ const JobPosting = ({ data }) => {
         ) : null}
         {details.academicReq && requirements.gpa ? (
           <li>
-            Must have at least or is at <b>{requirements.gpa} GPA</b> standing or
-            equivalent
+            Must have at least or is at <b>{requirements.gpa} GPA</b> standing
+            or equivalent
           </li>
         ) : null}
         <li style={{ marginBottom: "0.25em" }}>
@@ -84,7 +83,7 @@ const JobPosting = ({ data }) => {
             );
           })}
         </ul>
-        <li>Understanding and comprehension of:</li>
+        <li>General understanding and comprehension of:</li>
         <ul className="job_posting_list_nested">
           {requirements.csConcepts.map((concept) => {
             return (
@@ -94,6 +93,17 @@ const JobPosting = ({ data }) => {
             );
           })}
         </ul>
+      </ul>
+
+      <h4 className="job_posting_subheader">Application Steps:</h4>
+      <p>{contact.applicationSteps}</p>
+
+      <h4 className="job_posting_subheader">Contact details:</h4>
+      <p className="job_posting_contact_name">{contact.name}</p>
+      <ul className="job_posting_list_nested">
+        <li>{contact.email}</li>
+        <li>{contact.linkedIn}</li>
+        <li>{contact.other ? contact.other : null}</li>
       </ul>
     </div>
   );

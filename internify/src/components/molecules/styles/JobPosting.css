@@ -1,6 +1,6 @@
 .job_posting_container {
   border: 0.75px solid #000000;
-  padding: 1em 1.5em;
+  padding: 2em 1.5em;
   font-size: 16px;
 }
 
@@ -44,4 +44,8 @@
 
 .job_posting_list li {
   margin-right: 2em;
+}
+
+.job_posting_contact_name {
+    margin-bottom: 1em;
 }
