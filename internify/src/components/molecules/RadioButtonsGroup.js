@@ -7,6 +7,7 @@ function RadioButtonsGroup(props) {
   const data = props.data;
   const jobData = props.jobData;
   const [value, setValue] = React.useState('');
+  let index = 0;
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -18,7 +19,7 @@ function RadioButtonsGroup(props) {
       <RadioGroup aria-label="position-length" name="pos1" value={value} onChange={handleChange}>
         <div>
           {data.map((x) => {
-            return <RadioButton value={x} label={x}/>;
+            return <RadioButton key={index++} value={x} label={x}/>;
           })}
         </div>
       </RadioGroup>

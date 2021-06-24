@@ -5,8 +5,9 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
+import Review from "./components/pages/CreateJobPosting/Review";
 import Create from './components/pages/Create';
-import { mockJobDetailData } from "./models/mockData";
+import { mockJobDetailData, mockJobPosting } from "./models/mockData";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/create4">
             <ContactDetails />
+          </Route>
+          <Route path="/create5">
+            <Review data={mockJobPosting} />
           </Route>
           <Route path="/">
             <Landing />

@@ -7,11 +7,11 @@ export const ButtonFilled = withStyles(() => ({
     fontWeight: 700,
     padding: "0.5em 1em",
     backgroundColor: "#043A74",
-    color: "white",
+    color: "#FFFFFF",
     borderRadius: "5px",
     "&:hover": {
       backgroundColor: "#043A74",
-      color: "white",
+      color: "#FFFFFF",
       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
     },
   }
@@ -22,12 +22,12 @@ export const ButtonOutlined = withStyles(() => ({
         textTransform: "none",
         fontWeight: 700,
         padding: "0.5em 1em",
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         color: "#043A74",
         border: "2px solid #043A74",
         borderRadius: "5px",
         "&:hover": {
-          backgroundColor: "white",
+          backgroundColor: "#FFFFFF",
           color: "#043A74",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
         },
@@ -40,10 +40,10 @@ export const ButtonClear = withStyles(() => ({
         fontWeight: 700,
         padding: "0.5em 1em",
         backgroundColor: "transparent",
-        color: "black",
+        color: "#000000",
         "&:hover": {
           backgroundColor: "transparent",
-          color: "black",
+          color: "#000000",
           textShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
         },
       }
@@ -54,12 +54,12 @@ export const ButtonWhite = withStyles(() => ({
     textTransform: "none",
     fontWeight: 700,
     padding: "0.5em 1em",
-    backgroundColor: "white",
-    color: "black",
+    backgroundColor: "#FFFFFF",
+    color: "#000000",
     borderRadius: "5px",
     "&:hover": {
-      backgroundColor: "white",
-      color: "black",
+      backgroundColor: "#FFFFFF",
+      color: "#000000",
       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.4)",
     },
   }

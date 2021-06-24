@@ -8,7 +8,7 @@ import {
 
 const ContactDetails = () => {
     return (
-        <div className="contact_details">
+        <div className="create_form_container">
             <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
                 <Stepper stepNumber={3} />
                 <div className="contact_details_container">
