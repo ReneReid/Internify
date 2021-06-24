@@ -3,12 +3,10 @@ import store from './store/store';
 import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
-import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
-import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
 import Create from './components/pages/Create';
-import { mockJobDetailData, mockTechStackData } from "./models/mockData";
+import { mockJobDetailData } from "./models/mockData";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -29,9 +27,6 @@ function App() {
           <Route path="/create">
           <AuthNavbar />
            <Create />
-          </Route>
-          <Route path="/create2">
-           <TechRequirements data={mockTechStackData}/>
           </Route>
           <Route path="/create3">
            <JobDetail data={mockJobDetailData}/>

@@ -14,7 +14,7 @@ import { addJobsData } from '../../../store/actions/jobPostActions';
 
 function CreateJobHeader(props) {
   
-  if(props.currentStep != 1){
+  if(props.currentStep !== 1){
     return null;
   } else {
     return (
