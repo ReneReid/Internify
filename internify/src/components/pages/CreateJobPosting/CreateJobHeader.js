@@ -15,34 +15,24 @@ import { bindActionCreators } from 'redux';
 import { addJobsData } from '../../../store/actions/jobPostActions';
 
 function CreateJobHeader(props) {
-
-  const [jobPosting, setJobPosting] = useState({
-        jobTitle: "",
-        companyName: "",
-        companyAddress: "",
-        startDate: "",
-        positionLength: "",
-        positionType: [],
-  });
   
-  function updateStore(){
-    props.actions.addJobsData(jobPosting);
+  if(props.currentStep != 1){
+    return null;
+  } else {
+    return (
+      <div className="create">
+        <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
+          <Stepper stepNumber={0} />
+          <div className="create_job_header_container">
+            <h1>1. Create a Job Header</h1>
+            <InputFormJobHeader handle={props.handleChange} jobData={props.jobData}/>
+            <LengthSubHeader jobData={props.jobData}/>
+            <PositionSubHeader jobData={props.jobData}/>
+          </div>
+        </Container>
+      </div>
+    );
   }
-
-  return (
-    <div className="create">
-      <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
-        <Stepper stepNumber={0} />
-        <div className="create_job_header_container">
-          <h1>1. Create a Job Header</h1>
-          <InputFormJobHeader handle={setJobPosting} jobData={jobPosting}/>
-          <LengthSubHeader jobData={jobPosting}/>
-          <PositionSubHeader jobData={jobPosting}/>
-        </div>
-        <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
-      </Container>
-    </div>
-  );
 }
 
 function mapStateToProps(state){
