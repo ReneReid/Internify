@@ -47,7 +47,7 @@ function Create (props) {
     return (
         <React.Fragment> 
          <Container maxWidth="md" style={{ padding: "0 10em" }}>
-         <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)} >Back</ButtonFilled>     
+         <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>Back</ButtonFilled>     
         </Container> 
          <CreateJobHeader
         currentStep={currentStep}
@@ -63,7 +63,7 @@ function Create (props) {
         data = {mockTechStackData}
         />
         <Container maxWidth="md" style={{ padding: "0 10em" }}>
-        <ButtonFilled onClick={() => updateStore()} style={{ paddingLeft: "0 10em" }}>Continue</ButtonFilled>
+        <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
         </Container> 
     </React.Fragment>
     );
