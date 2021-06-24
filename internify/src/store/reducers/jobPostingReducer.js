@@ -6,7 +6,7 @@ const initialState = {
     finalJobPostingsList: []
 }
 
-export default function(state = initialState, action) {
+export default function jobPostingReducer(state = initialState, action) {
     switch(action.type) { 
         case ADD_JOB_HEADER:
             return {
