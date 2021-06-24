@@ -52,7 +52,7 @@ const mockJobPosting = {
   },
   details: {
     description:
-      "This is an amazing opportunity to work wit Edible Tech! Get a jumpstart in tech by working for us.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa sem et, volutpat placerat gravida at id dictum. Aliquet consequat ultrices euismod eu. Neque turpis vulputate pellentesque integer ornare ultrices mauris dignissim mi. Lacus aliquam enim velit dignissim.",
     position: "Remote",
     pay: "Salary",
     candidates: "Citizens & PR",

@@ -13,3 +13,23 @@
     margin-top: 0;
     margin-bottom: 0.5em;
 }
+
+.job_posting_description {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.job_posting_points {
+    margin-bottom: 0.5em;
+}
+
+.job_posting_points_list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    line-height: 2em;
+    margin: 0;
+}
+
+.job_posting_points_list li {
+    margin-right: 2em;
+}
