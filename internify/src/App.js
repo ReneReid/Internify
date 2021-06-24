@@ -1,11 +1,13 @@
+import { Provider } from 'react-redux';
+import store from './store/store';
+import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
-import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
-import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
 import Review from "./components/pages/CreateJobPosting/Review";
-import { mockJobDetailData, mockTechStackData, mockJobPosting } from "./models/mockData";
+import Create from './components/pages/Create';
+import { mockJobDetailData, mockJobPosting } from "./models/mockData";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,18 +17,17 @@ import {
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
       <header className="App-header">
       <Router>
        <Switch>
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/create1">
-           <CreateJobHeader />
-          </Route>
-          <Route path="/create2">
-           <TechRequirements data={mockTechStackData}/>
+          <Route path="/create">
+          <AuthNavbar />
+           <Create />
           </Route>
           <Route path="/create3">
            <JobDetail data={mockJobDetailData}/>
@@ -44,6 +45,7 @@ function App() {
     </Router>
       </header>
     </div>
+    </Provider>
   );
 }
 

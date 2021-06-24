@@ -5,11 +5,13 @@ import FormControl from '@material-ui/core/FormControl';
 
 function RadioButtonsGroup(props) {
   const data = props.data;
+  const jobData = props.jobData;
   const [value, setValue] = React.useState('');
   let index = 0;
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    jobData[props.property] = event.target.value;
   };
 
   return (
