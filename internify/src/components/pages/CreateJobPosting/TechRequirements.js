@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import { ButtonFilled } from "../../atoms/Button";
+import AuthNavbar from "../../organisms/AuthNavbar";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
 
