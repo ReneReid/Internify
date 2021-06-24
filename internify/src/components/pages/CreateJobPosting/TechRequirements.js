@@ -70,23 +70,29 @@ const GradePoint = (props) => {
 function TechRequirements(props) {
   const data = props.data;
 
-  return (
-    <div className="Create">
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
-        <Stepper stepNumber={1} />
-        <h1>2. Technical Requirements</h1>
-        <WorkingExperience />
-        <GradePoint />
-        <TechStack
-          languages={data.languages}
-          frameworks={data.frameworks}
-          workTools={data.workTools}
-          csConcepts={data.csConcepts}
-        />
-        <ButtonFilled>Continue</ButtonFilled>
-      </Container>
-    </div>
-  );
+  if(props.currentStep != 2){
+    return null;
+  } else {
+    return (
+      <div className="Create">
+        <Container maxWidth="md" style={{ padding: "0 10em" }}>
+          <Stepper stepNumber={1} />
+          <h1>2. Technical Requirements</h1>
+          <WorkingExperience 
+          handle={props.handleChange} 
+          jobData={props.jobData}
+          />
+          <GradePoint />
+          <TechStack
+            languages={data.languages}
+            frameworks={data.frameworks}
+            workTools={data.workTools}
+            csConcepts={data.csConcepts}
+          />
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default TechRequirements;
