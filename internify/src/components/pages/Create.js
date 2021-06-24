@@ -2,6 +2,14 @@ import React from "react";
 import "./styles/Create.css";
 import CreateJobHeader from "./CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./CreateJobPosting/TechRequirements";
+import { ButtonFilled } from "../atoms";
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addJobsData } from '../../store/actions/jobPostActions';
+import { Container } from "@material-ui/core";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const mockTechStackData = {
     "languages": ["Java", "JavaScript", "C++", "C"],
@@ -11,10 +19,66 @@ const mockTechStackData = {
 };
 
 function Create (props) {
+
+    const [currentStep, setCurrentStep] = useState(1);
+    const [jobData, setJobData] = useState({
+        id: uuidv4(),
+        jobTitle: "",
+        companyName: "",
+        companyAddress: "",
+        startDate: "",
+        positionLength: "",
+        positionType: [],
+        experienceLength: "",
+        gpaRequired: false,
+        gpaScore: "",
+        codingLanguages: [],
+        frameworks: [],
+        tools: [],
+        compSciConcepts: []
+    });
+
+    function updateStore(){
+        setCurrentStep(currentStep + 1);
+        props.actions.addJobsData(jobData);
+    }
+
+
     return (
-        <CreateJobHeader/>
-        // <TechRequirements data={mockTechStackData}/>
+        <React.Fragment> 
+         <Container maxWidth="md" style={{ padding: "0 10em" }}>
+         <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>Back</ButtonFilled>     
+        </Container> 
+         <CreateJobHeader
+        currentStep={currentStep}
+        handleStep={setCurrentStep} 
+        handleChange={setJobData}
+        jobData={jobData}
+        />
+        <TechRequirements 
+        currentStep={currentStep}
+        handleStep={setCurrentStep}  
+        handleChange={setJobData}
+        jobData={jobData}
+        data = {mockTechStackData}
+        />
+        <Container maxWidth="md" style={{ padding: "0 10em" }}>
+        <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
+        </Container> 
+    </React.Fragment>
     );
 };
 
-export default Create;
+function mapStateToProps(state){
+    return {
+        jobs: state.jobs
+    };
+  };
+  
+  function matchDispatchToProps(dispatch){
+     return {
+         actions: bindActionCreators({addJobsData: addJobsData}, dispatch)
+     };
+  }
+  
+  export default connect(mapStateToProps, matchDispatchToProps)(Create);

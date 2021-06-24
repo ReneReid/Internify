@@ -1,18 +1,16 @@
 import React from "react";
 import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
-import { ButtonFilled } from "../../atoms/Button";
-import AuthNavbar from "../../organisms/AuthNavbar";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
 
 const workExpData = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
 
-const WorkingExperience = () => {
+const WorkingExperience = (props) => {
   return (
     <React.Fragment>
       <h3>Years of working experience</h3>
-      <RadioButtonsGroup data={workExpData}/>
+      <RadioButtonsGroup data={workExpData} jobData={props.jobData} property={"experienceLength"}/>
     </React.Fragment>
   );
 };
@@ -51,7 +49,7 @@ const GradePoint = (props) => {
     <React.Fragment>
       <h3>GPA</h3>
       <div className="gpa_radio">
-        <RadioButtonsGroup data={gpaData} />
+        <RadioButtonsGroup data={gpaData} jobData={props.jobData} property={"gpaRequired"}/>
       </div>
       <div className="gpa_slider">
         <Slider
@@ -71,25 +69,33 @@ const GradePoint = (props) => {
 function TechRequirements(props) {
   const data = props.data;
 
-  return (
-    <div className="Create">
-      <AuthNavbar />
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
-      {/* <AuthNavbar /> */}
-        <Stepper stepNumber={1} />
-        <h1>2. Technical Requirements</h1>
-        <WorkingExperience />
-        <GradePoint />
-        <TechStack
-          languages={data.languages}
-          frameworks={data.frameworks}
-          workTools={data.workTools}
-          csConcepts={data.csConcepts}
-        />
-        <ButtonFilled>Continue</ButtonFilled>
-      </Container>
-    </div>
-  );
+  if(props.currentStep !== 2){
+    return null;
+  } else {
+    return (
+      <div className="Create">
+        <Container maxWidth="md" style={{ padding: "0 10em" }}>
+          <Stepper stepNumber={1} />
+          <h1>2. Technical Requirements</h1>
+          <WorkingExperience 
+          handle={props.handleChange} 
+          jobData={props.jobData}
+          />
+          <GradePoint 
+          handle={props.handleChange} 
+          jobData={props.jobData}/>
+          <TechStack
+            languages={data.languages}
+            frameworks={data.frameworks}
+            workTools={data.workTools}
+            csConcepts={data.csConcepts}
+            handle={props.handleChange} 
+            jobData={props.jobData}
+          />
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default TechRequirements;

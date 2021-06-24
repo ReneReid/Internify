@@ -6,26 +6,43 @@ import {
   LengthSubHeader,
   Stepper,
 } from "../../molecules/index";
-import AuthNavbar from "../../organisms/AuthNavbar";
-import { ButtonFilled } from "../../atoms/Button";
 import "./styles/CreateJobHeader.css";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addJobsData } from '../../../store/actions/jobPostActions';
+
 function CreateJobHeader(props) {
-  return (
-    <div className="create">
-      <AuthNavbar/>
-      <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
-        <Stepper stepNumber={0} />
-        <div className="create_job_header_container">
-          <h1>1. Create a Job Header</h1>
-          <InputFormJobHeader />
-          <LengthSubHeader />
-          <PositionSubHeader />
-        </div>
-        <ButtonFilled>Continue</ButtonFilled>
-      </Container>
-    </div>
-  );
+  
+  if(props.currentStep !== 1){
+    return null;
+  } else {
+    return (
+      <div className="create">
+        <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
+          <Stepper stepNumber={0} />
+          <div className="create_job_header_container">
+            <h1>1. Create a Job Header</h1>
+            <InputFormJobHeader handle={props.handleChange} jobData={props.jobData}/>
+            <LengthSubHeader jobData={props.jobData}/>
+            <PositionSubHeader jobData={props.jobData}/>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 }
 
-export default CreateJobHeader;
+function mapStateToProps(state){
+  return {
+      jobs: state.jobs
+  };
+};
+
+function matchDispatchToProps(dispatch){
+   return {
+       actions: bindActionCreators({addJobsData: addJobsData}, dispatch)
+   };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(CreateJobHeader);
