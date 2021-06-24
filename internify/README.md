@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## How to run:
+1. Download [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Google Chrome or equivalent for your supported browser
+2. Run `npm install` on terminal to install the dependencies
+3. Run `npm start` to run the server on `http://localhost:3000/`
+
 ## Available Scripts
 
 In the project directory, you can run:
