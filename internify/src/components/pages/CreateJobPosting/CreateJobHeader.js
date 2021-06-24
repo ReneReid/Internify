@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from 'react';
 import Container from "@material-ui/core/Container";
 import {
   PositionSubHeader,
@@ -7,7 +6,6 @@ import {
   LengthSubHeader,
   Stepper,
 } from "../../molecules/index";
-import { ButtonFilled } from "../../atoms/Button";
 import "./styles/CreateJobHeader.css";
 
 import { connect } from 'react-redux';
