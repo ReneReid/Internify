@@ -6,6 +6,7 @@ import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./components/pages/CreateJobPosting/TechRequirements";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
+import Create from './components/pages/Create';
 import { mockJobDetailData, mockTechStackData } from "./models/mockData";
 import './App.css';
 import {
@@ -25,7 +26,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/create1">
-           <CreateJobHeader />
+           <Create />
           </Route>
           <Route path="/create2">
            <TechRequirements data={mockTechStackData}/>
