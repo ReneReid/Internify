@@ -26,7 +26,7 @@ const JobPosting = ({ data }) => {
       <h4 className="job_posting_subheader">Job points</h4>
       <ul className="job_posting_list">
         {jobPoints.map((list) => {
-          return <li>{list}</li>;
+          return <li key={list}>{list}</li>;
         })}
         {details.coOp ? (
           <li>Must be enrolled in an accredited Co-op program</li>
@@ -59,7 +59,7 @@ const JobPosting = ({ data }) => {
         <ul className="job_posting_list_nested">
           {requirements.languages.map((language) => {
             return (
-              <li>
+              <li key={language}>
                 <b>{language}</b>
               </li>
             );
@@ -69,7 +69,7 @@ const JobPosting = ({ data }) => {
         <ul className="job_posting_list_nested">
           {requirements.frameworks.map((framework) => {
             return (
-              <li>
+              <li key={framework}>
                 <b>{framework}</b>
               </li>
             );
@@ -79,7 +79,7 @@ const JobPosting = ({ data }) => {
         <ul className="job_posting_list_nested">
           {requirements.workTools.map((tool) => {
             return (
-              <li>
+              <li key={tool}>
                 <b>{tool}</b>
               </li>
             );
@@ -89,7 +89,7 @@ const JobPosting = ({ data }) => {
         <ul className="job_posting_list_nested">
           {requirements.csConcepts.map((concept) => {
             return (
-              <li>
+              <li key={concept}>
                 <b>{concept}</b>
               </li>
             );
@@ -103,9 +103,9 @@ const JobPosting = ({ data }) => {
       <h4 className="job_posting_subheader">Contact details:</h4>
       <p className="job_posting_contact_name">{contact.name}</p>
       <ul className="job_posting_list_nested">
-        <li>{contact.email}</li>
-        <li>{contact.linkedIn}</li>
-        <li>{contact.other ? contact.other : null}</li>
+        <li key={contact.email}>{contact.email}</li>
+        <li key={contact.linkedIn}>{contact.linkedIn}</li>
+        <li key={contact.other}>{contact.other ? contact.other : null}</li>
       </ul>
 
       <div className="job_posting_submit">
