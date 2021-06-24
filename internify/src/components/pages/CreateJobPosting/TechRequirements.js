@@ -7,11 +7,11 @@ import "./styles/TechRequirements.css";
 
 const workExpData = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
 
-const WorkingExperience = () => {
+const WorkingExperience = (props) => {
   return (
     <React.Fragment>
       <h3>Years of working experience</h3>
-      <RadioButtonsGroup data={workExpData}/>
+      <RadioButtonsGroup data={workExpData} jobData={props.jobData} property={"experienceLength"}/>
     </React.Fragment>
   );
 };
@@ -50,7 +50,7 @@ const GradePoint = (props) => {
     <React.Fragment>
       <h3>GPA</h3>
       <div className="gpa_radio">
-        <RadioButtonsGroup data={gpaData} />
+        <RadioButtonsGroup data={gpaData} jobData={props.jobData} property={"gpaRequired"}/>
       </div>
       <div className="gpa_slider">
         <Slider
@@ -82,12 +82,16 @@ function TechRequirements(props) {
           handle={props.handleChange} 
           jobData={props.jobData}
           />
-          <GradePoint />
+          <GradePoint 
+          handle={props.handleChange} 
+          jobData={props.jobData}/>
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
             workTools={data.workTools}
             csConcepts={data.csConcepts}
+            handle={props.handleChange} 
+            jobData={props.jobData}
           />
         </Container>
       </div>
