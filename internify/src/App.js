@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import store from './store/store';
-
+import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import CreateJobHeader from "./components/pages/CreateJobPosting/CreateJobHeader";
@@ -26,7 +26,8 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/create1">
+          <Route path="/create">
+          <AuthNavbar />
            <Create />
           </Route>
           <Route path="/create2">
