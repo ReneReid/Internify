@@ -4,6 +4,12 @@ import CreateJobHeader from "./CreateJobPosting/CreateJobHeader";
 import TechRequirements from "./CreateJobPosting/TechRequirements";
 import { ButtonFilled } from "../atoms";
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addJobsData } from '../../store/actions/jobPostActions';
+import { Container } from "@material-ui/core";
+
+
 const mockTechStackData = {
     "languages": ["Java", "JavaScript", "C++", "C"],
     "frameworks": ["React", "Angular", "HTML", "CSS"],
@@ -11,7 +17,7 @@ const mockTechStackData = {
     "csConcepts": ["Object Oriented Programming", "Functional Programming", "Recursion"],
 };
 
-function Create () {
+function Create (props) {
 
     const [currentStep, setCurrentStep] = useState(1);
     const [jobData, setJobData] = useState({
@@ -22,12 +28,27 @@ function Create () {
         startDate: "",
         positionLength: "",
         positionType: [],
+        experienceLength: "",
+        gpaRequired: false,
+        gpaScore: "",
+        codingLanguages: [],
+        frameworks: [],
+        tools: [],
+        compSciConcepts: []
     });
+
+    function updateStore(){
+        setCurrentStep(currentStep + 1);
+        props.actions.addJobsData(jobData);
+    }
 
 
     return (
         <React.Fragment> 
-        <CreateJobHeader
+         <Container maxWidth="md" style={{ padding: "0 10em" }}>
+         <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)} >Back</ButtonFilled>     
+        </Container> 
+         <CreateJobHeader
         currentStep={currentStep}
         handleStep={setCurrentStep} 
         handleChange={setJobData}
@@ -40,10 +61,23 @@ function Create () {
         jobData={jobData}
         data = {mockTechStackData}
         />
-        <ButtonFilled onClick={() => setCurrentStep(currentStep + 1)}>Continue</ButtonFilled>
-        <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>Back</ButtonFilled>
+        <Container maxWidth="md" style={{ padding: "0 10em" }}>
+        <ButtonFilled onClick={() => updateStore()} style={{ paddingLeft: "0 10em" }}>Continue</ButtonFilled>
+        </Container> 
     </React.Fragment>
     );
 };
 
-export default Create;
+function mapStateToProps(state){
+    return {
+        jobs: state.jobs
+    };
+  };
+  
+  function matchDispatchToProps(dispatch){
+     return {
+         actions: bindActionCreators({addJobsData: addJobsData}, dispatch)
+     };
+  }
+  
+  export default connect(mapStateToProps, matchDispatchToProps)(Create);
