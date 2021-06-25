@@ -8,7 +8,7 @@ const initialState = {
   studentList: [
     {
       id: 1,
-      gpa: 3.7,
+      gpa: 85,
       year: 3,
       coop: true,
       seeking: true,
@@ -30,7 +30,7 @@ const initialState = {
     },
     {
       id: 2,
-      gpa: 3.8,
+      gpa: 90,
       year: 4,
       coop: true,
       seeking: false,
@@ -53,7 +53,7 @@ const initialState = {
     },
     {
       id: 3,
-      gpa: 3.5,
+      gpa: 82,
       year: 3,
       coop: true,
       seeking: true,
@@ -72,7 +72,7 @@ const initialState = {
     },
     {
       id: 4,
-      gpa: 4.0,
+      gpa: 97,
       year: 3,
       coop: true,
       seeking: true,
@@ -87,7 +87,7 @@ const initialState = {
     },
     {
       id: 5,
-      gpa: 3.5,
+      gpa: 77,
       coop: false,
       year: 2,
       seeking: true,
@@ -102,7 +102,7 @@ const initialState = {
     },
     {
       id: 6,
-      gpa: 3.3,
+      gpa: 73,
       year: 3,
       coop: true,
       seeking: true,
@@ -117,7 +117,7 @@ const initialState = {
     },
     {
       id: 7,
-      gpa: 4.0,
+      gpa: 99,
       year: 3,
       coop: true,
       seeking: true,
@@ -136,7 +136,7 @@ const initialState = {
     },
     {
       id: 8,
-      gpa: 3.5,
+      gpa: 80,
       year: 2,
       coop: true,
       seeking: false,
@@ -151,7 +151,7 @@ const initialState = {
     },
     {
       id: 9,
-      gpa: 3.0,
+      gpa: 70,
       year: 3,
       coop: true,
       seeking: true,
@@ -166,7 +166,7 @@ const initialState = {
     },
     {
       id: 10,
-      gpa: 3.4,
+      gpa: 74,
       year: 4,
       coop: true,
       seeking: true,

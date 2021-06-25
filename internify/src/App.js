@@ -7,6 +7,7 @@ import ContactDetails from "./components/pages/CreateJobPosting/ContactDetails";
 import JobDetail from "./components/pages/CreateJobPosting/JobDetail";
 import Review from "./components/pages/CreateJobPosting/Review";
 import Create from './components/pages/Create';
+import Feedback from './components/organisms/Feedback'
 import { mockJobDetailData, mockJobPosting } from "./models/mockData";
 import './App.css';
 import {
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/create5">
             <Review data={mockJobPosting} />
+          </Route>
+          <Route path="/feedback">
+            <Feedback />
           </Route>
           <Route path="/">
             <Landing />
