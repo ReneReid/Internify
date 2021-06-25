@@ -21,19 +21,22 @@ const Notes = ({canadaMatches, ubcMatches, totalMatches, totalStudents}) => {
             <h3>Notes</h3>
                 <div className="notes_row">
                     <Chip 
-                        icon={<CheckCircleOutlineIcon />}
+                        icon={<CheckCircleOutlineIcon
+                                style={{color: "black"}} />}
                         label={msg1}
                         style={styles}/>
                 </div>
                 <div className="notes_row">
                     <Chip 
-                        icon={<CheckCircleOutlineIcon />}
+                        icon={<CheckCircleOutlineIcon
+                                style={{color: "black"}} />}
                         label={msg2}
                         style={styles}/>
                 </div>
                 <div className="notes_row">
                     <Chip 
-                        icon={<CheckCircleOutlineIcon />}
+                        icon={<CheckCircleOutlineIcon
+                                style={{color: "black"}} />}
                         label={msg3}
                         style={styles}/>
                 </div>

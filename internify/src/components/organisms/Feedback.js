@@ -3,11 +3,12 @@ import RegisteredKeys from '../molecules/RegisteredKeys';
 import Notes from '../molecules/Notes';
 import Score from '../molecules/Score';
 import { useSelector } from 'react-redux';
+import "./styles/Feedback.css";
 
 const Feedback = () => {
     
     const students = useSelector((state) => state.students.studentList);
-    const matchLength = 6; // dummy placeholder for future matcher implementation
+    const matchLength = 5; // dummy placeholder for future matcher implementation
 
     // State setting for props in sub-components rendering
     const [score, setScore] = useState(0);
