@@ -7,6 +7,6 @@ import studentReducer from "./studentReducer"
 
 export default combineReducers({
     jobs: JobPostingReducer,
-    student: studentReducer,
-    matcher: matchesReducer
+    students: studentReducer,
+    matches: matchesReducer
 });
