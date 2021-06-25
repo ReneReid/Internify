@@ -19,7 +19,7 @@ const Feedback = () => {
     useEffect(() => {
         calculateScore(students);
         notesContent(students);
-    }, [students])
+    })
 
     function calculateScore(students) {
         const rawScore = matchLength/students.length;
@@ -30,7 +30,7 @@ const Feedback = () => {
     function notesContent(students) {
         // randomly pick students to match
         let matches = []
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < matchLength; i++) {
             const pick = Math.floor(Math.random() * 10);
             matches.push(students[pick]);
         }
@@ -46,7 +46,6 @@ const Feedback = () => {
             const name = "University of British Columbia";
             
             if (matchBSc === name || matchMSc === name || matchPhD === name) {
-                console.log("Attended UBC!");
                 matchesUBC++;
             }
         }
