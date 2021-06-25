@@ -3,7 +3,7 @@ import { Chip } from "@material-ui/core";
 
 const Score = () => {
     return (
-        <div>
+        <div className="score_container">
             <h3>Score</h3>
             <Chip 
             size="small"

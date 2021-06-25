@@ -5,7 +5,7 @@ import Score from '../molecules/Score';
 
 const Feedback = () => {
     return (
-        <div>
+        <div className="feedback_container">
             <RegisteredKeys />
             <Notes />
             <Score />

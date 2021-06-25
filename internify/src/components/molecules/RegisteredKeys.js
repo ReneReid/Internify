@@ -2,7 +2,7 @@ import React from 'react'
 
 const RegisteredKeys = () => {
     return (
-        <div>
+        <div className="keys_container">
             <h3>Registered keys</h3>
         </div>
     )
