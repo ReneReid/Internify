@@ -1,6 +1,6 @@
 import React from 'react'
 import { Chip } from "@material-ui/core";
-import blue from '@material-ui/core/colors/blue';
+// import blue from '@material-ui/core/colors/blue';
 
 const Score = ({score}) => {
     return (
