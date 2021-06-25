@@ -11,22 +11,21 @@ const Feedback = () => {
 
     // State setting for props in sub-components rendering
     const [score, setScore] = useState(0);
+    const [cMatches, setCMatches] = useState(0);
+    const [ubcMatches, setUbcMatches] = useState(0);
+    const [totalMatches, setTotalMatches] = useState(0);
+    const totalStudents = students.length;
 
     useEffect(() => {
         calculateScore(students);
         notesContent(students);
     }, [students])
 
-    // Score handling function
-    // -> Input(studentList), Output(Score -> pass as prop into Score)
     function calculateScore(students) {
         const rawScore = matchLength/students.length;
         const displayScore = Math.sqrt(rawScore);
         setScore(displayScore);
     }
-
-    const [cMatches, setCMatches] = useState(0);
-    const [ubcMatches, setUbcMatches] = useState(0);
 
     function notesContent(students) {
         // randomly pick students to match
@@ -35,11 +34,8 @@ const Feedback = () => {
             const pick = Math.floor(Math.random() * 10);
             matches.push(students[pick]);
         }
-        // console.log(matches);
+        setTotalMatches(matches.length);
 
-        // matches in our DB
-        const matchesLength = matches.length;
-        // console.log(matchesLength);
         // matches with UBC students
         let matchesUBC = 0;
         for (let match of matches){
@@ -56,27 +52,24 @@ const Feedback = () => {
         }
         setUbcMatches(matchesUBC);
 
+        // matches with Canadian students
         let matchesCanada = 0;
-
         for (let match of matches) {
-
             const location = match["location"];
-
             if (location === "Canada") {
                 matchesCanada++;
             }
         }
-
         setCMatches(matchesCanada);
-
-        // total matches whose location is in Canada
-        
     }
 
     return (
         <div className="feedback_container">
             <RegisteredKeys />
-            <Notes canadaMatches={cMatches} ubcMathces={ubcMatches}/>
+            <Notes canadaMatches={cMatches} 
+                ubcMatches={ubcMatches}
+                totalMatches = {totalMatches}
+                totalStudents = {totalStudents}/>
             <Score score={score}/>
         </div>
     )
