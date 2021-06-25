@@ -25,6 +25,9 @@ const Feedback = () => {
         setScore(displayScore);
     }
 
+    const [cMatches, setCMatches] = useState(0);
+    const [ubcMatches, setUbcMatches] = useState(0);
+
     function notesContent(students) {
         // randomly pick students to match
         let matches = []
@@ -51,6 +54,20 @@ const Feedback = () => {
                 matchesUBC++;
             }
         }
+        setUbcMatches(matchesUBC);
+
+        let matchesCanada = 0;
+
+        for (let match of matches) {
+
+            const location = match["location"];
+
+            if (location === "Canada") {
+                matchesCanada++;
+            }
+        }
+
+        setCMatches(matchesCanada);
 
         // total matches whose location is in Canada
         
@@ -59,7 +76,7 @@ const Feedback = () => {
     return (
         <div className="feedback_container">
             <RegisteredKeys />
-            <Notes />
+            <Notes canadaMatches={cMatches} ubcMathces={ubcMatches}/>
             <Score score={score}/>
         </div>
     )
