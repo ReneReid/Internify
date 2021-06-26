@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import TextFieldInput from "../atoms/TextFieldInput";
 import MultiLineTextField from "../atoms/MultiLineTextField";
 import "./styles/InputFormContactDetails.css";
 
 function InputFormContactDetails(props) {
-  let jobData = props.jobData.contact;
-  const [multiText, setMultiText] = useState("");
+  let jobData = props.jobData;
 
   const handleChange = (value) => {
-    setMultiText(value);
-    jobData.applicationSteps = value;
+    props.handleChange({ ...jobData, applicationSteps: value });
   };
 
   return (
@@ -20,7 +18,9 @@ function InputFormContactDetails(props) {
           className={"input_contact_row_i-form-outer"}
           label={"Recruiter Name"}
           type={"text"}
-          onChange={(e) => jobData.name = e.target.value}
+          onChange={(e) =>
+            props.handleChange({ ...jobData, name: e.target.value })
+          }
         />
       </div>
 
@@ -30,7 +30,9 @@ function InputFormContactDetails(props) {
           className={"input_contact_row_i-form-outer"}
           label={"Recruiter Email"}
           type={"text"}
-          onChange={(e) => jobData.email = e.target.value}
+          onChange={(e) =>
+            props.handleChange({ ...jobData, email: e.target.value })
+          }
         />
       </div>
 
@@ -40,7 +42,9 @@ function InputFormContactDetails(props) {
           className={"input_contact_row_i-form-outer"}
           label={"LinkedIn"}
           type={"text"}
-          onChange={(e) => jobData.linkedIn = e.target.value}
+          onChange={(e) =>
+            props.handleChange({ ...jobData, linkedIn: e.target.value })
+          }
         />
       </div>
 
@@ -50,7 +54,9 @@ function InputFormContactDetails(props) {
           className={"input_contact_row_i-form-outer"}
           label={"Other contact"}
           type={"text"}
-          onChange={(e) => jobData.other = e.target.value}
+          onChange={(e) =>
+            props.handleChange({ ...jobData, other: e.target.value })
+          }
         />
       </div>
 
@@ -61,7 +67,7 @@ function InputFormContactDetails(props) {
           label={"Application steps"}
           type={"text"}
           handleChange={handleChange}
-          value={multiText}
+          value={jobData.applicationSteps}
         />
       </div>
     </div>

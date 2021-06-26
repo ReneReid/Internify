@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
@@ -18,7 +18,7 @@ const WorkingExperience = (props) => {
       <h3>Years of working experience</h3>
       <RadioButtonsGroup
         data={workExpData}
-        jobData={props.jobData.requirements}
+        jobData={props.jobData}
         property={"experience"}
       />
     </React.Fragment>
@@ -82,6 +82,19 @@ const GradePoint = (props) => {
 
 function TechRequirements(props) {
   const data = props.data;
+  const [requirements, setRequirements] = useState({
+    experience: "",
+    gpa: "",
+    gpaValue: "",
+    languages: [],
+    frameworks: [],
+    tools: [],
+    concepts: [],
+  });
+
+  useEffect(() => {
+    props.jobData.requirements = requirements;
+  });
 
   if (props.currentStep !== 2) {
     return null;
@@ -92,8 +105,8 @@ function TechRequirements(props) {
           <Stepper stepNumber={1} />
           <h1>2. Technical Requirements</h1>
           <WorkingExperience
-            handle={props.handleChange}
-            jobData={props.jobData}
+            handleChange={setRequirements}
+            jobData={requirements}
           />
           <GradePoint handle={props.handleChange} jobData={props.jobData} />
           <TechStack
@@ -101,8 +114,8 @@ function TechRequirements(props) {
             frameworks={data.frameworks}
             workTools={data.workTools}
             csConcepts={data.csConcepts}
-            handle={props.handleChange}
-            jobData={props.jobData}
+            handleChange={setRequirements}
+            jobData={requirements}
           />
         </Container>
       </div>

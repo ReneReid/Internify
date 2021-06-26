@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@material-ui/core/Container";
 import {
   PositionSubHeader,
@@ -13,6 +13,19 @@ import { bindActionCreators } from "redux";
 import { addJobsData } from "../../../store/actions/jobPostActions";
 
 function CreateJobHeader(props) {
+  const [header, setHeader] = useState({
+    title: "",
+    company: "",
+    location: "",
+    startDate: "",
+    position: [],
+    length: "",
+  });
+
+  useEffect(() => {
+    props.jobData.header = header;
+  });
+
   if (props.currentStep !== 1) {
     return null;
   } else {
@@ -26,9 +39,9 @@ function CreateJobHeader(props) {
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
             <h1>1. Create a Job Header</h1>
-            <InputFormJobHeader jobData={props.jobData.header} />
-            <LengthSubHeader jobData={props.jobData.header} />
-            <PositionSubHeader jobData={props.jobData.header} />
+            <InputFormJobHeader handleChange={setHeader} jobData={header} />
+            <LengthSubHeader handleChange={setHeader} jobData={header} />
+            <PositionSubHeader handleChange={setHeader} jobData={header} />
           </div>
         </Container>
       </div>

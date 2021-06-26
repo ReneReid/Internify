@@ -4,6 +4,7 @@ import "./styles/InputFormJobHeader.css";
 
 function InputFormJobHeader(props) {
   const data = props.jobData;
+  const handleChange = props.handleChange;
 
   return (
     <form className="input_title_form">
@@ -13,7 +14,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Job Title"}
           type={"text"}
-          onChange={(e) => data.title = e.target.value}
+          onChange={(e) => handleChange({...data, title: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -22,7 +23,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Company"}
           type={"text"}
-          onChange={(e) => data.company = e.target.value}
+          onChange={(e) => handleChange({...data, company: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -32,7 +33,7 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Location"}
             type={"text"}
-            onChange={(e) => data.location = e.target.value}
+            onChange={(e) => handleChange({...data, location: e.target.value})}
           />
         </div>
         <div className="input_title_col">
@@ -41,7 +42,7 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Start Date"}
             type={"date"}
-            onChange={(e) => data.startDate = e.target.value}
+            onChange={(e) => handleChange({...data, startDate: e.target.value})}
           />
         </div>
       </div>

@@ -4,7 +4,8 @@ import CheckBox from "../atoms/CheckBox";
 import "./styles/TechStack.css";
 
 const TechStack = (props) => {
-  let jobData = props.jobData.requirements;
+  let jobData = props.jobData;
+  const handleChange = props.handleChange;
   const languages = props.languages;
   const frameworks = props.frameworks;
   const workTools = props.workTools;
@@ -12,18 +13,22 @@ const TechStack = (props) => {
 
   function handleLanguageChange(event) {
     jobData.languages.push(event.target.name);
+    handleChange({ ...jobData, languages: jobData.languages });
   }
 
   function handleFrameworksChange(event) {
     jobData.frameworks.push(event.target.name);
+    handleChange({ ...jobData, frameworks: jobData.frameworks });
   }
 
   function handleWorkToolsChange(event) {
     jobData.tools.push(event.target.name);
+    handleChange({ ...jobData, tools: jobData.tools });
   }
 
   function handleConceptsChange(event) {
     jobData.concepts.push(event.target.name);
+    handleChange({ ...jobData, concepts: jobData.concepts });
   }
 
   return (

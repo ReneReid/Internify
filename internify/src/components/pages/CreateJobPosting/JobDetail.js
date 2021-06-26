@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@material-ui/core";
 import { Stepper } from "../../molecules/index";
 import ApplicantDetails from "../../molecules/ApplicantDetails";
@@ -7,12 +7,22 @@ import "./styles/JobDetail.css";
 
 function JobDetail(props) {
   const data = props.data;
-  const [multiText, setMultiText] = useState("");
+  const [details, setDetails] = useState({
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    academicReq: [],
+    coOp: "",
+  });
 
   const handleChange = (value) => {
-    setMultiText(value);
-    props.jobData.details.description = value;
+    setDetails({...details, description: value});
   };
+
+  useEffect(() => {
+    props.jobData.details = details;
+  });
 
   return props.currentStep === 3 ? (
     <div className="create_form_container">
@@ -26,7 +36,7 @@ function JobDetail(props) {
           type={"text"}
           rowsMax={200}
           handleChange={handleChange}
-          value={multiText}
+          value={details.description}
         />
         <ApplicantDetails
           location={data.location}
@@ -34,7 +44,7 @@ function JobDetail(props) {
           citizenship={data.citizenship}
           academicReq={data.academicReq}
           coopReq={data.coopReq}
-          jobData={props.jobData}
+          jobData={details}
         />
       </Container>
     </div>

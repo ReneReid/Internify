@@ -4,7 +4,7 @@ import RadioButtonsGroup from "./RadioButtonsGroup";
 import { TextField } from "@material-ui/core";
 
 function ApplicantDetails(props) {
-  let jobData = props.jobData.details;
+  let jobData = props.jobData;
   const location = props.location;
   const payment = props.payment;
   const citizenship = props.citizenship;
