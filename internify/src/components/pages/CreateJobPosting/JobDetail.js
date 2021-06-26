@@ -19,6 +19,7 @@ function JobDetail(props) {
           label={"Job Description"}
           type={"text"}
           rowsMax={200}
+          jobData={props.jobData}
         />
         <ApplicantDetails
           location={data.location}
@@ -26,6 +27,7 @@ function JobDetail(props) {
           citizenship={data.citizenship}
           academicReq={data.academicReq}
           coopReq={data.coopReq}
+          jobData={props.jobData}
         />
       </Container>
     </div>

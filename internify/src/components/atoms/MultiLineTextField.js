@@ -12,6 +12,7 @@ function MultiLineTextField(props) {
         type={props.type}
         multiline
         rowsMax={props.rowsMax}
+        onChange={(e) => props.jobData.details.description = e.target.value}
         />
     )
 }

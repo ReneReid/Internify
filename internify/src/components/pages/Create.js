@@ -52,7 +52,7 @@ function Create(props) {
       pay: "",
       candidates: "",
       academicReq: [],
-      coOp: false,
+      coOp: "",
     },
     contact: {
       name: "",

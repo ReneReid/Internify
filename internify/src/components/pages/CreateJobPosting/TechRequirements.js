@@ -18,7 +18,7 @@ const WorkingExperience = (props) => {
       <h3>Years of working experience</h3>
       <RadioButtonsGroup
         data={workExpData}
-        jobData={props.jobData}
+        jobData={props.jobData.requirements}
         property={"experience"}
       />
     </React.Fragment>
