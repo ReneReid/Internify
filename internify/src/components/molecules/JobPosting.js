@@ -4,10 +4,17 @@ import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 
 const JobPosting = ({ data }) => {
-  const header = data.header;
-  const requirements = data.requirements;
-  const details = data.details;
-  const contact = data.contact;
+  const header = data?.header
+    ? data.header
+    : {
+        title: "",
+        company: "",
+        location: "",
+        description: "",
+      };
+  const requirements = data?.requirements;
+  const details = data?.details;
+  const contact = data?.contact;
 
   const jobPoints = [
     ...header.position,
@@ -28,7 +35,7 @@ const JobPosting = ({ data }) => {
         {jobPoints.map((list) => {
           return <li key={list}>{list}</li>;
         })}
-        {details.coOp ? (
+        {details.coOp === "Yes" ? (
           <li>Must be enrolled in an accredited Co-op program</li>
         ) : null}
       </ul>
@@ -44,7 +51,13 @@ const JobPosting = ({ data }) => {
         )}
         {details.academicReq ? (
           <li>
-            Obtained or is currently enrolled in a <b>{details.academicReq}</b>
+            Obtained or is currently enrolled in a{" "}
+            <b>
+              {
+                // TODO: Temporary fix for now. We need a way to display all academic requirements if more than 1 is seleced
+                details.academicReq[1]
+              }
+            </b>
           </li>
         ) : null}
         {details.academicReq && requirements.gpa ? (
@@ -77,7 +90,7 @@ const JobPosting = ({ data }) => {
         </ul>
         <li>Experience with the following work tools:</li>
         <ul className="job_posting_list_nested">
-          {requirements.workTools.map((tool) => {
+          {requirements.tools.map((tool) => {
             return (
               <li key={tool}>
                 <b>{tool}</b>
@@ -87,7 +100,7 @@ const JobPosting = ({ data }) => {
         </ul>
         <li>General understanding and comprehension of:</li>
         <ul className="job_posting_list_nested">
-          {requirements.csConcepts.map((concept) => {
+          {requirements.concepts.map((concept) => {
             return (
               <li key={concept}>
                 <b>{concept}</b>

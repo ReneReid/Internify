@@ -12,6 +12,7 @@ function MultiLineTextField(props) {
         type={props.type}
         multiline
         rowsMax={props.rowsMax}
+        onChange={(e) => props.handleChange(e.target.value)}
         />
     )
 }

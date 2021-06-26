@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Slider } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
 
-const workExpData = ["none", "≥ 4 months", "≥ 8 months", "≥ 12 months", "≥ 2 years"]
+const workExpData = [
+  "none",
+  "≥ 4 months",
+  "≥ 8 months",
+  "≥ 12 months",
+  "≥ 2 years",
+];
 
 const WorkingExperience = (props) => {
   return (
     <React.Fragment>
       <h3>Years of working experience</h3>
-      <RadioButtonsGroup data={workExpData} jobData={props.jobData} property={"experienceLength"}/>
+      <RadioButtonsGroup
+        data={workExpData}
+        jobData={props.jobData}
+        property={"experience"}
+      />
     </React.Fragment>
   );
 };
@@ -43,13 +53,17 @@ const GradePoint = (props) => {
     },
   ];
 
-  const gpaData = ["Required", "Optional"]
+  const gpaData = ["Required", "Optional"];
 
   return (
     <React.Fragment>
       <h3>GPA</h3>
       <div className="gpa_radio">
-        <RadioButtonsGroup data={gpaData} jobData={props.jobData} property={"gpaRequired"}/>
+        <RadioButtonsGroup
+          data={gpaData}
+          jobData={props.jobData}
+          property={"gpa"}
+        />
       </div>
       <div className="gpa_slider">
         <Slider
@@ -68,8 +82,21 @@ const GradePoint = (props) => {
 
 function TechRequirements(props) {
   const data = props.data;
+  const [requirements, setRequirements] = useState({
+    experience: "",
+    gpa: "",
+    gpaValue: "",
+    languages: [],
+    frameworks: [],
+    tools: [],
+    concepts: [],
+  });
 
-  if(props.currentStep !== 2){
+  useEffect(() => {
+    props.jobData.requirements = requirements;
+  });
+
+  if (props.currentStep !== 2) {
     return null;
   } else {
     return (
@@ -77,20 +104,18 @@ function TechRequirements(props) {
         <Container maxWidth="md" style={{ padding: "0 10em" }}>
           <Stepper stepNumber={1} />
           <h1>2. Technical Requirements</h1>
-          <WorkingExperience 
-          handle={props.handleChange} 
-          jobData={props.jobData}
+          <WorkingExperience
+            handleChange={setRequirements}
+            jobData={requirements}
           />
-          <GradePoint 
-          handle={props.handleChange} 
-          jobData={props.jobData}/>
+          <GradePoint handle={props.handleChange} jobData={props.jobData} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
             workTools={data.workTools}
             csConcepts={data.csConcepts}
-            handle={props.handleChange} 
-            jobData={props.jobData}
+            handleChange={setRequirements}
+            jobData={requirements}
           />
         </Container>
       </div>

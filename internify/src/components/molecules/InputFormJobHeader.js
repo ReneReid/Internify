@@ -1,10 +1,10 @@
-import TextFieldInput from "../atoms/TextFieldInput";
 import React from "react";
+import TextFieldInput from "../atoms/TextFieldInput";
 import "./styles/InputFormJobHeader.css";
 
 function InputFormJobHeader(props) {
-
   const data = props.jobData;
+  const handleChange = props.handleChange;
 
   return (
     <form className="input_title_form">
@@ -14,7 +14,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Job Title"}
           type={"text"}
-          onChange={(e) => props.handle({...data, jobTitle: e.target.value})}
+          onChange={(e) => handleChange({...data, title: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -23,7 +23,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Company"}
           type={"text"}
-          onChange={(e) => props.handle({...data, companyName: e.target.value})}
+          onChange={(e) => handleChange({...data, company: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -33,7 +33,7 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Location"}
             type={"text"}
-            onChange={(e) => props.handle({...data, companyAddress: e.target.value})}
+            onChange={(e) => handleChange({...data, location: e.target.value})}
           />
         </div>
         <div className="input_title_col">
@@ -42,7 +42,7 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Start Date"}
             type={"date"}
-            onChange={(e) => props.handle({...data, startDate: e.target.value})}
+            onChange={(e) => handleChange({...data, startDate: e.target.value})}
           />
         </div>
       </div>
