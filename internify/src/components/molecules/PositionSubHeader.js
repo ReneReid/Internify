@@ -6,6 +6,7 @@ import { useState } from 'react';
 function PositionSubHeader(props) {
 
     const data = props.jobData;
+    // console.log(data);
     const [state, setCheckedState] = useState({
         Internship: false,
         Coop: false,
@@ -18,7 +19,7 @@ function PositionSubHeader(props) {
           if(event.target.checked){
               data.position.push(event.target.name);
           } else {
-              if(data.positionType.includes(event.target.name)){
+              if(data.position.includes(event.target.name)){
                   data.position = data.position.filter(obj => obj !== event.target.name);
               }
           }

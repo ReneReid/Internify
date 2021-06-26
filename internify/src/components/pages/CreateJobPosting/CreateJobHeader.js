@@ -13,7 +13,6 @@ import { bindActionCreators } from 'redux';
 import { addJobsData } from '../../../store/actions/jobPostActions';
 
 function CreateJobHeader(props) {
-  
   if(props.currentStep !== 1){
     return null;
   } else {
@@ -23,9 +22,9 @@ function CreateJobHeader(props) {
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
             <h1>1. Create a Job Header</h1>
-            <InputFormJobHeader handle={props.handleChange} jobData={props.jobData}/>
-            <LengthSubHeader jobData={props.jobData}/>
-            <PositionSubHeader jobData={props.jobData}/>
+            <InputFormJobHeader jobData={props.jobData.header}/>
+            <LengthSubHeader jobData={props.jobData.header}/>
+            <PositionSubHeader jobData={props.jobData.header}/>
           </div>
         </Container>
       </div>

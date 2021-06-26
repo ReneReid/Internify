@@ -66,12 +66,10 @@ function Create(props) {
   function updateStore() {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
-
+    console.log(jobData);
     // Redirects view to top
     window.scrollTo(0,0);
   }
-
-//   console.log(jobData);
 
   return (
     <div className="create_container">
@@ -83,24 +81,24 @@ function Create(props) {
       <CreateJobHeader
         currentStep={currentStep}
         handleChange={setJobData}
-        jobData={jobData.header}
+        jobData={jobData}
       />
       <TechRequirements
         currentStep={currentStep}
         handleChange={setJobData}
-        jobData={jobData.requirements}
+        jobData={jobData}
         data={mockTechStackData}
       />
       <JobDetail
         currentStep={currentStep}
         handleChange={setJobData}
-        jobData={jobData.details}
+        jobData={jobData}
         data={mockJobDetailData}
       />
       <ContactDetails
         currentStep={currentStep}
         handleChange={setJobData}
-        jobData={jobData.contact}
+        jobData={jobData}
         data={mockJobDetailData}
       />
       <Review 
