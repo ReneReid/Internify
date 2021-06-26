@@ -34,7 +34,7 @@ function ApplicantDetails(props){
         <h3>Are there academic requirements?*</h3>
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
-            return <CheckBox value={x} label={x} />;
+            return <CheckBox key={x} value={x} label={x} />;
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
