@@ -8,23 +8,27 @@ import {
 } from "../../molecules/index";
 import "./styles/CreateJobHeader.css";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { addJobsData } from '../../../store/actions/jobPostActions';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addJobsData } from "../../../store/actions/jobPostActions";
 
 function CreateJobHeader(props) {
-  if(props.currentStep !== 1){
+  if (props.currentStep !== 1) {
     return null;
   } else {
     return (
       <div className="create">
-        <Container maxWidth="md" className={"container"} style={{ padding: "0 10em" }}>
+        <Container
+          maxWidth="md"
+          className={"container"}
+          style={{ padding: "0 10em" }}
+        >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
             <h1>1. Create a Job Header</h1>
-            <InputFormJobHeader jobData={props.jobData.header}/>
-            <LengthSubHeader jobData={props.jobData.header}/>
-            <PositionSubHeader jobData={props.jobData.header}/>
+            <InputFormJobHeader jobData={props.jobData.header} />
+            <LengthSubHeader jobData={props.jobData.header} />
+            <PositionSubHeader jobData={props.jobData.header} />
           </div>
         </Container>
       </div>
@@ -32,16 +36,16 @@ function CreateJobHeader(props) {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-      jobs: state.jobs
+    jobs: state.jobs,
   };
-};
+}
 
-function matchDispatchToProps(dispatch){
-   return {
-       actions: bindActionCreators({addJobsData: addJobsData}, dispatch)
-   };
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
+  };
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CreateJobHeader);
