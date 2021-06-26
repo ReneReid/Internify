@@ -35,7 +35,7 @@ const JobPosting = ({ data }) => {
         {jobPoints.map((list) => {
           return <li key={list}>{list}</li>;
         })}
-        {details.coOp ? (
+        {details.coOp === "Yes" ? (
           <li>Must be enrolled in an accredited Co-op program</li>
         ) : null}
       </ul>
