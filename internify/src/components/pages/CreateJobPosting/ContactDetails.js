@@ -13,7 +13,7 @@ const ContactDetails = (props) => {
         <Stepper stepNumber={3} />
         <div className="contact_details_container">
           <h1>4. Contact Details</h1>
-          <InputFormContactDetails />
+          <InputFormContactDetails jobData={props.jobData} />
         </div>
       </Container>
     </div>
