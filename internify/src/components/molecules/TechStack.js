@@ -10,7 +10,7 @@ const TechStack = (props) => {
   const csConcepts = props.csConcepts;
 
   function handleLanguageChange(event){
-    props.jobData.codingLanguages.push(event.target.name);
+    props.jobData.languages.push(event.target.name);
   }
 
   function handleFrameworksChange(event){
@@ -22,7 +22,7 @@ const TechStack = (props) => {
   }
 
   function handleConceptsChange(event){
-    props.jobData.compSciConcepts.push(event.target.name);
+    props.jobData.concepts.push(event.target.name);
   }
 
   

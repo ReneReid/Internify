@@ -4,10 +4,15 @@ import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 
 const JobPosting = ({ data }) => {
-  const header = data.header;
-  const requirements = data.requirements;
-  const details = data.details;
-  const contact = data.contact;
+  const header = data?.header ? data.header : {
+    title: "",
+    company: "",
+    location: "",
+    description: "",
+  };
+  const requirements = data?.requirements;
+  const details = data?.details;
+  const contact = data?.contact;
 
   const jobPoints = [
     ...header.position,
@@ -77,7 +82,7 @@ const JobPosting = ({ data }) => {
         </ul>
         <li>Experience with the following work tools:</li>
         <ul className="job_posting_list_nested">
-          {requirements.workTools.map((tool) => {
+          {requirements.tools.map((tool) => {
             return (
               <li key={tool}>
                 <b>{tool}</b>
@@ -87,7 +92,7 @@ const JobPosting = ({ data }) => {
         </ul>
         <li>General understanding and comprehension of:</li>
         <ul className="job_posting_list_nested">
-          {requirements.csConcepts.map((concept) => {
+          {requirements.concepts.map((concept) => {
             return (
               <li key={concept}>
                 <b>{concept}</b>

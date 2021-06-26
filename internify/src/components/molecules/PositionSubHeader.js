@@ -16,10 +16,10 @@ function PositionSubHeader(props) {
       const handleChange = (event) => {     
           setCheckedState({ ...state, [event.target.name]: event.target.checked });
           if(event.target.checked){
-              data.positionType.push(event.target.name);
+              data.position.push(event.target.name);
           } else {
               if(data.positionType.includes(event.target.name)){
-                  data.positionType = data.positionType.filter(obj => obj !== event.target.name);
+                  data.position = data.position.filter(obj => obj !== event.target.name);
               }
           }
       };

@@ -14,7 +14,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Job Title"}
           type={"text"}
-          onChange={(e) => props.handle({...data, jobTitle: e.target.value})}
+          onChange={(e) => props.handle({...data, title: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -23,7 +23,7 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Company"}
           type={"text"}
-          onChange={(e) => props.handle({...data, companyName: e.target.value})}
+          onChange={(e) => props.handle({...data, company: e.target.value})}
         />
       </div>
       <div className="input_title_row">
@@ -33,7 +33,7 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Location"}
             type={"text"}
-            onChange={(e) => props.handle({...data, companyAddress: e.target.value})}
+            onChange={(e) => props.handle({...data, location: e.target.value})}
           />
         </div>
         <div className="input_title_col">
