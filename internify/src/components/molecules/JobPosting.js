@@ -4,12 +4,14 @@ import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 
 const JobPosting = ({ data }) => {
-  const header = data?.header ? data.header : {
-    title: "",
-    company: "",
-    location: "",
-    description: "",
-  };
+  const header = data?.header
+    ? data.header
+    : {
+        title: "",
+        company: "",
+        location: "",
+        description: "",
+      };
   const requirements = data?.requirements;
   const details = data?.details;
   const contact = data?.contact;
@@ -49,7 +51,13 @@ const JobPosting = ({ data }) => {
         )}
         {details.academicReq ? (
           <li>
-            Obtained or is currently enrolled in a <b>{details.academicReq}</b>
+            Obtained or is currently enrolled in a{" "}
+            <b>
+              {
+                // TODO: Temporary fix for now. We need a way to display all academic requirements if more than 1 is seleced
+                details.academicReq[1]
+              }
+            </b>
           </li>
         ) : null}
         {details.academicReq && requirements.gpa ? (
