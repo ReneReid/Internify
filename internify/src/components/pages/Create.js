@@ -105,7 +105,6 @@ function Create(props) {
 
   function createJobObject(jobPosting) {
     // parsing functions
-    // placeholder -> experienceLength, citizenshipReqs, coopReqs
     const experienceLength = parseExperience(
       jobPosting.requirements.experience
     );
@@ -130,20 +129,14 @@ function Create(props) {
   function updateStore() {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
-    // console.log(jobData);
 
     // dispatch to matches reducer
     if (currentStep === 4) {
-      const jobObj = createJobObject(jobData);
-      console.log("The dispatch job posting.");
-      console.log(jobObj);
-      // props.actions.processMatches({
-      //   students: students,
-      //   posting: jobData,
-      // });
-      console.log("You are on page 4");
+      props.actions.processMatches({
+        students: students,
+        posting: createJobObject(jobData),
+      });
     }
-
     window.scrollTo(0, 0);
   }
 

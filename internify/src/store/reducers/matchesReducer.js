@@ -12,7 +12,7 @@ export default function matchesReducer(state = initialState, action) {
       console.log(students);
       console.log(posting);
       const postingMatch = matchFilter(students, posting);
-      return [...state, postingMatch];
+      return [...state.matches, postingMatch];
     default:
       return state;
   }
@@ -24,16 +24,17 @@ export default function matchesReducer(state = initialState, action) {
 function matchFilter(students, posting) {
   let matchedStudents = students.filter(
     (student) =>
-      matchGpa(student.gpa, posting.gpaRequired) &&
-      matchCoop(student.coop, posting.coop) &&
-      matchSeek(student.seek) &&
-      matchFrame(student.frameworks, posting.frameworks) &&
-      matchWork(student.workExperience, posting.experienceLength) &&
-      matchLang(student.codingLanguages, posting.codingLanguages) &&
-      matchTools(student.workTools, posting.workTools) &&
-      matchConcepts(student.concepts, posting.concepts) &&
-      matchDegree(student.degree, posting.academicReqs) &&
-      matchCitizen(student.citizenship, posting.citizenshipReqs)
+      // matchGpa(student.gpa, posting.gpaRequired) &&
+      // matchCoop(student.coop, posting.coop) &&
+      // matchSeek(student.seek) &&
+      // matchFrame(student.frameworks, posting.frameworks) &&
+      // matchWork(student.workExperience, posting.experienceLength) &&
+      // matchLang(student.codingLanguages, posting.codingLanguages) &&
+      // matchTools(student.workTools, posting.workTools) &&
+      // matchConcepts(student.concepts, posting.concepts) &&
+      // matchDegree(student.degree, posting.academicReqs) &&
+      // matchCitizen(student.citizenship, posting.citizenshipReqs)
+      true
   );
 
   const id = posting.id;
