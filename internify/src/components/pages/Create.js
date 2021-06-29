@@ -69,7 +69,8 @@ function Create(props) {
   const students = useSelector((state) => state.students.studentList);
 
   function parseExperience(experience) {
-    return experience;
+    const expArray = experience.split(" ");
+    return parseInt(expArray[1]);
   }
 
   function parseCitizenshipReqs(citizenshipReqs) {
@@ -84,7 +85,7 @@ function Create(props) {
     // parsing functions
     // placeholder -> experienceLength, citizenshipReqs, coopReqs
     const experienceLength = parseExperience(
-      jobPosting.requirements.experienceLength
+      jobPosting.requirements.experience
     );
     const citizenshipReqs = parseCitizenshipReqs(jobPosting.details.candidates);
     const coopReqs = parseCoopReqs(jobPosting.details.coOp);
