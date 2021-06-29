@@ -7,6 +7,7 @@ function TextFieldInput(props) {
         required id={props.id} 
         label={props.label} 
         defaultValue={props.defaultValue} 
+        placeholder={props.placeholder}
         variant="outlined" 
         type={props.type}
         InputLabelProps={{
