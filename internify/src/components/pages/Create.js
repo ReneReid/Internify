@@ -10,6 +10,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJobsData } from "../../store/actions/jobPostActions";
+import { processMatches } from "../../store/actions/matchesActions";
 import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -70,6 +71,10 @@ function Create(props) {
 
     // dispatch to matches reducer
     if (currentStep === 3) {
+      props.actions.processMatches({
+        students: "placeholder",
+        postings: "placeholder",
+      });
       console.log("You are on page 4");
     }
 
@@ -124,7 +129,10 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
+    actions: bindActionCreators(
+      { addJobsData: addJobsData, processMatches: processMatches },
+      dispatch
+    ),
   };
 }
 
