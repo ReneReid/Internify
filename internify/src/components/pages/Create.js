@@ -68,17 +68,56 @@ function Create(props) {
   // Grab store data for matches dispatch
   const students = useSelector((state) => state.students.studentList);
 
+  function parseExperience(experience) {
+    return experience;
+  }
+
+  function parseCitizenshipReqs(citizenshipReqs) {
+    return citizenshipReqs;
+  }
+
+  function parseCoopReqs(coopReqs) {
+    return coopReqs;
+  }
+
+  function createJobObject(jobPosting) {
+    // parsing functions
+    // placeholder -> experienceLength, citizenshipReqs, coopReqs
+    const experienceLength = parseExperience(
+      jobPosting.requirements.experienceLength
+    );
+    const citizenshipReqs = parseCitizenshipReqs(jobPosting.details.candidates);
+    const coopReqs = parseCoopReqs(jobPosting.details.coOp);
+
+    return {
+      id: jobPosting.id,
+      experienceLength: experienceLength,
+      gpaRequired: jobPosting.gpa,
+      gpaPercentage: jobPosting.requirements.gpaValue,
+      codingLanguages: jobPosting.requirements.languages,
+      frameworks: jobPosting.requirements.frameworks,
+      workTools: jobPosting.requirements.tools,
+      concepts: jobPosting.requirements.concepts,
+      citizenshipReqs: citizenshipReqs,
+      academicReqs: jobPosting.details.academicReq,
+      coopReqs: coopReqs,
+    };
+  }
+
   function updateStore() {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
-    console.log(jobData);
+    // console.log(jobData);
 
     // dispatch to matches reducer
     if (currentStep === 4) {
-      props.actions.processMatches({
-        students: students,
-        posting: jobData,
-      });
+      const jobObj = createJobObject(jobData);
+      console.log("The dispatch job posting.");
+      console.log(jobObj);
+      // props.actions.processMatches({
+      //   students: students,
+      //   posting: jobData,
+      // });
       console.log("You are on page 4");
     }
 
