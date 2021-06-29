@@ -64,12 +64,15 @@ function Create(props) {
   });
 
   function updateStore() {
-    console.log("Step before increment" + currentStep);
     setCurrentStep(currentStep + 1);
-    console.log("Step after increment" + currentStep);
     props.actions.addJobsData(jobData);
     console.log(jobData);
-    // Redirects view to top
+
+    // dispatch to matches reducer
+    if (currentStep === 3) {
+      console.log("You are on page 4");
+    }
+
     window.scrollTo(0, 0);
   }
 
