@@ -7,9 +7,10 @@ const initialState = {
 export default function matchesReducer(state = initialState, action) {
   switch (action.type) {
     case PROCESS_MATCHES:
-      console.log("Reached");
       const students = action.payload.students;
       const posting = action.payload.posting;
+      console.log(students);
+      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state, postingMatch];
     default:

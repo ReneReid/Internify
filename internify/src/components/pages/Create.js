@@ -14,6 +14,7 @@ import { processMatches } from "../../store/actions/matchesActions";
 import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
+import { useSelector } from "react-redux";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -64,16 +65,19 @@ function Create(props) {
     },
   });
 
+  // Grab store data for matches dispatch
+  const students = useSelector((state) => state.students.studentList);
+
   function updateStore() {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
     console.log(jobData);
 
     // dispatch to matches reducer
-    if (currentStep === 3) {
+    if (currentStep === 4) {
       props.actions.processMatches({
-        students: "placeholder",
-        postings: "placeholder",
+        students: students,
+        posting: jobData,
       });
       console.log("You are on page 4");
     }
