@@ -96,7 +96,11 @@ function Create(props) {
   }
 
   function parseCoopReqs(coopReqs) {
-    return coopReqs;
+    if (coopReqs === "Yes") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function createJobObject(jobPosting) {
