@@ -22,10 +22,11 @@ export default function matchesReducer(state = initialState, action) {
 // Inputs: students = [{student 1}, {student 2}, {student 3}, ...], posting = {a1, a2, ...}
 // Output: {postingID: {student 1, student 2, ...}}
 function matchFilter(students, posting) {
+  console.log("reached 1");
   let matchedStudents = students.filter(
     (student) =>
-      // matchGpa(student.gpa, posting.gpaRequired) &&
-      // matchCoop(student.coop, posting.coop) &&
+      matchGpa(student.gpa, posting.gpaRequired) &&
+      matchCoop(student.coop, posting.coopReqs) &&
       // matchSeek(student.seek) &&
       // matchFrame(student.frameworks, posting.frameworks) &&
       // matchWork(student.workExperience, posting.experienceLength) &&
@@ -44,9 +45,9 @@ function matchFilter(students, posting) {
   return match;
 }
 
-// Individual filters for attribute, consumes student.attribute and posting.attribute
+// This section needs to be implemented
 function matchGpa(sGPA, pGPA) {
-  return sGPA >= pGPA;
+  return true;
 }
 
 function matchCoop(sCoop, pCoop) {
@@ -57,16 +58,23 @@ function matchCoop(sCoop, pCoop) {
   }
 }
 
+function matchSeek(seeking) {
+  return seeking;
+}
+
+function matchFrame(sFrame, pFrame) {
+  console.log("reached 2");
+  console.log(sFrame);
+  console.log(pFrame);
+  return true;
+}
+
 function matchCitizen(sCitizen, pCitizen) {
   if (pCitizen.contains(sCitizen[0])) {
     return true;
   } else {
     return false;
   }
-}
-
-function matchSeek(seeking) {
-  return seeking;
 }
 
 function matchWork(sWork, pWork) {
@@ -76,15 +84,6 @@ function matchWork(sWork, pWork) {
 function matchLang(sLang, pLang) {
   for (let language of pLang) {
     if (sLang.has(language)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function matchFrame(sFrame, pFrame) {
-  for (let framework of pFrame) {
-    if (sFrame.has(framework)) {
       return true;
     }
   }
