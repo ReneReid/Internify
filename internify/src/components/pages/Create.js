@@ -74,7 +74,25 @@ function Create(props) {
   }
 
   function parseCitizenshipReqs(citizenshipReqs) {
-    return citizenshipReqs;
+    let reqs = [];
+    // anyone case
+    if (citizenshipReqs === "Anyone") {
+      reqs = ["Anyone"]; // always return true in checker for this!
+      return reqs;
+    } else {
+      // logic-handling for other cases
+      const expArray = citizenshipReqs.split(" ");
+      if (expArray.includes("Citizens") && expArray.includes("PR")) {
+        reqs = ["Citizen", "PR"];
+        return reqs;
+      }
+      if (expArray.includes("Citizens")) {
+        reqs = ["Citizen"];
+        return reqs;
+      }
+      reqs = ["Citizen", "PR", "International"];
+      return reqs;
+    }
   }
 
   function parseCoopReqs(coopReqs) {
