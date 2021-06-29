@@ -64,11 +64,13 @@ function Create(props) {
   });
 
   function updateStore() {
+    console.log("Step before increment" + currentStep);
     setCurrentStep(currentStep + 1);
+    console.log("Step after increment" + currentStep);
     props.actions.addJobsData(jobData);
     console.log(jobData);
     // Redirects view to top
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -101,15 +103,12 @@ function Create(props) {
         jobData={jobData}
         data={mockJobDetailData}
       />
-      <Review 
-        currentStep={currentStep}
-        jobData={jobData}
-      />
+      <Review currentStep={currentStep} jobData={jobData} />
       {currentStep < 5 ? (
         <Container maxWidth="md" style={{ padding: "0 10em" }}>
           <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
         </Container>
-      ) : (null) }
+      ) : null}
     </div>
   );
 }
