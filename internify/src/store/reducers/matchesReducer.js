@@ -32,9 +32,8 @@ function matchFilter(students, posting) {
       matchLang(student.codingLanguages, posting.codingLanguages) &&
       matchTools(student.workTools, posting.workTools) &&
       matchConcepts(student.concepts, posting.concepts) &&
-      // matchDegree(student.degree, posting.academicReqs) &&
-      // matchCitizen(student.citizenship, posting.citizenshipReqs)
-      true
+      matchDegree(student.degree, posting.academicReqs) &&
+      matchCitizen(student.citizenship, posting.citizenshipReqs)
   );
 
   const id = posting.id;
@@ -50,6 +49,7 @@ function matchGpa(sGPA, pGPA) {
 }
 
 function matchCoop(sCoop, pCoop) {
+  // Co-op required or not
   if (pCoop) {
     return sCoop;
   } else {
@@ -121,7 +121,6 @@ function matchConcepts(sConcepts, pConcepts) {
   if (pConcepts.length === 0) {
     return false;
   }
-
   // Return true if student has at least one concept match
   for (var i = 0; i < pConcepts.length; i++) {
     if (sConcepts.includes(pConcepts[i])) {
@@ -131,19 +130,13 @@ function matchConcepts(sConcepts, pConcepts) {
   return false;
 }
 
-function matchCitizen(sCitizen, pCitizen) {
-  if (pCitizen.contains(sCitizen[0])) {
-    return true;
-  } else {
-    return false;
-  }
+function matchDegree(sDegrees, pDegrees) {
+  // Need to discuss this!
+  // {BSc: "University of British Columbia"}
+  // {"Bachelor's Degree}
+  return true;
 }
 
-function matchDegree(sDegrees, pDegrees) {
-  for (let degree of pDegrees) {
-    if (!sDegrees.has(degree)) {
-      return false;
-    }
-  }
-  return true;
+function matchCitizen(sCitizen, pCitizen) {
+  return pCitizen.includes(sCitizen[0]);
 }
