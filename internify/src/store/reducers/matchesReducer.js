@@ -9,7 +9,7 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(posting);
+      console.log(students);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -26,7 +26,7 @@ function matchFilter(students, posting) {
       matchGpa(student.gpa, posting.gpaRequired) &&
       matchCoop(student.coop, posting.coopReqs) &&
       matchSeek(student.seeking) &&
-      // matchFrame(student.frameworks, posting.frameworks) &&
+      matchFrame(student.frameworks, posting.frameworks) &&
       // matchWork(student.workExperience, posting.experienceLength) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
       // matchTools(student.workTools, posting.workTools) &&
@@ -62,11 +62,11 @@ function matchSeek(seeking) {
 
 function matchFrame(sFrame, pFrame) {
   // Return true if student has at least one frame
-  pFrame.forEach((frame) => {
-    if (frame in sFrame) {
+  for (var i = 0; i < pFrame.length; i++) {
+    if (sFrame[pFrame[i]]) {
       return true;
     }
-  });
+  }
   return false;
 }
 
