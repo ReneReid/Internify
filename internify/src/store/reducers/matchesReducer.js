@@ -9,7 +9,6 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(students);
       console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
@@ -22,12 +21,11 @@ export default function matchesReducer(state = initialState, action) {
 // Inputs: students = [{student 1}, {student 2}, {student 3}, ...], posting = {a1, a2, ...}
 // Output: {postingID: {student 1, student 2, ...}}
 function matchFilter(students, posting) {
-  console.log("reached 1");
   let matchedStudents = students.filter(
     (student) =>
       matchGpa(student.gpa, posting.gpaRequired) &&
       matchCoop(student.coop, posting.coopReqs) &&
-      // matchSeek(student.seek) &&
+      matchSeek(student.seeking) &&
       // matchFrame(student.frameworks, posting.frameworks) &&
       // matchWork(student.workExperience, posting.experienceLength) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
@@ -63,10 +61,13 @@ function matchSeek(seeking) {
 }
 
 function matchFrame(sFrame, pFrame) {
-  console.log("reached 2");
-  console.log(sFrame);
-  console.log(pFrame);
-  return true;
+  // Return true if student has at least one frame
+  pFrame.forEach((frame) => {
+    if (frame in sFrame) {
+      return true;
+    }
+  });
+  return false;
 }
 
 function matchCitizen(sCitizen, pCitizen) {

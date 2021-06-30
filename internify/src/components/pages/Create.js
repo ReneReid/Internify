@@ -69,8 +69,12 @@ function Create(props) {
   const students = useSelector((state) => state.students.studentList);
 
   function parseExperience(experience) {
-    const expArray = experience.split(" ");
-    return parseInt(expArray[1]);
+    if (experience === "none") {
+      return 0;
+    } else {
+      const expArray = experience.split(" ");
+      return parseInt(expArray[1]);
+    }
   }
 
   function parseCitizenshipReqs(citizenshipReqs) {
