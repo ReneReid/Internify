@@ -4,7 +4,6 @@ import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
-import Feedback from "./components/organisms/Feedback";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 

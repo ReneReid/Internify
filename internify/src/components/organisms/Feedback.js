@@ -6,8 +6,17 @@ import { useSelector } from "react-redux";
 import "./styles/Feedback.css";
 
 const Feedback = () => {
+  // Grab appropriate information from state
   const students = useSelector((state) => state.students.studentList);
-  const matchLength = 5; // dummy placeholder for future matcher implementation
+  const jobID = useSelector((state) => state.jobs.currentPosting["id"]);
+  const allMatches = useSelector((state) => state.matches);
+  let matchStudents = [];
+  allMatches.forEach((match) => {
+    if (match[jobID] !== undefined) {
+      matchStudents = match[jobID];
+    }
+  });
+  const matchLength = matchStudents.length;
 
   // State setting for props in sub-components rendering
   const [score, setScore] = useState(0);
@@ -28,17 +37,11 @@ const Feedback = () => {
   }
 
   function notesContent(students) {
-    // randomly pick students to match
-    let matches = [];
-    for (let i = 0; i < matchLength; i++) {
-      const pick = Math.floor(Math.random() * 10);
-      matches.push(students[pick]);
-    }
-    setTotalMatches(matches.length);
+    setTotalMatches(matchLength);
 
     // matches with UBC students
     let matchesUBC = 0;
-    for (let match of matches) {
+    for (let match of matchStudents) {
       const matchBSc = match["degree"]["BSc"];
       const matchMSc = match["degree"]["MSc"];
       const matchPhD = match["degree"]["PhD"];
@@ -52,7 +55,7 @@ const Feedback = () => {
 
     // matches with Canadian students
     let matchesCanada = 0;
-    for (let match of matches) {
+    for (let match of matchStudents) {
       const location = match["location"];
       if (location === "Canada") {
         matchesCanada++;
