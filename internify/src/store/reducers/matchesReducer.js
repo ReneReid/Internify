@@ -30,7 +30,7 @@ function matchFilter(students, posting) {
       matchFrame(student.frameworks, posting.frameworks) &&
       matchWork(student.workExperience, posting.experienceLength) &&
       matchLang(student.codingLanguages, posting.codingLanguages) &&
-      // matchTools(student.workTools, posting.workTools) &&
+      matchTools(student.workTools, posting.workTools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
       // matchDegree(student.degree, posting.academicReqs) &&
       // matchCitizen(student.citizenship, posting.citizenshipReqs)
@@ -92,11 +92,24 @@ function matchLang(sLang, pLang) {
     return true;
   }
 
-  console.log(sLang);
-  console.log(pLang);
   // Return true if student has at least one language
   for (var i = 0; i < pLang.length; i++) {
     if (sLang[pLang[i]]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function matchTools(sTools, pTools) {
+  // Empty case
+  if (pTools.length === 0) {
+    return true;
+  }
+
+  // Return true if student has at least one tool match
+  for (var i = 0; i < pTools.length; i++) {
+    if (sTools[pTools[i]]) {
       return true;
     }
   }
@@ -109,15 +122,6 @@ function matchCitizen(sCitizen, pCitizen) {
   } else {
     return false;
   }
-}
-
-function matchTools(sTools, pTools) {
-  for (let tool of pTools) {
-    if (sTools.has(tool)) {
-      return true;
-    }
-  }
-  return false;
 }
 
 function matchConcepts(sConcepts, pConcepts) {
