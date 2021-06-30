@@ -10,6 +10,7 @@ export default function matchesReducer(state = initialState, action) {
       const students = action.payload.students;
       const posting = action.payload.posting;
       console.log(students);
+      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -27,7 +28,7 @@ function matchFilter(students, posting) {
       matchCoop(student.coop, posting.coopReqs) &&
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
-      // matchWork(student.workExperience, posting.experienceLength) &&
+      matchWork(student.workExperience, posting.experienceLength) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
       // matchTools(student.workTools, posting.workTools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
@@ -70,16 +71,16 @@ function matchFrame(sFrame, pFrame) {
   return false;
 }
 
+function matchWork(sWork, pWork) {
+  return sWork >= pWork;
+}
+
 function matchCitizen(sCitizen, pCitizen) {
   if (pCitizen.contains(sCitizen[0])) {
     return true;
   } else {
     return false;
   }
-}
-
-function matchWork(sWork, pWork) {
-  return sWork >= pWork;
 }
 
 function matchLang(sLang, pLang) {

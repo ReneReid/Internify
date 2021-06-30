@@ -87,14 +87,14 @@ function Create(props) {
       // logic-handling for other cases
       const expArray = citizenshipReqs.split(" ");
       if (expArray.includes("Citizens") && expArray.includes("PR")) {
-        reqs = ["Citizen", "PR"];
+        reqs = ["Citizen", "Permanent Residency"];
         return reqs;
       }
       if (expArray.includes("Citizens")) {
-        reqs = ["Citizen"];
+        reqs = ["Citizen", "Permanent Residency"];
         return reqs;
       }
-      reqs = ["Citizen", "PR", "International"];
+      reqs = ["Citizen", "Permanent Residency", "International"];
       return reqs;
     }
   }
