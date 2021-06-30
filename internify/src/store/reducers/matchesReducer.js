@@ -33,8 +33,11 @@ function matchFilter(students, posting) {
       matchTools(student.workTools, posting.workTools) &&
       matchConcepts(student.concepts, posting.concepts) &&
       matchDegree(student.degree, posting.academicReqs) &&
-      matchCitizen(student.citizenship, posting.citizenshipReqs)
+      // matchCitizen(student.citizenship, posting.citizenshipReqs)
+      true
   );
+
+  console.log(matchedStudents);
 
   const id = posting.id;
   let match = {};
@@ -130,10 +133,60 @@ function matchConcepts(sConcepts, pConcepts) {
   return false;
 }
 
+function postingDegreeRank(pDegrees) {
+  let postingRanks = [];
+  for (var i = 0; i < pDegrees.length; i++) {
+    if (pDegrees[i] === "Ph.D") {
+      postingRanks.push(6);
+    }
+    if (pDegrees[i] === "Master's Degree") {
+      postingRanks.push(5);
+    }
+    if (pDegrees[i] === "Bachelor's Degree") {
+      postingRanks.push(4);
+    }
+    if (pDegrees[i] === "Associate's Degree") {
+      postingRanks.push(3);
+    }
+    if (pDegrees[i] === "Diploma") {
+      postingRanks.push(2);
+    }
+    if (pDegrees[i] === "Certification") {
+      postingRanks.push(1);
+    }
+  }
+  return Math.min(...postingRanks);
+}
+
+// PhD, MSc, BSc, ASc, Dip, Cert
+function studentDegreeRank(sDegrees) {
+  let studentRanks = [];
+  if (sDegrees["PhD"] !== undefined || sDegrees["JD"] !== undefined) {
+    studentRanks.push(6);
+  }
+  if (sDegrees["MSc"] !== undefined) {
+    studentRanks.push(5);
+  }
+  if (sDegrees["BSc"] !== undefined) {
+    studentRanks.push(4);
+  }
+  if (sDegrees["ASc"] !== undefined) {
+    studentRanks.push(3);
+  }
+  if (sDegrees["Dip"] !== undefined) {
+    studentRanks.push(2);
+  }
+  if (sDegrees["Cert"] !== undefined) {
+    studentRanks.push(1);
+  }
+  return Math.max(...studentRanks);
+}
+
 function matchDegree(sDegrees, pDegrees) {
-  // Need to discuss this!
-  // {BSc: "University of British Columbia"}
-  // {"Bachelor's Degree}
+  // PhD > MSc > BSc > Associates > Diploma > Certificate (by rank)
+  const studentRank = studentDegreeRank(sDegrees);
+  const postingRank = postingDegreeRank(pDegrees);
+  console.log(studentRank >= postingRank);
   return true;
 }
 
