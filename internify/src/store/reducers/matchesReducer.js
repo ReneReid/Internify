@@ -33,8 +33,7 @@ function matchFilter(students, posting) {
       matchTools(student.workTools, posting.workTools) &&
       matchConcepts(student.concepts, posting.concepts) &&
       matchDegree(student.degree, posting.academicReqs) &&
-      // matchCitizen(student.citizenship, posting.citizenshipReqs)
-      true
+      matchCitizen(student.citizenship, posting.citizenshipReqs)
   );
 
   console.log(matchedStudents);
@@ -191,5 +190,9 @@ function matchDegree(sDegrees, pDegrees) {
 }
 
 function matchCitizen(sCitizen, pCitizen) {
-  return pCitizen.includes(sCitizen[0]);
+  if (pCitizen.includes("Anyone")) {
+    return true;
+  } else {
+    return pCitizen.includes(sCitizen[0]);
+  }
 }
