@@ -9,8 +9,6 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(students);
-      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -35,8 +33,6 @@ function matchFilter(students, posting) {
       matchDegree(student.degree, posting.academicReqs) &&
       matchCitizen(student.citizenship, posting.citizenshipReqs)
   );
-
-  console.log(matchedStudents);
 
   const id = posting.id;
   let match = {};
@@ -185,8 +181,7 @@ function matchDegree(sDegrees, pDegrees) {
   // PhD > MSc > BSc > Associates > Diploma > Certificate (by rank)
   const studentRank = studentDegreeRank(sDegrees);
   const postingRank = postingDegreeRank(pDegrees);
-  console.log(studentRank >= postingRank);
-  return true;
+  return studentRank >= postingRank;
 }
 
 function matchCitizen(sCitizen, pCitizen) {
