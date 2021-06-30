@@ -29,7 +29,7 @@ function matchFilter(students, posting) {
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
       matchWork(student.workExperience, posting.experienceLength) &&
-      // matchLang(student.codingLanguages, posting.codingLanguages) &&
+      matchLang(student.codingLanguages, posting.codingLanguages) &&
       // matchTools(student.workTools, posting.workTools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
       // matchDegree(student.degree, posting.academicReqs) &&
@@ -62,6 +62,11 @@ function matchSeek(seeking) {
 }
 
 function matchFrame(sFrame, pFrame) {
+  // Empty case
+  if (pFrame.length === 0) {
+    return true;
+  }
+
   // Return true if student has at least one frame
   for (var i = 0; i < pFrame.length; i++) {
     if (sFrame[pFrame[i]]) {
@@ -72,7 +77,30 @@ function matchFrame(sFrame, pFrame) {
 }
 
 function matchWork(sWork, pWork) {
-  return sWork >= pWork;
+  // Null case
+  if (isNaN(pWork)) {
+    return true;
+  } else {
+    // Return true if student at least meets requirements
+    return sWork >= pWork;
+  }
+}
+
+function matchLang(sLang, pLang) {
+  // Empty case
+  if (pLang.length === 0) {
+    return true;
+  }
+
+  console.log(sLang);
+  console.log(pLang);
+  // Return true if student has at least one language
+  for (var i = 0; i < pLang.length; i++) {
+    if (sLang[pLang[i]]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function matchCitizen(sCitizen, pCitizen) {
@@ -81,15 +109,6 @@ function matchCitizen(sCitizen, pCitizen) {
   } else {
     return false;
   }
-}
-
-function matchLang(sLang, pLang) {
-  for (let language of pLang) {
-    if (sLang.has(language)) {
-      return true;
-    }
-  }
-  return false;
 }
 
 function matchTools(sTools, pTools) {
