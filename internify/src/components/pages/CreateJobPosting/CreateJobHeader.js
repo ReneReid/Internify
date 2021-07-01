@@ -34,7 +34,6 @@ function CreateJobHeader(props) {
         <Container
           maxWidth="md"
           className={"container"}
-          style={{ padding: "0 10em" }}
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">

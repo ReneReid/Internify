@@ -10,9 +10,10 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJobsData } from "../../store/actions/jobPostActions";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
+import { makeStyles } from '@material-ui/core/styles';
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -25,7 +26,19 @@ const mockTechStackData = {
   ],
 };
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 function Create(props) {
+  const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [jobData, setJobData] = useState({
     id: uuidv4(),
@@ -72,44 +85,54 @@ function Create(props) {
   }
 
   return (
-    <div className="create_container">
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
-        <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>
+    <div className={classes.root} >
+      <Grid container direction="row" alignItems="flex-start" justify="flex-end">
+        <Grid item xs={1}>
+          <Grid container justify="flex-end" >
+          <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>
           Back
         </ButtonFilled>
-      </Container>
-      <CreateJobHeader
+          </Grid>
+        </Grid>
+        <Grid item xs={8} style={{padding: "0 5em 0 0"}}>
+        <CreateJobHeader
         currentStep={currentStep}
         handleChange={setJobData}
         jobData={jobData}
-      />
-      <TechRequirements
+        />
+        <TechRequirements
         currentStep={currentStep}
         handleChange={setJobData}
         jobData={jobData}
         data={mockTechStackData}
-      />
-      <JobDetail
+        />
+        <JobDetail
         currentStep={currentStep}
         handleChange={setJobData}
         jobData={jobData}
         data={mockJobDetailData}
-      />
-      <ContactDetails
+        />
+        <ContactDetails
         currentStep={currentStep}
         handleChange={setJobData}
         jobData={jobData}
         data={mockJobDetailData}
-      />
-      <Review 
+        />
+        <Review 
         currentStep={currentStep}
         jobData={jobData}
-      />
+        />
       {currentStep < 5 ? (
         <Container maxWidth="md" style={{ padding: "0 10em" }}>
           <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
         </Container>
       ) : (null) }
+        </Grid>
+        <Grid item xs={3}>
+        <h4>Hello</h4>
+        </Grid>
+      </Grid>
+      
     </div>
   );
 }
