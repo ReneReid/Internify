@@ -8,6 +8,8 @@ package-lock.json
 yarn.lock
 # testing
 /coverage
+/backend/config
+
 
 # production
 /build
