@@ -16,8 +16,6 @@ mongoose
     console.log(err);
   });
 
-
-
 //Configure API Routes
 var jobsRouter = require('./routes/api/jobs');
 
