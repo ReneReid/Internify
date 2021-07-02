@@ -23,6 +23,7 @@ function App() {
                 <Create />
               </Route>
               <Route path="/profile">
+                <AuthNavbar />
                 <Profile />
               </Route>
               <Route path="/">
