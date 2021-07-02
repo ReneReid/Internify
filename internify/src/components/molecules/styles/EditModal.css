@@ -1,0 +1,13 @@
+.edit_profile_bio {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.dialog_title {
+    padding: 2em;
+}
+
+.dialog_content {
+    padding: 2em;
+}
