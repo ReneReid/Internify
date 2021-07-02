@@ -10,14 +10,16 @@ const db = require('./config/keys').mongoURI;
 mongoose
   .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {
-    console.log('MongoDB Connected');
+    console.log('MongoDB Connected...');
   })
   .catch((err) => {
     console.log(err);
   });
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+
+//Configure API Routes
+var jobsRouter = require('./routes/api/jobs');
 
 var app = express();
 
@@ -31,8 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Use Routes
+app.use('/api/jobs', jobsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
