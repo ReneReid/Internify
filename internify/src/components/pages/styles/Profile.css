@@ -1,5 +1,6 @@
 .profile_left_heading {
-  margin-left: 10%;
+  margin-left: -35%;
+  margin-bottom: 2.5%;
 }
 
 .profile_img {
@@ -28,4 +29,17 @@ li:not(:last-child) {
 
 .profile_inner_contact_list {
   list-style: none;
+}
+
+.profile_right_heading {
+  margin-left: 35%;
+}
+
+.profile_left_status {
+  margin-left: -5%;
+}
+
+.profile_left_status_list {
+  list-style: none;
+  font-size: 0.9em;
 }
