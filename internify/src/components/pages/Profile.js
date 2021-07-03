@@ -5,9 +5,26 @@ import React from "react";
 
 const Profile = () => {
   return (
-    <div>
-      <h1>Test</h1>
-    </div>
+    <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      ></Grid>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      ></Grid>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      ></Grid>
+    </Grid>
   );
 };
 export default Profile;
