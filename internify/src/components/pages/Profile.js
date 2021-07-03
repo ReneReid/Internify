@@ -96,13 +96,15 @@ const Profile = () => {
               container
               spacing={1}
               direction="row"
-              justify="left"
-              alignItems="left"
+              justify="center"
+              alignItems="center"
             >
               <Grid item>
                 <div className="profile_inner_contact">
-                  <h3>Contact</h3>
                   <ul className="profile_inner_contact_list">
+                    <li>
+                      <h3>Contact</h3>
+                    </li>
                     <li>
                       <RoomOutlinedIcon color="secondary" fontSize="inherit" />
                       {"  "}
@@ -117,7 +119,10 @@ const Profile = () => {
                       angela@sync.com
                     </li>
                     <li>
-                      <PhoneAndroidOutlinedIcon fontSize="inherit" />
+                      <PhoneAndroidOutlinedIcon
+                        color="primary"
+                        fontSize="inherit"
+                      />
                       +1 699 (234) 1234{"  "}
                     </li>
                   </ul>

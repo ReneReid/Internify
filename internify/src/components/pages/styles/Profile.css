@@ -21,3 +21,11 @@ li:not(:last-child) {
   width: 400px;
   height: auto;
 }
+
+.profile_inner_contact {
+  margin-left: -75%;
+}
+
+.profile_inner_contact_list {
+  list-style: none;
+}
