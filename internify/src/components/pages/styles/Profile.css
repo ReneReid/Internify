@@ -1,3 +1,10 @@
 .profile_left_heading {
   margin-left: 10%;
 }
+
+.profile_img {
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+}
