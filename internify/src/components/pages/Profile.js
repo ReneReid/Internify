@@ -2,6 +2,9 @@ import "./styles/Profile.css";
 import { Grid } from "@material-ui/core";
 import { React, useState } from "react";
 import angela from "../../assets/Profile/angela_brown.png";
+import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import MailOutlineOutlinedIcon from "@material-ui/icons/MailOutlineOutlined";
+import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
 
 const Profile = () => {
   const [profileDesc, setProfileDesc] = useState(
@@ -100,9 +103,23 @@ const Profile = () => {
                 <div className="profile_inner_contact">
                   <h3>Contact</h3>
                   <ul className="profile_inner_contact_list">
-                    <li> Vancouver, BC </li>
-                    <li> angela@sync.com </li>
-                    <li> +1 699 (234) 1234 </li>
+                    <li>
+                      <RoomOutlinedIcon color="secondary" fontSize="inherit" />
+                      {"  "}
+                      Vancouver, BC
+                    </li>
+                    <li>
+                      <MailOutlineOutlinedIcon
+                        color="primary"
+                        fontSize="inherit"
+                      />
+                      {"  "}
+                      angela@sync.com
+                    </li>
+                    <li>
+                      <PhoneAndroidOutlinedIcon fontSize="inherit" />
+                      +1 699 (234) 1234{"  "}
+                    </li>
                   </ul>
                 </div>
               </Grid>
