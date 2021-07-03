@@ -1,6 +1,6 @@
 .profile_left_heading {
   margin-left: -35%;
-  margin-bottom: 2.5%;
+  margin-bottom: 5%;
 }
 
 .profile_img {
@@ -36,7 +36,7 @@ li:not(:last-child) {
 }
 
 .profile_left_status {
-  margin-left: -5%;
+  margin-right: 50px;
 }
 
 .profile_left_status_list {
