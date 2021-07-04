@@ -1,0 +1,78 @@
+.hero {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 450px;
+  background: linear-gradient(
+      66.05deg,
+      #e61a4d -19.05%,
+      rgba(255, 255, 255, 0) 42.54%
+    ),
+    linear-gradient(199.29deg, #e61a4d -2.31%, rgba(255, 255, 255, 0) 77.09%),
+    #043a74;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px 12%;
+  margin-left: -7px;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left container: text, medallion and learn more*/
+.hero_header_container {
+  flex: 1;
+  margin-left: -40px;
+  color: whitesmoke;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.hero_header_line1 {
+  margin-bottom: 0px;
+  margin-top: 0;
+  text-shadow: 1px 2px 1px black;
+}
+
+.hero_header_line2 {
+  margin-top: 0px;
+  text-shadow: 1px 2px 1px black;
+}
+
+/* Right container: input form, continue buttons*/
+.hero_form_container {
+  flex: 1;
+  margin-right: 40px;
+  width: 330px;
+}
+
+.hero_form_button {
+  width: 330px;
+}
+
+.linebreak {
+  font-family: Helvetica;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.fEmail {
+  width: 325px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+.hero_form_input::placeholder {
+  text-align: left;
+}
+
+.hero_form_input {
+  width: 325px;
+  height: 40px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+}
