@@ -18,6 +18,22 @@ li:not(:last-child) {
   margin-bottom: 3%;
 }
 
+.profile_labels {
+  display: table;
+  margin: 0 auto;
+  padding-right: 10%;
+}
+
+ul#profile_labels_list {
+  list-style: none;
+  min-width: 400px;
+}
+
+ul#profile_labels_list li {
+  display: inline;
+  padding: 1%;
+}
+
 .profile_inner_desc {
   width: 400px;
   height: auto;

@@ -3,16 +3,22 @@ import { Grid } from "@material-ui/core";
 import { React, useState } from "react";
 import { TableBasic, TableStar } from "../molecules/Table";
 import angela from "../../assets/Profile/angela_brown.png";
+import { ButtonOutlined } from "../atoms/Button";
+import { ChipBasic } from "../atoms/Chips";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import MailOutlineOutlinedIcon from "@material-ui/icons/MailOutlineOutlined";
 import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
 import StarIcon from "@material-ui/icons/Star";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
 const Profile = () => {
   const [profileDesc, setProfileDesc] = useState(
     "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!"
   );
-
+  const [profileLabels, setProfileLabels] = useState([
+    "Verified Recruiter",
+    "12 Postings",
+  ]);
   const [postingContent, setPostingContent] = useState([
     {
       title: "Software Developer",
@@ -122,7 +128,25 @@ const Profile = () => {
               direction="row"
               justify="center"
               alignItems="center"
-            ></Grid>
+            >
+              <div className="profile_labels">
+                <ul id="profile_labels_list">
+                  {profileLabels.map((label) => (
+                    <li>
+                      <ChipBasic
+                        icon={
+                          <CheckCircleOutlineIcon
+                            color="secondary"
+                            fontSize="default"
+                          />
+                        }
+                        label={label}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Grid>
 
             {/* Profile description */}
             <Grid
@@ -192,7 +216,7 @@ const Profile = () => {
           alignItems="center"
         >
           <div className="profile_right_heading">
-            <button>Edit profile</button>
+            <ButtonOutlined> Edit Profile </ButtonOutlined>
           </div>
         </Grid>
 
