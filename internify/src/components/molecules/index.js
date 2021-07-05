@@ -7,8 +7,10 @@ import { TableBasic, TableStar } from "./Table";
 import TechStack from "./TechStack";
 import InputFormContactDetails from "./InputFormContactDetails";
 import JobPosting from "./JobPosting";
+import EditModal from "./EditModal";
 
 export {
+  EditModal,
   PositionSubHeader,
   InputFormJobHeader,
   LengthSubHeader,
