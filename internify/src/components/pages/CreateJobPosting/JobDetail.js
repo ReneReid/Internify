@@ -34,6 +34,7 @@ function JobDetail(props) {
           id={"job_detail_p1"}
           label={"Job Description"}
           type={"text"}
+          rows={8}
           rowsMax={200}
           handleChange={handleChange}
           value={details.description}
