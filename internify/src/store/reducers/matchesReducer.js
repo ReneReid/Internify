@@ -29,7 +29,7 @@ function matchFilter(students, posting) {
       matchFrame(student.frameworks, posting.frameworks) &&
       matchWork(student.experience, posting.experience) &&
       matchLang(student.languages, posting.languages) &&
-      // matchTools(student.workTools, posting.workTools) &&
+      matchTools(student.tools, posting.tools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
       // matchDegree(student.degree, posting.academicReqs) &&
       // matchCitizen(student.citizenship, posting.citizenshipReqs)
@@ -103,15 +103,15 @@ function matchLang(languagesStudent, languagesPosting) {
   return false;
 }
 
-function matchTools(sTools, pTools) {
+function matchTools(toolsStudent, toolsPosting) {
   // Empty case
-  if (pTools.length === 0) {
+  if (toolsPosting.length === 0) {
     return true;
   }
 
   // Return true if student has at least one tool match
-  for (var i = 0; i < pTools.length; i++) {
-    if (sTools[pTools[i]]) {
+  for (var i = 0; i < toolsPosting.length; i++) {
+    if (toolsStudent[toolsPosting[i]]) {
       return true;
     }
   }
