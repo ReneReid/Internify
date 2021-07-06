@@ -1,14 +1,41 @@
 import React from "react";
-import { ButtonWhite } from "../atoms/index.js";
+import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
+import firebase from "firebase/app";
 import "./styles/Hero.css";
 
 const Hero = () => {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+
   const learnMore = () => {
     console.log("learn more");
   };
 
-  const continueWGoogle = () => {
+  const handleGoogleLogin = () => {
     console.log("continue with google");
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
   };
 
   const continueWEmail = () => {
@@ -27,9 +54,7 @@ const Hero = () => {
         </ButtonWhite>
       </div>
       <div className="hero_form_container">
-        <ButtonWhite className="hero_form_button" onClick={continueWGoogle}>
-          Continue with Google
-        </ButtonWhite>
+        <GoogleLoginButton onClick={handleGoogleLogin} />
         <div className="linebreak">
           <p>────────── or ──────────</p>
         </div>
