@@ -9,6 +9,7 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
+      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -198,6 +199,6 @@ function matchCitizen(candidateStudent, candidatesPosting) {
   if (candidatesPosting.includes("Anyone")) {
     return true;
   } else {
-    return candidatesPosting.includes(candidateStudent[0]);
+    return candidatesPosting.includes(candidateStudent);
   }
 }
