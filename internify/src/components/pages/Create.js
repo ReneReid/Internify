@@ -30,7 +30,7 @@ const mockTechStackData = {
 function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [jobData, setJobData] = useState({
-    id: uuidv4(),
+    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
       title: "",
       company: "",
@@ -118,7 +118,7 @@ function Create(props) {
     return {
       id: jobPosting.id,
       experienceLength: experienceLength,
-      gpaRequired: jobPosting.gpa,
+      gpaRequired: jobPosting.gpaRequired,
       gpaPercentage: jobPosting.requirements.gpaValue,
       codingLanguages: jobPosting.requirements.languages,
       frameworks: jobPosting.requirements.frameworks,

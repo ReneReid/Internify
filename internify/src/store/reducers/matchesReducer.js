@@ -22,7 +22,7 @@ export default function matchesReducer(state = initialState, action) {
 function matchFilter(students, posting) {
   let matchedStudents = students.filter(
     (student) =>
-      matchGpa(student.gpa, posting.gpaRequired) &&
+      matchGpa(student.gpa, posting.gpaRequired, posting.gpaValue) &&
       matchCoop(student.coop, posting.coopReqs) &&
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
