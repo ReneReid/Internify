@@ -26,7 +26,7 @@ function matchFilter(students, posting) {
     (student) =>
       matchGpa(posting.isGpaRequired, posting.gpaValue, student.gpaValue) &&
       matchCoop(student.coOp, posting.coOp) &&
-      // matchSeek(student.seeking) &&
+      matchSeek(student.seeking) &&
       // matchFrame(student.frameworks, posting.frameworks) &&
       // matchWork(student.workExperience, posting.experienceLength) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
