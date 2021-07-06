@@ -31,7 +31,7 @@ function matchFilter(students, posting) {
       matchLang(student.languages, posting.languages) &&
       matchTools(student.tools, posting.tools) &&
       matchConcepts(student.concepts, posting.concepts) &&
-      // matchDegree(student.degree, posting.academicReqs) &&
+      matchAcademicReq(student.academicReq, posting.academicReq) &&
       // matchCitizen(student.citizenship, posting.citizenshipReqs)
       true
   );
@@ -121,7 +121,7 @@ function matchTools(toolsStudent, toolsPosting) {
 function matchConcepts(conceptsStudent, conceptsPosting) {
   // Empty case
   if (conceptsPosting.length === 0) {
-    return false;
+    return true;
   }
   // Return true if student has at least one concept match
   for (var i = 0; i < conceptsPosting.length; i++) {
@@ -181,10 +181,13 @@ function studentDegreeRank(sDegrees) {
   return Math.max(...studentRanks);
 }
 
-function matchDegree(sDegrees, pDegrees) {
+function matchAcademicReq(academicReqStudent, academicReqPosting) {
   // PhD > MSc > BSc > Associates > Diploma > Certificate (by rank)
-  const studentRank = studentDegreeRank(sDegrees);
-  const postingRank = postingDegreeRank(pDegrees);
+  if (academicReqPosting.length === 0) {
+    return true;
+  }
+  const studentRank = studentDegreeRank(academicReqStudent);
+  const postingRank = postingDegreeRank(academicReqPosting);
   return studentRank >= postingRank;
 }
 
