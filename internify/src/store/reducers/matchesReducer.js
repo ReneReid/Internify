@@ -30,7 +30,7 @@ function matchFilter(students, posting) {
       matchWork(student.experience, posting.experience) &&
       matchLang(student.languages, posting.languages) &&
       matchTools(student.tools, posting.tools) &&
-      // matchConcepts(student.concepts, posting.concepts) &&
+      matchConcepts(student.concepts, posting.concepts) &&
       // matchDegree(student.degree, posting.academicReqs) &&
       // matchCitizen(student.citizenship, posting.citizenshipReqs)
       true
@@ -118,14 +118,14 @@ function matchTools(toolsStudent, toolsPosting) {
   return false;
 }
 
-function matchConcepts(sConcepts, pConcepts) {
+function matchConcepts(conceptsStudent, conceptsPosting) {
   // Empty case
-  if (pConcepts.length === 0) {
+  if (conceptsPosting.length === 0) {
     return false;
   }
   // Return true if student has at least one concept match
-  for (var i = 0; i < pConcepts.length; i++) {
-    if (sConcepts.includes(pConcepts[i])) {
+  for (var i = 0; i < conceptsPosting.length; i++) {
+    if (conceptsStudent.includes(conceptsPosting[i])) {
       return true;
     }
   }
