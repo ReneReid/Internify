@@ -10,6 +10,7 @@ export default function matchesReducer(state = initialState, action) {
       const students = action.payload.students;
       const posting = action.payload.posting;
       console.log(posting);
+      console.log(students);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -23,34 +24,37 @@ export default function matchesReducer(state = initialState, action) {
 function matchFilter(students, posting) {
   let matchedStudents = students.filter(
     (student) =>
-      matchGpa(student.gpa, posting.gpaRequired, posting.gpaValue) &&
-      matchCoop(student.coop, posting.coopReqs) &&
-      matchSeek(student.seeking) &&
-      matchFrame(student.frameworks, posting.frameworks) &&
-      matchWork(student.workExperience, posting.experienceLength) &&
-      matchLang(student.codingLanguages, posting.codingLanguages) &&
-      matchTools(student.workTools, posting.workTools) &&
-      matchConcepts(student.concepts, posting.concepts) &&
-      matchDegree(student.degree, posting.academicReqs) &&
-      matchCitizen(student.citizenship, posting.citizenshipReqs)
+      matchGpa(posting.isGpaRequired, posting.gpaValue, student.gpaValue) &&
+      matchCoop(student.coOp, posting.coOp) &&
+      // matchSeek(student.seeking) &&
+      // matchFrame(student.frameworks, posting.frameworks) &&
+      // matchWork(student.workExperience, posting.experienceLength) &&
+      // matchLang(student.codingLanguages, posting.codingLanguages) &&
+      // matchTools(student.workTools, posting.workTools) &&
+      // matchConcepts(student.concepts, posting.concepts) &&
+      // matchDegree(student.degree, posting.academicReqs) &&
+      // matchCitizen(student.citizenship, posting.citizenshipReqs)
+      true
   );
 
-  const id = posting.id;
+  const _id = posting._id;
   let match = {};
-  match[id] = matchedStudents;
+  match[_id] = matchedStudents;
+
+  console.log(match);
 
   return match;
 }
 
 // This section needs to be implemented
-function matchGpa(sGPA, pGPA) {
+function matchGpa(isGpaRequired, postingGpaValue, studentGpaValue) {
   return true;
 }
 
-function matchCoop(sCoop, pCoop) {
+function matchCoop(coOpStudent, coOpPosting) {
   // Co-op required or not
-  if (pCoop) {
-    return sCoop;
+  if (coOpPosting) {
+    return coOpStudent;
   } else {
     return true;
   }
@@ -163,7 +167,7 @@ function studentDegreeRank(sDegrees) {
   if (sDegrees["MSc"] !== undefined) {
     studentRanks.push(5);
   }
-  if (sDegrees["BSc"] !== undefined) {
+  if (sDegrees["BSc"] !== undefined || sDegrees["BCS"] !== undefined) {
     studentRanks.push(4);
   }
   if (sDegrees["ASc"] !== undefined) {

@@ -132,11 +132,12 @@ function Create(props) {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
 
+    const posting = createJobObject(jobData);
     // dispatch to matches reducer
     if (currentStep === 4) {
       props.actions.processMatches({
         students: students,
-        posting: createJobObject(jobData),
+        posting: posting,
       });
     }
     window.scrollTo(0, 0);
