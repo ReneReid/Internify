@@ -27,7 +27,7 @@ function matchFilter(students, posting) {
       matchGpa(posting.isGpaRequired, posting.gpaValue, student.gpaValue) &&
       matchCoop(student.coOp, posting.coOp) &&
       matchSeek(student.seeking) &&
-      // matchFrame(student.frameworks, posting.frameworks) &&
+      matchFrame(student.frameworks, posting.frameworks) &&
       // matchWork(student.workExperience, posting.experienceLength) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
       // matchTools(student.workTools, posting.workTools) &&
@@ -64,15 +64,15 @@ function matchSeek(seeking) {
   return seeking;
 }
 
-function matchFrame(sFrame, pFrame) {
+function matchFrame(frameworksStudent, frameworksPosting) {
   // Empty case
-  if (pFrame.length === 0) {
+  if (frameworksPosting.length === 0) {
     return true;
   }
 
   // Return true if student has at least one frame
-  for (var i = 0; i < pFrame.length; i++) {
-    if (sFrame[pFrame[i]]) {
+  for (var i = 0; i < frameworksPosting.length; i++) {
+    if (frameworksStudent[frameworksPosting[i]]) {
       return true;
     }
   }
