@@ -30,7 +30,7 @@ const mockTechStackData = {
 function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [jobData, setJobData] = useState({
-    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    _id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
       title: "",
       company: "",
@@ -77,15 +77,15 @@ function Create(props) {
     }
   }
 
-  function parseCitizenshipReqs(citizenshipReqs) {
+  function parseCitizenshipReqs(candidates) {
     let reqs = [];
     // anyone case
-    if (citizenshipReqs === "Anyone") {
+    if (candidates === "Anyone") {
       reqs = ["Anyone"]; // always return true in checker for this!
       return reqs;
     } else {
       // logic-handling for other cases
-      const expArray = citizenshipReqs.split(" ");
+      const expArray = candidates.split(" ");
       if (expArray.includes("Citizens") && expArray.includes("PR")) {
         reqs = ["Citizen", "Permanent Residency"];
         return reqs;
@@ -99,8 +99,8 @@ function Create(props) {
     }
   }
 
-  function parseCoopReqs(coopReqs) {
-    if (coopReqs === "Yes") {
+  function parseCoopReqs(coOp) {
+    if (coOp === "Yes") {
       return true;
     } else {
       return false;
@@ -109,24 +109,22 @@ function Create(props) {
 
   function createJobObject(jobPosting) {
     // parsing functions
-    const experienceLength = parseExperience(
-      jobPosting.requirements.experience
-    );
-    const citizenshipReqs = parseCitizenshipReqs(jobPosting.details.candidates);
-    const coopReqs = parseCoopReqs(jobPosting.details.coOp);
+    const experience = parseExperience(jobPosting.requirements.experience);
+    const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
+    const coOp = parseCoopReqs(jobPosting.details.coOp);
 
     return {
-      id: jobPosting.id,
-      experienceLength: experienceLength,
-      gpaRequired: jobPosting.gpaRequired,
-      gpaPercentage: jobPosting.requirements.gpaValue,
-      codingLanguages: jobPosting.requirements.languages,
+      _id: jobPosting._id,
+      experience: experience,
+      isGpaRequired: jobPosting.requirements.isGpaRequired,
+      gpaValue: jobPosting.requirements.gpaValue,
+      languages: jobPosting.requirements.languages,
       frameworks: jobPosting.requirements.frameworks,
-      workTools: jobPosting.requirements.tools,
+      tools: jobPosting.requirements.tools,
       concepts: jobPosting.requirements.concepts,
-      citizenshipReqs: citizenshipReqs,
-      academicReqs: jobPosting.details.academicReq,
-      coopReqs: coopReqs,
+      candidates: candidates,
+      academicReq: jobPosting.details.academicReq,
+      coOp: coOp,
     };
   }
 
