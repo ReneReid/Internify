@@ -91,7 +91,7 @@ function Create(props) {
         return reqs;
       }
       if (expArray.includes("Citizens")) {
-        reqs = ["Citizen", "Permanent Residency"];
+        reqs = ["Citizen"];
         return reqs;
       }
       reqs = ["Citizen", "Permanent Residency", "International"];

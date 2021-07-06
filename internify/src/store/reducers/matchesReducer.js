@@ -9,7 +9,6 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(students);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -32,8 +31,7 @@ function matchFilter(students, posting) {
       matchTools(student.tools, posting.tools) &&
       matchConcepts(student.concepts, posting.concepts) &&
       matchAcademicReq(student.academicReq, posting.academicReq) &&
-      // matchCitizen(student.citizenship, posting.citizenshipReqs)
-      true
+      matchCitizen(student.candidate, posting.candidates)
   );
 
   const _id = posting._id;
@@ -191,10 +189,15 @@ function matchAcademicReq(academicReqStudent, academicReqPosting) {
   return studentRank >= postingRank;
 }
 
-function matchCitizen(sCitizen, pCitizen) {
-  if (pCitizen.includes("Anyone")) {
+function matchCitizen(candidateStudent, candidatesPosting) {
+  // Empty case
+  if (candidatesPosting.length === 3) {
+    return true;
+  }
+  // Anyone case
+  if (candidatesPosting.includes("Anyone")) {
     return true;
   } else {
-    return pCitizen.includes(sCitizen[0]);
+    return candidatesPosting.includes(candidateStudent[0]);
   }
 }
