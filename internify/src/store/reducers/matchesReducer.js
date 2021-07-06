@@ -28,7 +28,7 @@ function matchFilter(students, posting) {
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
       matchWork(student.experience, posting.experience) &&
-      // matchLang(student.codingLanguages, posting.codingLanguages) &&
+      matchLang(student.languages, posting.languages) &&
       // matchTools(student.workTools, posting.workTools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
       // matchDegree(student.degree, posting.academicReqs) &&
@@ -88,15 +88,15 @@ function matchWork(experienceStudent, experiencePosting) {
   }
 }
 
-function matchLang(sLang, pLang) {
+function matchLang(languagesStudent, languagesPosting) {
   // Empty case
-  if (pLang.length === 0) {
+  if (languagesPosting.length === 0) {
     return true;
   }
 
   // Return true if student has at least one language
-  for (var i = 0; i < pLang.length; i++) {
-    if (sLang[pLang[i]]) {
+  for (var i = 0; i < languagesPosting.length; i++) {
+    if (languagesStudent[languagesPosting[i]]) {
       return true;
     }
   }
