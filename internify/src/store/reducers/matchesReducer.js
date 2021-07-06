@@ -27,7 +27,7 @@ function matchFilter(students, posting) {
       matchCoop(student.coOp, posting.coOp) &&
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
-      // matchWork(student.workExperience, posting.experienceLength) &&
+      matchWork(student.experience, posting.experience) &&
       // matchLang(student.codingLanguages, posting.codingLanguages) &&
       // matchTools(student.workTools, posting.workTools) &&
       // matchConcepts(student.concepts, posting.concepts) &&
@@ -78,13 +78,13 @@ function matchFrame(frameworksStudent, frameworksPosting) {
   return false;
 }
 
-function matchWork(sWork, pWork) {
+function matchWork(experienceStudent, experiencePosting) {
   // Null case
-  if (isNaN(pWork)) {
+  if (isNaN(experiencePosting)) {
     return true;
   } else {
     // Return true if student at least meets requirements
-    return sWork >= pWork;
+    return experienceStudent >= experiencePosting;
   }
 }
 
