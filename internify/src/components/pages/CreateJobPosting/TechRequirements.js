@@ -61,8 +61,8 @@ const GradePoint = (props) => {
       <div className="gpa_radio">
         <RadioButtonsGroup
           data={gpaData}
-          jobData={props.jobData}
-          property={"gpa"}
+          jobData={props.jobData.requirements}
+          property={"isGpaRequired"}
         />
       </div>
       <div className="gpa_slider">
