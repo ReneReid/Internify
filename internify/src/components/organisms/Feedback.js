@@ -8,7 +8,7 @@ import "./styles/Feedback.css";
 const Feedback = () => {
   // Grab appropriate information from state
   const students = useSelector((state) => state.students.studentList);
-  const jobID = useSelector((state) => state.jobs.currentPosting["id"]);
+  const jobID = useSelector((state) => state.jobs.currentPosting["_id"]);
   const allMatches = useSelector((state) => state.matches);
   let matchStudents = [];
   allMatches.forEach((match) => {
@@ -42,9 +42,9 @@ const Feedback = () => {
     // matches with UBC students
     let matchesUBC = 0;
     for (let match of matchStudents) {
-      const matchBSc = match["degree"]["BSc"];
-      const matchMSc = match["degree"]["MSc"];
-      const matchPhD = match["degree"]["PhD"];
+      const matchBSc = match["academicReq"]["BSc"];
+      const matchMSc = match["academicReq"]["MSc"];
+      const matchPhD = match["academicReq"]["PhD"];
       const name = "University of British Columbia";
 
       if (matchBSc === name || matchMSc === name || matchPhD === name) {
