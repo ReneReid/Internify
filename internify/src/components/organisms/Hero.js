@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState} from "react";
+// import { Link } from "@reach/router";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
 import "./styles/Hero.css";
@@ -38,9 +39,56 @@ const Hero = () => {
       });
   };
 
-  const continueWEmail = () => {
-    console.log("continue with email");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+ 
+  const createWEmail = (event, email, password) => {
+
+    event.preventDefault();
+    console.log("We are creating a new user, via email and password!");
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      var user = userCredential.user;
+      console.log(`the user's email is: ${email}`);
+      console.log(`the user's password is: ${password}`);
+      // ...
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
+
+    setEmail("");
+    setPassword("");
+  }; 
+
+  const onChangeHandler = event => {
+    const { name, value} = event.currentTarget;
+    if (name === "fEmail") {
+      setEmail(value);
+    } else if (name === "fPassword") {
+      setPassword(value);
+    }
   };
+
+  // const continueWEmail = (email, password) => {
+  //   console.log("continue with email");
+  //   firebase.auth().createUserWithEmailAndPassword(email, password)
+  //   .then((userCredential) => {
+  //     // Signed in
+  //     var user = userCredential.user;
+  //     // ...
+
+  //   })
+  //   .catch((error) => {
+  //     var errorCode = error.code;
+  //     var errorMessage = error.message;
+  //     // ...
+  //   });
+  // };
 
   return (
     <div className="hero">
@@ -64,7 +112,9 @@ const Hero = () => {
             type="text"
             id="hero_email"
             name="fEmail"
+            value = {email}
             placeholder="Create an account with Email"
+            onChange = {event => onChangeHandler(event)}
           />
           <br></br>
           <input
@@ -72,11 +122,15 @@ const Hero = () => {
             type="text"
             id="hero_password"
             name="fPassword"
+            value= {password}
             placeholder="Password"
+            onChange = {event => onChangeHandler(event)}
           />
           <br></br>
         </form>
-        <ButtonWhite className="hero_form_button" onClick={continueWEmail}>
+        <ButtonWhite 
+        className="hero_form_button" 
+        onClick={event => {createWEmail(event, email, password)}}>
           Continue with Email
         </ButtonWhite>
       </div>

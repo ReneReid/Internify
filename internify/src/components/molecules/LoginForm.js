@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
 import "./styles/LoginForm.css";
@@ -34,9 +34,34 @@ const LoginForm = () => {
       });
   };
 
-  const login = () => {
-    console.log("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const login = (event, email, password) => {
+    event.preventDefault();
+    console.log("We are attempting to login a pre-existing user!");
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // signed in
+      var user = userCredential.user;
+      // ..
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
   };
+
+  const onChangeHandler = event => {
+    const { name, value } = event.currentTarget;
+    if (name === "fEmail") {
+      setEmail(value);
+    } else if (name === "fPassword") {
+      setPassword(value);
+    }
+  }
 
   // instead of using empty divs, use margins
   return (
@@ -53,7 +78,9 @@ const LoginForm = () => {
             type="text"
             id="login_email"
             name="fEmail"
+            value = {email}
             placeholder="Email"
+            onChange = {event => onChangeHandler(event)}
           />
           <br></br>
           <input
@@ -61,12 +88,14 @@ const LoginForm = () => {
             type="text"
             id="login_password"
             name="fPassword"
+            value = {password}
             placeholder="Password"
+            onChange = {event => onChangeHandler(event)}
           ></input>
           <br></br>
         </form>
         <div className="login_form_button">
-          <ButtonWhite style={{ width: "100%" }} onClick={login}>
+          <ButtonWhite style={{ width: "100%" }} onClick={event => {login(event, email, password)}}>
             Login
           </ButtonWhite>
         </div>
