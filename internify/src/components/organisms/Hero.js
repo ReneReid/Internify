@@ -55,6 +55,11 @@ const Hero = () => {
       var user = userCredential.user;
       console.log(`the user's email is: ${email}`);
       console.log(`the user's password is: ${password}`);
+      firebase.auth().currentUser.sendEmailVerification()
+      .then(() => {
+        // Email verification sent!
+        // ...
+      });
       // ...
     }).catch((error) => {
       var errorCode = error.code;
