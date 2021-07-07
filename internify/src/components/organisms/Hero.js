@@ -35,6 +35,7 @@ const Hero = () => {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
+        alert("Could not sign up through your Google account :(");
         // ...
       });
   };
@@ -59,6 +60,7 @@ const Hero = () => {
       var errorCode = error.code;
       var errorMessage = error.message;
       // ..
+      alert("Could not sign up with your email and password combination :( ");
     });
 
     setEmail("");
