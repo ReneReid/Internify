@@ -37,7 +37,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -52,6 +52,7 @@ function App() {
     console.log("Loading");
     routes = <div>Loading</div>;
   }
+  console.log(user);
   if (user) {
     console.log("Authenticated");
     routes = (
