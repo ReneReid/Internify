@@ -28,7 +28,7 @@ const mockTechStackData = {
 function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [jobData, setJobData] = useState({
-    id: uuidv4(),
+    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
       title: "",
       company: "",
@@ -39,7 +39,7 @@ function Create(props) {
     },
     requirements: {
       experience: "",
-      gpa: "",
+      gpaRequired: "",
       gpaValue: "",
       languages: [],
       frameworks: [],
@@ -68,7 +68,7 @@ function Create(props) {
     props.actions.addJobsData(jobData);
     console.log(jobData);
     // Redirects view to top
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -101,15 +101,12 @@ function Create(props) {
         jobData={jobData}
         data={mockJobDetailData}
       />
-      <Review 
-        currentStep={currentStep}
-        jobData={jobData}
-      />
+      <Review currentStep={currentStep} jobData={jobData} />
       {currentStep < 5 ? (
         <Container maxWidth="md" style={{ padding: "0 10em" }}>
           <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
         </Container>
-      ) : (null) }
+      ) : null}
     </div>
   );
 }
