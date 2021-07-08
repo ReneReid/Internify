@@ -6,7 +6,6 @@ import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Feedback from "./components/organisms/Feedback";
-import { EditModal } from "./components/molecules/index";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
