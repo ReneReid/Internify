@@ -5,7 +5,7 @@ var router = express.Router();
 var StudentData = require('../../models/StudentData');
 
 //@route    GET api/students
-//@desc     Get All Job Posting Items
+//@desc     Get All Student Documents
 //@access   Public
 router.get('/', function(req, res, next) {
     StudentData.find()
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 //@route    POST api/students/insertAll
-//@desc     Create ALL student objects
+//@desc     Create ALL Student Documents
 //@access   Public
 //@note     This API is temporary 
 router.post('/insertAll', function(req, res, next) {
@@ -25,7 +25,7 @@ router.post('/insertAll', function(req, res, next) {
 });
 
 //@route    DELETE api/students
-//@desc     DELETE A Post 
+//@desc     DELETE A Student Document 
 //@access   Public
 router.delete('/:id', function(req, res, next) {
     
