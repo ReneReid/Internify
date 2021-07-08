@@ -6,6 +6,7 @@ import "./styles/EditModal.css";
 
 const EditModal = (props) => {
   let toggle = props.toggle;
+  let setToggle = props.setToggle;
   const [profile, setProfile] = useState({
     name: "",
     title: "",
@@ -34,6 +35,7 @@ const EditModal = (props) => {
       status: "",
       company: "",
     });
+    setToggle(false);
   };
 
   const handleUpdate = () => {

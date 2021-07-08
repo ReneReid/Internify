@@ -1,7 +1,8 @@
 import "./styles/Profile.css";
 import { Grid } from "@material-ui/core";
 import { React, useState } from "react";
-import { TableBasic, TableStar } from "../molecules/Table";
+import { EditModal } from "../molecules/index";
+import { TableBasic } from "../molecules/Table";
 import angela from "../../assets/Profile/angela_brown.png";
 import { ButtonOutlined } from "../atoms/Button";
 import { ChipBasic } from "../atoms/Chips";
@@ -12,6 +13,7 @@ import StarIcon from "@material-ui/icons/Star";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
 const Profile = () => {
+  const [toggle, setToggle] = useState(false);
   const [profileDesc, setProfileDesc] = useState(
     "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!"
   );
@@ -97,7 +99,7 @@ const Profile = () => {
 
               <Grid item>
                 <div className="profile_edit_button">
-                  <ButtonOutlined> Edit Profile </ButtonOutlined>
+                  <ButtonOutlined onClick={() => setToggle(true)}> Edit Profile </ButtonOutlined>
                 </div>
               </Grid>
             </Grid>
@@ -240,6 +242,7 @@ const Profile = () => {
           </Grid>
         </Grid>
       </Grid>
+      <EditModal toggle={toggle} setToggle={setToggle}/>
     </Grid>
   );
 };
