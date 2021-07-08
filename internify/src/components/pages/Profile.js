@@ -99,7 +99,9 @@ const Profile = () => {
 
               <Grid item>
                 <div className="profile_edit_button">
-                  <ButtonOutlined onClick={() => setToggle(true)}> Edit Profile </ButtonOutlined>
+                  <ButtonOutlined onClick={() => setToggle(true)}>
+                    Edit Profile{" "}
+                  </ButtonOutlined>
                 </div>
               </Grid>
             </Grid>
@@ -242,7 +244,7 @@ const Profile = () => {
           </Grid>
         </Grid>
       </Grid>
-      <EditModal toggle={toggle} setToggle={setToggle}/>
+      <EditModal toggle={toggle} setToggle={setToggle} />
     </Grid>
   );
 };
