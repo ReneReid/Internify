@@ -1,14 +1,56 @@
-import React from "react";
-import { ButtonWhite } from "../atoms/index.js";
+import React, { useState } from "react";
+import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
+import firebase from "firebase/app";
 import "./styles/LoginForm.css";
 
 const LoginForm = () => {
-  const continueWGoogle = () => {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+
+  const handleGoogleLogin = () => {
     console.log("continue with google");
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        return result.user;
+      })
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+        alert(error.message);
+      });
   };
 
-  const login = () => {
-    console.log("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = (event, email, password) => {
+    event.preventDefault();
+    console.log("We are attempting to login a pre-existing user!");
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        // signed in
+        return result.user;
+      })
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+        alert(error.message);
+      });
+  };
+
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+    if (name === "fEmail") {
+      setEmail(value);
+    } else if (name === "fPassword") {
+      setPassword(value);
+    }
   };
 
   // instead of using empty divs, use margins
@@ -16,9 +58,7 @@ const LoginForm = () => {
     <div className="login_container">
       <p className="login_header">Welcome back 👋</p>
       <div className="login_form_container">
-        <ButtonWhite style={{ width: "100%" }} onClick={continueWGoogle}>
-          Continue with Google
-        </ButtonWhite>
+        <GoogleLoginButton onClick={handleGoogleLogin} />
         <div className="linebreak">
           <p>────────── or ──────────</p>
         </div>
@@ -28,7 +68,9 @@ const LoginForm = () => {
             type="text"
             id="login_email"
             name="fEmail"
+            value={email}
             placeholder="Email"
+            onChange={(event) => onChangeHandler(event)}
           />
           <br></br>
           <input
@@ -36,12 +78,21 @@ const LoginForm = () => {
             type="text"
             id="login_password"
             name="fPassword"
+            value={password}
             placeholder="Password"
+            onChange={(event) => onChangeHandler(event)}
           ></input>
           <br></br>
         </form>
         <div className="login_form_button">
-          <ButtonWhite style={{ width: "100%" }} onClick={login}>Login</ButtonWhite>
+          <ButtonWhite
+            style={{ width: "100%" }}
+            onClick={(event) => {
+              login(event, email, password);
+            }}
+          >
+            Login
+          </ButtonWhite>
         </div>
         <div className="login_help_container">
           <div className="login_create_account">
