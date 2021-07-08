@@ -14,30 +14,16 @@ const LoginForm = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
-
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        // ...
+        return result.user;
       })
       .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        alert("Could not sign in through Google! :(");
-        // ...
+        console.log(error.code);
+        console.log(error.message);
       });
   };
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const login = (event, email, password) => {
     event.preventDefault();
@@ -46,15 +32,13 @@ const LoginForm = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      .then((result) => {
         // signed in
-        var user = userCredential.user;
-        // ..
+        return result.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert("Could not login - incorrect email and or password! :( ");
+        console.log(error.code);
+        console.log(error.message);
       });
   };
 

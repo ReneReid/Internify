@@ -44,17 +44,13 @@ function App() {
       if (user) setUser(user);
       setIsLoading(false);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 
   let routes;
   if (isLoading) {
-    console.log("Loading");
     routes = <div>Loading</div>;
   }
-  console.log(user);
   if (user) {
-    console.log("Authenticated");
     routes = (
       <Switch>
         <Route path="/edit">

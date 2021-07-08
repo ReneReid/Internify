@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/AuthNavbar.css";
-import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid";
 import firebase from "firebase/app";
 
@@ -18,6 +17,8 @@ const Navbar = () => {
       })
       .catch((error) => {
         // an error occurred
+        console.log(error.code);
+        console.log(error.message);
       });
   };
 
