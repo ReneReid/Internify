@@ -19,6 +19,7 @@ const LoginForm = () => {
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
+        alert(error.message);
       });
   };
 
@@ -39,6 +40,7 @@ const LoginForm = () => {
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
+        alert(error.message);
       });
   };
 

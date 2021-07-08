@@ -24,6 +24,7 @@ const Hero = () => {
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
+        alert(error.message);
       });
   };
 
@@ -51,6 +52,7 @@ const Hero = () => {
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
+        alert(error.message);
       });
 
     setEmail("");
