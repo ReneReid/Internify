@@ -7,9 +7,6 @@ import Review from "./CreateJobPosting/Review";
 import ContactDetails from "./CreateJobPosting/ContactDetails";
 import { ButtonFilled } from "../atoms";
 import { useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addJobsData } from "../../store/actions/jobPostActions";
 import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -65,7 +62,6 @@ function Create(props) {
 
   function updateStore() {
     setCurrentStep(currentStep + 1);
-    props.actions.addJobsData(jobData);
     console.log(jobData);
     // Redirects view to top
     window.scrollTo(0,0);
@@ -114,16 +110,4 @@ function Create(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Create);
+export default Create;
