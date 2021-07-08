@@ -1,8 +1,5 @@
-import {
-  ADD_STUDENT,
-  REMOVE_STUDENT,
-  UPDATE_STUDENT,
-} from "./types/studentTypes";
+import axios from 'axios';
+import { ADD_STUDENT, REMOVE_STUDENT, UPDATE_STUDENT, GET_STUDENTS} from "./types/studentTypes";
 
 export const addStudent = (data) => (dispatch) => {
   dispatch({
@@ -23,4 +20,16 @@ export const updateStudent = (data) => (dispatch) => {
     type: UPDATE_STUDENT,
     payload: data,
   });
+};
+
+export const getStudents = () => dispatch => {
+  axios
+      .get('/api/students/')
+      .then(res => {
+          dispatch({
+              type: GET_STUDENTS,
+              payload: res.data
+          })
+      }
+      )
 };
