@@ -60,9 +60,9 @@ const JobPosting = ({ data }) => {
             </b>
           </li>
         ) : null}
-        {details.academicReq && requirements.gpa ? (
+        {details.academicReq && requirements.isGpaRequired ? (
           <li>
-            Must have at least or is at <b>{requirements.gpa} GPA</b> standing
+            Must have at least or is at <b>{requirements.gpaValue} GPA</b> standing
             or equivalent
           </li>
         ) : null}

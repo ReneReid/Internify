@@ -39,7 +39,7 @@ function Create(props) {
     },
     requirements: {
       experience: "",
-      gpaRequired: "",
+      isGpaRequired: "",
       gpaValue: "",
       languages: [],
       frameworks: [],

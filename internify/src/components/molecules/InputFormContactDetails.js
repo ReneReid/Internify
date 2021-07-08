@@ -66,6 +66,7 @@ function InputFormContactDetails(props) {
           className={"input_contact_row_i-form-alt"}
           label={"Application steps"}
           type={"text"}
+          rows={4}
           handleChange={handleChange}
           value={jobData.applicationSteps}
         />
