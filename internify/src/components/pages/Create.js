@@ -6,10 +6,13 @@ import JobDetail from "./CreateJobPosting/JobDetail";
 import Review from "./CreateJobPosting/Review";
 import ContactDetails from "./CreateJobPosting/ContactDetails";
 import { ButtonFilled } from "../atoms";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getStudents } from "../../store/actions/studentActions";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -59,6 +62,10 @@ function Create(props) {
       applicationSteps: "",
     },
   });
+
+  useEffect(() => {
+    props.actions.getStudents();
+  }, [])
 
   function updateStore() {
     setCurrentStep(currentStep + 1);
@@ -110,4 +117,17 @@ function Create(props) {
   );
 }
 
-export default Create;
+function mapStateToProps(state) {
+  return {
+    students: state.students,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ getStudents: getStudents }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Create);
+
