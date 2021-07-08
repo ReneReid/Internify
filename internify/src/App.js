@@ -17,9 +17,6 @@ function App() {
         <header className="App-header">
           <Router>
             <Switch>
-              <Route path="/edit">
-                <EditModal toggle={true}/>
-              </Route>
               <Route path="/login">
                 <Login />
               </Route>
