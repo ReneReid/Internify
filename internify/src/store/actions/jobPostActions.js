@@ -14,9 +14,9 @@ export const getOneJob = (_id) => dispatch => {
       )
 };
 
-export const getAllJobs = () => dispatch => {
+export const getJobs = () => dispatch => {
   axios
-      .get('/api/jobs/getAll')
+      .get('/api/jobs/')
       .then(res => {
           dispatch({
               type: GET_ALL_JOBS,
