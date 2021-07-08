@@ -15,10 +15,7 @@ const Profile = () => {
   const [profileDesc, setProfileDesc] = useState(
     "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!"
   );
-  const [profileLabels, setProfileLabels] = useState([
-    "Verified Recruiter",
-    "12 Postings",
-  ]);
+  const [profileLabels, setProfileLabels] = useState(["12 Postings"]);
   const [postingContent, setPostingContent] = useState([
     {
       title: "Software Developer",
@@ -71,22 +68,10 @@ const Profile = () => {
       direction="row"
       justify="center"
       alignItems="center"
+      style={{ marginBottom: "5em" }}
     >
       {/* Left-hand grid item: profile img, descsription, labels & contact */}
-      <Grid item xs={5}>
-        {/* Heading container */}
-        <Grid
-          container
-          spacing={1}
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-          <div className="profile_left_heading">
-            <h1> Your Profile </h1>
-          </div>
-        </Grid>
-
+      <Grid item xs={6}>
         {/* Content container */}
         <Grid
           container
@@ -97,6 +82,26 @@ const Profile = () => {
         >
           {/* Content within a profile: image, list, labels, description, contact */}
           <Grid item>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+              style={{ paddingBottom: "2em" }}
+            >
+              <Grid item>
+                <div className="profile_left_heading">
+                  <h1> Your Profile </h1>
+                </div>
+              </Grid>
+
+              <Grid item>
+                <div className="profile_edit_button">
+                  <ButtonOutlined> Edit Profile </ButtonOutlined>
+                </div>
+              </Grid>
+            </Grid>
+
             {/* Image and handle headers */}
             <Grid
               container
@@ -135,10 +140,7 @@ const Profile = () => {
                     <li>
                       <ChipBasic
                         icon={
-                          <CheckCircleOutlineIcon
-                            color="secondary"
-                            fontSize="default"
-                          />
+                          <CheckCircleOutlineIcon style={{ color: "white" }} />
                         }
                         label={label}
                       />
@@ -206,27 +208,14 @@ const Profile = () => {
       </Grid>
 
       {/* Right-hand grid item: Status,  */}
-      <Grid item xs={7}>
-        {/* Heading container */}
-        <Grid
-          container
-          spacing={1}
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-          <div className="profile_right_heading">
-            <ButtonOutlined> Edit Profile </ButtonOutlined>
-          </div>
-        </Grid>
-
+      <Grid item xs={6} style={{ paddingTop: "5em" }}>
         {/* Recruiting status & postings container */}
         <Grid
           container
           spacing={1}
           direction="column"
-          justify="center"
-          alignItems="center"
+          alignItems="flex-start"
+          style={{ paddingLeft: "5em" }}
         >
           {/* Recruiting status */}
           <Grid item>

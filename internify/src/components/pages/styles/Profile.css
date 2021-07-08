@@ -1,8 +1,3 @@
-.profile_left_heading {
-  margin-left: -35%;
-  margin-bottom: 5%;
-}
-
 .profile_img {
   max-height: 100px;
   width: auto;
@@ -47,15 +42,15 @@ ul#profile_labels_list li {
   list-style: none;
 }
 
-.profile_right_heading {
-  margin-left: 35%;
-}
-
-.profile_left_status {
-  margin-right: 50px;
-}
-
 .profile_left_status_list {
   list-style: none;
   font-size: 0.9em;
+  padding-left: 0;
+}
+
+.profile_left_heading {
+
+}
+.profile_edit_button {
+  
 }
