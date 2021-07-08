@@ -15,7 +15,7 @@ import random
 # and replace "integer" with the number of students you wish to create.
 
 # then, if you own a Mac, open a terminal at the directory you are storing this file, 
-# and copy and paste the following command into the terminal: python3 studentResponses.py 
+# and copy and paste the following command into the terminal: python3 CreateStudents.py 
 # The terminal should then output a list of student objects.
 # You may wish to copy and paste this list into a JSON file.
 # NOTE: you must have python downloaded in your system. You may find the latest version
