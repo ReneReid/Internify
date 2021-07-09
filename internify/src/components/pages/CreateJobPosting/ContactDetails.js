@@ -16,7 +16,7 @@ const ContactDetails = (props) => {
   });
 
   return props.currentStep === 4 ? (
-    <div className="create_form_container">
+    <div className="create">
       <Container maxWidth="md" className={"container"}>
         <Stepper stepNumber={3} />
         <div className="contact_details_container">

@@ -25,6 +25,7 @@ function JobDetail(props) {
   });
 
   return props.currentStep === 3 ? (
+    <div className="create">
       <Container maxWidth="md">
         <Stepper stepNumber={2} />
         <h1>3. Job Details</h1>
@@ -47,6 +48,7 @@ function JobDetail(props) {
           jobData={details}
         />
       </Container>
+    </div>
   ) : (null);
 }
 
