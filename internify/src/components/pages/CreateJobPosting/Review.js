@@ -6,7 +6,7 @@ import "./styles/Review.css";
 function Review(props) {
   return props.currentStep === 5 ? (
     <div className="create_form_container">
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
+      <Container maxWidth="md">
         <Stepper stepNumber={4} />
         <h1>5. Review</h1>
         <JobPosting data={props.jobData} />
