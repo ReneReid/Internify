@@ -81,7 +81,7 @@ function Create(props) {
 
   useEffect(() => {
     props.actions.getStudents();
-  }, []);
+  }, [props.actions]);
 
   function updateStore() {
     setCurrentStep(currentStep + 1);
