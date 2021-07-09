@@ -1,5 +1,6 @@
-import { AddCircle, Grade } from "@material-ui/icons";
+import { Grade } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
+import { ReactComponent as AddCircle } from "../../assets/atoms/plus-btn-icon.svg";
 
 export const StarPlain = withStyles(() => ({
   root: {
@@ -31,18 +32,8 @@ export const StarColoured = withStyles(() => ({
   },
 }))(Grade);
 
-export const Add = withStyles(() => ({
-  root: {
-    cursor: "pointer",
-    color: "#FF1F57",
-    borderRadius: "50px",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.05)",
-    "&:hover": {
-      borderRadius: "50px",
-      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
-    },
-    "&:active": {
-      opacity: 0.8,
-    },
-  },
-}))(AddCircle);
+export const Add = () => {
+  return (
+    <AddCircle className="add_circle_button"/>
+  )
+};
