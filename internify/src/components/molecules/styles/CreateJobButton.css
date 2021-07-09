@@ -11,5 +11,5 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 .create_job_button:active {
-    opacity: 0.8;
+  opacity: 0.8;
 }
