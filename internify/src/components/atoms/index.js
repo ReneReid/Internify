@@ -1,4 +1,5 @@
 import {
+  ButtonClear,
   ButtonFilled,
   ButtonOutlined,
   ButtonWhite,
@@ -11,6 +12,7 @@ import TextFieldInput from "./TextFieldInput";
 import MultiLineTextField from "./MultiLineTextField";
 
 export {
+  ButtonClear,
   ButtonOutlined,
   ButtonFilled,
   ButtonWhite,
