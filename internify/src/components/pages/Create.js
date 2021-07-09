@@ -7,10 +7,10 @@ import {
   JobDetail,
   Review,
 } from "./CreateJobPosting/index";
-import { ButtonFilled } from "../atoms/index";
-import { makeStyles, Grid } from "@material-ui/core";
+import { ButtonClear, ButtonFilled } from "../atoms/index";
+import { Container, makeStyles, Grid } from "@material-ui/core";
+import { ChevronLeft } from "@material-ui/icons";
 import { useState, useEffect } from "react";
-import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
@@ -31,6 +31,7 @@ const mockTechStackData = {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: "5em",
   },
   paper: {
     padding: theme.spacing(2),
@@ -98,10 +99,13 @@ function Create(props) {
         justify="flex-end"
       >
         <Grid item xs={2}>
-          <Grid container justify="flex-end">
-            <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>
+          <Grid container justify="flex-end" style={{ paddingTop: "1em" }}>
+            <ButtonClear
+              onClick={() => setCurrentStep(currentStep - 1)}
+              startIcon={<ChevronLeft/>}
+            >
               Back
-            </ButtonFilled>
+            </ButtonClear>
           </Grid>
         </Grid>
         <Grid item xs={7} style={{ padding: "0 5em" }}>
