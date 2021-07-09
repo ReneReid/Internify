@@ -43,7 +43,7 @@ function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [jobData, setJobData] = useState({
-    id: uuidv4(),
+    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
       title: "",
       company: "",
