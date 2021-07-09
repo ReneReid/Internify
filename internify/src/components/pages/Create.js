@@ -100,12 +100,14 @@ function Create(props) {
       >
         <Grid item xs={2}>
           <Grid container justify="flex-end" style={{ paddingTop: "1em" }}>
-            <ButtonClear
-              onClick={() => setCurrentStep(currentStep - 1)}
-              startIcon={<ChevronLeft/>}
-            >
-              Back
-            </ButtonClear>
+            {currentStep > 1 ? (
+              <ButtonClear
+                onClick={() => setCurrentStep(currentStep - 1)}
+                startIcon={<ChevronLeft />}
+              >
+                Back
+              </ButtonClear>
+            ) : null}
           </Grid>
         </Grid>
         <Grid item xs={7} style={{ padding: "0 5em" }}>
