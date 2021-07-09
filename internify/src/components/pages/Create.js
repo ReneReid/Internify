@@ -1,5 +1,4 @@
-import React from "react";
-import "./styles/Create.css";
+import React, { useState, useEffect } from "react";
 import {
   CreateJobHeader,
   ContactDetails,
@@ -10,12 +9,12 @@ import {
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
-import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
+import "./styles/Create.css";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
