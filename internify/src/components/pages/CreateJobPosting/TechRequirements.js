@@ -100,7 +100,7 @@ function TechRequirements(props) {
     return null;
   } else {
     return (
-      <div className="create">
+      <div className="create_form_container">
         <Container maxWidth="md">
           <Stepper stepNumber={1} />
           <h1>2. Technical Requirements</h1>

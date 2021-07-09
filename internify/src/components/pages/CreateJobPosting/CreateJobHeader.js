@@ -26,7 +26,7 @@ function CreateJobHeader(props) {
     return null;
   } else {
     return (
-      <div className="create">
+      <div className="create_form_container">
         <Container
           maxWidth="md"
           className={"container"}
