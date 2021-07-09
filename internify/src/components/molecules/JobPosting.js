@@ -2,8 +2,12 @@ import React from "react";
 import { ButtonFilled } from "../atoms/index";
 import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addNewJob } from "../../store/actions/jobPostActions";
 
-const JobPosting = ({ data }) => {
+const JobPosting = (props) => {
+  const data = props.data;
   const header = data?.header
     ? data.header
     : {
@@ -23,6 +27,9 @@ const JobPosting = ({ data }) => {
     details.candidates,
   ];
 
+  function sendJob(){
+    props.actions.addNewJob(data);
+  }
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>
@@ -60,9 +67,9 @@ const JobPosting = ({ data }) => {
             </b>
           </li>
         ) : null}
-        {details.academicReq && requirements.gpa ? (
+        {details.academicReq && requirements.isGpaRequired ? (
           <li>
-            Must have at least or is at <b>{requirements.gpa} GPA</b> standing
+            Must have at least or is at <b>{requirements.gpaValue} GPA</b> standing
             or equivalent
           </li>
         ) : null}
@@ -122,10 +129,22 @@ const JobPosting = ({ data }) => {
       </ul>
 
       <div className="job_posting_submit">
-        <ButtonFilled startIcon={<AddCircleOutline />}>Create</ButtonFilled>
+        <ButtonFilled  onClick={() => sendJob()} startIcon={<AddCircleOutline />}>Create</ButtonFilled>
       </div>
     </div>
   );
 };
 
-export default JobPosting;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addNewJob: addNewJob }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(JobPosting);

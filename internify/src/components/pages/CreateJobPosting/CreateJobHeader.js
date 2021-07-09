@@ -8,10 +8,6 @@ import {
 } from "../../molecules/index";
 import "./styles/CreateJobHeader.css";
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addJobsData } from "../../../store/actions/jobPostActions";
-
 function CreateJobHeader(props) {
   const [header, setHeader] = useState({
     title: "",
@@ -48,16 +44,4 @@ function CreateJobHeader(props) {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(CreateJobHeader);
+export default CreateJobHeader;

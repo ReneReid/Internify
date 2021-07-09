@@ -1,19 +1,21 @@
 import React from "react";
 import "./styles/Create.css";
-import CreateJobHeader from "./CreateJobPosting/CreateJobHeader";
-import TechRequirements from "./CreateJobPosting/TechRequirements";
-import JobDetail from "./CreateJobPosting/JobDetail";
-import Review from "./CreateJobPosting/Review";
-import ContactDetails from "./CreateJobPosting/ContactDetails";
-import { ButtonFilled } from "../atoms";
-import { useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addJobsData } from "../../store/actions/jobPostActions";
-import { Container, Grid } from "@material-ui/core";
+import {
+  CreateJobHeader,
+  ContactDetails,
+  TechRequirements,
+  JobDetail,
+  Review,
+} from "./CreateJobPosting/index";
+import { ButtonFilled } from "../atoms/index";
+import { makeStyles, Grid } from "@material-ui/core";
+import { useState, useEffect } from "react";
+import { Container } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
-import { makeStyles } from '@material-ui/core/styles';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getStudents } from "../../store/actions/studentActions";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
 }));
@@ -52,7 +54,7 @@ function Create(props) {
     },
     requirements: {
       experience: "",
-      gpa: "",
+      isGpaRequired: "",
       gpaValue: "",
       languages: [],
       frameworks: [],
@@ -76,76 +78,82 @@ function Create(props) {
     },
   });
 
+  useEffect(() => {
+    props.actions.getStudents();
+  }, []);
+
   function updateStore() {
     setCurrentStep(currentStep + 1);
-    props.actions.addJobsData(jobData);
     console.log(jobData);
     // Redirects view to top
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   return (
-    <div className={classes.root} >
-      <Grid container direction="row" alignItems="flex-start" justify="flex-end">
-        <Grid item xs={1}>
-          <Grid container justify="flex-end" >
-          <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>
-          Back
-        </ButtonFilled>
+    <div className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        alignItems="flex-start"
+        justify="flex-end"
+      >
+        <Grid item xs={2}>
+          <Grid container justify="flex-end">
+            <ButtonFilled onClick={() => setCurrentStep(currentStep - 1)}>
+              Back
+            </ButtonFilled>
           </Grid>
         </Grid>
-        <Grid item xs={8} style={{padding: "0 5em 0 0"}}>
-        <CreateJobHeader
-        currentStep={currentStep}
-        handleChange={setJobData}
-        jobData={jobData}
-        />
-        <TechRequirements
-        currentStep={currentStep}
-        handleChange={setJobData}
-        jobData={jobData}
-        data={mockTechStackData}
-        />
-        <JobDetail
-        currentStep={currentStep}
-        handleChange={setJobData}
-        jobData={jobData}
-        data={mockJobDetailData}
-        />
-        <ContactDetails
-        currentStep={currentStep}
-        handleChange={setJobData}
-        jobData={jobData}
-        data={mockJobDetailData}
-        />
-        <Review 
-        currentStep={currentStep}
-        jobData={jobData}
-        />
-      {currentStep < 5 ? (
-        <Container maxWidth="md" style={{ padding: "0 10em" }}>
-          <ButtonFilled onClick={() => updateStore()}>Continue</ButtonFilled>
-        </Container>
-      ) : (null) }
+        <Grid item xs={7} style={{ padding: "0 5em" }}>
+          <CreateJobHeader
+            currentStep={currentStep}
+            handleChange={setJobData}
+            jobData={jobData}
+          />
+          <TechRequirements
+            currentStep={currentStep}
+            handleChange={setJobData}
+            jobData={jobData}
+            data={mockTechStackData}
+          />
+          <JobDetail
+            currentStep={currentStep}
+            handleChange={setJobData}
+            jobData={jobData}
+            data={mockJobDetailData}
+          />
+          <ContactDetails
+            currentStep={currentStep}
+            handleChange={setJobData}
+            jobData={jobData}
+            data={mockJobDetailData}
+          />
+          <Review currentStep={currentStep} jobData={jobData} />
+          {currentStep < 5 ? (
+            <Container maxWidth="md">
+              <ButtonFilled onClick={() => updateStore()}>
+                Continue
+              </ButtonFilled>
+            </Container>
+          ) : null}
         </Grid>
         <Grid item xs={3}>
-        <h4>Hello</h4>
+          <h4>Hello</h4>
         </Grid>
       </Grid>
-      
     </div>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    jobs: state.jobs,
+    students: state.students,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
+    actions: bindActionCreators({ getStudents: getStudents }, dispatch),
   };
 }
 
