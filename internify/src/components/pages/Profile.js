@@ -1,8 +1,7 @@
 import "./styles/Profile.css";
 import { Grid } from "@material-ui/core";
 import { React, useState } from "react";
-import { EditModal } from "../molecules/index";
-import { TableBasic } from "../molecules/Table";
+import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
 import angela from "../../assets/Profile/angela_brown.png";
 import { ButtonOutlined } from "../atoms/Button";
 import { ChipBasic } from "../atoms/Chips";
@@ -245,6 +244,7 @@ const Profile = () => {
         </Grid>
       </Grid>
       <EditModal toggle={toggle} setToggle={setToggle} />
+      <CreateJobButton/>
     </Grid>
   );
 };

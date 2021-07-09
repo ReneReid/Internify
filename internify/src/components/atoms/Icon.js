@@ -34,9 +34,9 @@ export const StarColoured = withStyles(() => ({
 export const Add = withStyles(() => ({
   root: {
     cursor: "pointer",
-    color: "#E61A4D",
+    color: "#FF1F57",
     borderRadius: "50px",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.05)",
     "&:hover": {
       borderRadius: "50px",
       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
