@@ -6,11 +6,11 @@ import "./styles/TechStack.css";
 
 const TechStack = (props) => {
   let jobData = props.jobData;
-  const handleChange = props.handleChange;
-  const languages = props.languages;
-  const frameworks = props.frameworks;
-  const workTools = props.workTools;
-  const csConcepts = props.csConcepts;
+  // const handleChange = props.handleChange;
+  // const languages = props.languages;
+  // const frameworks = props.frameworks;
+  // const workTools = props.workTools;
+  // const csConcepts = props.csConcepts;
 
   const[langState, setLangState] = useState({
     Java: false,
