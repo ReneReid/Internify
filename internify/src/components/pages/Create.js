@@ -13,6 +13,9 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
+import { addJobsData } from "../../store/actions/jobPostActions";
+import { processMatches } from "../../store/actions/matchesActions";
+import { useSelector } from "react-redux";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -67,12 +70,26 @@ function Create(props) {
     props.actions.getStudents();
   }, [])
 
+  // function updateStore() {
+  //   setCurrentStep(currentStep + 1);
+  //   console.log(jobData);
+  //   // Redirects view to top
+  //   window.scrollTo(0,0);
+  // }
+
+  // below is code imported from the old version of Create.js
+
+
+
   function updateStore() {
+
     setCurrentStep(currentStep + 1);
-    console.log(jobData);
-    // Redirects view to top
+    props.actions.addJobsData(jobData);
+    // const posting = createJobObject(jobData);
     window.scrollTo(0,0);
   }
+
+  // above is code imported from the old Create.js
 
   return (
     <div className="create_container">
@@ -117,15 +134,30 @@ function Create(props) {
   );
 }
 
+// function mapStateToProps(state) {
+//   return {
+//     students: state.students,
+//   };
+// }
+
+// function matchDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators({ getStudents: getStudents }, dispatch),
+//   };
+// }
+
+
 function mapStateToProps(state) {
   return {
+    jobs: state.jobs,
     students: state.students,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getStudents: getStudents }, dispatch),
+    actions: bindActionCreators(
+      { addJobsData: addJobsData, getStudents: getStudents}, dispatch),
   };
 }
 
