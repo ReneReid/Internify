@@ -14,8 +14,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
-import { processMatches } from "../../store/actions/matchesActions";
-import { useSelector } from "react-redux";
+// import { processMatches } from "../../store/actions/matchesActions";
+// import { useSelector } from "react-redux";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
