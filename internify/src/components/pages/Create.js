@@ -82,6 +82,7 @@ function Create(props) {
   });
 
   // Grab all students from database
+  const allStudents = useSelector((state) => state.students.studentList);
 
   function parseExperience(experience) {
     if (experience === "none") {
@@ -143,6 +144,10 @@ function Create(props) {
     };
   }
 
+  useEffect(() => {
+    props.actions.getStudents();
+  }, [props.actions]);
+
   function updateStore() {
     setCurrentStep(currentStep + 1);
     props.actions.addJobsData(jobData);
@@ -150,7 +155,6 @@ function Create(props) {
     const posting = createJobObject(jobData);
     // dispatch to matches reducer
     if (currentStep === 4) {
-      const allStudents = [];
       props.actions.processMatches({
         students: allStudents,
         posting: posting,
