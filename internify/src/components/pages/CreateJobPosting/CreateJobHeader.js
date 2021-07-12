@@ -8,10 +8,6 @@ import {
 } from "../../molecules/index";
 import "./styles/CreateJobHeader.css";
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addJobsData } from "../../../store/actions/jobPostActions";
-
 function CreateJobHeader(props) {
   const [header, setHeader] = useState({
     title: "",
@@ -30,11 +26,10 @@ function CreateJobHeader(props) {
     return null;
   } else {
     return (
-      <div className="create">
+      <div className="create_form_container">
         <Container
           maxWidth="md"
           className={"container"}
-          style={{ padding: "0 10em" }}
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
@@ -49,16 +44,4 @@ function CreateJobHeader(props) {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ addJobsData: addJobsData }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(CreateJobHeader);
+export default CreateJobHeader;

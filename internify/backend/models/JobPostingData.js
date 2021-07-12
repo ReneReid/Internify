@@ -3,74 +3,88 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const JobPostingSchema = new Schema({
-    title: {
+    header: {
+      title: {
         type: String,
-        required: true
-    },
-    company: {
+      },
+      company: {
         type: String,
-        required: true
-    },
-    startDate: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
-    positionLengthInMonths: {
-        type: Number,
-        required: true
-    },
-    positionType: {
+      },
+      location: {
+        type: String,
+      },
+      startDate: {
+        type: String,
+      },
+      position: {
         type: [String],
-        required: true
+      },
+      length: {
+        type: String,
+      },
     },
-    experienceLengthInMonths: {
-        type: Number,
-        required: true
-    },
-    isGpaRequired: {
-        type: Boolean,
-        required: true
-    },
-    gpaPercentage: Number,
-    codingLanguages: {
+    requirements: {
+      experience: {
+        type: String,
+      },
+      gpa: {
+        type: String,
+      },
+      gpaValue: {
+        type: String,
+      },
+      languages: {
         type: [String],
-        required: true
-    },
-    frameworks: {
+      },
+      frameworks: {
         type: [String],
-        required: true
-    },
-    workTools: {
+      },
+      tools: {
         type: [String],
-        required: true
-    },
-    concepts: {
+      },
+      concepts: {
         type: [String],
-        required: true
-    },
-    jobDescription: {
+      },
+      isGpaRequired: {
         type: String,
-        required: true
+      }
     },
-    locationType: {
+    details: {
+      description: {
         type: String,
-        required: true
-    },
-    salary: {
+      },
+      position: {
         type: String,
-        required: true
-    },
-    citizenshipRequirements: {
+      },
+      pay: {
         type: String,
-        required: true
-    },
-    academicRequirements: {
+      },
+      candidates: {
         type: String,
-        required: true
+      },
+      academicReq: {
+        type: [String],
+      },
+      coOp: {
+        type: String,
+      },
     },
-    isCoop: Boolean
-
-});
-
+    contact: {
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      linkedIn: {
+        type: String,
+      },
+      other: {
+        type: String,
+      },
+      applicationSteps: {
+        type: String,
+      },
+    },
+  });
 module.exports = JobPostingData = mongoose.model('JobPostingData', JobPostingSchema);
