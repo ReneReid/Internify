@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   CreateJobHeader,
   ContactDetails,
@@ -15,6 +16,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import "./styles/Create.css";
+import { addJobsData } from "../../store/actions/jobPostActions";
+import { processMatches } from "../../store/actions/matchesActions";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -77,6 +80,8 @@ function Create(props) {
       applicationSteps: "",
     },
   });
+
+  // Grab all students from database
 
   function parseExperience(experience) {
     if (experience === "none") {
@@ -145,8 +150,9 @@ function Create(props) {
     const posting = createJobObject(jobData);
     // dispatch to matches reducer
     if (currentStep === 4) {
+      const allStudents = [];
       props.actions.processMatches({
-        students: students,
+        students: allStudents,
         posting: posting,
       });
     }
