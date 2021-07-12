@@ -1,21 +1,34 @@
 import TextField from "@material-ui/core/TextField";
+import { useState } from 'react';
 
 function TextFieldInput(props) {
+
+  const [validInput, setValidInput] = useState(false);
+
+  function validateForm(e){
+    const text = e.target.value;
+    if(text === ''){
+      setValidInput(true);
+    } else {
+      setValidInput(false);
+    }
+  }
+
   return (
     <TextField
       fullWidth
-      className={props.className}
-      required
       id={props.id}
+      className={props.className}
       label={props.label}
-      defaultValue={props.defaultValue}
-      placeholder={props.placeholder}
-      variant="outlined"
       type={props.type}
+      onChange={props.onChange}
+      onBlur={validateForm}
+      error={validInput}
+      helperText={validInput ? 'This section is required' : 'Required'}
+      variant="outlined"
       InputLabelProps={{
         shrink: true,
       }}
-      onChange={props.onChange}
     />
   );
 }
