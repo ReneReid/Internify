@@ -25,13 +25,25 @@ const Feedback = () => {
   const [totalMatches, setTotalMatches] = useState(0);
   const totalStudents = students.length;
 
+  // calculate seeking students
+  function seekingStudents(totalStudents) {
+    let seekingLength = 0;
+    for (let i = 0; i < totalStudents.length; i++) {
+      if (totalStudents[i].seeking) {
+        seekingLength++;
+      }
+    }
+    console.log(seekingLength);
+    return seekingLength;
+  }
+
   useEffect(() => {
     calculateScore(students);
     notesContent(students);
   });
 
   function calculateScore(students) {
-    const rawScore = matchLength / students.length;
+    const rawScore = matchLength / seekingStudents(students);
     const displayScore = Math.sqrt(rawScore);
     setScore(displayScore);
   }
