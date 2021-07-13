@@ -7,16 +7,16 @@ import "./styles/Feedback.css";
 
 const Feedback = () => {
   // Grab appropriate information from state
-  const students = useSelector((state) => state.students.studentList);
-  const jobID = useSelector((state) => state.jobs.currentPosting["_id"]);
-  const allMatches = useSelector((state) => state.matches);
-  let matchStudents = [];
+  const students = useSelector((state) => state.students.studentList); // all students from database
+  const jobID = useSelector((state) => state.jobs.currentPosting["_id"]); // the jobID
+  const allMatches = useSelector((state) => state.matches); // all jobID:matches pairings
+  let matchStudents = []; // matches for the job in question
   allMatches.forEach((match) => {
     if (match[jobID] !== undefined) {
       matchStudents = match[jobID];
     }
   });
-  const matchLength = matchStudents.length;
+  const matchLength = matchStudents.length; // number of matches for job
 
   // State setting for props in sub-components rendering
   const [score, setScore] = useState(0);
