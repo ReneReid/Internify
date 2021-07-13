@@ -1,4 +1,4 @@
-import jobPosting from "./JobPostingData";
+var jobPosting = require("./JobPostingData");
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
