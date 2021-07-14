@@ -12,7 +12,11 @@ const Footer = () => {
             Vancouver BC
           </li>
           <li className="footer_item">
-            <a href="thing2" className="navbar_main_link2">
+            <a
+              href="https://github.com/aleemer/Internify"
+              target="_blank"
+              className="navbar_main_link1"
+            >
               Github repo
             </a>
           </li>
