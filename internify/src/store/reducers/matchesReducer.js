@@ -46,7 +46,12 @@ function matchFilter(students, posting) {
 
 // This section needs to be implemented
 function matchGpa(isGpaRequired, postingGpaValue, studentGpaValue) {
-  return true;
+  if (isGpaRequired === "Optional") {
+    return true;
+  } else {
+    const postingGpaValueInt = parseInt(postingGpaValue, 10);
+    return studentGpaValue >= postingGpaValue;
+  }
 }
 
 function matchCoop(coOpStudent, coOpPosting) {
