@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var UserData = require("../../models/UserData");
 
-//@route    GET api/users/getAll
+//@route    GET api/users/
 //@desc     Get All User Documents
 //@access   Public (?)
 
@@ -12,11 +12,11 @@ router.get("/", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
-//@route    GET api/users/getOne/:id
+//@route    GET api/users/:id
 //@desc     Get single User Document
 //@access   Public
 
-router.get("/getOne/:id", function (req, res, next) {
+router.get("/:id", function (req, res, next) {
   UserData.findById(req.params.id)
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(404).json({ success: false }));
@@ -27,13 +27,12 @@ router.get("/getOne/:id", function (req, res, next) {
 //@access   Public
 
 router.post("/", function (req, res, next) {
-  console.log("in post: ", req.body);
+  
 
   // flesh out a new user
   var newUser = new UserData({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
     profilePicture: req.body.profilePicture,
     handle: req.body.handle,
     company: req.body.company,
@@ -54,7 +53,7 @@ router.post("/", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
-//@route    DELETE api/users/:id
+//@route    DELETE api/:id
 //@desc     DELETE a User document
 //@access   Public (?)
 
