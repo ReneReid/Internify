@@ -5,6 +5,7 @@
   height: 110px;
   margin-top: 6%;
   background: transparent;
+  box-shadow: 10px 0 5px -2px black;
   overflow: hidden;
 }
 
