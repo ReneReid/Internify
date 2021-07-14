@@ -24,7 +24,10 @@ const LoginForm = () => {
   };
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = React.useState({
+    password: "",
+    showPassword: false,
+  });
 
   const login = (event, email, password) => {
     event.preventDefault();
@@ -75,11 +78,12 @@ const LoginForm = () => {
           <br></br>
           <input
             className="login_form_input"
-            type="text"
+            // type="text"
             id="login_password"
             name="fPassword"
-            value={password}
+            value={password.password}
             placeholder="Password"
+            type={password.showPassword ? "text": "password"}
             onChange={(event) => onChangeHandler(event)}
           ></input>
           <br></br>

@@ -3,10 +3,6 @@ import React, { useState } from "react";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
 import "./styles/Hero.css";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { IconButton } from "@material-ui/core";
 
 const Hero = () => {
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -40,13 +36,6 @@ const Hero = () => {
     showPassword: false,
   });
 
-  const handleClickShowPassword = () => {
-    setPassword({...password, showPassword: !password.showPassword});
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
 
   const createWEmail = (event, email, password) => {
     event.preventDefault();
@@ -115,31 +104,20 @@ const Hero = () => {
           <br></br>
           <input
             className="hero_form_input"
-            type="text"
+            // type="text"
             id="hero_password"
             name="fPassword"
             value={password.password}
             placeholder="Password"
             type={password.showPassword ? "text": "password"}
             onChange={(event) => onChangeHandler(event)}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                >
-                  {password.showPassword? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-
-              </InputAdornment>
-            }
           />
           <br></br>
         </form>
         <ButtonWhite
           className="hero_form_button"
           onClick={(event) => {
-            createWEmail(event, email, password.password);
+            createWEmail(event, email, password);
           }}
         >
           Continue with Email
