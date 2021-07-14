@@ -46,6 +46,11 @@ function matchFilter(students, posting) {
 
 // This section needs to be implemented
 function matchGpa(isGpaRequired, postingGpaValue, studentGpaValue) {
+  // empty case
+  if (isGpaRequired === "") {
+    return true;
+  }
+
   if (isGpaRequired === "Optional") {
     return true;
   } else {
