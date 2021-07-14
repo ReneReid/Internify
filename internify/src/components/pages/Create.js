@@ -84,6 +84,15 @@ function Create(props) {
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
 
+  function parseConcepts(concepts) {
+    let parsedConcepts = [];
+    for (let i = 0; i < concepts.length; i++) {
+      let str = concepts[i].replace(/\s+/g, "");
+      parsedConcepts.push(str);
+    }
+    return parsedConcepts;
+  }
+
   function parseExperience(experience) {
     if (experience === "none") {
       return 0;
@@ -128,6 +137,7 @@ function Create(props) {
     const experience = parseExperience(jobPosting.requirements.experience);
     const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
     const coOp = parseCoopReqs(jobPosting.details.coOp);
+    const concepts = parseConcepts(jobPosting.requirements.concepts);
 
     return {
       _id: jobPosting._id,
@@ -137,7 +147,7 @@ function Create(props) {
       languages: jobPosting.requirements.languages,
       frameworks: jobPosting.requirements.frameworks,
       tools: jobPosting.requirements.tools,
-      concepts: jobPosting.requirements.concepts,
+      concepts: concepts,
       candidates: candidates,
       academicReq: jobPosting.details.academicReq,
       coOp: coOp,
