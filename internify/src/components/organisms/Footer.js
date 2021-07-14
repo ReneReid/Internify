@@ -9,7 +9,7 @@ const Footer = () => {
         <ul className="footer_links">
           <li className="footer_item">
             Made with <FavoriteIcon fontSize="small" color="secondary" /> in
-            Vancouver BC
+            Vancouver, BC
           </li>
           <li className="footer_item">
             <a
