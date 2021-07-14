@@ -29,13 +29,7 @@ const Hero = () => {
   };
 
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
-  const [password, setPassword] = React.useState({
-    password: "",
-    showPassword: false,
-  });
-
+  const [password, setPassword] = useState("");
 
   const createWEmail = (event, email, password) => {
     event.preventDefault();
@@ -75,6 +69,8 @@ const Hero = () => {
     }
   };
 
+  
+
   return (
     <div className="hero">
       <div className="hero_header_container">
@@ -104,12 +100,11 @@ const Hero = () => {
           <br></br>
           <input
             className="hero_form_input"
-            // type="text"
+            type="password"
             id="hero_password"
             name="fPassword"
-            value={password.password}
+            value={password}
             placeholder="Password"
-            type={password.showPassword ? "text": "password"}
             onChange={(event) => onChangeHandler(event)}
           />
           <br></br>
