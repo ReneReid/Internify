@@ -26,6 +26,7 @@ const WorkingExperience = (props) => {
 };
 
 const GradePoint = (props) => {
+  const handleChange = props.handleChange;
   const marks = [
     {
       value: 50,
@@ -62,7 +63,7 @@ const GradePoint = (props) => {
         <RadioButtonsGroup
           data={gpaData}
           jobData={props.jobData.requirements}
-          property={"isGpaRequired"}
+          property={"gpa"}
         />
       </div>
       <div className="gpa_slider">
@@ -74,6 +75,7 @@ const GradePoint = (props) => {
           max={100}
           marks={marks}
           valueLabelDisplay="on"
+          onChange={(e, v) => handleChange({...props.jobData.requirements, gpaValue: v})}
         />
       </div>
     </React.Fragment>
@@ -108,7 +110,7 @@ function TechRequirements(props) {
             handleChange={setRequirements}
             jobData={requirements}
           />
-          <GradePoint handle={props.handleChange} jobData={props.jobData} />
+          <GradePoint handleChange={setRequirements} jobData={props.jobData} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
