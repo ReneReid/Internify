@@ -68,4 +68,68 @@ const mockJobPosting = {
   },
 };
 
-export { mockJobDetailData, mockTechStackData, mockJobPosting };
+const mockJobPostingList = [
+  {
+    title: "Software Developer",
+    dateCreated: "05/25/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    title: "Quality Assurance Developer",
+    dateCreated: "05/18/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    title: "Software Developer",
+    dateCreated: "04/30/2021",
+    score: "Good",
+    link: "",
+  },
+  {
+    title: "Test Developer",
+    dateCreated: "04/28/2021",
+    score: "Okay",
+    link: "",
+  },
+  {
+    title: "QA Analyst",
+    dateCreated: "04/28/2021",
+    score: "Okay",
+    link: "",
+  },
+  {
+    title: "Software Developer",
+    dateCreated: "04/22/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    title: "Full-Stack Developer",
+    dateCreated: "03/05/2021",
+    score: "Excellent",
+    link: "",
+  },
+];
+
+const mockProfileData = {
+  name: "Angela Smith",
+  handle: "angelas",
+  jobTitle: "Technical Recruiter",
+  company: "Synch Incorporated",
+  bio: "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!",
+  email: "angelas@synch.com",
+  website: "synchinc.com/careers",
+  linkedIn: "linkedin.com/in/angelasmith",
+  location: "Vancouver, BC",
+  photo: "",
+  jobPostings: mockJobPostingList,
+};
+
+export {
+  mockJobDetailData,
+  mockTechStackData,
+  mockJobPosting,
+  mockProfileData,
+};

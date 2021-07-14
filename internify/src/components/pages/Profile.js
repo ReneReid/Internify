@@ -1,66 +1,40 @@
-import "./styles/Profile.css";
 import { Grid } from "@material-ui/core";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
 import angela from "../../assets/Profile/angela_brown.png";
 import { ButtonOutlined } from "../atoms/Button";
 import { ChipBasic } from "../atoms/Chips";
-import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
-import MailOutlineOutlinedIcon from "@material-ui/icons/MailOutlineOutlined";
-import PhoneAndroidOutlinedIcon from "@material-ui/icons/PhoneAndroidOutlined";
-import StarIcon from "@material-ui/icons/Star";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import {
+  RoomOutlined,
+  MailOutlineOutlined,
+  PhoneAndroidOutlined,
+  Star,
+  CheckCircleOutline,
+} from "@material-ui/icons";
+import "./styles/Profile.css";
 
-const Profile = () => {
+const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
-  const [profileDesc, setProfileDesc] = useState(
-    "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!"
-  );
-  const [profileLabels, setProfileLabels] = useState(["12 Postings"]);
-  const [postingContent, setPostingContent] = useState([
-    {
-      title: "Software Developer",
-      dateCreated: "05/25/2021",
-      score: "Excellent",
-      link: "",
-    },
-    {
-      title: "Quality Assurance Developer",
-      dateCreated: "05/18/2021",
-      score: "Excellent",
-      link: "",
-    },
-    {
-      title: "Software Developer",
-      dateCreated: "04/30/2021",
-      score: "Good",
-      link: "",
-    },
-    {
-      title: "Test Developer",
-      dateCreated: "04/28/2021",
-      score: "Okay",
-      link: "",
-    },
-    {
-      title: "QA Analyst",
-      dateCreated: "04/28/2021",
-      score: "Okay",
-      link: "",
-    },
-    {
-      title: "Software Developer",
-      dateCreated: "04/22/2021",
-      score: "Excellent",
-      link: "",
-    },
-    {
-      title: "Full-Stack Developer",
-      dateCreated: "03/05/2021",
-      score: "Excellent",
-      link: "",
-    },
-  ]);
+  const [profile, setProfile] = useState({
+    name: "",
+    handle: "",
+    jobTitle: "",
+    company: "",
+    bio: "",
+    email: "",
+    website: "",
+    linkedIn: "",
+    location: "",
+    photo: "",
+    number: "",
+    jobPostings: [],
+  });
+  const [labels, setLabels] = useState([]);
+
+  useEffect(() => {
+    setProfile(data);
+    setLabels([profile.jobPostings.length + " postings"]);
+  }, [data, profile]);
 
   return (
     <Grid
@@ -99,7 +73,7 @@ const Profile = () => {
               <Grid item>
                 <div className="profile_edit_button">
                   <ButtonOutlined onClick={() => setToggle(true)}>
-                    Edit Profile{" "}
+                    Edit Profile
                   </ButtonOutlined>
                 </div>
               </Grid>
@@ -119,12 +93,15 @@ const Profile = () => {
               <Grid item>
                 <ul className="profile_handle_desc">
                   <li>
-                    <b> Angela Brown </b>
+                    <b>{profile.name}</b>
                   </li>
                   <li>
-                    <b> @angelab </b>
+                    <b>@{profile.handle}</b>
                   </li>
-                  <li> Technical Recruiter @ Synch Inc </li>
+                  <li>
+                    {profile.jobTitle}
+                    {profile.company ? " @ " + profile.company : ""}
+                  </li>
                 </ul>
               </Grid>
             </Grid>
@@ -139,12 +116,10 @@ const Profile = () => {
             >
               <div className="profile_labels">
                 <ul id="profile_labels_list">
-                  {profileLabels.map((label) => (
+                  {labels.map((label) => (
                     <li>
                       <ChipBasic
-                        icon={
-                          <CheckCircleOutlineIcon style={{ color: "white" }} />
-                        }
+                        icon={<CheckCircleOutline style={{ color: "white" }} />}
                         label={label}
                       />
                     </li>
@@ -163,7 +138,7 @@ const Profile = () => {
             >
               <Grid item>
                 <div className="profile_inner_desc">
-                  <p> {profileDesc} </p>
+                  <p> {profile.bio} </p>
                 </div>
               </Grid>
             </Grid>
@@ -183,24 +158,19 @@ const Profile = () => {
                       <h3>Contact</h3>
                     </li>
                     <li>
-                      <RoomOutlinedIcon color="secondary" fontSize="inherit" />
-                      {"  "}
-                      Vancouver, BC
+                      <RoomOutlined color="secondary" fontSize="inherit" />
+                      {profile.location}
                     </li>
                     <li>
-                      <MailOutlineOutlinedIcon
+                      <MailOutlineOutlined color="primary" fontSize="inherit" />
+                      {profile.email}
+                    </li>
+                    <li>
+                      <PhoneAndroidOutlined
                         color="primary"
                         fontSize="inherit"
                       />
-                      {"  "}
-                      angela@sync.com
-                    </li>
-                    <li>
-                      <PhoneAndroidOutlinedIcon
-                        color="primary"
-                        fontSize="inherit"
-                      />
-                      +1 699 (234) 1234{"  "}
+                      {profile.number}
                     </li>
                   </ul>
                 </div>
@@ -228,8 +198,8 @@ const Profile = () => {
                   <h2>Status</h2>
                 </li>
                 <li>
-                  <StarIcon color="secondary" fontSize="inherit" />
-                  <b>Actively recruiting interns!</b> {"  "}
+                  <Star color="secondary" fontSize="inherit" />
+                  <b>{profile.status}</b> {"  "}
                 </li>
               </ul>
             </div>
@@ -238,13 +208,16 @@ const Profile = () => {
           {/* Posting status */}
           <Grid item>
             <div className="profile_left_posting_table">
-              <TableBasic className="posting_table" data={postingContent} />
+              <TableBasic
+                className="posting_table"
+                data={profile.jobPostings}
+              />
             </div>
           </Grid>
         </Grid>
       </Grid>
       <EditModal toggle={toggle} setToggle={setToggle} />
-      <CreateJobButton/>
+      <CreateJobButton />
     </Grid>
   );
 };
