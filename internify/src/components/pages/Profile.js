@@ -25,9 +25,10 @@ const Profile = ({ data }) => {
     website: "",
     linkedIn: "",
     location: "",
-    photo: "",
-    number: "",
+    profilePicture: "",
+    contact: "",
     jobPostings: [],
+    status: "",
   });
   const [labels, setLabels] = useState([]);
 
@@ -154,24 +155,31 @@ const Profile = ({ data }) => {
               <Grid item>
                 <div className="profile_inner_contact">
                   <ul className="profile_inner_contact_list">
-                    <li>
-                      <h3>Contact</h3>
-                    </li>
-                    <li>
-                      <RoomOutlined color="secondary" fontSize="inherit" />
-                      {profile.location}
-                    </li>
-                    <li>
-                      <MailOutlineOutlined color="primary" fontSize="inherit" />
-                      {profile.email}
-                    </li>
-                    <li>
-                      <PhoneAndroidOutlined
-                        color="primary"
-                        fontSize="inherit"
-                      />
-                      {profile.number}
-                    </li>
+                    <h3>Contact</h3>
+                    {profile.location ? (
+                      <li>
+                        <RoomOutlined color="secondary" fontSize="medium" />
+                        {profile.location}
+                      </li>
+                    ) : null}
+                    {profile.email ? (
+                      <li>
+                        <MailOutlineOutlined
+                          color="primary"
+                          fontSize="medium"
+                        />
+                        {profile.email}
+                      </li>
+                    ) : null}
+                    {profile.contact ? (
+                      <li>
+                        <PhoneAndroidOutlined
+                          color="primary"
+                          fontSize="medium"
+                        />
+                        {profile.contact}
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
               </Grid>
@@ -194,13 +202,13 @@ const Profile = ({ data }) => {
           <Grid item>
             <div className="profile_left_status">
               <ul className="profile_left_status_list">
-                <li>
-                  <h2>Status</h2>
-                </li>
-                <li>
-                  <Star color="secondary" fontSize="inherit" />
-                  <b>{profile.status}</b> {"  "}
-                </li>
+                <h2>{profile.status ? "Status" : "Postings"}</h2>
+                {profile.status ? (
+                  <li>
+                    <Star color="secondary" fontSize="inherit" />
+                    <b>{profile.status}</b> {"  "}
+                  </li>
+                ) : null}
               </ul>
             </div>
           </Grid>
