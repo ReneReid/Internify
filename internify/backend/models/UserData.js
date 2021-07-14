@@ -1,4 +1,4 @@
-var jobPosting = require("./JobPostingData");
+var JobPostingData = require("./JobPostingData");
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -40,7 +40,10 @@ const UserSchema = new Schema({
         type: String,
     },
     jobPostings: {
-        type: [jobPosting],
+        type: [{
+            type: Schema.Types.ObjectId, 
+            ref: 'JobPostingData'
+        }],
     },
     status: {
         type: String,
