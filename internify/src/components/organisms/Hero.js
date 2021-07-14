@@ -45,6 +45,7 @@ const Hero = () => {
           .then(() => {
             // Email verification sent!
             // ...
+            alert("Please verify email address :)");
             return;
           });
         // ...
@@ -67,6 +68,8 @@ const Hero = () => {
       setPassword(value);
     }
   };
+
+  
 
   return (
     <div className="hero">
@@ -97,7 +100,7 @@ const Hero = () => {
           <br></br>
           <input
             className="hero_form_input"
-            type="text"
+            type="password"
             id="hero_password"
             name="fPassword"
             value={password}
