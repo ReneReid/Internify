@@ -16,10 +16,6 @@ function JobDetail(props) {
     coOp: "",
   });
 
-  const handleChange = (value) => {
-    setDetails({...details, description: value});
-  };
-
   useEffect(() => {
     props.jobData.details = details;
   });
@@ -36,7 +32,7 @@ function JobDetail(props) {
           type={"text"}
           rows={8}
           rowsMax={200}
-          handleChange={handleChange}
+          onChange={(e) => setDetails({...details, description: e.target.value})}
           value={details.description}
         />
         <ApplicantDetails
