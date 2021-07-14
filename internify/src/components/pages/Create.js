@@ -38,10 +38,17 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+const currStep = {
+  1: "header",
+  2: "requirements",
+  3: "details",
+  4: "contact"
+}
 
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
+  const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
     id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
@@ -78,13 +85,30 @@ function Create(props) {
     },
   });
 
+  function checkIfEmpty(obj){
+    const sub = jobData[obj];
+    for (var key in sub) {
+      const currVal = sub[key];
+      if(currVal === "" || currVal.length === 0){
+        return true;
+      }
+    }
+    return false;
+  }
+
   useEffect(() => {
     props.actions.getStudents();
   }, [props.actions]);
 
   function updateStore() {
-    setCurrentStep(currentStep + 1);
-    console.log(jobData);
+    const curr = currStep[currentStep];
+    if(!checkIfEmpty(curr)){
+      setError(false);
+      setCurrentStep(currentStep + 1);
+      console.log(jobData);
+    } else {
+      setError(true);
+    }
     // Redirects view to top
     window.scrollTo(0, 0);
   }
@@ -141,6 +165,10 @@ function Create(props) {
               </ButtonFilled>
             </Container>
           ) : null}
+          {error && 
+            <div>
+               <h2>Error!</h2>
+            </div>}
         </Grid>
         <Grid item xs={3}>
           <h4>Hello</h4>
