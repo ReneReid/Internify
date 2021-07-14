@@ -57,7 +57,7 @@ function Create(props) {
     },
     requirements: {
       experience: "",
-      isGpaRequired: "",
+      gpa: "",
       gpaValue: "",
       languages: [],
       frameworks: [],
@@ -142,7 +142,7 @@ function Create(props) {
     return {
       _id: jobPosting._id,
       experience: experience,
-      isGpaRequired: jobPosting.requirements.isGpaRequired,
+      gpa: jobPosting.requirements.gpa,
       gpaValue: jobPosting.requirements.gpaValue,
       languages: jobPosting.requirements.languages,
       frameworks: jobPosting.requirements.frameworks,
@@ -164,6 +164,7 @@ function Create(props) {
 
     const posting = createJobObject(jobData);
     // dispatch to matches reducer
+    console.log(jobData);
     if (currentStep === 4) {
       props.actions.processMatches({
         students: allStudents,

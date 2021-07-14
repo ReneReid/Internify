@@ -9,7 +9,6 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -23,7 +22,7 @@ export default function matchesReducer(state = initialState, action) {
 function matchFilter(students, posting) {
   let matchedStudents = students.filter(
     (student) =>
-      matchGpa(posting.isGpaRequired, posting.gpaValue, student.gpaValue) &&
+      matchGpa(posting.gpa, posting.gpaValue, student.gpaValue) &&
       matchCoop(student.coOp, posting.coOp) &&
       matchSeek(student.seeking) &&
       matchFrame(student.frameworks, posting.frameworks) &&
@@ -45,16 +44,15 @@ function matchFilter(students, posting) {
 }
 
 // This section needs to be implemented
-function matchGpa(isGpaRequired, postingGpaValue, studentGpaValue) {
+function matchGpa(gpa, postingGpaValue, studentGpaValue) {
   // empty case
-  if (isGpaRequired === "") {
+  if (gpa === "") {
     return true;
   }
 
-  if (isGpaRequired === "Optional") {
+  if (gpa === "Optional") {
     return true;
   } else {
-    const postingGpaValueInt = parseInt(postingGpaValue, 10);
     return studentGpaValue >= postingGpaValue;
   }
 }
