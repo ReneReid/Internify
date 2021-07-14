@@ -26,7 +26,7 @@ function JobDetail(props) {
 
   return props.currentStep === 3 ? (
     <div className="create_form_container">
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
+      <Container maxWidth="md">
         <Stepper stepNumber={2} />
         <h1>3. Job Details</h1>
         <MultiLineTextField
