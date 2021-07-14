@@ -62,9 +62,11 @@ function App() {
         <Route path="/create">
           <AuthNavbar />
           <Create />
+          <Footer />
         </Route>
         <Route path="/feedback">
           <Feedback />
+          <Footer />
         </Route>
         <Redirect to="/profile" />
       </Switch>
