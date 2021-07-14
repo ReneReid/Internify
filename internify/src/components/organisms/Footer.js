@@ -1,12 +1,16 @@
 import React from "react";
 import "./styles/Footer.css";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer_links_container">
         <ul className="footer_links">
-          <li className="footer_item">Made with "emoji" in Vancouver BC</li>
+          <li className="footer_item">
+            Made with <FavoriteIcon fontSize="small" color="secondary" /> in
+            Vancouver BC
+          </li>
           <li className="footer_item">
             <a href="thing2" className="navbar_main_link2">
               Github repo
