@@ -7,7 +7,7 @@ import {
   Review,
 } from "./CreateJobPosting/index";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
-import { Container, makeStyles, Grid } from "@material-ui/core";
+import { Container, makeStyles, Grid, FormHelperText } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+
 const currStep = {
   1: "header",
   2: "requirements",
@@ -103,14 +104,15 @@ function Create(props) {
   function updateStore() {
     const curr = currStep[currentStep];
     if(!checkIfEmpty(curr)){
+
       setError(false);
       setCurrentStep(currentStep + 1);
       console.log(jobData);
+      
+      window.scrollTo(0, 0);
     } else {
       setError(true);
     }
-    // Redirects view to top
-    window.scrollTo(0, 0);
   }
 
   return (
@@ -167,7 +169,7 @@ function Create(props) {
           ) : null}
           {error && 
             <div>
-               <h2>Error!</h2>
+               <FormHelperText>Please Fill Out All Required Fields</FormHelperText>
             </div>}
         </Grid>
         <Grid item xs={3}>
