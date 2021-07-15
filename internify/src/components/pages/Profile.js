@@ -44,7 +44,7 @@ const Profile = ({ data }) => {
       direction="row"
       justify="center"
       alignItems="center"
-      style={{ marginBottom: "5em" }}
+      style={{ marginBottom: "10em" }}
     >
       {/* Left-hand grid item: profile img, descsription, labels & contact */}
       <Grid item xs={6}>
