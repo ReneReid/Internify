@@ -56,6 +56,7 @@ const EditModal = (props) => {
               type="text"
               placeholder="Tommy Tho"
               onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+              defaultValue={profile.name}
             />
           </Grid>
           <Grid item xs={6}>
@@ -68,6 +69,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, handle: e.target.value })
               }
+              defaultValue={profile.handle}
             />
           </Grid>
         </Grid>
@@ -82,6 +84,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, title: e.target.value })
               }
+              defaultValue={profile.title}
             />
           </Grid>
           <Grid item xs={6}>
@@ -94,6 +97,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, company: e.target.value })
               }
+              defaultValue={profile.company}
             />
           </Grid>
         </Grid>
@@ -119,6 +123,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, email: e.target.value })
               }
+              defaultValue={profile.email}
             />
           </Grid>
           <Grid item xs={6}>
@@ -131,6 +136,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, website: e.target.value })
               }
+              defaultValue={profile.website}
             />
           </Grid>
         </Grid>
@@ -145,6 +151,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, linkedIn: e.target.value })
               }
+              defaultValue={profile.linkedIn}
             />
           </Grid>
           <Grid item xs={6}>
@@ -157,6 +164,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, location: e.target.value })
               }
+              defaultValue={profile.location}
             />
           </Grid>
         </Grid>
