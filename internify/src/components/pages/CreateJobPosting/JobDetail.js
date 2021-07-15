@@ -33,7 +33,7 @@ function JobDetail(props) {
           rows={8}
           rowsMax={200}
           onChange={(e) => setDetails({...details, description: e.target.value})}
-          value={details.description}
+          defaultValue={details.description}
         />
         <ApplicantDetails
           location={data.location}
