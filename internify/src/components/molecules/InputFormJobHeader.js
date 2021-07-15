@@ -15,6 +15,7 @@ function InputFormJobHeader(props) {
           label={"Job Title"}
           type={"text"}
           onChange={(e) => handleChange({...data, title: e.target.value})}
+          defaultValue={data.title}
         />
       </div>
       <div className="input_title_row">
@@ -24,6 +25,7 @@ function InputFormJobHeader(props) {
           label={"Company"}
           type={"text"}
           onChange={(e) => handleChange({...data, company: e.target.value})}
+          defaultValue={data.company}
         />
       </div>
       <div className="input_title_row">
@@ -34,6 +36,7 @@ function InputFormJobHeader(props) {
             label={"Location"}
             type={"text"}
             onChange={(e) => handleChange({...data, location: e.target.value})}
+            defaultValue={data.location}
           />
         </div>
         <div className="input_title_col">
@@ -43,6 +46,7 @@ function InputFormJobHeader(props) {
             label={"Start Date"}
             type={"date"}
             onChange={(e) => handleChange({...data, startDate: e.target.value})}
+            defaultValue={data.startDate}
           />
         </div>
       </div>
