@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "@material-ui/core/Container";
+import { Container, FormHelperText } from "@material-ui/core";
 import {
   PositionSubHeader,
   InputFormJobHeader,
@@ -36,7 +36,9 @@ function CreateJobHeader(props) {
             <h1>1. Create a Job Header</h1>
             <InputFormJobHeader handleChange={setHeader} jobData={header} />
             <LengthSubHeader handleChange={setHeader} jobData={header} />
+            <FormHelperText>Required</FormHelperText>
             <PositionSubHeader handleChange={setHeader} jobData={header} />
+            <FormHelperText>Required</FormHelperText>
           </div>
         </Container>
       </div>
