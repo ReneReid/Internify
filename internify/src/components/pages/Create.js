@@ -7,7 +7,8 @@ import {
   Review,
 } from "./CreateJobPosting/index";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
-import { Container, makeStyles, Grid, FormHelperText } from "@material-ui/core";
+import { Container, makeStyles, Grid } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -169,7 +170,11 @@ function Create(props) {
           ) : null}
           {error && 
             <div>
-               <FormHelperText>Please Fill Out All Required Fields</FormHelperText>
+            <Container maxWidth="md" className={"form_validation_error"}>
+              <Alert variant="outlined" severity="error">
+                Please Fill Out All Required Fields
+              </Alert>
+            </Container>
             </div>}
         </Grid>
         <Grid item xs={3}>
