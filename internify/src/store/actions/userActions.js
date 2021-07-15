@@ -8,10 +8,17 @@ import {
 } from "./types/userTypes";
 
 export const addUser = (data) => (dispatch) => {
-  dispatch({
-    type: ADD_USER,
-    payload: data,
-  });
+  axios
+    .post(`/api/users/`, data)
+    .then(res => {
+      dispatch({
+        type: ADD_USER,
+        payload: res.data,
+      });
+    })
+    .catch(err => {
+      console.error(err);
+    });
 };
 
 export const removeUser = (data) => (dispatch) => {

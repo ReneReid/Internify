@@ -17,7 +17,7 @@ router.get("/", function (req, res, next) {
 //@access   Public
 
 router.get("/:id", function (req, res, next) {
-  UserData.findById(req.params.id)
+  UserData.find({ authId: req.params.authId })
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(404).json({ success: false }));
 });
@@ -27,10 +27,9 @@ router.get("/:id", function (req, res, next) {
 //@access   Public
 
 router.post("/", function (req, res, next) {
-  
-
   // flesh out a new user
   var newUser = new UserData({
+    authId: req.body.authId,
     name: req.body.name,
     email: req.body.email,
     profilePicture: req.body.profilePicture,

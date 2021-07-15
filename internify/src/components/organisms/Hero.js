@@ -2,9 +2,12 @@ import React, { useState } from "react";
 // import { Link } from "@reach/router";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addUser } from "../../store/actions/userActions";
 import "./styles/Hero.css";
 
-const Hero = () => {
+const Hero = (props) => {
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
@@ -19,6 +22,20 @@ const Hero = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
+
+        var newUser = {
+          authId: result.user.uid,
+          profilePhoto: result.user.photoURL,
+          name: result.user.displayName,
+          email: result.user.email,
+          contact: result.user.phoneNumber,
+        };
+
+        console.log(newUser);
+        console.log(result.user);
+        //dispatch
+        props.actions.addUser(newUser);
+
         return result.user;
       })
       .catch((error) => {
@@ -122,4 +139,16 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addUser: addUser }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Hero);
