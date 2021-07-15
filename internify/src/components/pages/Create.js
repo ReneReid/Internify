@@ -72,7 +72,6 @@ function Create(props) {
   function updateStore() {
 
     setCurrentStep(currentStep + 1);
-    props.actions.addJobsData(jobData);
     window.scrollTo(0,0);
   }
 
