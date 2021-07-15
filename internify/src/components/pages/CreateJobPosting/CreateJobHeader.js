@@ -26,11 +26,10 @@ function CreateJobHeader(props) {
     return null;
   } else {
     return (
-      <div className="create">
+      <div className="create_form_container">
         <Container
           maxWidth="md"
           className={"container"}
-          style={{ padding: "0 10em" }}
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">

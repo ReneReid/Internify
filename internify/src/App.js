@@ -5,8 +5,9 @@ import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
+import Profile from "./components/pages/Profile";
 import Feedback from "./components/organisms/Feedback";
-import { EditModal } from "./components/molecules/index";
+import Footer from "./components/organisms/Footer";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -53,17 +54,21 @@ function App() {
   if (user) {
     routes = (
       <Switch>
-        <Route path="/edit">
-          <EditModal toggle={true} />
+        <Route path="/profile">
+          <AuthNavbar />
+          <Profile />
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
           <Create />
+          <Footer />
         </Route>
         <Route path="/feedback">
           <Feedback />
+          <Footer />
         </Route>
-        <Redirect to="/create" />
+        <Redirect to="/profile" />
       </Switch>
     );
   } else {

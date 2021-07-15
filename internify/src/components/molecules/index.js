@@ -8,8 +8,10 @@ import TechStack from "./TechStack";
 import InputFormContactDetails from "./InputFormContactDetails";
 import JobPosting from "./JobPosting";
 import EditModal from "./EditModal";
+import CreateJobButton from "./CreateJobButton";
 
 export {
+  CreateJobButton,
   EditModal,
   PositionSubHeader,
   InputFormJobHeader,
