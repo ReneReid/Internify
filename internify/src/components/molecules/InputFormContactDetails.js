@@ -70,6 +70,7 @@ function InputFormContactDetails(props) {
           rows={4}
           onChange={(e) => handleChange({...jobData, applicationSteps: e.target.value})}
           defaultValue={jobData.applicationSteps}
+          helperText={"Required"}
         />
       </div>
     </div>

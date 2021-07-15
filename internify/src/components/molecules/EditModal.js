@@ -110,6 +110,7 @@ const EditModal = (props) => {
             rows={4}
             defaultValue={profile.bio}
             onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
+            helperText={"Required"}
           />
         </div>
         <Grid container spacing={2} style={{ padding: "0.5em 0"}}>
