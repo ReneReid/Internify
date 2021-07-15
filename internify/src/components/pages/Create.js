@@ -14,7 +14,9 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
+import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
+
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -82,12 +84,15 @@ function Create(props) {
     props.actions.getStudents();
   }, [props.actions]);
 
+
   function updateStore() {
+
     setCurrentStep(currentStep + 1);
     console.log(jobData);
     // Redirects view to top
     window.scrollTo(0, 0);
   }
+
 
   return (
     <div className={classes.root}>
@@ -152,13 +157,15 @@ function Create(props) {
 
 function mapStateToProps(state) {
   return {
+    jobs: state.jobs,
     students: state.students,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getStudents: getStudents }, dispatch),
+    actions: bindActionCreators(
+      { addJobsData: addJobsData, getStudents: getStudents}, dispatch),
   };
 }
 
