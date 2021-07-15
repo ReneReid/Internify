@@ -75,10 +75,10 @@ const LoginForm = () => {
           <br></br>
           <input
             className="login_form_input"
-            type="text"
+            type="password"
             id="login_password"
             name="fPassword"
-            value={password}
+            value={password.password}
             placeholder="Password"
             onChange={(event) => onChangeHandler(event)}
           ></input>

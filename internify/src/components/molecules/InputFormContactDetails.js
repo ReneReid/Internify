@@ -5,10 +5,7 @@ import "./styles/InputFormContactDetails.css";
 
 function InputFormContactDetails(props) {
   let jobData = props.jobData;
-
-  const handleChange = (value) => {
-    props.handleChange({ ...jobData, applicationSteps: value });
-  };
+  const handleChange = props.handleChange;
 
   return (
     <div className="input_contact_form">
@@ -67,7 +64,7 @@ function InputFormContactDetails(props) {
           label={"Application steps"}
           type={"text"}
           rows={4}
-          handleChange={handleChange}
+          onChange={(e) => handleChange({...jobData, applicationSteps: e.target.value})}
           value={jobData.applicationSteps}
         />
       </div>

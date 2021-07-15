@@ -8,6 +8,7 @@ import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Feedback from "./components/organisms/Feedback";
 import { mockProfileData } from "./models/mockData";
+import Footer from "./components/organisms/Footer";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -57,13 +58,16 @@ function App() {
         <Route path="/profile">
           <AuthNavbar />
           <Profile data={mockProfileData}/>
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
           <Create />
+          <Footer />
         </Route>
         <Route path="/feedback">
           <Feedback />
+          <Footer />
         </Route>
         <Redirect to="/profile" />
       </Switch>
