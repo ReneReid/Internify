@@ -22,6 +22,7 @@ function TextFieldInput(props) {
       label={props.label}
       type={props.type}
       onChange={props.onChange}
+      defaultValue={props.defaultValue}
       onBlur={validateForm}
       error={validInput}
       helperText={validInput ? 'This section is required' : 'Required'}
