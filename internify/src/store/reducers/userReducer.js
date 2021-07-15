@@ -29,7 +29,7 @@ export default function userReducer(state = initialState, action) {
       initialState.userList = action.payload;
       return {
         ...state,
-        studentList: initialState.studentList,
+        userList: initialState.userList,
       };
     default:
       return state;
