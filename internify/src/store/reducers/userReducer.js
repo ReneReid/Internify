@@ -3,6 +3,7 @@ import {
   REMOVE_USER,
   UPDATE_USER,
   GET_USERS,
+  GET_USER,
 } from "../actions/types/userTypes";
 
 const initialState = {
@@ -31,6 +32,12 @@ export default function userReducer(state = initialState, action) {
         ...state,
         userList: initialState.userList,
       };
+
+    case GET_USER:
+      const userId = action.payload.id;
+      const user = initialState.userList.filter((user) => user.id !== userId);
+      return [...state, user];
+
     default:
       return state;
   }

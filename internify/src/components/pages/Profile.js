@@ -2,8 +2,10 @@ import { Grid } from "@material-ui/core";
 import { React, useEffect, useState } from "react";
 import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
 import angela from "../../assets/Profile/angela_brown.png";
-import { ButtonOutlined } from "../atoms/Button";
-import { ChipBasic } from "../atoms/Chips";
+import { ButtonOutlined, ChipBasic } from "../atoms/index";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getUser, updateUser } from "../../store/actions/userActions";
 import {
   RoomOutlined,
   MailOutlineOutlined,
@@ -15,7 +17,7 @@ import "./styles/Profile.css";
 
 const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
-  const [profile, setProfile] = useState({
+  const [user, setUser] = useState({
     name: "",
     handle: "",
     jobTitle: "",
@@ -33,9 +35,9 @@ const Profile = ({ data }) => {
   const [labels, setLabels] = useState([]);
 
   useEffect(() => {
-    setProfile(data);
-    setLabels([profile.jobPostings.length + " postings"]);
-  }, [data, profile]);
+    setUser(data);
+    setLabels([user.jobPostings.length + " postings"]);
+  }, [data, user]);
 
   return (
     <Grid
@@ -94,14 +96,14 @@ const Profile = ({ data }) => {
               <Grid item>
                 <ul className="profile_handle_desc">
                   <li>
-                    <b>{profile.name}</b>
+                    <b>{user.name}</b>
                   </li>
                   <li>
-                    <b>@{profile.handle}</b>
+                    <b>@{user.handle}</b>
                   </li>
                   <li>
-                    {profile.jobTitle}
-                    {profile.company ? " @ " + profile.company : ""}
+                    {user.jobTitle}
+                    {user.company ? " @ " + user.company : ""}
                   </li>
                 </ul>
               </Grid>
@@ -139,7 +141,7 @@ const Profile = ({ data }) => {
             >
               <Grid item>
                 <div className="profile_inner_desc">
-                  <p> {profile.bio} </p>
+                  <p> {user.bio} </p>
                 </div>
               </Grid>
             </Grid>
@@ -156,28 +158,28 @@ const Profile = ({ data }) => {
                 <div className="profile_inner_contact">
                   <ul className="profile_inner_contact_list">
                     <h3>Contact</h3>
-                    {profile.location ? (
+                    {user.location ? (
                       <li>
                         <RoomOutlined color="secondary" fontSize="medium" />
-                        {profile.location}
+                        {user.location}
                       </li>
                     ) : null}
-                    {profile.email ? (
+                    {user.email ? (
                       <li>
                         <MailOutlineOutlined
                           color="primary"
                           fontSize="medium"
                         />
-                        {profile.email}
+                        {user.email}
                       </li>
                     ) : null}
-                    {profile.contact ? (
+                    {user.contact ? (
                       <li>
                         <PhoneAndroidOutlined
                           color="primary"
                           fontSize="medium"
                         />
-                        {profile.contact}
+                        {user.contact}
                       </li>
                     ) : null}
                   </ul>
@@ -202,11 +204,11 @@ const Profile = ({ data }) => {
           <Grid item>
             <div className="profile_left_status">
               <ul className="profile_left_status_list">
-                <h2>{profile.status ? "Status" : "Postings"}</h2>
-                {profile.status ? (
+                <h2>{user.status ? "Status" : "Postings"}</h2>
+                {user.status ? (
                   <li>
                     <Star color="secondary" fontSize="inherit" />
-                    <b>{profile.status}</b> {"  "}
+                    <b>{user.status}</b> {"  "}
                   </li>
                 ) : null}
               </ul>
@@ -218,7 +220,7 @@ const Profile = ({ data }) => {
             <div className="profile_left_posting_table">
               <TableBasic
                 className="posting_table"
-                data={profile.jobPostings}
+                data={user.jobPostings}
               />
             </div>
           </Grid>
@@ -229,4 +231,18 @@ const Profile = ({ data }) => {
     </Grid>
   );
 };
-export default Profile;
+
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      { getUser: getUser, updateUser: updateUser }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Profile);

@@ -4,6 +4,7 @@ import {
   REMOVE_USER,
   UPDATE_USER,
   GET_USERS,
+  GET_USER,
 } from "./types/userTypes";
 
 export const addUser = (data) => (dispatch) => {
@@ -35,3 +36,13 @@ export const getUsers = (data) => (dispatch) => {
     });
   });
 };
+
+export const getUser = (data) => (dispatch) => {
+  axios.get(`api/users/${data.id}`).then((res) => {
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  });
+};
+
