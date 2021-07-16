@@ -25,15 +25,14 @@ const Hero = (props) => {
 
         var newUser = {
           authId: result.user.uid,
-          profilePhoto: result.user.photoURL,
+          profilePicture: result.user.photoURL,
           name: result.user.displayName,
           email: result.user.email,
           contact: result.user.phoneNumber,
         };
 
-        console.log(newUser);
-        console.log(result.user);
-        //dispatch
+        // dispatch
+        // TODO: state is not iterable error
         props.actions.addUser(newUser);
 
         return result.user;
@@ -66,6 +65,12 @@ const Hero = (props) => {
             return;
           });
         // ...
+
+        var newUser = {
+          authId: result.user.uid,
+          email: result.user.email,
+        };
+        props.actions.addUser(newUser);
       })
       .catch((error) => {
         console.log(error.code);
