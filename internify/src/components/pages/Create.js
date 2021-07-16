@@ -54,7 +54,10 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
-    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    dateCreated: "",
+    dateUpdated: "",
+    score: 0,
     header: {
       title: "",
       company: "",
