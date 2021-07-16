@@ -169,7 +169,7 @@ const EditModal = (props) => {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={2} justify="flex-end">
+        <Grid container spacing={2} justifyContent="flex-end">
           <Grid item>
             <ButtonWhite onClick={() => handleCancel()}>Cancel</ButtonWhite>
           </Grid>
