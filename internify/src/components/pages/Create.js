@@ -213,8 +213,6 @@ function Create(props) {
       props.actions.addJobsData(jobData);
       const posting = createJobObject(jobData);
 
-      console.log(jobData);
-
       if (currentStep === 4) {
         props.actions.processMatches({
           students: allStudents,

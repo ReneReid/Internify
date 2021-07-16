@@ -9,7 +9,6 @@ export default function matchesReducer(state = initialState, action) {
     case PROCESS_MATCHES:
       const students = action.payload.students;
       const posting = action.payload.posting;
-      console.log(posting);
       const postingMatch = matchFilter(students, posting);
       return [...state.matches, postingMatch];
     default:
@@ -38,8 +37,6 @@ function matchFilter(students, posting) {
   const jobId = posting.jobId;
   let match = {};
   match[jobId] = matchedStudents;
-
-  console.log(match);
 
   return match;
 }

@@ -32,7 +32,6 @@ const Feedback = () => {
         seekingLength++;
       }
     }
-    console.log(seekingLength);
     return seekingLength;
   }
 
