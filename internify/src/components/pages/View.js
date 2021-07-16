@@ -10,16 +10,22 @@ import "./styles/View.css";
 
 const View = () => {
   return (
-    <Grid container direction="row" alignItems="flex-start" justify="flex-end">
+    <Grid
+      container
+      style={{ paddingTop: "1em" }}
+      direction="row"
+      alignItems="flex-start"
+      justify="flex-end"
+    >
       {/** Left side button */}
       <Grid item xs={2}>
-        <Grid container justify="flex-end" style={{ paddingTop: "1em" }}>
+        <Grid container justify="flex-end">
           <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
         </Grid>
       </Grid>
 
       {/** Middle Job Posting */}
-      <Grid item xs={7} style={{ paddingTop: "1em" }}>
+      <Grid item xs={7}>
         <Container maxWidth="md">
           <ViewPosting data={mockJobPosting} />
         </Container>
@@ -29,7 +35,6 @@ const View = () => {
       <Grid item xs={3}>
         <Grid
           container
-          style={{ paddingTop: "1em" }}
           direction="column"
           alignItems="flex-start"
           justify="flex-end"
