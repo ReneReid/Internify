@@ -17,8 +17,8 @@ router.get("/", function (req, res, next) {
 //@access   Public
 
 router.get("/:id", function (req, res, next) {
-  UserData.findById(req.params.id)
-    .then((users) => res.status(200).json(users))
+  UserData.find({ authId: req.params.id })
+    .then((user) => res.status(200).json(user[0]))
     .catch((err) => res.status(404).json({ success: false }));
 });
 
@@ -27,10 +27,9 @@ router.get("/:id", function (req, res, next) {
 //@access   Public
 
 router.post("/", function (req, res, next) {
-  
-
   // flesh out a new user
   var newUser = new UserData({
+    authId: req.body.authId,
     name: req.body.name,
     email: req.body.email,
     profilePicture: req.body.profilePicture,
@@ -47,10 +46,22 @@ router.post("/", function (req, res, next) {
   });
 
   // save new user to database
-  newUser
-    .save()
-    .then((user) => res.status(200).json(user))
-    .catch((err) => res.status(404).json({ success: false }));
+  UserData.find({ authId: newUser.authId })
+    .then((result) => {
+      if (result.length === 0) {
+        newUser
+          .save()
+          .then((user) => res.status(200).json(user))
+          .catch((err) => res.status(404).json({ success: false }));
+      } else {
+        UserData.find({ authId: newUser.authId })
+          .then((user) => res.status(200).json(user[0]))
+          .catch((err) => res.status(404).json({ success: false }));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 //@route    DELETE api/:id

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 // import { Link } from "@reach/router";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addUser, getUser } from "../../store/actions/userActions";
 import "./styles/Hero.css";
 
-const Hero = () => {
+const Hero = (props) => {
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
@@ -19,6 +22,18 @@ const Hero = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
+
+        var newUser = {
+          authId: result.user.uid,
+          profilePicture: result.user.photoURL,
+          name: result.user.displayName,
+          email: result.user.email,
+          contact: result.user.phoneNumber,
+        };
+
+        // dispatch
+        props.actions.addUser(newUser);
+
         return result.user;
       })
       .catch((error) => {
@@ -48,7 +63,14 @@ const Hero = () => {
             alert("Please verify email address :)");
             return;
           });
-        // ...
+
+        var newUser = {
+          authId: result.user.uid,
+          email: result.user.email,
+        };
+
+        // dispatch
+        props.actions.addUser(newUser);
       })
       .catch((error) => {
         console.log(error.code);
@@ -122,4 +144,16 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addUser: addUser, getUser: getUser }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Hero);

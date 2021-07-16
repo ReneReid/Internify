@@ -19,8 +19,8 @@ const useStyles = makeStyles({
   },
 });
 
-function createBasicData(title, dateCreated, score) {
-  return { title, dateCreated, score };
+function createBasicData(jobId, title, dateCreated, score) {
+  return { jobId, title, dateCreated, score };
 }
 
 function createData(isStarred, title, dateCreated, score) {
@@ -30,7 +30,7 @@ function createData(isStarred, title, dateCreated, score) {
 export const TableBasic = (props) => {
   const classes = useStyles();
   const rows = props.data?.map((x) => {
-    return createBasicData(x.title, x.dateCreated, x.score);
+    return createBasicData(x.jobId, x.title, x.dateCreated, x.score);
   });
 
   return (
@@ -44,7 +44,7 @@ export const TableBasic = (props) => {
       </TableHead>
       <TableBody>
         {rows.map((row) => (
-          <TableRow key={row.name}>
+          <TableRow key={row.jobId}>
             <TableCell className={classes.row} align="left">
               {row.title}
             </TableCell>

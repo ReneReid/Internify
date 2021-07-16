@@ -30,6 +30,7 @@ const JobPosting = (props) => {
   function sendJob(){
     props.actions.addNewJob(data);
   }
+  
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>

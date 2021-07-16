@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getUser } from "../../store/actions/userActions";
 import "./styles/LoginForm.css";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
@@ -14,7 +17,10 @@ const LoginForm = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
-        return result.user;
+        const authId = result.user.uid;
+        props.actions.getUser(authId);
+
+        return authId;
       })
       .catch((error) => {
         console.log(error.code);
@@ -35,7 +41,10 @@ const LoginForm = () => {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         // signed in
-        return result.user;
+        const authId = result.user.uid;
+        props.actions.getUser(authId);
+
+        return authId;
       })
       .catch((error) => {
         console.log(error.code);
@@ -111,4 +120,16 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ getUser: getUser }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(LoginForm);
