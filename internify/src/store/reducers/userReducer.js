@@ -41,6 +41,7 @@ export default function userReducer(state = initialState, action) {
     case GET_USER:
       const user = action.payload;
       state.user = user;
+      console.log(user);
       return {...state, user: state.user};
 
     default:

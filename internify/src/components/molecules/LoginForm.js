@@ -18,7 +18,6 @@ const LoginForm = (props) => {
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         const authId = result.user.uid;
-
         props.actions.getUser(authId);
 
         return authId;
@@ -42,7 +41,11 @@ const LoginForm = (props) => {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         // signed in
-        return result.user;
+        const authId = result.user.uid;
+        console.log(authId);
+        props.actions.getUser(authId);
+
+        return authId;
       })
       .catch((error) => {
         console.log(error.code);

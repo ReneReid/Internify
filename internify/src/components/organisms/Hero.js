@@ -4,7 +4,7 @@ import { ButtonWhite, GoogleLoginButton } from "../atoms/index.js";
 import firebase from "firebase/app";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addUser } from "../../store/actions/userActions";
+import { addUser, getUser } from "../../store/actions/userActions";
 import "./styles/Hero.css";
 
 const Hero = (props) => {
@@ -152,7 +152,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addUser: addUser }, dispatch),
+    actions: bindActionCreators({ addUser: addUser, getUser: getUser }, dispatch),
   };
 }
 

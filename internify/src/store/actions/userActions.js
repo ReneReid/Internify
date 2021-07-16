@@ -48,7 +48,7 @@ export const getUser = (data) => (dispatch) => {
   axios.get(`api/users/${data}`).then((res) => {
     dispatch({
       type: GET_USER,
-      payload: res.data[0],
+      payload: res.data,
     });
   });
 };
