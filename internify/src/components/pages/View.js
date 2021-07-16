@@ -46,13 +46,11 @@ const View = () => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined styles={{}}>
-                <CreateOutlinedIcon />
+              <ButtonOutlined styles={{}} startIcon={<CreateOutlinedIcon />}>
                 Edit
               </ButtonOutlined>
               {"    "}
-              <ButtonOutlined styles={{}}>
-                <LinkIcon />
+              <ButtonOutlined styles={{}} startIcon={<LinkIcon />}>
                 Copy Link
               </ButtonOutlined>
             </div>
