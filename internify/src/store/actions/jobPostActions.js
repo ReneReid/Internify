@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_ONE_JOB, GET_ALL_JOBS, ADD_JOB, DELETE_JOB } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER } from "./types/jobPostTypes";
 
 export const getOneJob = (_id) => dispatch => {
   
@@ -47,3 +48,12 @@ export const deleteJob = (_id) => dispatch => {
           });
       })
 }
+
+export const addJobsData = (data) => (dispatch) => {
+
+    dispatch({
+        type: ADD_JOB_HEADER,
+        payload: data,
+    });
+
+};
