@@ -8,6 +8,7 @@ import {
 } from "./CreateJobPosting/index";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import { Container, makeStyles, Grid } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -41,9 +42,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const currStep = {
+  1: "header",
+  2: "requirements",
+  3: "details",
+  4: "contact"
+}
+
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
+  const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
     id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     header: {
@@ -80,17 +89,34 @@ function Create(props) {
     },
   });
 
+  function checkIfEmpty(obj){
+    const sub = jobData[obj];
+    for (var key in sub) {
+      const currVal = sub[key];
+      if(currVal === "" || currVal.length === 0){
+        return true;
+      }
+    }
+    return false;
+  }
+
   useEffect(() => {
     props.actions.getStudents();
   }, [props.actions]);
 
 
   function updateStore() {
+    const curr = currStep[currentStep];
+    if(!checkIfEmpty(curr)){
 
-    setCurrentStep(currentStep + 1);
-    console.log(jobData);
-    // Redirects view to top
-    window.scrollTo(0, 0);
+      setError(false);
+      setCurrentStep(currentStep + 1);
+      console.log(jobData);
+      
+      window.scrollTo(0, 0);
+    } else {
+      setError(true);
+    }
   }
 
 
@@ -146,6 +172,14 @@ function Create(props) {
               </ButtonFilled>
             </Container>
           ) : null}
+          {error && 
+            <div>
+            <Container maxWidth="md" className={"form_validation_error"}>
+              <Alert variant="outlined" severity="error">
+                Please Fill Out All Required Fields
+              </Alert>
+            </Container>
+            </div>}
         </Grid>
         <Grid item xs={3}>
           <h4>Hello</h4>

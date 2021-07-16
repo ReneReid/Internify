@@ -1,6 +1,6 @@
 import React from "react";
+import { TextField, FormHelperText, Container } from "@material-ui/core";
 import { useState } from "react";
-import { TextField } from "@material-ui/core";
 import CheckBox from "../atoms/CheckBox";
 import "./styles/TechStack.css";
 
@@ -99,6 +99,7 @@ const TechStack = (props) => {
       <div className="tech_stack_container">
         <h3>Coding Languages*</h3>
         <div className="tech_stack_checkbox_container">
+          <Container maxWidth="md" style={{ padding: "0em" }}>
           {languages.map((x) => {
             return (
               <CheckBox
@@ -110,12 +111,15 @@ const TechStack = (props) => {
               />
             );
           })}
+          <FormHelperText>Required</FormHelperText>
+          </Container>
         </div>
         <TextField id="languages" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Frameworks*</h3>
         <div className="tech_stack_checkbox_container">
+        <Container maxWidth="md" style={{ padding: "0em" }}>
           {frameworks.map((x) => {
             return (
               <CheckBox
@@ -127,13 +131,16 @@ const TechStack = (props) => {
               />
             );
           })}
+          <FormHelperText>Required</FormHelperText>
+        </Container>
         </div>
         <TextField id="languages" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Work Tools and Others*</h3>
         <div className="tech_stack_checkbox_container">
-          {workTools.map((x) => {
+        <Container maxWidth="md" style={{ padding: "0em" }}>
+        {workTools.map((x) => {
             return (
               <CheckBox
                 key={x}
@@ -144,13 +151,16 @@ const TechStack = (props) => {
               />
             );
           })}
+          <FormHelperText>Required</FormHelperText>
+        </Container>
         </div>
         <TextField id="languages" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Computer Science Concepts</h3>
         <div className="tech_stack_checkbox_container">
-          {csConcepts.map((x) => {
+        <Container maxWidth="md" style={{ padding: "0em" }}>
+        {csConcepts.map((x) => {
             return (
               <CheckBox
                 key={x}
@@ -161,6 +171,8 @@ const TechStack = (props) => {
               />
             );
           })}
+          <FormHelperText>Required</FormHelperText>
+        </Container>
         </div>
         <TextField id="languages" label="Custom..." variant="filled" />
       </div>

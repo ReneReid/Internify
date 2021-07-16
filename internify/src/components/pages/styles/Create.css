@@ -6,3 +6,7 @@
 .create_form_container {
     margin-bottom: 2em;
 }
+
+.form_validation_error {
+    margin-top: 1em;
+}
