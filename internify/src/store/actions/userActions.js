@@ -13,7 +13,7 @@ export const addUser = (data) => (dispatch) => {
     .then(res => {
       dispatch({
         type: ADD_USER,
-        payload: res.data,
+        payload: data,
       });
     })
     .catch(err => {

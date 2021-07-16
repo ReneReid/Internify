@@ -46,10 +46,18 @@ router.post("/", function (req, res, next) {
   });
 
   // save new user to database
-  newUser
-    .save()
-    .then((user) => res.status(200).json(user))
-    .catch((err) => res.status(404).json({ success: false }));
+  UserData.find({authId: newUser.authId})
+    .then((res) => {
+      if (res === []) {
+        newUser
+        .save()
+        .then((user) => res.status(200).json(user))
+        .catch((err) => res.status(404).json({ success: false }));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 //@route    DELETE api/:id
