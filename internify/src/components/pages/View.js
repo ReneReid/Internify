@@ -3,6 +3,9 @@ import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 // import { JobPosting } from "../../molecules/index";
 import { ButtonFilled, ButtonClear, ButtonOutlined } from "../atoms";
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import LinkIcon from "@material-ui/icons/Link";
+import "./styles/View.css";
 
 const View = () => {
   return (
@@ -26,22 +29,27 @@ const View = () => {
           justify="flex-end"
         >
           <div className="view_page_creation_details">
-            <ul className="view_page_details_list">
-              <li>
-                <b>Date created:</b> 05/25/2021
-              </li>
-              <li>
-                <b>Score: </b>80%
-              </li>
-            </ul>
-            <ul className="view_page_buttons_list">
-              <li>
-                <ButtonOutlined> Edit </ButtonOutlined>
-              </li>
-              <li>
-                <ButtonOutlined> Copy Link </ButtonOutlined>
-              </li>
-            </ul>
+            <div className="view_page_details_list">
+              <ul className="view_page_details_list">
+                <li>
+                  <b>Date created:</b> 05/25/2021
+                </li>
+                <li>
+                  <b>Score: </b>80%
+                </li>
+              </ul>
+            </div>
+            <div className="view_page_buttons_list">
+              <ButtonOutlined styles={{}}>
+                <CreateOutlinedIcon />
+                Edit
+              </ButtonOutlined>
+              {"    "}
+              <ButtonOutlined styles={{}}>
+                <LinkIcon />
+                Copy Link
+              </ButtonOutlined>
+            </div>
           </div>
         </Grid>
       </Grid>
