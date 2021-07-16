@@ -44,11 +44,6 @@ const Profile = ({ data }) => {
   console.log(user);
   const [labels, setLabels] = useState([]);
 
-  // useEffect(() => {
-  //   setUser(user);
-  //   setLabels([user.jobPostings.length + " postings"]);
-  // }, [currentUser, user]);
-
   useEffect(() => {
     setUser({
       name: currentUser.hasOwnProperty("name") ? currentUser.name : "",
@@ -76,7 +71,7 @@ const Profile = ({ data }) => {
       status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
     });
     setLabels([user.jobPostings.length + " postings"]);
-  }, [currentUser, ]);
+  }, [currentUser]);
 
   return (
     <Grid
@@ -130,9 +125,18 @@ const Profile = ({ data }) => {
               alignItems="center"
             >
               <Grid item>
-                {user.profilePicture? 
-                <img src={user.profilePicture} alt="Profile pic" className="profile_img" /> : 
-                <AccountCircle  className="profile_image_default" style={{ fontSize: 140 }}/>}
+                {user.profilePicture ? (
+                  <img
+                    src={user.profilePicture}
+                    alt="Profile pic"
+                    className="profile_img"
+                  />
+                ) : (
+                  <AccountCircle
+                    className="profile_image_default"
+                    style={{ fontSize: 140 }}
+                  />
+                )}
               </Grid>
               <Grid item>
                 <ul className="profile_handle_desc">
