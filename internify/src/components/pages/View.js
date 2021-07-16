@@ -1,5 +1,6 @@
 import { React } from "react";
-import { Container, Grid, Link } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
