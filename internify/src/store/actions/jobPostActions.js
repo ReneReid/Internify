@@ -4,8 +4,8 @@ import {
   GET_ALL_JOBS,
   ADD_JOB,
   DELETE_JOB,
-  ADD_JOB_HEADER,
 } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER } from "./types/jobPostTypes";
 
 export const getOneJob = (_id) => (dispatch) => {
   axios.get(`/api/jobs/getOne/${_id}`).then((res) => {
@@ -43,7 +43,6 @@ export const deleteJob = (_id) => (dispatch) => {
   });
 };
 
-// Essential for some functionality -> old action handling for jobData
 export const addJobsData = (data) => (dispatch) => {
   dispatch({
     type: ADD_JOB_HEADER,

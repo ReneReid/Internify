@@ -8,12 +8,12 @@ import "./styles/Feedback.css";
 const Feedback = () => {
   // Grab appropriate information from state
   const students = useSelector((state) => state.students.studentList); // all students from database
-  const jobID = useSelector((state) => state.jobs.currentPosting["_id"]); // the jobID
+  const jobId = useSelector((state) => state.jobs.currentPosting["jobId"]); // the jobID
   const allMatches = useSelector((state) => state.matches); // all jobID:matches pairings
   let matchStudents = []; // matches for the job in question
   allMatches.forEach((match) => {
-    if (match[jobID] !== undefined) {
-      matchStudents = match[jobID];
+    if (match[jobId] !== undefined) {
+      matchStudents = match[jobId];
     }
   });
   const matchLength = matchStudents.length; // number of matches for job

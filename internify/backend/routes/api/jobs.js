@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 //@route    GET api/jobs/getOne/:id
 //@desc     Get Single Job Document
 //@access   Public
-router.get('/getOne/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   JobPostingData.findById(req.params.id)
     .then(jobs => res.status(200).json(jobs))
     .catch(err => res.status(404).json({success: false}));

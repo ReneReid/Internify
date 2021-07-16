@@ -38,8 +38,10 @@ ul#profile_labels_list li {
   margin-left: -75%;
 }
 
-.profile_inner_contact_list {
+.profile_inner_contact_list > li{
   list-style: none;
+  display: flex;
+  align-items: center;
 }
 
 .profile_left_status_list {

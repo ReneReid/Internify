@@ -18,6 +18,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, name: e.target.value })
           }
+          defaultValue={jobData.name}
         />
       </div>
 
@@ -30,6 +31,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, email: e.target.value })
           }
+          defaultValue={jobData.email}
         />
       </div>
 
@@ -42,6 +44,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, linkedIn: e.target.value })
           }
+          defaultValue={jobData.linkedIn}
         />
       </div>
 
@@ -54,6 +57,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, other: e.target.value })
           }
+          defaultValue={jobData.other}
         />
       </div>
 
@@ -65,7 +69,8 @@ function InputFormContactDetails(props) {
           type={"text"}
           rows={4}
           onChange={(e) => handleChange({...jobData, applicationSteps: e.target.value})}
-          value={jobData.applicationSteps}
+          defaultValue={jobData.applicationSteps}
+          helperText={"Required"}
         />
       </div>
     </div>

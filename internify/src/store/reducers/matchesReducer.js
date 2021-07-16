@@ -35,9 +35,9 @@ function matchFilter(students, posting) {
       matchCitizen(student.candidate, posting.candidates)
   );
 
-  const _id = posting._id;
+  const jobId = posting.jobId;
   let match = {};
-  match[_id] = matchedStudents;
+  match[jobId] = matchedStudents;
 
   console.log(match);
 

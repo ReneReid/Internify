@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-import { TextField } from "@material-ui/core";
+import { TextField, FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
@@ -34,6 +34,7 @@ function ApplicantDetails(props) {
             data={location}
           />
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="job_details_container">
         <h3>How will this position pay?*</h3>
@@ -44,6 +45,7 @@ function ApplicantDetails(props) {
             data={payment}
           />
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="job_details_container">
         <h3>What candidates will this position accept?*</h3>
@@ -55,6 +57,7 @@ function ApplicantDetails(props) {
           />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
       <div className="job_details_container">
         <h3>Are there academic requirements?*</h3>
         <div className="job_details_radio_container">
@@ -66,6 +69,7 @@ function ApplicantDetails(props) {
           <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
       <div className="job_details_container">
         <h3>Is co-op enrollment required?*</h3>
         <div className="job_details_radio_container">
@@ -76,6 +80,7 @@ function ApplicantDetails(props) {
           />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 }

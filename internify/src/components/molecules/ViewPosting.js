@@ -1,12 +1,9 @@
 import React from "react";
 import { ButtonFilled } from "../atoms/index";
-import { AddCircleOutline } from "@material-ui/icons";
-import "./styles/JobPosting.css";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addNewJob } from "../../store/actions/jobPostActions";
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
+import "./styles/ViewPosting.css";
 
-const JobPosting = (props) => {
+const ViewPosting = (props) => {
   const data = props.data;
   const header = data?.header
     ? data.header
@@ -27,19 +24,15 @@ const JobPosting = (props) => {
     details.candidates,
   ];
 
-  function sendJob(){
-    props.actions.addNewJob(data);
-  }
-  
   return (
-    <div className="job_posting_container">
-      <h3 className="job_posting_title">{header.title}</h3>
-      <h4 className="job_posting_subheader">{header.company}</h4>
-      <p className="job_posting_subheader">{header.location}</p>
-      <p className="job_posting_description">{details.description}</p>
+    <div className="view_posting_container">
+      <h3 className="view_posting_title">{header.title}</h3>
+      <h4 className="view_posting_subheader">{header.company}</h4>
+      <p className="view_posting_subheader">{header.location}</p>
+      <p className="view_posting_description">{details.description}</p>
 
-      <h4 className="job_posting_subheader">Job points</h4>
-      <ul className="job_posting_list">
+      <h4 className="view_posting_subheader">Job points</h4>
+      <ul className="view_posting_list">
         {jobPoints.map((list) => {
           return <li key={list}>{list}</li>;
         })}
@@ -48,8 +41,8 @@ const JobPosting = (props) => {
         ) : null}
       </ul>
 
-      <h4 className="job_posting_subheader">Technical Requirements</h4>
-      <ul className="job_posting_list_2">
+      <h4 className="view_posting_subheader">Technical Requirements</h4>
+      <ul className="view_posting_list_2">
         {requirements.experience ? (
           <li>
             Must have <b>{requirements.experience}</b> of working experience
@@ -70,14 +63,14 @@ const JobPosting = (props) => {
         ) : null}
         {details.academicReq && requirements.isGpaRequired ? (
           <li>
-            Must have at least or is at <b>{requirements.gpaValue} GPA</b> standing
-            or equivalent
+            Must have at least or is at <b>{requirements.gpaValue} GPA</b>{" "}
+            standing or equivalent
           </li>
         ) : null}
         <li style={{ marginBottom: "0.25em" }}>
           Experience with the following programming languages:
         </li>
-        <ul className="job_posting_list_nested">
+        <ul className="view_posting_list_nested">
           {requirements.languages.map((language) => {
             return (
               <li key={language}>
@@ -87,7 +80,7 @@ const JobPosting = (props) => {
           })}
         </ul>
         <li>Experience with the following frameworks:</li>
-        <ul className="job_posting_list_nested">
+        <ul className="view_posting_list_nested">
           {requirements.frameworks.map((framework) => {
             return (
               <li key={framework}>
@@ -97,7 +90,7 @@ const JobPosting = (props) => {
           })}
         </ul>
         <li>Experience with the following work tools:</li>
-        <ul className="job_posting_list_nested">
+        <ul className="view_posting_list_nested">
           {requirements.tools.map((tool) => {
             return (
               <li key={tool}>
@@ -107,7 +100,7 @@ const JobPosting = (props) => {
           })}
         </ul>
         <li>General understanding and comprehension of:</li>
-        <ul className="job_posting_list_nested">
+        <ul className="view_posting_list_nested">
           {requirements.concepts.map((concept) => {
             return (
               <li key={concept}>
@@ -118,34 +111,24 @@ const JobPosting = (props) => {
         </ul>
       </ul>
 
-      <h4 className="job_posting_subheader">Application Steps:</h4>
+      <h4 className="view_posting_subheader">Application Steps:</h4>
       <p>{contact.applicationSteps}</p>
 
-      <h4 className="job_posting_subheader">Contact details:</h4>
-      <p className="job_posting_contact_name">{contact.name}</p>
-      <ul className="job_posting_list_nested">
+      <h4 className="view_posting_subheader">Contact details:</h4>
+      <p className="view_posting_contact_name">{contact.name}</p>
+      <ul className="view_posting_list_nested">
         <li key={contact.email}>{contact.email}</li>
         <li key={contact.linkedIn}>{contact.linkedIn}</li>
         <li key={contact.other}>{contact.other ? contact.other : null}</li>
       </ul>
 
-      <div className="job_posting_submit">
-        <ButtonFilled  onClick={() => sendJob()} startIcon={<AddCircleOutline />}>Create</ButtonFilled>
+      <div className="view_posting_submit">
+        <ButtonFilled startIcon={<PictureAsPdfIcon />}>
+          Export to PDF
+        </ButtonFilled>
       </div>
     </div>
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ addNewJob: addNewJob }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(JobPosting);
+export default ViewPosting;

@@ -9,14 +9,15 @@ import {
 } from "./CreateJobPosting/index";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import { Container, makeStyles, Grid } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import "./styles/Create.css";
 import { addJobsData } from "../../store/actions/jobPostActions";
+import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
 
 const mockTechStackData = {
@@ -42,11 +43,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const currStep = {
+  1: "header",
+  2: "requirements",
+  3: "details",
+  4: "contact",
+};
+
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
+  const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
-    _id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    dateCreated: "",
+    dateUpdated: "",
+    score: 0,
     header: {
       title: "",
       company: "",
@@ -160,7 +172,7 @@ function Create(props) {
     const languages = parseLanguages(jobPosting.requirements.languages);
 
     return {
-      _id: jobPosting._id,
+      jobId: jobPosting.jobId,
       experience: experience,
       gpa: jobPosting.requirements.gpa,
       gpaValue: jobPosting.requirements.gpaValue,
@@ -173,25 +185,45 @@ function Create(props) {
       coOp: coOp,
     };
   }
+  function checkIfEmpty(obj) {
+    const sub = jobData[obj];
+    for (var key in sub) {
+      const currVal = sub[key];
+      if (currVal === "" || currVal.length === 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   useEffect(() => {
     props.actions.getStudents();
   }, [props.actions]);
 
   function updateStore() {
-    setCurrentStep(currentStep + 1);
-    props.actions.addJobsData(jobData);
-
-    const posting = createJobObject(jobData);
     // dispatch to matches reducer
-    console.log(jobData);
-    if (currentStep === 4) {
-      props.actions.processMatches({
-        students: allStudents,
-        posting: posting,
-      });
-    }
     window.scrollTo(0, 0);
+    const curr = currStep[currentStep];
+
+    if (!checkIfEmpty(curr)) {
+      setError(false);
+      setCurrentStep(currentStep + 1);
+
+      props.actions.addJobsData(jobData);
+      const posting = createJobObject(jobData);
+
+      console.log(jobData);
+
+      if (currentStep === 4) {
+        props.actions.processMatches({
+          students: allStudents,
+          posting: posting,
+        });
+      }
+      window.scrollTo(0, 0);
+    } else {
+      setError(true);
+    }
   }
 
   return (
@@ -246,6 +278,15 @@ function Create(props) {
               </ButtonFilled>
             </Container>
           ) : null}
+          {error && (
+            <div>
+              <Container maxWidth="md" className={"form_validation_error"}>
+                <Alert variant="outlined" severity="error">
+                  Please Fill Out All Required Fields
+                </Alert>
+              </Container>
+            </div>
+          )}
         </Grid>
         <Grid item xs={3}>
           <h4>Hello</h4>
@@ -257,6 +298,7 @@ function Create(props) {
 
 function mapStateToProps(state) {
   return {
+    jobs: state.jobs,
     students: state.students,
   };
 }

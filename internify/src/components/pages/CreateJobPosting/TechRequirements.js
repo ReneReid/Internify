@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Slider } from "@material-ui/core";
+import { Container, Slider, FormHelperText } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
@@ -21,6 +21,7 @@ const WorkingExperience = (props) => {
         jobData={props.jobData}
         property={"experience"}
       />
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 };
@@ -65,6 +66,7 @@ const GradePoint = (props) => {
           jobData={props.jobData.requirements}
           property={"gpa"}
         />
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="gpa_slider">
         <Slider
@@ -78,6 +80,7 @@ const GradePoint = (props) => {
           onChange={(e, v) => handleChange({...props.jobData.requirements, gpaValue: v})}
         />
       </div>
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 };
