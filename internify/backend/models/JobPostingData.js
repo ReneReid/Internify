@@ -3,6 +3,18 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const JobPostingSchema = new Schema({
+    jobId: {
+      type: String
+    },
+    dateCreated: {
+      type: Date
+    },
+    dateUpdated: {
+      type: Date
+    },
+    score: {
+      type: Number
+    },
     header: {
       title: {
         type: String,
