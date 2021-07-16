@@ -87,8 +87,11 @@ function Create(props) {
   function parseConcepts(concepts) {
     let parsedConcepts = [];
     for (let i = 0; i < concepts.length; i++) {
-      let str = concepts[i].replace(/\s+/g, "");
-      parsedConcepts.push(str);
+      if (concepts[i] === "Object Oriented Programming") {
+        parsedConcepts.push("Object-Oriented Programming");
+      } else {
+        parsedConcepts.push(concepts[i]);
+      }
     }
     return parsedConcepts;
   }
