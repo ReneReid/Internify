@@ -95,13 +95,13 @@ const Profile = ({ data }) => {
               </Grid>
               <Grid item>
                 <ul className="profile_handle_desc">
-                  <li>
+                  <li key={"displayName"}>
                     <b>{user.name}</b>
                   </li>
-                  <li>
+                  <li key={"handle"}>
                     <b>@{user.handle}</b>
                   </li>
-                  <li>
+                  <li key={"jobTitle"}>
                     {user.jobTitle}
                     {user.company ? " @ " + user.company : ""}
                   </li>
@@ -120,7 +120,7 @@ const Profile = ({ data }) => {
               <div className="profile_labels">
                 <ul id="profile_labels_list">
                   {labels.map((label) => (
-                    <li>
+                    <li key={label}>
                       <ChipBasic
                         icon={<CheckCircleOutline style={{ color: "white" }} />}
                         label={label}
@@ -159,26 +159,20 @@ const Profile = ({ data }) => {
                   <ul className="profile_inner_contact_list">
                     <h3>Contact</h3>
                     {user.location ? (
-                      <li>
-                        <RoomOutlined color="secondary" fontSize="medium" />
+                      <li key={user.location}>
+                        <RoomOutlined color="secondary" />
                         {user.location}
                       </li>
                     ) : null}
                     {user.email ? (
-                      <li>
-                        <MailOutlineOutlined
-                          color="primary"
-                          fontSize="medium"
-                        />
+                      <li key={user.email}>
+                        <MailOutlineOutlined color="primary" />
                         {user.email}
                       </li>
                     ) : null}
                     {user.contact ? (
-                      <li>
-                        <PhoneAndroidOutlined
-                          color="primary"
-                          fontSize="medium"
-                        />
+                      <li key={user.contact}>
+                        <PhoneAndroidOutlined color="primary" />
                         {user.contact}
                       </li>
                     ) : null}
@@ -218,10 +212,7 @@ const Profile = ({ data }) => {
           {/* Posting status */}
           <Grid item>
             <div className="profile_left_posting_table">
-              <TableBasic
-                className="posting_table"
-                data={user.jobPostings}
-              />
+              <TableBasic className="posting_table" data={user.jobPostings} />
             </div>
           </Grid>
         </Grid>
@@ -241,7 +232,9 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser, updateUser: updateUser }, dispatch),
+      { getUser: getUser, updateUser: updateUser },
+      dispatch
+    ),
   };
 }
 

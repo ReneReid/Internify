@@ -70,42 +70,49 @@ const mockJobPosting = {
 
 const mockJobPostingList = [
   {
+    jobId: "1",
     title: "Software Developer",
     dateCreated: "05/25/2021",
     score: "Excellent",
     link: "",
   },
   {
+    jobId: "2",
     title: "Quality Assurance Developer",
     dateCreated: "05/18/2021",
     score: "Excellent",
     link: "",
   },
   {
+    jobId: "3",
     title: "Software Developer",
     dateCreated: "04/30/2021",
     score: "Good",
     link: "",
   },
   {
+    jobId: "4",
     title: "Test Developer",
     dateCreated: "04/28/2021",
     score: "Okay",
     link: "",
   },
   {
+    jobId: "5",
     title: "QA Analyst",
     dateCreated: "04/28/2021",
     score: "Okay",
     link: "",
   },
   {
+    jobId: "6",
     title: "Software Developer",
     dateCreated: "04/22/2021",
     score: "Excellent",
     link: "",
   },
   {
+    jobId: "7",
     title: "Full-Stack Developer",
     dateCreated: "03/05/2021",
     score: "Excellent",
