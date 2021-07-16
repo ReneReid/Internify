@@ -1,49 +1,14 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
-import { v4 as uuidv4 } from "uuid";
-import { ButtonFilled, ButtonClear, ButtonOutlined } from "../atoms";
-import { JobPosting } from "../../molecules/index";
+import { ButtonClear, ButtonOutlined } from "../atoms";
+import { ViewPosting } from "../molecules/index";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import LinkIcon from "@material-ui/icons/Link";
+import { mockJobPosting } from "../../models/mockData";
 import "./styles/View.css";
 
 const View = () => {
-  const [jobData, setJobData] = useState({
-    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
-    header: {
-      title: "",
-      company: "",
-      location: "",
-      startDate: "",
-      position: [],
-      length: "",
-    },
-    requirements: {
-      experience: "",
-      isGpaRequired: "",
-      gpaValue: "",
-      languages: [],
-      frameworks: [],
-      tools: [],
-      concepts: [],
-    },
-    details: {
-      description: "",
-      position: "",
-      pay: "",
-      candidates: "",
-      academicReq: [],
-      coOp: "",
-    },
-    contact: {
-      name: "",
-      email: "",
-      linkedIn: "",
-      other: "",
-      applicationSteps: "",
-    },
-  });
   return (
     <Grid container direction="row" alignItems="flex-start" justify="flex-end">
       {/** Left side button */}
@@ -54,9 +19,9 @@ const View = () => {
       </Grid>
 
       {/** Middle Job Posting */}
-      <Grid item xs={7} style={{ padding: "0 5em" }}>
+      <Grid item xs={7} style={{ paddingTop: "1em" }}>
         <Container maxWidth="md">
-          <JobPosting data={jobData} />
+          <ViewPosting data={mockJobPosting} />
         </Container>
       </Grid>
 
@@ -64,6 +29,7 @@ const View = () => {
       <Grid item xs={3}>
         <Grid
           container
+          style={{ paddingTop: "1em" }}
           direction="column"
           alignItems="flex-start"
           justify="flex-end"
