@@ -6,7 +6,6 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
-import Feedback from "./components/organisms/Feedback";
 import { mockProfileData } from "./models/mockData";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
@@ -58,7 +57,7 @@ function App() {
       <Switch>
         <Route path="/profile">
           <AuthNavbar />
-          <Profile data={mockProfileData}/>
+          <Profile data={mockProfileData} />
           <Footer />
         </Route>
         <Route path="/create">
@@ -69,10 +68,6 @@ function App() {
         <Route path="/view">
           <AuthNavbar />
           <View />
-          <Footer />
-        </Route>
-        <Route path="/feedback">
-          <Feedback />
           <Footer />
         </Route>
         <Redirect to="/profile" />

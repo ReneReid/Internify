@@ -7,6 +7,7 @@ import {
   JobDetail,
   Review,
 } from "./CreateJobPosting/index";
+import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
@@ -289,7 +290,7 @@ function Create(props) {
           )}
         </Grid>
         <Grid item xs={3}>
-          <h4>Hello</h4>
+          {currentStep === 5 ? <Feedback /> : null}
         </Grid>
       </Grid>
     </div>
