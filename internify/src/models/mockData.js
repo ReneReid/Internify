@@ -43,8 +43,8 @@ const mockJobPosting = {
     gpa: null,
     languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
     frameworks: ["React", "Angular", "MaterialUI"],
-    workTools: ["GitHub", "Jira", "Azure", "Kubernetes"],
-    csConcepts: [
+    tools: ["GitHub", "Jira", "Azure", "Kubernetes"],
+    concepts: [
       "Object Oriented Programming",
       "Functional Programming",
       "Computer Networks",
