@@ -9,6 +9,7 @@ import Profile from "./components/pages/Profile";
 import Feedback from "./components/organisms/Feedback";
 import { mockProfileData } from "./models/mockData";
 import Footer from "./components/organisms/Footer";
+import View from "./components/pages/View";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -63,6 +64,11 @@ function App() {
         <Route path="/create">
           <AuthNavbar />
           <Create />
+          <Footer />
+        </Route>
+        <Route path="/view">
+          <AuthNavbar />
+          <View />
           <Footer />
         </Route>
         <Route path="/feedback">
