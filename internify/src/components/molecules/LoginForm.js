@@ -42,7 +42,6 @@ const LoginForm = (props) => {
       .then((result) => {
         // signed in
         const authId = result.user.uid;
-        console.log(authId);
         props.actions.getUser(authId);
 
         return authId;
