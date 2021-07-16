@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import RegisteredKeys from "../molecules/RegisteredKeys";
 import Notes from "../molecules/Notes";
 import Score from "../molecules/Score";
 import { useSelector } from "react-redux";
@@ -78,7 +77,6 @@ const Feedback = () => {
 
   return (
     <div className="feedback_container">
-      <RegisteredKeys />
       <Notes
         canadaMatches={cMatches}
         ubcMatches={ubcMatches}
