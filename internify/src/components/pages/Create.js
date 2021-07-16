@@ -132,19 +132,36 @@ function Create(props) {
     }
   }
 
+  function parseLanguages(languages) {
+    let editedLanguages = [];
+    for (let i = 0; i < languages.length; i++) {
+      if (languages[i] === "C++") {
+        editedLanguages.push("Cpp");
+        editedLanguages.push("C++");
+      } else if (languages[i] === "Cpp") {
+        editedLanguages.push("C++");
+        editedLanguages.push("Cpp");
+      } else {
+        editedLanguages.push(languages[i]);
+      }
+    }
+    return editedLanguages;
+  }
+
   function createJobObject(jobPosting) {
     // parsing functions
     const experience = parseExperience(jobPosting.requirements.experience);
     const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
     const coOp = parseCoopReqs(jobPosting.details.coOp);
     const concepts = parseConcepts(jobPosting.requirements.concepts);
+    const languages = parseLanguages(jobPosting.requirements.languages);
 
     return {
       _id: jobPosting._id,
       experience: experience,
       gpa: jobPosting.requirements.gpa,
       gpaValue: jobPosting.requirements.gpaValue,
-      languages: jobPosting.requirements.languages,
+      languages: languages,
       frameworks: jobPosting.requirements.frameworks,
       tools: jobPosting.requirements.tools,
       concepts: concepts,
