@@ -14,9 +14,17 @@ import {
   CheckCircleOutline,
 } from "@material-ui/icons";
 import "./styles/Profile.css";
+import { useSelector } from "react-redux";
 
 const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
+
+  const currentUser = useSelector((state) => state.users.user);
+
+  console.log(currentUser);
+  console.log(currentUser.hasOwnProperty("email"));
+  console.log(currentUser.email);
+
   const [user, setUser] = useState({
     name: "",
     handle: "",
@@ -32,12 +40,43 @@ const Profile = ({ data }) => {
     jobPostings: [],
     status: "",
   });
+
+  console.log(user);
   const [labels, setLabels] = useState([]);
 
+  // useEffect(() => {
+  //   setUser(user);
+  //   setLabels([user.jobPostings.length + " postings"]);
+  // }, [currentUser, user]);
+
   useEffect(() => {
-    setUser(data);
+    setUser({
+      name: currentUser.hasOwnProperty("name") ? currentUser.name : "",
+      handle: currentUser.hasOwnProperty("handle") ? currentUser.handle : "",
+      jobTitle: currentUser.hasOwnProperty("jobTitle")
+        ? currentUser.jobTitle
+        : "",
+      company: currentUser.hasOwnProperty("company") ? currentUser.company : "",
+      bio: currentUser.hasOwnProperty("bio") ? currentUser.bio : "",
+      email: currentUser.hasOwnProperty("email") ? currentUser.email : "",
+      website: currentUser.hasOwnProperty("website") ? currentUser.website : "",
+      linkedIn: currentUser.hasOwnProperty("linkedIn")
+        ? currentUser.linkedIn
+        : "",
+      location: currentUser.hasOwnProperty("location")
+        ? currentUser.location
+        : "",
+      profilePicture: currentUser.hasOwnProperty("profilePicture")
+        ? currentUser.profilePicture
+        : "",
+      contact: currentUser.hasOwnProperty("contact") ? currentUser.contact : "",
+      jobPostings: currentUser.hasOwnProperty("jobPostings")
+        ? currentUser.jobPostings
+        : [],
+      status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
+    });
     setLabels([user.jobPostings.length + " postings"]);
-  }, [data, user]);
+  }, [currentUser, ]);
 
   return (
     <Grid
