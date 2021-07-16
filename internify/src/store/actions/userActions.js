@@ -13,7 +13,7 @@ export const addUser = (data) => (dispatch) => {
     .then(res => {
       dispatch({
         type: ADD_USER,
-        payload: data,
+        payload: res.data,
       });
     })
     .catch(err => {
@@ -45,10 +45,10 @@ export const getUsers = (data) => (dispatch) => {
 };
 
 export const getUser = (data) => (dispatch) => {
-  axios.get(`api/users/${data.id}`).then((res) => {
+  axios.get(`api/users/${data}`).then((res) => {
     dispatch({
       type: GET_USER,
-      payload: res.data,
+      payload: res.data[0],
     });
   });
 };

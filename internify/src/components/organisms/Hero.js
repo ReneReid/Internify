@@ -32,7 +32,6 @@ const Hero = (props) => {
         };
 
         // dispatch
-        // TODO: state is not iterable error
         props.actions.addUser(newUser);
 
         return result.user;
@@ -64,12 +63,13 @@ const Hero = (props) => {
             alert("Please verify email address :)");
             return;
           });
-        // ...
 
         var newUser = {
           authId: result.user.uid,
           email: result.user.email,
         };
+
+        // dispatch
         props.actions.addUser(newUser);
       })
       .catch((error) => {

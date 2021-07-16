@@ -38,11 +38,10 @@ export default function userReducer(state = initialState, action) {
         ...state.userList
       };
 
-    // TODO: Fix this
     case GET_USER:
-      const userId = action.payload.authId;
-      const user = state.userList.filter((user) => user.id !== userId);
-      return [user];
+      const user = action.payload;
+      state.user = user;
+      return {...state, user: state.user};
 
     default:
       return state;

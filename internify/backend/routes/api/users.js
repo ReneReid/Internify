@@ -17,7 +17,7 @@ router.get("/", function (req, res, next) {
 //@access   Public
 
 router.get("/:id", function (req, res, next) {
-  UserData.find({ authId: req.params.authId })
+  UserData.find({ authId: req.params.id })
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(404).json({ success: false }));
 });
