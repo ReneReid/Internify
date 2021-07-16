@@ -1,5 +1,5 @@
 import { React } from "react";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Link } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
@@ -20,7 +20,9 @@ const View = () => {
       {/** Left side button */}
       <Grid item xs={2}>
         <Grid container justify="flex-end">
-          <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
+          <Link to="/profile">
+            <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
+          </Link>
         </Grid>
       </Grid>
 
