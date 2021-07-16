@@ -1,13 +1,49 @@
-import React from "react";
+import { React, useState } from "react";
 import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
-// import { JobPosting } from "../../molecules/index";
+import { v4 as uuidv4 } from "uuid";
 import { ButtonFilled, ButtonClear, ButtonOutlined } from "../atoms";
+import { JobPosting } from "../../molecules/index";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import LinkIcon from "@material-ui/icons/Link";
 import "./styles/View.css";
 
 const View = () => {
+  const [jobData, setJobData] = useState({
+    id: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    header: {
+      title: "",
+      company: "",
+      location: "",
+      startDate: "",
+      position: [],
+      length: "",
+    },
+    requirements: {
+      experience: "",
+      isGpaRequired: "",
+      gpaValue: "",
+      languages: [],
+      frameworks: [],
+      tools: [],
+      concepts: [],
+    },
+    details: {
+      description: "",
+      position: "",
+      pay: "",
+      candidates: "",
+      academicReq: [],
+      coOp: "",
+    },
+    contact: {
+      name: "",
+      email: "",
+      linkedIn: "",
+      other: "",
+      applicationSteps: "",
+    },
+  });
   return (
     <Grid container direction="row" alignItems="flex-start" justify="flex-end">
       {/** Left side button */}
@@ -18,7 +54,11 @@ const View = () => {
       </Grid>
 
       {/** Middle Job Posting */}
-      <Grid item xs={7} style={{ padding: "0 5em" }}></Grid>
+      <Grid item xs={7} style={{ padding: "0 5em" }}>
+        <Container maxWidth="md">
+          <JobPosting data={jobData} />
+        </Container>
+      </Grid>
 
       {/** Right side edditing -> matches as well? */}
       <Grid item xs={3}>

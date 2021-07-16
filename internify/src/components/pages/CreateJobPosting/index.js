@@ -4,10 +4,4 @@ import JobDetail from "./JobDetail";
 import Review from "./Review";
 import TechRequirements from "./TechRequirements";
 
-export {
-    ContactDetails,
-    CreateJobHeader,
-    JobDetail,
-    Review,
-    TechRequirements
-};
+export { ContactDetails, CreateJobHeader, JobDetail, Review, TechRequirements };
