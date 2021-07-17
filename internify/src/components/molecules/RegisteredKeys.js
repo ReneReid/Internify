@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { ChipBasic } from "../atoms/index";
 
-const RegisteredKeys = () => {
+const RegisteredKeys = (props) => {
+    const data = props.keysData;
+
     return (
         <div className="keys_container">
-            <h3>Registered keys</h3>
+            {data.map((x, i) => {
+            return (
+              <ChipBasic label={x} id={i} />
+            );
+          })}
         </div>
     )
 }
 
-export default RegisteredKeys
+export default RegisteredKeys;
