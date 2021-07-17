@@ -26,6 +26,7 @@ const Profile = ({ data }) => {
   // console.log(currentUser.email);
 
   const [user, setUser] = useState({
+    authId: "",
     name: "",
     handle: "",
     jobTitle: "",
@@ -45,6 +46,7 @@ const Profile = ({ data }) => {
 
   useEffect(() => {
     setUser({
+      authId: currentUser.hasOwnProperty("authId") ? currentUser.authId : "",
       name: currentUser.hasOwnProperty("name") ? currentUser.name : "",
       handle: currentUser.hasOwnProperty("handle") ? currentUser.handle : "",
       jobTitle: currentUser.hasOwnProperty("jobTitle")
@@ -268,7 +270,7 @@ const Profile = ({ data }) => {
           </Grid>
         </Grid>
       </Grid>
-      <EditModal toggle={toggle} setToggle={setToggle} />
+      <EditModal toggle={toggle} setToggle={setToggle} user={user} />
       <CreateJobButton />
     </Grid>
   );
