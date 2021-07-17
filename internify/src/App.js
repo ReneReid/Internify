@@ -58,7 +58,7 @@ function App() {
       <Switch>
         <Route path="/profile">
           <AuthNavbar />
-          <Profile data={mockProfileData}/>
+          <Profile/>
           <Footer />
         </Route>
         <Route path="/create">
