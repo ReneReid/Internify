@@ -72,7 +72,7 @@ const Profile = ({ data }) => {
       status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
     });
     setLabels([user.jobPostings?.length + " postings"]);
-  }, [currentUser]);
+  }, [currentUser, user.jobPostings?.length]);
 
   return (
     <Grid
