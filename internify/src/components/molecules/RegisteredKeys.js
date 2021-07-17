@@ -8,7 +8,7 @@ const RegisteredKeys = (props) => {
         <div className="keys_container">
             {data.map((x, i) => {
             return (
-              <ChipBasic label={x} id={i} />
+              <ChipBasic label={x} key={i}/>
             );
           })}
         </div>
