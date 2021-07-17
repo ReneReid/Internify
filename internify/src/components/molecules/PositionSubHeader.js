@@ -11,18 +11,29 @@ function PositionSubHeader(props) {
     PartTime: false,
   });
 
-  const handleChange = (event) => {
-    setCheckedState({ ...state, [event.target.name]: event.target.checked });
-    if (event.target.checked) {
-      data.position.push(event.target.name);
+  const handleChange = (e, v, l) => {
+    setCheckedState({ ...state, [e.target.name]: e.target.checked });
+    filterChecked(e);
+    updateKeys(v, l);
+  };
+
+  function filterChecked(e){
+    if (e.target.checked) {
+      data.position.push(e.target.name);
     } else {
-      if (data.position.includes(event.target.name)) {
+      if (data.position.includes(e.target.name)) {
         data.position = data.position.filter(
-          (obj) => obj !== event.target.name
+          (obj) => obj !== e.target.name
         );
       }
     }
-  };
+  }
+
+  function updateKeys(v, l){
+    if(props.keysList.includes(v)){
+      props.handleKeysChange([...props.keysData, l]);
+    }
+  }
 
   return (
     <div>
@@ -31,25 +42,25 @@ function PositionSubHeader(props) {
         <CheckBox
           name={"Internship"}
           label={"Internship"}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, "position", "Internship")}
           checked={state.Internship}
         />
         <CheckBox
           name={"Coop"}
           label={"Co-op"}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, "position", "Co-op")}
           checked={state.Coop}
         />
         <CheckBox
           name={"NewGrad"}
           label={"New Grad"}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, "position", "New Grad")}
           checked={state.NewGrad}
         />
         <CheckBox
           name={"PartTime"}
           label={"Part-time"}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e, "position", "Part-time")}
           checked={state.PartTime}
         />
       </div>
