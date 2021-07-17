@@ -121,7 +121,7 @@ const Profile = ({ data }) => {
               container
               spacing={1}
               direction="row"
-              justifyContent="center"
+              justifyContent="flex-start"
               alignItems="center"
             >
               <Grid item>
@@ -141,10 +141,10 @@ const Profile = ({ data }) => {
               <Grid item>
                 <ul className="profile_handle_desc">
                   <li key={"displayName"}>
-                    <b>{user.name}</b>
+                    <h2>{user.name}</h2>
                   </li>
                   <li key={"handle"}>
-                    <b>@{user.handle}</b>
+                    <b>{user.handle ? "@" + user.handle : ""}</b>
                   </li>
                   <li key={"jobTitle"}>
                     {user.jobTitle}
@@ -254,10 +254,17 @@ const Profile = ({ data }) => {
             </div>
           </Grid>
 
-          {/* Posting status */}
+          {/* Posting table */}
           <Grid item>
             <div className="profile_left_posting_table">
-              <TableBasic className="posting_table" data={user.jobPostings} />
+              {user.jobPostings.length > 0 ? (
+                <TableBasic className="posting_table" data={user.jobPostings} />
+              ) : (
+                <div className="profile_no_posting_message">
+                  You don't have any job postings. Create one by clicking on the
+                  bright pink plus button below!
+                </div>
+              )}
             </div>
           </Grid>
         </Grid>
