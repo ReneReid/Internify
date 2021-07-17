@@ -8,8 +8,10 @@ const Login = () => {
   return (
     <div className="login">
       <Navbar />
-      <LoginForm/>
-      <Footer />
+      <LoginForm />
+      <div className="login_footer">
+        <Footer />
+      </div>
     </div>
   );
 };
