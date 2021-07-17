@@ -14,7 +14,7 @@
   margin-bottom: 0;
 }
 
-li:not(:last-child) {
+.profile_handle_desc > li:not(:last-child) {
   line-height: 1.25em;
   margin-bottom: 5%;
 }
