@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   company: {
     type: String,
   },
-  title: {
+  jobTitle: {
     type: String,
   },
   bio: {
