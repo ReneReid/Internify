@@ -1,47 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonFilled, ButtonWhite } from "../atoms/index";
 import { Dialog, DialogContent, DialogTitle, Grid } from "@material-ui/core";
 import { TextFieldInput, MultiLineTextField } from "../atoms/index";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateUser } from "../../store/actions/userActions";
 import "./styles/EditModal.css";
 
 const EditModal = (props) => {
   let toggle = props.toggle;
   let setToggle = props.setToggle;
+
+
   const [profile, setProfile] = useState({
-    name: "",
-    title: "",
-    handle: "",
-    email: "",
-    location: "",
-    bio: "",
-    contactNumber: "",
-    website: "",
-    linkedIn: "",
-    status: "",
-    company: "",
+    ...props.user
   });
 
   const handleCancel = () => {
     setProfile({
-      name: "",
-      title: "",
-      handle: "",
-      email: "",
-      location: "",
-      bio: "",
-      contactNumber: "",
-      website: "",
-      linkedIn: "",
-      status: "",
-      company: "",
+      ...props.user
     });
     setToggle(false);
   };
 
+  useEffect(() => {
+    setProfile(props.user);
+  }, [props.user]);
+
+
   const handleUpdate = () => {
-    //TODO: Make POST request to update user information with `profile`
-    console.log(profile);
-  }
+    props.actions.updateUser(profile);
+    setToggle(false);
+  };
 
   return toggle ? (
     <Dialog open={toggle} onClose={() => (toggle = !toggle)} fullWidth>
@@ -82,7 +72,7 @@ const EditModal = (props) => {
               type="text"
               placeholder="Technical Recruiter"
               onChange={(e) =>
-                setProfile({ ...profile, title: e.target.value })
+                setProfile({ ...profile, jobTitle: e.target.value })
               }
               defaultValue={profile.title}
             />
@@ -182,4 +172,17 @@ const EditModal = (props) => {
   ) : null;
 };
 
-export default EditModal;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ updateUser: updateUser }, dispatch),
+  };
+}
+
+
+export default connect(mapStateToProps, matchDispatchToProps)(EditModal);

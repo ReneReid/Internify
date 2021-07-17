@@ -10,13 +10,13 @@ import {
 export const addUser = (data) => (dispatch) => {
   axios
     .post(`/api/users/`, data)
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: ADD_USER,
         payload: res.data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err);
     });
 };
@@ -29,10 +29,17 @@ export const removeUser = (data) => (dispatch) => {
 };
 
 export const updateUser = (data) => (dispatch) => {
-  dispatch({
-    type: UPDATE_USER,
-    payload: data,
-  });
+  axios
+    .put(`/api/users/${data.authId}`, data)
+    .then((res) => {
+      dispatch({
+        type: UPDATE_USER,
+        payload: data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
 
 export const getUsers = (data) => (dispatch) => {
@@ -52,4 +59,3 @@ export const getUser = (data) => (dispatch) => {
     });
   });
 };
-
