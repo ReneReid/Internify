@@ -11,7 +11,7 @@ const Landing = () => {
       <Navbar />
       <Hero />
       <LandingCopy />
-      <Footer />
+      <Footer landing={true}/>
     </div>
   );
 };

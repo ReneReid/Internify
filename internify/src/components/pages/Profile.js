@@ -1,7 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { React, useEffect, useState } from "react";
 import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
-import angela from "../../assets/Profile/angela_brown.png";
 import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -14,9 +13,18 @@ import {
   CheckCircleOutline,
 } from "@material-ui/icons";
 import "./styles/Profile.css";
+import { useSelector } from "react-redux";
+import { AccountCircle } from "@material-ui/icons";
 
 const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
+
+  const currentUser = useSelector((state) => state.users.user);
+
+  // console.log(currentUser);
+  // console.log(currentUser.hasOwnProperty("email"));
+  // console.log(currentUser.email);
+
   const [user, setUser] = useState({
     name: "",
     handle: "",
@@ -32,19 +40,44 @@ const Profile = ({ data }) => {
     jobPostings: [],
     status: "",
   });
+
   const [labels, setLabels] = useState([]);
 
   useEffect(() => {
-    setUser(data);
-    setLabels([user.jobPostings.length + " postings"]);
-  }, [data, user]);
+    setUser({
+      name: currentUser.hasOwnProperty("name") ? currentUser.name : "",
+      handle: currentUser.hasOwnProperty("handle") ? currentUser.handle : "",
+      jobTitle: currentUser.hasOwnProperty("jobTitle")
+        ? currentUser.jobTitle
+        : "",
+      company: currentUser.hasOwnProperty("company") ? currentUser.company : "",
+      bio: currentUser.hasOwnProperty("bio") ? currentUser.bio : "",
+      email: currentUser.hasOwnProperty("email") ? currentUser.email : "",
+      website: currentUser.hasOwnProperty("website") ? currentUser.website : "",
+      linkedIn: currentUser.hasOwnProperty("linkedIn")
+        ? currentUser.linkedIn
+        : "",
+      location: currentUser.hasOwnProperty("location")
+        ? currentUser.location
+        : "",
+      profilePicture: currentUser.hasOwnProperty("profilePicture")
+        ? currentUser.profilePicture
+        : "",
+      contact: currentUser.hasOwnProperty("contact") ? currentUser.contact : "",
+      jobPostings: currentUser.hasOwnProperty("jobPostings")
+        ? currentUser.jobPostings
+        : [],
+      status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
+    });
+    setLabels([user.jobPostings?.length + " postings"]);
+  }, [currentUser]);
 
   return (
     <Grid
       container
       spacing={1}
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       style={{ marginBottom: "10em" }}
     >
@@ -55,7 +88,7 @@ const Profile = ({ data }) => {
           container
           spacing={1}
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           {/* Content within a profile: image, list, labels, description, contact */}
@@ -63,7 +96,7 @@ const Profile = ({ data }) => {
             <Grid
               container
               direction="row"
-              justify="space-between"
+              justifyContent="space-between"
               alignItems="center"
               style={{ paddingBottom: "2em" }}
             >
@@ -87,19 +120,30 @@ const Profile = ({ data }) => {
               container
               spacing={1}
               direction="row"
-              justify="center"
+              justifyContent="flex-start"
               alignItems="center"
             >
               <Grid item>
-                <img src={angela} alt="Profile pic" className="profile_img" />
+                {user.profilePicture ? (
+                  <img
+                    src={user.profilePicture}
+                    alt="Profile pic"
+                    className="profile_img"
+                  />
+                ) : (
+                  <AccountCircle
+                    className="profile_image_default"
+                    style={{ fontSize: 140 }}
+                  />
+                )}
               </Grid>
               <Grid item>
                 <ul className="profile_handle_desc">
                   <li key={"displayName"}>
-                    <b>{user.name}</b>
+                    <h2>{user.name}</h2>
                   </li>
                   <li key={"handle"}>
-                    <b>@{user.handle}</b>
+                    <b>{user.handle ? "@" + user.handle : ""}</b>
                   </li>
                   <li key={"jobTitle"}>
                     {user.jobTitle}
@@ -114,12 +158,12 @@ const Profile = ({ data }) => {
               container
               spacing={1}
               direction="row"
-              justify="center"
+              justifyContent="center"
               alignItems="center"
             >
               <div className="profile_labels">
                 <ul id="profile_labels_list">
-                  {labels.map((label) => (
+                  {labels?.map((label) => (
                     <li key={label}>
                       <ChipBasic
                         icon={<CheckCircleOutline style={{ color: "white" }} />}
@@ -136,7 +180,7 @@ const Profile = ({ data }) => {
               container
               spacing={1}
               direction="row"
-              justify="center"
+              justifyContent="center"
               alignItems="center"
             >
               <Grid item>
@@ -151,7 +195,7 @@ const Profile = ({ data }) => {
               container
               spacing={1}
               direction="row"
-              justify="center"
+              justifyContent="center"
               alignItems="center"
             >
               <Grid item>
@@ -209,10 +253,17 @@ const Profile = ({ data }) => {
             </div>
           </Grid>
 
-          {/* Posting status */}
+          {/* Posting table */}
           <Grid item>
             <div className="profile_left_posting_table">
-              <TableBasic className="posting_table" data={user.jobPostings} />
+              {user.jobPostings?.length > 0 ? (
+                <TableBasic className="posting_table" data={user.jobPostings} />
+              ) : (
+                <div className="profile_no_posting_message">
+                  You don't have any job postings. Create one by clicking on the
+                  bright pink plus button below!
+                </div>
+              )}
             </div>
           </Grid>
         </Grid>

@@ -30,7 +30,7 @@ const Navbar = () => {
       <Grid
         container
         className="auth_navbar_right_items"
-        justify="flex-end"
+        justifyContent="flex-end"
         alignItems="center"
       >
         <Link className="auth_navbar_item" to="/profile">

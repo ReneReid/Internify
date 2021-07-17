@@ -16,11 +16,11 @@ const View = () => {
       style={{ paddingTop: "1em" }}
       direction="row"
       alignItems="flex-start"
-      justify="flex-end"
+      justifyContent="flex-end"
     >
       {/** Left side button */}
       <Grid item xs={2}>
-        <Grid container justify="flex-end">
+        <Grid container justifyContent="flex-end">
           <Link to="/profile">
             <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
           </Link>
@@ -40,7 +40,7 @@ const View = () => {
           container
           direction="column"
           alignItems="flex-start"
-          justify="flex-end"
+          justifyContent="flex-end"
         >
           <div className="view_page_creation_details">
             <div className="view_page_details_list">
