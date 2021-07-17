@@ -8,6 +8,7 @@
   position: absolute;
   width: 100vw;
   bottom: 0;
+  align-items: center;
 }
 
 .footer_landing {
@@ -18,17 +19,16 @@
   box-shadow: 0px 11px 20px 1px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   margin-top: 5%;
+  align-items: center;
 }
 
 .footer_links_container {
-  flex: 1;
   text-align: left;
 }
 
 .footer_links_container li {
   list-style-type: none;
   font-family: Helvetica;
-  margin-top: 1%;
 }
 
 .footer_links_container a {
