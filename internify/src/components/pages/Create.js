@@ -7,6 +7,7 @@ import {
   Review,
 } from "./CreateJobPosting/index";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
+import RegisteredKeys from "../molecules/RegisteredKeys";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from '@material-ui/lab/Alert';
 import { ChevronLeft } from "@material-ui/icons";
@@ -49,10 +50,26 @@ const currStep = {
   4: "contact"
 }
 
+const chipsList = [
+  "title",
+  "position",
+  "location",
+  "experience",
+  "languages",
+  "frameworks",
+  "tools",
+  "concepts",
+  "pay",
+  "candidates",
+  "coOp",
+  "academicReq"
+]
+
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
+  const [keysData, setKeysData] = useState([]);
   const [jobData, setJobData] = useState({
     jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     dateCreated: "",
@@ -107,7 +124,6 @@ function Create(props) {
     props.actions.getStudents();
   }, [props.actions]);
 
-
   function updateStore() {
     const curr = currStep[currentStep];
     if(!checkIfEmpty(curr)){
@@ -148,6 +164,9 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
+            keysData={keysData}
+            handleKeysChange={setKeysData}
+            keysList={chipsList}
           />
           <TechRequirements
             currentStep={currentStep}
@@ -185,7 +204,7 @@ function Create(props) {
             </div>}
         </Grid>
         <Grid item xs={3}>
-          <h4>Hello</h4>
+          <RegisteredKeys jobData={jobData} keysData={keysData}/>
         </Grid>
       </Grid>
     </div>
