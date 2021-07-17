@@ -69,9 +69,9 @@ router.post("/", function (req, res, next) {
 //@access   Public
 
 router.put("/:id", function (req, res, next) {
-  const authId = req.body.authId;
   // flesh out a new user
   var args = {
+    authId: req.body.authId,
     name: req.body.name,
     email: req.body.email,
     profilePicture: req.body.profilePicture,
