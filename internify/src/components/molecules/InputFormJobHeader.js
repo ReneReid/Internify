@@ -6,6 +6,12 @@ function InputFormJobHeader(props) {
   const data = props.jobData;
   const handleChange = props.handleChange;
 
+  function updateKeys(v){
+    if(props.keysList.includes(v)){
+      props.handleKeysChange([...props.keysData, data[v]]);
+    }
+  }
+
   return (
     <form className="input_title_form">
       <div className="input_title_row">
@@ -15,6 +21,7 @@ function InputFormJobHeader(props) {
           label={"Job Title"}
           type={"text"}
           onChange={(e) => handleChange({...data, title: e.target.value})}
+          onBlur={() => updateKeys("title")}
           defaultValue={data.title}
         />
       </div>
@@ -25,6 +32,7 @@ function InputFormJobHeader(props) {
           label={"Company"}
           type={"text"}
           onChange={(e) => handleChange({...data, company: e.target.value})}
+          onBlur={() => updateKeys("company")}
           defaultValue={data.company}
         />
       </div>
@@ -36,6 +44,7 @@ function InputFormJobHeader(props) {
             label={"Location"}
             type={"text"}
             onChange={(e) => handleChange({...data, location: e.target.value})}
+            onBlur={() => updateKeys("location")}
             defaultValue={data.location}
           />
         </div>
@@ -46,6 +55,7 @@ function InputFormJobHeader(props) {
             label={"Start Date"}
             type={"date"}
             onChange={(e) => handleChange({...data, startDate: e.target.value})}
+            onBlur={() => updateKeys("startDate")}
             defaultValue={data.startDate}
           />
         </div>
