@@ -9,7 +9,7 @@
     height: 100vh;
 }
 
-.login_footer {
+.footer_container {
     position: absolute;
     width: 100vw;
     bottom: 0;
