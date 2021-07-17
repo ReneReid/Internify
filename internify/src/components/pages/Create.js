@@ -248,10 +248,10 @@ function Create(props) {
         container
         direction="row"
         alignItems="flex-start"
-        justify="flex-end"
+        justifyContent="flex-end"
       >
         <Grid item xs={2}>
-          <Grid container justify="flex-end" style={{ paddingTop: "1em" }}>
+          <Grid container justifyContent="flex-end" style={{ paddingTop: "1em" }}>
             {currentStep > 1 ? (
               <ButtonClear
                 onClick={() => setCurrentStep(currentStep - 1)}

@@ -25,11 +25,8 @@ export default function userReducer(state = initialState, action) {
 
     // TODO: Fix this
     case UPDATE_USER:
-      const userID = action.payload.id;
-      state.filter((user) => user.id !== action.payload.id);
-      const newUser2 = action.payload.user;
-      newUser2.id = userID;
-      return [...state, newUser2];
+      state.user = action.payload;
+      return {...state, user: state.user};
 
     // TODO: Fix this
     case GET_USERS:

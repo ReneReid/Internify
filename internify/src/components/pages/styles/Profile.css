@@ -5,28 +5,32 @@
   border-radius: 50%;
 }
 
+
 .profile_handle_desc {
   list-style: none;
 }
 
-li:not(:last-child) {
-  margin-bottom: 3%;
+.profile_handle_desc > li > h2 {
+  margin-bottom: 0;
+}
+
+.profile_handle_desc > li:not(:last-child) {
+  line-height: 1.25em;
+  margin-bottom: 5%;
 }
 
 .profile_labels {
-  display: table;
-  margin: 0 auto;
   padding-right: 10%;
 }
 
 ul#profile_labels_list {
   list-style: none;
   min-width: 400px;
+  padding-left: 20px;
 }
 
 ul#profile_labels_list li {
   display: inline;
-  padding: 1%;
 }
 
 .profile_inner_desc {
@@ -35,7 +39,7 @@ ul#profile_labels_list li {
 }
 
 .profile_inner_contact {
-  margin-left: -75%;
+  margin-left: -50%;
 }
 
 .profile_inner_contact_list > li{
@@ -48,4 +52,8 @@ ul#profile_labels_list li {
   list-style: none;
   font-size: 0.9em;
   padding-left: 0;
+}
+
+.profile_no_posting_message {
+  margin-right: 4em;
 }
