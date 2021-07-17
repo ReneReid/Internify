@@ -29,6 +29,7 @@
 .footer_links_container li {
   list-style-type: none;
   font-family: Helvetica;
+  line-height: 2;
 }
 
 .footer_links_container a {

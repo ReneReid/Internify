@@ -9,7 +9,7 @@ const Login = () => {
     <div className="login">
       <Navbar />
       <LoginForm />
-      <Footer />
+      <Footer absolute={true}/>
     </div>
   );
 };
