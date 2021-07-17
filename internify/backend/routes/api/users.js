@@ -35,7 +35,7 @@ router.post("/", function (req, res, next) {
     profilePicture: req.body.profilePicture,
     handle: req.body.handle,
     company: req.body.company,
-    title: req.body.title,
+    jobTitle: req.body.jobTitle,
     bio: req.body.bio,
     location: req.body.location,
     contact: req.body.contact,
@@ -62,6 +62,50 @@ router.post("/", function (req, res, next) {
     .catch((err) => {
       console.error(err);
     });
+});
+
+//@route    PUT api/users/:id
+//@desc     Create a User document
+//@access   Public
+
+router.put("/:id", function (req, res, next) {
+  const authId = req.body.authId;
+  // flesh out a new user
+  var args = {
+    name: req.body.name,
+    email: req.body.email,
+    profilePicture: req.body.profilePicture,
+    handle: req.body.handle,
+    company: req.body.company,
+    jobTitle: req.body.jobTitle,
+    bio: req.body.bio,
+    location: req.body.location,
+    contact: req.body.contact,
+    linkedIn: req.body.linkedIn,
+    website: req.body.website,
+    status: req.body.status,
+  };
+
+  for (var field in args) {
+    if (
+      args[field] === "" ||
+      args[field] === [] ||
+      args[field] === null ||
+      args[field] === undefined
+    )
+      delete args[field];
+  }
+
+  UserData.findOneAndUpdate(
+    { authId: authId },
+    {
+      $set: {
+        ...args,
+      },
+    }
+  )
+    .then((user) => res.status(200).json(user[0]))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 //@route    DELETE api/:id
