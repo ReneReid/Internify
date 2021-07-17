@@ -67,7 +67,7 @@ function App() {
         <Route path="/view">
           <AuthNavbar />
           <View />
-          <Footer absolute={false}/>
+          <Footer/>
         </Route>
         <Redirect to="/profile" />
       </Switch>
