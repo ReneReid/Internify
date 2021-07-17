@@ -19,6 +19,7 @@ const Footer = (props) => {
                 href="https://github.com/aleemer/Internify"
                 target="_blank"
                 className="navbar_main_link1"
+                rel="noreferrer"
               >
                 Github repo
               </a>
@@ -44,6 +45,7 @@ const Footer = (props) => {
               href="https://github.com/aleemer/Internify"
               target="_blank"
               className="navbar_main_link1"
+              rel="noreferrer"
             >
               Github repo
             </a>

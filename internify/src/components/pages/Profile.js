@@ -41,7 +41,6 @@ const Profile = ({ data }) => {
     status: "",
   });
 
-  console.log(user);
   const [labels, setLabels] = useState([]);
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const Profile = ({ data }) => {
         : [],
       status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
     });
-    setLabels([user.jobPostings.length + " postings"]);
+    setLabels([user.jobPostings?.length + " postings"]);
   }, [currentUser]);
 
   return (
@@ -164,7 +163,7 @@ const Profile = ({ data }) => {
             >
               <div className="profile_labels">
                 <ul id="profile_labels_list">
-                  {labels.map((label) => (
+                  {labels?.map((label) => (
                     <li key={label}>
                       <ChipBasic
                         icon={<CheckCircleOutline style={{ color: "white" }} />}
@@ -257,7 +256,7 @@ const Profile = ({ data }) => {
           {/* Posting table */}
           <Grid item>
             <div className="profile_left_posting_table">
-              {user.jobPostings.length > 0 ? (
+              {user.jobPostings?.length > 0 ? (
                 <TableBasic className="posting_table" data={user.jobPostings} />
               ) : (
                 <div className="profile_no_posting_message">
