@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   CreateJobHeader,
   ContactDetails,
@@ -6,10 +7,11 @@ import {
   JobDetail,
   Review,
 } from "./CreateJobPosting/index";
+import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import RegisteredKeys from "../molecules/RegisteredKeys";
 import { Container, makeStyles, Grid } from "@material-ui/core";
-import Alert from '@material-ui/lab/Alert';
+import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
@@ -18,7 +20,7 @@ import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
-
+import { processMatches } from "../../store/actions/matchesActions";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -47,8 +49,8 @@ const currStep = {
   1: "header",
   2: "requirements",
   3: "details",
-  4: "contact"
-}
+  4: "contact",
+};
 
 const chipsList = [
   "title",
@@ -85,7 +87,7 @@ function Create(props) {
     },
     requirements: {
       experience: "",
-      isGpaRequired: "",
+      gpa: "",
       gpaValue: "",
       languages: [],
       frameworks: [],
@@ -109,11 +111,103 @@ function Create(props) {
     },
   });
 
-  function checkIfEmpty(obj){
+  // Grab all students from database
+  const allStudents = useSelector((state) => state.students.studentList);
+
+  function parseConcepts(concepts) {
+    let parsedConcepts = [];
+    for (let i = 0; i < concepts.length; i++) {
+      if (concepts[i] === "Object Oriented Programming") {
+        parsedConcepts.push("Object-Oriented Programming");
+      } else {
+        parsedConcepts.push(concepts[i]);
+      }
+    }
+    return parsedConcepts;
+  }
+
+  function parseExperience(experience) {
+    if (experience === "none") {
+      return 0;
+    } else {
+      const expArray = experience.split(" ");
+      return parseInt(expArray[1]);
+    }
+  }
+
+  function parseCitizenshipReqs(candidates) {
+    let reqs = [];
+    // anyone case
+    if (candidates === "Anyone") {
+      reqs = ["Anyone"]; // always return true in checker for this!
+      return reqs;
+    } else {
+      // logic-handling for other cases
+      const expArray = candidates.split(" ");
+      if (expArray.includes("Citizens") && expArray.includes("PR")) {
+        reqs = ["Citizen", "Permanent Residency"];
+        return reqs;
+      }
+      if (expArray.includes("Citizens")) {
+        reqs = ["Citizen"];
+        return reqs;
+      }
+      reqs = ["Citizen", "Permanent Residency", "International"];
+      return reqs;
+    }
+  }
+
+  function parseCoopReqs(coOp) {
+    if (coOp === "Yes") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function parseLanguages(languages) {
+    let editedLanguages = [];
+    for (let i = 0; i < languages.length; i++) {
+      if (languages[i] === "C++") {
+        editedLanguages.push("Cpp");
+        editedLanguages.push("C++");
+      } else if (languages[i] === "Cpp") {
+        editedLanguages.push("C++");
+        editedLanguages.push("Cpp");
+      } else {
+        editedLanguages.push(languages[i]);
+      }
+    }
+    return editedLanguages;
+  }
+
+  function createJobObject(jobPosting) {
+    // parsing functions
+    const experience = parseExperience(jobPosting.requirements.experience);
+    const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
+    const coOp = parseCoopReqs(jobPosting.details.coOp);
+    const concepts = parseConcepts(jobPosting.requirements.concepts);
+    const languages = parseLanguages(jobPosting.requirements.languages);
+
+    return {
+      jobId: jobPosting.jobId,
+      experience: experience,
+      gpa: jobPosting.requirements.gpa,
+      gpaValue: jobPosting.requirements.gpaValue,
+      languages: languages,
+      frameworks: jobPosting.requirements.frameworks,
+      tools: jobPosting.requirements.tools,
+      concepts: concepts,
+      candidates: candidates,
+      academicReq: jobPosting.details.academicReq,
+      coOp: coOp,
+    };
+  }
+  function checkIfEmpty(obj) {
     const sub = jobData[obj];
     for (var key in sub) {
       const currVal = sub[key];
-      if(currVal === "" || currVal.length === 0){
+      if (currVal === "" || currVal.length === 0) {
         return true;
       }
     }
@@ -125,19 +219,28 @@ function Create(props) {
   }, [props.actions]);
 
   function updateStore() {
+    // dispatch to matches reducer
+    window.scrollTo(0, 0);
     const curr = currStep[currentStep];
-    if(!checkIfEmpty(curr)){
 
+    if (!checkIfEmpty(curr)) {
       setError(false);
       setCurrentStep(currentStep + 1);
-      console.log(jobData);
-      
+
+      props.actions.addJobsData(jobData);
+      const posting = createJobObject(jobData);
+
+      if (currentStep === 4) {
+        props.actions.processMatches({
+          students: allStudents,
+          posting: posting,
+        });
+      }
       window.scrollTo(0, 0);
     } else {
       setError(true);
     }
   }
-
 
   return (
     <div className={classes.root}>
@@ -194,17 +297,19 @@ function Create(props) {
               </ButtonFilled>
             </Container>
           ) : null}
-          {error && 
+          {error && (
             <div>
-            <Container maxWidth="md" className={"form_validation_error"}>
-              <Alert variant="outlined" severity="error">
-                Please Fill Out All Required Fields
-              </Alert>
-            </Container>
-            </div>}
+              <Container maxWidth="md" className={"form_validation_error"}>
+                <Alert variant="outlined" severity="error">
+                  Please Fill Out All Required Fields
+                </Alert>
+              </Container>
+            </div>
+          )}
         </Grid>
         <Grid item xs={3}>
           <RegisteredKeys jobData={jobData} keysData={keysData}/>
+          {currentStep === 5 ? <Feedback /> : null}
         </Grid>
       </Grid>
     </div>
@@ -221,7 +326,13 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJobsData: addJobsData, getStudents: getStudents}, dispatch),
+      {
+        addJobsData: addJobsData,
+        processMatches: processMatches,
+        getStudents: getStudents,
+      },
+      dispatch
+    ),
   };
 }
 
