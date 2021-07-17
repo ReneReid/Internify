@@ -1,13 +1,21 @@
 import { React, useEffect, useState } from "react";
-import RegisteredKeys from "../molecules/RegisteredKeys";
 import Notes from "../molecules/Notes";
 import Score from "../molecules/Score";
 import { useSelector } from "react-redux";
 import "./styles/Feedback.css";
 
 const Feedback = () => {
-  const students = useSelector((state) => state.students.studentList);
-  const matchLength = 5; // dummy placeholder for future matcher implementation
+  // Grab appropriate information from state
+  const students = useSelector((state) => state.students.studentList); // all students from database
+  const jobId = useSelector((state) => state.jobs.currentPosting["jobId"]); // the jobID
+  const allMatches = useSelector((state) => state.matches); // all jobID:matches pairings
+  let matchStudents = []; // matches for the job in question
+  allMatches.forEach((match) => {
+    if (match[jobId] !== undefined) {
+      matchStudents = match[jobId];
+    }
+  });
+  const matchLength = matchStudents.length; // number of matches for job
 
   // State setting for props in sub-components rendering
   const [score, setScore] = useState(0);
@@ -16,32 +24,37 @@ const Feedback = () => {
   const [totalMatches, setTotalMatches] = useState(0);
   const totalStudents = students.length;
 
+  // calculate seeking students
+  function seekingStudents(totalStudents) {
+    let seekingLength = 0;
+    for (let i = 0; i < totalStudents.length; i++) {
+      if (totalStudents[i].seeking) {
+        seekingLength++;
+      }
+    }
+    return seekingLength;
+  }
+
   useEffect(() => {
     calculateScore(students);
     notesContent(students);
   });
 
   function calculateScore(students) {
-    const rawScore = matchLength / students.length;
+    const rawScore = matchLength / seekingStudents(students);
     const displayScore = Math.sqrt(rawScore);
     setScore(displayScore);
   }
 
   function notesContent(students) {
-    // randomly pick students to match
-    let matches = [];
-    for (let i = 0; i < matchLength; i++) {
-      const pick = Math.floor(Math.random() * 10);
-      matches.push(students[pick]);
-    }
-    setTotalMatches(matches.length);
+    setTotalMatches(matchLength);
 
     // matches with UBC students
     let matchesUBC = 0;
-    for (let match of matches) {
-      const matchBSc = match["degree"]["BSc"];
-      const matchMSc = match["degree"]["MSc"];
-      const matchPhD = match["degree"]["PhD"];
+    for (let match of matchStudents) {
+      const matchBSc = match["academicReq"]["BSc"];
+      const matchMSc = match["academicReq"]["MSc"];
+      const matchPhD = match["academicReq"]["PhD"];
       const name = "University of British Columbia";
 
       if (matchBSc === name || matchMSc === name || matchPhD === name) {
@@ -52,7 +65,7 @@ const Feedback = () => {
 
     // matches with Canadian students
     let matchesCanada = 0;
-    for (let match of matches) {
+    for (let match of matchStudents) {
       const location = match["location"];
       if (location === "Canada") {
         matchesCanada++;
@@ -63,7 +76,6 @@ const Feedback = () => {
 
   return (
     <div className="feedback_container">
-      <RegisteredKeys />
       <Notes
         canadaMatches={cMatches}
         ubcMatches={ubcMatches}

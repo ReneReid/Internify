@@ -70,10 +70,6 @@ function App() {
           <View />
           <Footer />
         </Route>
-        <Route path="/feedback">
-          <Feedback />
-          <Footer />
-        </Route>
         <Redirect to="/profile" />
       </Switch>
     );
