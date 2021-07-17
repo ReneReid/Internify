@@ -7,7 +7,6 @@ import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Feedback from "./components/organisms/Feedback";
-import { mockProfileData } from "./models/mockData";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import "./App.css";
@@ -58,7 +57,7 @@ function App() {
       <Switch>
         <Route path="/profile">
           <AuthNavbar />
-          <Profile data={mockProfileData}/>
+          <Profile/>
           <Footer />
         </Route>
         <Route path="/create">
