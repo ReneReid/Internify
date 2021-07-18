@@ -24,8 +24,8 @@ router.get('/:id', function(req, res, next) {
 //@desc     Create A Job Document 
 //@access   Public
 router.post('/', function(req, res, next) {
-  console.log("in post: ", req.body);
     var newJob = new JobPostingData({
+      jobId: req.body.jobId,
       header: req.body.header, 
       requirements: req.body.requirements,
       details: req.body.details,
