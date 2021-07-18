@@ -18,8 +18,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
-import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
+import "./styles/Create.css";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -56,7 +56,7 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
-    jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    jobId: uuidv4(),
     dateCreated: "",
     dateUpdated: "",
     score: 0,
