@@ -3,6 +3,9 @@ import { TextField, FormHelperText, Container } from "@material-ui/core";
 import { useState } from "react";
 import CheckBox from "../atoms/CheckBox";
 import "./styles/TechStack.css";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 const TechStack = (props) => {
   let jobData = props.jobData;
@@ -38,7 +41,18 @@ const TechStack = (props) => {
     Recursion: false,
   });
 
-  function handleLanguageChange(event) {
+  function updateKeys(v, l){
+    if(props.keysList.includes(v)){
+      if(props.jobs.registeredKeys.hasOwnProperty(v)){
+        props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+      } else {
+        props.actions.updateRegKeys(v, [l]);
+      }
+    }
+  }
+
+  function handleLanguageChange(event, val, label) {
+    updateKeys(val, label);
     setLangState({ ...langState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.languages.push(event.target.name);
@@ -51,7 +65,8 @@ const TechStack = (props) => {
     }
   }
 
-  function handleFrameworksChange(event) {
+  function handleFrameworksChange(event, val, label) {
+    updateKeys(val, label);
     setFrameState({ ...frameState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.frameworks.push(event.target.name);
@@ -64,7 +79,8 @@ const TechStack = (props) => {
     }
   }
 
-  function handleWorkToolsChange(event) {
+  function handleWorkToolsChange(event, val, label) {
+    updateKeys(val, label);
     setToolsState({ ...toolsState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.tools.push(event.target.name);
@@ -77,7 +93,8 @@ const TechStack = (props) => {
     }
   }
 
-  function handleConceptsChange(event) {
+  function handleConceptsChange(event, val, label) {
+    updateKeys(val, label);
     setConceptsState({
       ...conceptsState,
       [event.target.name]: event.target.checked,
@@ -106,7 +123,7 @@ const TechStack = (props) => {
                 key={x}
                 name={x}
                 label={x}
-                onChange={handleLanguageChange}
+                onChange={(e) => handleLanguageChange(e, "languages", x)}
                 checked={langState.x}
               />
             );
@@ -126,7 +143,7 @@ const TechStack = (props) => {
                 key={x}
                 name={x}
                 label={x}
-                onChange={handleFrameworksChange}
+                onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
                 checked={frameState.x}
               />
             );
@@ -146,7 +163,7 @@ const TechStack = (props) => {
                 key={x}
                 name={x}
                 label={x}
-                onChange={handleWorkToolsChange}
+                onChange={(e) => handleWorkToolsChange(e, "tools", x)}
                 checked={toolsState.x}
               />
             );
@@ -166,7 +183,7 @@ const TechStack = (props) => {
                 key={x}
                 name={x}
                 label={x}
-                onChange={handleConceptsChange}
+                onChange={(e) => handleConceptsChange(e, "concepts", x)}
                 checked={conceptsState.x}
               />
             );
@@ -180,4 +197,21 @@ const TechStack = (props) => {
   );
 };
 
-export default TechStack;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateRegKeys: updateRegKeys
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(TechStack);
