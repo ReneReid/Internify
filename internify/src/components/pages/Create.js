@@ -213,12 +213,11 @@ function Create(props) {
       props.actions.addJobsData(jobData);
       const posting = createJobObject(jobData);
 
-      if (currentStep === 4) {
-        props.actions.processMatches({
-          students: allStudents,
-          posting: posting,
-        });
-      }
+      props.actions.processMatches({
+        students: allStudents,
+        posting: posting,
+        page: currentStep,
+      });
       window.scrollTo(0, 0);
     } else {
       setError(true);
@@ -234,7 +233,11 @@ function Create(props) {
         justifyContent="flex-end"
       >
         <Grid item xs={2}>
-          <Grid container justifyContent="flex-end" style={{ paddingTop: "1em" }}>
+          <Grid
+            container
+            justifyContent="flex-end"
+            style={{ paddingTop: "1em" }}
+          >
             {currentStep > 1 ? (
               <ButtonClear
                 onClick={() => setCurrentStep(currentStep - 1)}
