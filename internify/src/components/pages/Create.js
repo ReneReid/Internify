@@ -71,7 +71,6 @@ function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
-  const [keysData, setKeysData] = useState([]);
   const [jobData, setJobData] = useState({
     jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     dateCreated: "",
@@ -307,7 +306,7 @@ function Create(props) {
           )}
         </Grid>
         <Grid item xs={3}>
-          <ul><RegisteredKeys keysData={keysData}/></ul>
+          <ul><RegisteredKeys /></ul>
           {currentStep === 5 ? <Feedback /> : null}
         </Grid>
       </Grid>
