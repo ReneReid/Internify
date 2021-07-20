@@ -9,8 +9,6 @@ import {
 import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
-  const keysData = props.keysData;
-  const handleKeysChange = props.handleKeysChange;
   const keysList = props.keysList;
   const [header, setHeader] = useState({
     title: "",
@@ -40,19 +38,17 @@ function CreateJobHeader(props) {
             <InputFormJobHeader 
             handleChange={setHeader} 
             jobData={header}
-            keysData={keysData}
-            handleKeysChange={handleKeysChange}
-            keysList={keysList} />
+            keysList={keysList}
+            />
             <LengthSubHeader 
             handleChange={setHeader} 
             jobData={header}
+            keysList={keysList}
             />
             <FormHelperText>Required</FormHelperText>
             <PositionSubHeader 
             handleChange={setHeader} 
             jobData={header}
-            keysData={keysData}
-            handleKeysChange={handleKeysChange}
             keysList={keysList} />
             <FormHelperText>Required</FormHelperText>
           </div>
