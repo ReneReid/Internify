@@ -1,18 +1,38 @@
 import React from 'react';
 import { ChipBasic } from "../atoms/index";
+import { connect } from "react-redux";
 
 const RegisteredKeys = (props) => {
-    const data = props.keysData;
+    const registeredKeys = props.jobs.registeredKeys;
 
     return (
         <div className="keys_container">
-            {data.map((x, i) => {
-            return (
-              <ChipBasic label={x} key={i}/>
-            );
+            {Object.keys(registeredKeys).map((x, i) => {
+              const current = registeredKeys[x];
+              if(Array.isArray(current)){
+                const result = current.map((key) => {
+                  return (
+                    <ChipBasic label={key}/>
+                  )
+                });
+                return result;
+              } else {
+                return (
+                  <ChipBasic label={registeredKeys[x]} key={i}/>
+                );
+              }
           })}
         </div>
-    )
+    );
+
 }
 
-export default RegisteredKeys;
+
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+export default connect(mapStateToProps)(RegisteredKeys);
+
