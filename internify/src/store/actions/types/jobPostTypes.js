@@ -3,3 +3,4 @@ export const GET_ALL_JOBS = "GET_ALL_JOBS";
 export const ADD_JOB = "ADD_JOB";
 export const DELETE_JOB = "DELETE_JOB";
 export const ADD_JOB_HEADER = "ADD_JOB_HEADER";
+export const UPDATE_KEYS = "UPDATE_KEYS";
