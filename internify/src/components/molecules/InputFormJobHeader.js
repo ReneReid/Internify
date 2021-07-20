@@ -1,6 +1,9 @@
 import React from "react";
 import TextFieldInput from "../atoms/TextFieldInput";
 import "./styles/InputFormJobHeader.css";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function InputFormJobHeader(props) {
   const data = props.jobData;
@@ -8,7 +11,7 @@ function InputFormJobHeader(props) {
 
   function updateKeys(v){
     if(props.keysList.includes(v)){
-      props.handleKeysChange([...props.keysData, data[v]]);
+      props.actions.updateRegKeys(v, data[v]);
     }
   }
 
@@ -64,4 +67,23 @@ function InputFormJobHeader(props) {
   );
 }
 
-export default InputFormJobHeader;
+
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateRegKeys: updateRegKeys
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(InputFormJobHeader);
+
