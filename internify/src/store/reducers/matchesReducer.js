@@ -1,11 +1,14 @@
 import { PROCESS_MATCHES } from "../actions/types/matchesTypes";
 
 const initialState = {
-  matches: {
-    page1Object: {},
-    page2Object: {},
-    page3Object: {},
-  },
+  // matches: {
+  //   page1Object: {},
+  //   page2Object: {},
+  //   page3Object: {},
+  // },
+  page1Object: {},
+  page2Object: {},
+  page3Object: {},
 };
 
 export default function matchesReducer(state = initialState, action) {
@@ -16,15 +19,15 @@ export default function matchesReducer(state = initialState, action) {
       const page = action.payload.page;
       if (page === 1) {
         let page1Object = matchFilterPage1(students, posting);
-        return { ...state.matches, page1Object: page1Object };
+        return { ...state, page1Object: page1Object };
       }
       if (page === 2) {
         let page2Object = matchFilterPage2(students, posting);
-        return { ...state.matches, page2Object: page2Object };
+        return { ...state, page2Object: page2Object };
       }
       if (page === 3) {
         let page3Object = matchFilterPage3(students, posting);
-        return { ...state.matches, page3Object: page3Object };
+        return { ...state, page3Object: page3Object };
       }
       break;
     default:
