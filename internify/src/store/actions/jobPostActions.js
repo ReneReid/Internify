@@ -4,6 +4,7 @@ import {
   GET_ALL_JOBS,
   ADD_JOB,
   DELETE_JOB,
+  UPDATE_KEYS
 } from "./types/jobPostTypes";
 import { ADD_JOB_HEADER } from "./types/jobPostTypes";
 
@@ -49,3 +50,10 @@ export const addJobsData = (data) => (dispatch) => {
     payload: data,
   });
 };
+
+export const updateRegKeys = (key, val) => (dispatch) => {
+  dispatch({
+    type: UPDATE_KEYS,
+    payload: {key: key, val: val},
+  });
+}
