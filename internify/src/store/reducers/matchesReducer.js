@@ -20,8 +20,12 @@ export default function matchesReducer(state = initialState, action) {
         return { ...state.matches, page1Object: page1Object };
       }
       if (page === 2) {
-        console.log(students);
-        return state;
+        let page2Object = matchFilterPage2(students, posting);
+        return {...state.matches, page2Object: page2Object };
+      }
+      if (page === 3) {
+        let page3Object = matchFilterPage3(students, posting);
+        return {...state.matches, page3Object: page3Object };
       }
       break;
     default:
@@ -29,27 +33,6 @@ export default function matchesReducer(state = initialState, action) {
   }
 }
 
-// matching algorithm
-// Inputs: students = [{student 1}, {student 2}, {student 3}, ...], posting = {a1, a2, ...}
-// Output: {postingID: {student 1, student 2, ...}}
-
-// function matchFilter(students, posting) {
-//   let seekingMatches = seekingFilter(students);
-//   let citizenMatches = citizenFilter(seekingMatches, posting);
-//   let academicMatches = academicFilter(citizenMatches, posting);
-//   let workExpMatches = workExpFilter(academicMatches, posting);
-//   let coopMatches = coopFilter(workExpMatches, posting);
-//   let gpaMatches = gpaFilter(coopMatches, posting);
-//   let conceptsMatches = conceptsFilter(gpaMatches, posting);
-//   let langMatches = langFilter(conceptsMatches, posting);
-//   let frameMatches = frameFilter(langMatches, posting);
-//   let toolsMatches = toolsFilter(frameMatches, posting);
-
-//   const jobId = posting.jobId;
-//   let match = {};
-//   match[jobId] = toolsMatches;
-//   return match;
-// }
 
 function matchFilterPage1(students, posting) {
   let seekingMatches = seekingFilter(students);
@@ -58,20 +41,45 @@ function matchFilterPage1(students, posting) {
   returnObject["seeking"] = seekingMatches.length;
   returnObject["page1Students"] = seekingMatches;
   return returnObject;
-  // insert filters
+
 }
 
-function matchFilterPage2(page1Students, posting) {
-  // insert filters
+function matchFilterPage2(students, posting) {
+
+  let experienceMatches = workExpFilter(students, posting);
+  let gpaMatches = gpaFilter(experienceMatches, posting);
+  let languageMatches = langFilter(gpaMatches, posting);
+  let frameMatches = frameFilter(languageMatches, posting);
+  let toolsMatches = toolsFilter(frameMatches, posting);
+  let conceptsMatches = conceptsFilter(toolsMatches, posting);
+
+  let returnObject = {};
+  returnObject["experience"] = experienceMatches.length;
+  returnObject["gpa"] = gpaMatches.length;
+  returnObject["languages"] = languageMatches.length;
+  returnObject["frameworks"] = frameMatches.length;
+  returnObject["toolsMatches"] = toolsMatches.length;
+  returnObject["concepts"] = conceptsMatches.length;
+  returnObject["page2Students"] = conceptsMatches;
+
+  return returnObject;
 }
 
-function matchFilterPage3(page2Students, posting) {
-  // insert filters
+function matchFilterPage3(students, posting) {
+  let citizenMatches = citizenFilter(students, posting);
+  let coopMatches = coopFilter(citizenMatches, posting);
+  let academicMatches = academicFilter(coopMatches, posting);
+
+  let returnObject = {};
+  returnObject["candidates"] = citizenMatches.length;
+  returnObject["coop"] = coopMatches.length;
+  returnObject["academicReq"] = academicMatches.length;
+  returnObject["page3Students"] = academicMatches;
+
+  return returnObject;
 }
 
-function matchFilterPage4(page3Students, posting) {
-  // insert filters
-}
+
 
 function seekingFilter(students) {
   let matches = students.filter((student) => matchSeek(student.seeking));
