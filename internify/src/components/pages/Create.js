@@ -267,8 +267,6 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
-            keysData={keysData}
-            handleKeysChange={setKeysData}
             keysList={chipsList}
           />
           <TechRequirements
@@ -276,6 +274,7 @@ function Create(props) {
             handleChange={setJobData}
             jobData={jobData}
             data={mockTechStackData}
+            keysList={chipsList}
           />
           <JobDetail
             currentStep={currentStep}
@@ -308,7 +307,7 @@ function Create(props) {
           )}
         </Grid>
         <Grid item xs={3}>
-          <RegisteredKeys jobData={jobData} keysData={keysData}/>
+          <ul><RegisteredKeys keysData={keysData}/></ul>
           {currentStep === 5 ? <Feedback /> : null}
         </Grid>
       </Grid>
