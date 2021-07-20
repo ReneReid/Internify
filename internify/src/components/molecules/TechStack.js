@@ -6,6 +6,7 @@ import "./styles/TechStack.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateRegKeys } from "../../store/actions/jobPostActions";
+import { v4 as uuidv4 } from "uuid";
 
 const TechStack = (props) => {
   let jobData = props.jobData;
@@ -120,7 +121,7 @@ const TechStack = (props) => {
           {languages.map((x) => {
             return (
               <CheckBox
-                key={x}
+                key={uuidv4()}
                 name={x}
                 label={x}
                 onChange={(e) => handleLanguageChange(e, "languages", x)}
@@ -131,7 +132,7 @@ const TechStack = (props) => {
           <FormHelperText>Required</FormHelperText>
           </Container>
         </div>
-        <TextField id="languages" label="Custom..." variant="filled" />
+        <TextField id="tech_languages" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Frameworks*</h3>
@@ -140,7 +141,7 @@ const TechStack = (props) => {
           {frameworks.map((x) => {
             return (
               <CheckBox
-                key={x}
+                key={uuidv4()}
                 name={x}
                 label={x}
                 onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
@@ -151,7 +152,7 @@ const TechStack = (props) => {
           <FormHelperText>Required</FormHelperText>
         </Container>
         </div>
-        <TextField id="languages" label="Custom..." variant="filled" />
+        <TextField id="tech_frameworks" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Work Tools and Others*</h3>
@@ -160,7 +161,7 @@ const TechStack = (props) => {
         {workTools.map((x) => {
             return (
               <CheckBox
-                key={x}
+                key={uuidv4()}
                 name={x}
                 label={x}
                 onChange={(e) => handleWorkToolsChange(e, "tools", x)}
@@ -171,7 +172,7 @@ const TechStack = (props) => {
           <FormHelperText>Required</FormHelperText>
         </Container>
         </div>
-        <TextField id="languages" label="Custom..." variant="filled" />
+        <TextField id="tech_tools" label="Custom..." variant="filled" />
       </div>
       <div className="tech_stack_container">
         <h3>Computer Science Concepts</h3>
@@ -180,7 +181,7 @@ const TechStack = (props) => {
         {csConcepts.map((x) => {
             return (
               <CheckBox
-                key={x}
+                key={uuidv4()}
                 name={x}
                 label={x}
                 onChange={(e) => handleConceptsChange(e, "concepts", x)}
@@ -191,7 +192,7 @@ const TechStack = (props) => {
           <FormHelperText>Required</FormHelperText>
         </Container>
         </div>
-        <TextField id="languages" label="Custom..." variant="filled" />
+        <TextField id="tech_concepts" label="Custom..." variant="filled" />
       </div>
     </React.Fragment>
   );
