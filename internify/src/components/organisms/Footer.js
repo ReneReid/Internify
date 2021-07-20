@@ -3,11 +3,11 @@ import "./styles/Footer.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const Footer = (props) => {
-  const landing = props.landing;
+  const absolute = props.absolute;
 
-  if (landing) {
+  if (absolute) {
     return (
-      <div className="footer_landing">
+      <div className="footer">
         <div className="footer_links_container">
           <ul className="footer_links">
             <li className="footer_item">
@@ -32,8 +32,9 @@ const Footer = (props) => {
       </div>
     );
   }
+
   return (
-    <div className="footer">
+    <div className="footer_landing">
       <div className="footer_links_container">
         <ul className="footer_links">
           <li className="footer_item">

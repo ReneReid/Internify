@@ -57,17 +57,17 @@ function App() {
         <Route path="/profile">
           <AuthNavbar />
           <Profile/>
-          <Footer />
+          <Footer absolute={true}/>
         </Route>
         <Route path="/create">
           <AuthNavbar />
           <Create />
-          <Footer />
+          <Footer/>
         </Route>
         <Route path="/view">
           <AuthNavbar />
           <View />
-          <Footer />
+          <Footer/>
         </Route>
         <Redirect to="/profile" />
       </Switch>
