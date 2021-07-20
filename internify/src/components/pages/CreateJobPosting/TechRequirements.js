@@ -66,6 +66,7 @@ const GradePoint = (props) => {
           data={gpaData}
           jobData={props.jobData.requirements}
           property={"gpa"}
+          keysList={props.keysList}
         />
         <FormHelperText>Required</FormHelperText>
       </div>
