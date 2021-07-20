@@ -5,7 +5,6 @@ const initialState = {
     page1Object: {},
     page2Object: {},
     page3Object: {},
-    page4Object: {},
   },
 };
 
@@ -21,18 +20,17 @@ export default function matchesReducer(state = initialState, action) {
       }
       if (page === 2) {
         let page2Object = matchFilterPage2(students, posting);
-        return {...state.matches, page2Object: page2Object };
+        return { ...state.matches, page2Object: page2Object };
       }
       if (page === 3) {
         let page3Object = matchFilterPage3(students, posting);
-        return {...state.matches, page3Object: page3Object };
+        return { ...state.matches, page3Object: page3Object };
       }
       break;
     default:
       return state;
   }
 }
-
 
 function matchFilterPage1(students, posting) {
   let seekingMatches = seekingFilter(students);
@@ -41,11 +39,9 @@ function matchFilterPage1(students, posting) {
   returnObject["seeking"] = seekingMatches.length;
   returnObject["page1Students"] = seekingMatches;
   return returnObject;
-
 }
 
 function matchFilterPage2(students, posting) {
-
   let experienceMatches = workExpFilter(students, posting);
   let gpaMatches = gpaFilter(experienceMatches, posting);
   let languageMatches = langFilter(gpaMatches, posting);
@@ -78,8 +74,6 @@ function matchFilterPage3(students, posting) {
 
   return returnObject;
 }
-
-
 
 function seekingFilter(students) {
   let matches = students.filter((student) => matchSeek(student.seeking));

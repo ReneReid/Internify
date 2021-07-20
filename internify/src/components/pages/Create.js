@@ -97,6 +97,7 @@ function Create(props) {
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
   const page1Object = useSelector((state) => state.matches.page1Object);
+  const page2Object = useSelector((state) => state.matches.page2Object);
 
   function parseConcepts(concepts) {
     let parsedConcepts = [];
@@ -224,6 +225,14 @@ function Create(props) {
       if (currentStep === 2) {
         props.actions.processMatches({
           students: page1Object.page1Students,
+          posting: posting,
+          page: currentStep,
+        });
+      }
+
+      if (currentStep === 3) {
+        props.actions.processMatches({
+          students: page2Object.page2Students,
           posting: posting,
           page: currentStep,
         });
