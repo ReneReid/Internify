@@ -21,10 +21,6 @@ const Profile = ({ data }) => {
 
   const currentUser = useSelector((state) => state.users.user);
 
-  // console.log(currentUser);
-  // console.log(currentUser.hasOwnProperty("email"));
-  // console.log(currentUser.email);
-
   const [user, setUser] = useState({
     authId: "",
     name: "",
