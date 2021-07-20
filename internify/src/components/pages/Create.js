@@ -96,6 +96,7 @@ function Create(props) {
 
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
+  const page1Object = useSelector((state) => state.matches.page1Object);
 
   function parseConcepts(concepts) {
     let parsedConcepts = [];
@@ -208,16 +209,28 @@ function Create(props) {
 
     if (!checkIfEmpty(curr)) {
       setError(false);
-      setCurrentStep(currentStep + 1);
 
       props.actions.addJobsData(jobData);
       const posting = createJobObject(jobData);
 
-      props.actions.processMatches({
-        students: allStudents,
-        posting: posting,
-        page: currentStep,
-      });
+      if (currentStep === 1) {
+        props.actions.processMatches({
+          students: allStudents,
+          posting: posting,
+          page: currentStep,
+        });
+      }
+
+      if (currentStep === 2) {
+        props.actions.processMatches({
+          students: page1Object.page1Students,
+          posting: posting,
+          page: currentStep,
+        });
+      }
+
+      setCurrentStep(currentStep + 1);
+
       window.scrollTo(0, 0);
     } else {
       setError(true);

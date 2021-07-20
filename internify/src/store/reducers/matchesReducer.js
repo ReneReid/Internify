@@ -1,7 +1,12 @@
 import { PROCESS_MATCHES } from "../actions/types/matchesTypes";
 
 const initialState = {
-  matches: {},
+  matches: {
+    page1Object: {},
+    page2Object: {},
+    page3Object: {},
+    page4Object: {},
+  },
 };
 
 export default function matchesReducer(state = initialState, action) {
@@ -12,10 +17,10 @@ export default function matchesReducer(state = initialState, action) {
       const page = action.payload.page;
       if (page === 1) {
         let page1Object = matchFilterPage1(students, posting);
-        return { ...state.matches, seeking: page1Object };
+        return { ...state.matches, page1Object: page1Object };
       }
       if (page === 2) {
-        console.log(state.matches);
+        console.log(students);
         return state;
       }
       break;
