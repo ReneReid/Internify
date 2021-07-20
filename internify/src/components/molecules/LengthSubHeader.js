@@ -12,6 +12,7 @@ function LengthSubHeader(props) {
           jobData={jobData}
           property={"length"}
           data={data}
+          keysList={props.keysList}
         />
       </div>
     </div>
