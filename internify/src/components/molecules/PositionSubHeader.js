@@ -1,6 +1,9 @@
 import CheckBox from "../atoms/CheckBox";
 import React from "react";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function PositionSubHeader(props) {
   const data = props.jobData;
@@ -31,7 +34,11 @@ function PositionSubHeader(props) {
 
   function updateKeys(v, l){
     if(props.keysList.includes(v)){
-      props.handleKeysChange([...props.keysData, l]);
+      if(props.jobs.registeredKeys.hasOwnProperty(v)){
+        props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+      } else {
+        props.actions.updateRegKeys(v, [l]);
+      }
     }
   }
 
@@ -68,4 +75,21 @@ function PositionSubHeader(props) {
   );
 }
 
-export default PositionSubHeader;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateRegKeys: updateRegKeys
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(PositionSubHeader);
