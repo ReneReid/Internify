@@ -6,7 +6,6 @@ import "./styles/TechStack.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateRegKeys } from "../../store/actions/jobPostActions";
-import { v4 as uuidv4 } from "uuid";
 
 const TechStack = (props) => {
   let jobData = props.jobData;
