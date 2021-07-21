@@ -64,7 +64,8 @@ const chipsList = [
   "pay",
   "candidates",
   "coOp",
-  "academicReq"
+  "academicReq",
+  "positionType"
 ]
 
 function Create(props) {
