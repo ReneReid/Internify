@@ -215,7 +215,6 @@ function Create(props) {
       const posting = createJobObject(jobData);
 
       if (currentStep === 1) {
-        console.log(allStudents.length);
         props.actions.processMatches({
           students: allStudents,
           posting: posting,
@@ -224,7 +223,6 @@ function Create(props) {
       }
 
       if (currentStep === 2) {
-        console.log(page1Object.page1Students.length);
         props.actions.processMatches({
           students: page1Object.page1Students,
           posting: posting,
@@ -233,7 +231,6 @@ function Create(props) {
       }
 
       if (currentStep === 3) {
-        console.log(page2Object.page2Students.length);
         props.actions.processMatches({
           students: page2Object.page2Students,
           posting: posting,

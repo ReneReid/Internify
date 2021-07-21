@@ -11,21 +11,21 @@ const Feedback4 = ({ data }) => {
           if (x === "academicReq") {
             const msg = `${data[x]} students also meet academic requirements`;
             return (
-              <li>
+              <li key={x}>
                 <ChipNote label={msg} />
               </li>
             );
           } else if (x === "page3Students") {
             const msg = `${data[x].length} total matches`;
             return (
-              <li>
+              <li key={x}>
                 <ChipNote label={msg} />
               </li>
             );
           } else {
             const msg = `${data[x]} students also meet ${x} requirements`;
             return (
-              <li>
+              <li key={x}>
                 <ChipNote label={msg} />
               </li>
             );

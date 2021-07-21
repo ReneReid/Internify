@@ -11,7 +11,7 @@ const Feedback3 = ({ data }) => {
           if (x === "toolsMatches") {
             const msg = `${data[x]} students also meet work tools requirements`;
             return (
-              <li>
+              <li key={x}>
                 <ChipNote label={msg} />
               </li>
             );
@@ -20,7 +20,7 @@ const Feedback3 = ({ data }) => {
           } else {
             const msg = `${data[x]} students also meet ${x} requirements`;
             return (
-              <li>
+              <li key={x}>
                 <ChipNote label={msg} />
               </li>
             );

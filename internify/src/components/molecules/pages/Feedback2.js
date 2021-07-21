@@ -13,7 +13,7 @@ const Feedback2 = ({ data }) => {
           } else {
             const msg = `${data[x]} students currently ${x} a job`;
             return (
-              <li>
+              <li key={x}>
                 {" "}
                 <ChipNote label={msg} />{" "}
               </li>
