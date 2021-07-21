@@ -63,7 +63,6 @@ const chipsList = [
   "concepts",
   "pay",
   "candidates",
-  "coOp",
   "academicReq",
   "positionType"
 ]
