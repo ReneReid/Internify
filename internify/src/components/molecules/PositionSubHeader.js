@@ -7,6 +7,9 @@ import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function PositionSubHeader(props) {
   const data = props.jobData;
+  const keysList = props.keysList;
+  const registeredKeys = props.jobs.registeredKeys;
+
   const [state, setCheckedState] = useState({
     Internship: false,
     Coop: false,
@@ -17,7 +20,7 @@ function PositionSubHeader(props) {
   const handleChange = (e, v, l) => {
     setCheckedState({ ...state, [e.target.name]: e.target.checked });
     filterChecked(e);
-    updateKeys(v, l);
+    updateKeys(e, v, l);
   };
 
   function filterChecked(e){
@@ -32,12 +35,21 @@ function PositionSubHeader(props) {
     }
   }
 
-  function updateKeys(v, l){
-    if(props.keysList.includes(v)){
-      if(props.jobs.registeredKeys.hasOwnProperty(v)){
-        props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+  function updateKeys(event, key, label){
+    if(keysList.includes(key)){
+      if(registeredKeys.hasOwnProperty(key)){
+        if (event.target.checked) {
+          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
+        } else {
+          if (registeredKeys[key].includes(label)) {
+            registeredKeys[key] = registeredKeys[key].filter(
+              (obj) => obj !== label
+            );
+            props.actions.updateRegKeys(key, registeredKeys[key]);
+          }
+        }
       } else {
-        props.actions.updateRegKeys(v, [l]);
+        props.actions.updateRegKeys(key, [label]);
       }
     }
   }

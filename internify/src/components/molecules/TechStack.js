@@ -78,7 +78,7 @@ const TechStack = (props) => {
   }
 
   function handleFrameworksChange(event, val, label) {
-    updateKeys(val, label);
+    updateKeys(event, val, label);
     setFrameState({ ...frameState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.frameworks.push(event.target.name);
@@ -92,7 +92,7 @@ const TechStack = (props) => {
   }
 
   function handleWorkToolsChange(event, val, label) {
-    updateKeys(val, label);
+    updateKeys(event, val, label);
     setToolsState({ ...toolsState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.tools.push(event.target.name);
@@ -106,7 +106,7 @@ const TechStack = (props) => {
   }
 
   function handleConceptsChange(event, val, label) {
-    updateKeys(val, label);
+    updateKeys(event, val, label);
     setConceptsState({
       ...conceptsState,
       [event.target.name]: event.target.checked,
