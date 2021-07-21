@@ -1,6 +1,6 @@
 import React from "react";
-import { ChipBasic } from "../../atoms/Chips";
-import "./styles/Feedback.css"
+import { ChipNote } from "../../atoms/Chips";
+import "./styles/Feedback.css";
 
 const Feedback1 = ({ data }) => {
   const msg1 = `${data.length} total students`;
@@ -9,7 +9,7 @@ const Feedback1 = ({ data }) => {
       <ul className="feedback_list">
         <li>
           {" "}
-          <ChipBasic label={msg1} />{" "}
+          <ChipNote label={msg1} />{" "}
         </li>
       </ul>
     </div>

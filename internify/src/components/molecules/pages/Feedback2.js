@@ -1,6 +1,6 @@
 import React from "react";
-import { ChipBasic } from "../../atoms/Chips";
-import "./styles/Feedback.css"
+import { ChipNote } from "../../atoms/Chips";
+import "./styles/Feedback.css";
 
 const Feedback2 = ({ data }) => {
   const keyArray = Object.keys(data);
@@ -15,7 +15,7 @@ const Feedback2 = ({ data }) => {
             return (
               <li>
                 {" "}
-                <ChipBasic label={msg} />{" "}
+                <ChipNote label={msg} />{" "}
               </li>
             );
           }

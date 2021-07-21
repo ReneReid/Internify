@@ -1,6 +1,6 @@
 import React from "react";
-import { ChipBasic } from "../../atoms/Chips";
-import "./styles/Feedback.css"
+import { ChipNote } from "../../atoms/Chips";
+import "./styles/Feedback.css";
 
 const Feedback3 = ({ data }) => {
   const keyArray = Object.keys(data);
@@ -12,7 +12,7 @@ const Feedback3 = ({ data }) => {
             const msg = `${data[x]} students also meet work tools requirements`;
             return (
               <li>
-                <ChipBasic label={msg} />
+                <ChipNote label={msg} />
               </li>
             );
           } else if (x === "page2Students") {
@@ -21,7 +21,7 @@ const Feedback3 = ({ data }) => {
             const msg = `${data[x]} students also meet ${x} requirements`;
             return (
               <li>
-                <ChipBasic label={msg} />
+                <ChipNote label={msg} />
               </li>
             );
           }
