@@ -37,7 +37,6 @@ router.post('/', function(req, res, next) {
       .save()
       .then(job => res.status(200).json(job))
       .catch(err => res.status(404).json({success: false}));
-
 });
 
 //@route    DELETE api/jobs/:id
