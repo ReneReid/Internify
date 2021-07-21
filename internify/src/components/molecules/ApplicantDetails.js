@@ -2,6 +2,9 @@ import React from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
 import { TextField, FormHelperText } from "@material-ui/core";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
@@ -10,8 +13,30 @@ function ApplicantDetails(props) {
   const citizenship = props.citizenship;
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
+  const keysList = props.keysList;
+  const registeredKeys = props.jobs.registeredKeys;
 
-  const handleChange = (event) => {
+  function updateKeys(event, key, label){
+    if(keysList.includes(key)){
+      if(registeredKeys.hasOwnProperty(key)){
+        if (event.target.checked) {
+          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
+        } else {
+          if (registeredKeys[key].includes(label)) {
+            registeredKeys[key] = registeredKeys[key].filter(
+              (obj) => obj !== label
+            );
+            props.actions.updateRegKeys(key, registeredKeys[key]);
+          }
+        }
+      } else {
+        props.actions.updateRegKeys(key, [label]);
+      }
+    }
+  }
+
+  const handleChange = (event, key, label) => {
+    updateKeys(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -32,6 +57,7 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"position"}
             data={location}
+            keysList={props.keysList}
           />
         </div>
         <FormHelperText>Required</FormHelperText>
@@ -43,6 +69,7 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"pay"}
             data={payment}
+            keysList={props.keysList}
           />
         </div>
         <FormHelperText>Required</FormHelperText>
@@ -54,6 +81,7 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"candidates"}
             data={citizenship}
+            keysList={props.keysList}
           />
         </div>
       </div>
@@ -63,7 +91,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={handleChange} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
@@ -77,6 +105,7 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"coOp"}
             data={coopReq}
+            keysList={props.keysList}
           />
         </div>
       </div>
@@ -85,4 +114,21 @@ function ApplicantDetails(props) {
   );
 }
 
-export default ApplicantDetails;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateRegKeys: updateRegKeys
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(ApplicantDetails);
