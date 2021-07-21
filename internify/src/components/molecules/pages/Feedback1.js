@@ -5,7 +5,12 @@ const Feedback1 = ({ data }) => {
   const msg1 = `Total student body of ${data.length}`;
   return (
     <div className="feedback_page1_inner">
-      <ChipBasic label={msg1} />
+      <ul>
+        <li>
+          {" "}
+          <ChipBasic label={msg1} />{" "}
+        </li>
+      </ul>
     </div>
   );
 };

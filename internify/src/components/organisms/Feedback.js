@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ChipBasic } from "../atoms/Chips";
 import Feedback1 from "../molecules/pages/Feedback1";
+import Feedback2 from "../molecules/pages/Feedback2";
 import "./styles/Feedback.css";
 
 const Feedback = ({ page }) => {
@@ -17,18 +18,10 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 2) {
-    const msg1 = `${allStudents.length} total students`;
-    const msg2 = `${pageObjects.page1Object.seeking} students are currently seeking a Job`;
     return (
-      <div>
-        <ul>
-          <li>
-            <ChipBasic label={msg1} />
-          </li>
-          <li>
-            <ChipBasic label={msg2} />
-          </li>
-        </ul>
+      <div className="feedback_page2_outer">
+        <Feedback1 data={allStudents} />
+        <Feedback2 data={pageObjects.page1Object} />
       </div>
     );
   } else if (page === 3) {
