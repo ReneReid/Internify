@@ -42,10 +42,19 @@ const TechStack = (props) => {
     Recursion: false,
   });
 
-  function updateKeys(v, l){
+  function updateKeys(e, v, l){
     if(props.keysList.includes(v)){
       if(props.jobs.registeredKeys.hasOwnProperty(v)){
-        props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+        if (e.target.checked) {
+          props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+        } else {
+          if (props.jobs.registeredKeys[v].includes(l)) {
+            props.jobs.registeredKeys[v] = props.jobs.registeredKeys[v].filter(
+              (obj) => obj !== l
+            );
+            props.actions.updateRegKeys(v, props.jobs.registeredKeys[v]);
+          }
+        }
       } else {
         props.actions.updateRegKeys(v, [l]);
       }
@@ -53,7 +62,7 @@ const TechStack = (props) => {
   }
 
   function handleLanguageChange(event, val, label) {
-    updateKeys(val, label);
+    updateKeys(event, val, label);
     setLangState({ ...langState, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       jobData.languages.push(event.target.name);
