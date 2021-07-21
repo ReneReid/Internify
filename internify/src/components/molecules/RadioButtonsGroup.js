@@ -10,7 +10,6 @@ function RadioButtonsGroup(props) {
   const data = props.data;
   const jobData = props.jobData;
   const [value, setValue] = React.useState('');
-
   const handleChange = (event) => {
     setValue(event.target.value);
     jobData[props.property] = event.target.value;
@@ -19,11 +18,7 @@ function RadioButtonsGroup(props) {
 
   function updateKeys(v, l){
     if(props.keysList.includes(v)){
-      if(props.jobs.registeredKeys.hasOwnProperty(v)){
-        props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
-      } else {
-        props.actions.updateRegKeys(v, [l]);
-      }
+        props.actions.updateRegKeys(v, l);
     }
   }
 
