@@ -2,14 +2,12 @@ import React from 'react';
 import { ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import './styles/RegisteredKeys.css';
 
 const RegisteredKeys = (props) => {
     const registeredKeys = props.jobs.registeredKeys;
 
     return (
-        <div className="RegisteredKeys">
-          <div className="registered_keys_container">
+          <div className="registed_keys_container" style={{display: "flexbox"}}>
           {Object.keys(registeredKeys).map(key => {
               const current = registeredKeys[key];
               if(Array.isArray(current)){
@@ -26,7 +24,6 @@ const RegisteredKeys = (props) => {
               }
           })}
           </div>
-        </div>
     );
 
 }
