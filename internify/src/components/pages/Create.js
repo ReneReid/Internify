@@ -280,12 +280,14 @@ function Create(props) {
             handleChange={setJobData}
             jobData={jobData}
             data={mockJobDetailData}
+            keysList={chipsList}
           />
           <ContactDetails
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
             data={mockJobDetailData}
+            keysList={chipsList}
           />
           <Review currentStep={currentStep} jobData={jobData} />
           {currentStep < 5 ? (
