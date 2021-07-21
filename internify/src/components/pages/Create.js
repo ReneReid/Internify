@@ -316,7 +316,7 @@ function Create(props) {
           )}
         </Grid>
         <Grid item xs={3}>
-          {currentStep === 5 ? <Feedback /> : null}
+          <Feedback page={currentStep} />
         </Grid>
       </Grid>
     </div>
