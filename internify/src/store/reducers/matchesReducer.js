@@ -1,11 +1,6 @@
 import { PROCESS_MATCHES } from "../actions/types/matchesTypes";
 
 const initialState = {
-  // matches: {
-  //   page1Object: {},
-  //   page2Object: {},
-  //   page3Object: {},
-  // },
   page1Object: {},
   page2Object: {},
   page3Object: {},

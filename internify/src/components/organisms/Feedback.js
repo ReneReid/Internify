@@ -11,38 +11,71 @@ const Feedback = ({ page }) => {
   useEffect(() => {}, []);
 
   if (page === 1) {
-    console.log(pageObjects);
+    // const numberSoFar = allStudents.length
     return (
       <div>
-        <h1> Page 1 Feedback </h1>
+        <h1> FEEDBACK </h1>
+        <h1> {allStudents.length} </h1>
       </div>
     );
   } else if (page === 2) {
-    console.log(pageObjects.page1Object.page1Students);
     return (
       <div>
-        <h1> Page 2 Feedback </h1>
+        <h1> FEEDBACK </h1>
+        <h1> Total student body: {allStudents.length} </h1>
+        <h1> Students seeking: {pageObjects.page1Object.seeking} </h1>
       </div>
     );
   } else if (page === 3) {
-    console.log(pageObjects.page2Object.page2Students);
     return (
       <div>
-        <h1> Page 3 Feedback </h1>
+        <h1> FEEDBACK </h1>
+        <h1> Total student body: {allStudents.length} </h1>
+        <h1> Students seeking: {pageObjects.page1Object.seeking} </h1>
+        <h1> Students also meeting experience req: {pageObjects.page2Object.experience} </h1>
+        <h1> Students also meeting gpa req: {pageObjects.page2Object.gpa} </h1>
+        <h1> Students also meeting language req: {pageObjects.page2Object.languages} </h1>
+        <h1> Students also meeting frameworks req: {pageObjects.page2Object.frameworks} </h1>
+        <h1> Students also meeting tools req: {pageObjects.page2Object.toolsMatches} </h1>
+        <h1> Students also meeting concepts req: {pageObjects.page2Object.concepts} </h1>
+        <h1> Total current matches: {pageObjects.page2Object.page2Students.length} </h1>
       </div>
     );
   } else if (page === 4) {
-    console.log(pageObjects.page3Object.page3Students);
     return (
       <div>
-        <h1> Page 4 Feedback </h1>
+        <h1> FEEDBACK </h1>
+        <h1> Total student body: {allStudents.length} </h1>
+        <h1> Students seeking: {pageObjects.page1Object.seeking} </h1>
+        <h1> Students also meeting experience req: {pageObjects.page2Object.experience} </h1>
+        <h1> Students also meeting gpa req: {pageObjects.page2Object.gpa} </h1>
+        <h1> Students also meeting language req: {pageObjects.page2Object.languages} </h1>
+        <h1> Students also meeting frameworks req: {pageObjects.page2Object.frameworks} </h1>
+        <h1> Students also meeting tools req: {pageObjects.page2Object.toolsMatches} </h1>
+        <h1> Students also meeting concepts req: {pageObjects.page2Object.concepts} </h1>
+        <h1> Students also meeting citizenship req: {pageObjects.page3Object.candidates} </h1>
+        <h1> Students also meeting coop req: {pageObjects.page3Object.coop} </h1>
+        <h1> Students also meeting academic req: {pageObjects.page3Object.academicReq} </h1>
+        <h1> Total current matches: {pageObjects.page3Object.page3Students.length} </h1>
       </div>
     );
   } else if (page === 5) {
-    console.log(pageObjects.page3Object.page3Students);
+
     return (
       <div>
-        <h1> Page 5 Feedback </h1>
+        <h1> FEEDBACK </h1>
+        <h1> Total student body: {allStudents.length} </h1>
+        <h1> Students seeking: {pageObjects.page1Object.seeking} </h1>
+        <h1> Students also meeting experience req: {pageObjects.page2Object.experience} </h1>
+        <h1> Students also meeting gpa req: {pageObjects.page2Object.gpa} </h1>
+        <h1> Students also meeting language req: {pageObjects.page2Object.languages} </h1>
+        <h1> Students also meeting frameworks req: {pageObjects.page2Object.frameworks} </h1>
+        <h1> Students also meeting tools req: {pageObjects.page2Object.toolsMatches} </h1>
+        <h1> Students also meeting concepts req: {pageObjects.page2Object.concepts} </h1>
+        <h1> Students also meeting citizenship req: {pageObjects.page3Object.candidates} </h1>
+        <h1> Students also meeting coop req: {pageObjects.page3Object.coop} </h1>
+        <h1> Students also meeting academic req: {pageObjects.page3Object.academicReq} </h1>
+        <h1> Total current matches: {pageObjects.page3Object.page3Students.length} </h1>
       </div>
     );
   }
