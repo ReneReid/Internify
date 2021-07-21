@@ -11,6 +11,7 @@ export const ChipBasic = withStyles(() => ({
       backgroundColor: "#043A74",
       color: "#FFFFFF",
       fontWeight: "bold",
+      margin: "0.25em"
     }
 }))(Chip);
 
