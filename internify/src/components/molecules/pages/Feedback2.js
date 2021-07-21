@@ -1,11 +1,12 @@
 import React from "react";
 import { ChipBasic } from "../../atoms/Chips";
+import "./styles/Feedback.css"
 
 const Feedback2 = ({ data }) => {
   const keyArray = Object.keys(data);
   return (
     <div className="feedback_page2_inner">
-      <ul>
+      <ul className="feedback_list">
         {keyArray.map((x) => {
           if (x === "page1Students") {
             // Null

@@ -15,20 +15,20 @@ const Feedback = ({ page }) => {
 
   if (page === 1) {
     return (
-      <div className="feedback_page1_outer">
+      <div className="feedback_outer">
         <Feedback1 data={allStudents} />
       </div>
     );
   } else if (page === 2) {
     return (
-      <div className="feedback_page2_outer">
+      <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
       </div>
     );
   } else if (page === 3) {
     return (
-      <div className="feedback_page3_outer">
+      <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
         <Feedback3 data={pageObjects.page2Object} />
@@ -36,7 +36,7 @@ const Feedback = ({ page }) => {
     );
   } else if (page === 4) {
     return (
-      <div className="feedback_page4_outer">
+      <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
         <Feedback3 data={pageObjects.page2Object} />
@@ -45,7 +45,7 @@ const Feedback = ({ page }) => {
     );
   } else if (page === 5) {
     return (
-      <div className="feedback_page4_outer">
+      <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
         <Feedback3 data={pageObjects.page2Object} />

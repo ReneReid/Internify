@@ -1,0 +1,9 @@
+.feedback_list {
+    list-style-type: none;
+    
+
+}
+
+li:not(:last-child) {
+    margin-bottom: 15px;
+}

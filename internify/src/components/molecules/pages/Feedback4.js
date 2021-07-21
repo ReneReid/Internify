@@ -1,11 +1,12 @@
 import React from "react";
 import { ChipBasic } from "../../atoms/Chips";
+import "./styles/Feedback.css"
 
 const Feedback4 = ({ data }) => {
   const keyArray = Object.keys(data);
   return (
     <div className="feedback_page4_inner">
-      <ul>
+      <ul className="feedback_list">
         {keyArray.map((x) => {
           if (x === "academicReq") {
             const msg = `${data[x]} students also meet academic requirements`;
