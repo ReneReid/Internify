@@ -2,25 +2,17 @@ import React from 'react';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import RadioButton from '../atoms/RadioButton';
 import FormControl from '@material-ui/core/FormControl';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function RadioButtonsGroup(props) {
   const data = props.data;
   const jobData = props.jobData;
   const [value, setValue] = React.useState('');
+  
   const handleChange = (event) => {
     setValue(event.target.value);
     jobData[props.property] = event.target.value;
-    updateKeys(props.property, event.target.value);
+    props.updateKeysText(props.property, jobData);
   };
-
-  function updateKeys(v, l){
-    if(props.keysList.includes(v)){
-        props.actions.updateRegKeys(v, l);
-    }
-  }
 
   return (
     <FormControl component="fieldset">
@@ -35,22 +27,5 @@ function RadioButtonsGroup(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      {
-        updateRegKeys: updateRegKeys
-      },
-      dispatch
-    ),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(RadioButtonsGroup);
+export default RadioButtonsGroup;
 

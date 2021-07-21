@@ -1,14 +1,9 @@
 import CheckBox from "../atoms/CheckBox";
 import React from "react";
 import { useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function PositionSubHeader(props) {
   const data = props.jobData;
-  const keysList = props.keysList;
-  const registeredKeys = props.jobs.registeredKeys;
 
   const [state, setCheckedState] = useState({
     Internship: false,
@@ -20,7 +15,7 @@ function PositionSubHeader(props) {
   const handleChange = (e, v, l) => {
     setCheckedState({ ...state, [e.target.name]: e.target.checked });
     filterChecked(e);
-    updateKeys(e, v, l);
+    props.updateKeysList(e, v, l);
   };
 
   function filterChecked(e){
@@ -31,25 +26,6 @@ function PositionSubHeader(props) {
         data.position = data.position.filter(
           (obj) => obj !== e.target.name
         );
-      }
-    }
-  }
-
-  function updateKeys(event, key, label){
-    if(keysList.includes(key)){
-      if(registeredKeys.hasOwnProperty(key)){
-        if (event.target.checked) {
-          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
-        } else {
-          if (registeredKeys[key].includes(label)) {
-            registeredKeys[key] = registeredKeys[key].filter(
-              (obj) => obj !== label
-            );
-            props.actions.updateRegKeys(key, registeredKeys[key]);
-          }
-        }
-      } else {
-        props.actions.updateRegKeys(key, [label]);
       }
     }
   }
@@ -87,21 +63,4 @@ function PositionSubHeader(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      {
-        updateRegKeys: updateRegKeys
-      },
-      dispatch
-    ),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(PositionSubHeader);
+export default PositionSubHeader;

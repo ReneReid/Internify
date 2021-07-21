@@ -13,6 +13,8 @@ function LengthSubHeader(props) {
           property={"length"}
           data={data}
           keysList={props.keysList}
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText}
         />
       </div>
     </div>

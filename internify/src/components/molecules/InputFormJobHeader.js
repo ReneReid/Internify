@@ -1,19 +1,10 @@
 import React from "react";
 import TextFieldInput from "../atoms/TextFieldInput";
 import "./styles/InputFormJobHeader.css";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function InputFormJobHeader(props) {
   const data = props.jobData;
   const handleChange = props.handleChange;
-
-  function updateKeys(v){
-    if(props.keysList.includes(v)){
-      props.actions.updateRegKeys(v, data[v]);
-    }
-  }
 
   return (
     <form className="input_title_form">
@@ -24,7 +15,7 @@ function InputFormJobHeader(props) {
           label={"Job Title"}
           type={"text"}
           onChange={(e) => handleChange({...data, title: e.target.value})}
-          onBlur={() => updateKeys("title")}
+          onBlur={() => props.updateKeysText("title", data)}
           defaultValue={data.title}
         />
       </div>
@@ -35,7 +26,7 @@ function InputFormJobHeader(props) {
           label={"Company"}
           type={"text"}
           onChange={(e) => handleChange({...data, company: e.target.value})}
-          onBlur={() => updateKeys("company")}
+          onBlur={() => props.updateKeysText("company", data)}
           defaultValue={data.company}
         />
       </div>
@@ -47,7 +38,7 @@ function InputFormJobHeader(props) {
             label={"Location"}
             type={"text"}
             onChange={(e) => handleChange({...data, location: e.target.value})}
-            onBlur={() => updateKeys("location")}
+            onBlur={() => props.updateKeysText("location", data)}
             defaultValue={data.location}
           />
         </div>
@@ -58,7 +49,7 @@ function InputFormJobHeader(props) {
             label={"Start Date"}
             type={"date"}
             onChange={(e) => handleChange({...data, startDate: e.target.value})}
-            onBlur={() => updateKeys("startDate")}
+            onBlur={() => props.updateKeysText("startDate", data)}
             defaultValue={data.startDate}
           />
         </div>
@@ -67,23 +58,5 @@ function InputFormJobHeader(props) {
   );
 }
 
-
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      {
-        updateRegKeys: updateRegKeys
-      },
-      dispatch
-    ),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(InputFormJobHeader);
+export default InputFormJobHeader;
 

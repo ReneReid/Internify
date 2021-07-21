@@ -39,17 +39,24 @@ function CreateJobHeader(props) {
             handleChange={setHeader} 
             jobData={header}
             keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText}
             />
             <LengthSubHeader 
             handleChange={setHeader} 
             jobData={header}
             keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText}
             />
             <FormHelperText>Required</FormHelperText>
             <PositionSubHeader 
             handleChange={setHeader} 
             jobData={header}
-            keysList={keysList} />
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} 
+            />
             <FormHelperText>Required</FormHelperText>
           </div>
         </Container>

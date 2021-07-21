@@ -2,9 +2,6 @@ import React from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
 import { TextField, FormHelperText } from "@material-ui/core";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateRegKeys } from "../../store/actions/jobPostActions";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
@@ -13,30 +10,9 @@ function ApplicantDetails(props) {
   const citizenship = props.citizenship;
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
-  const keysList = props.keysList;
-  const registeredKeys = props.jobs.registeredKeys;
-
-  function updateKeys(event, key, label){
-    if(keysList.includes(key)){
-      if(registeredKeys.hasOwnProperty(key)){
-        if (event.target.checked) {
-          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
-        } else {
-          if (registeredKeys[key].includes(label)) {
-            registeredKeys[key] = registeredKeys[key].filter(
-              (obj) => obj !== label
-            );
-            props.actions.updateRegKeys(key, registeredKeys[key]);
-          }
-        }
-      } else {
-        props.actions.updateRegKeys(key, [label]);
-      }
-    }
-  }
 
   const handleChange = (event, key, label) => {
-    updateKeys(event, key, label);
+    props.updateKeysList(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -58,7 +34,8 @@ function ApplicantDetails(props) {
             property={"positionType"}
             data={location}
             keysList={props.keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -70,7 +47,8 @@ function ApplicantDetails(props) {
             property={"pay"}
             data={payment}
             keysList={props.keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -82,7 +60,8 @@ function ApplicantDetails(props) {
             property={"candidates"}
             data={citizenship}
             keysList={props.keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>
@@ -106,7 +85,8 @@ function ApplicantDetails(props) {
             property={"coOp"}
             data={coopReq}
             keysList={props.keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>
@@ -114,21 +94,4 @@ function ApplicantDetails(props) {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      {
-        updateRegKeys: updateRegKeys
-      },
-      dispatch
-    ),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(ApplicantDetails);
+export default ApplicantDetails;

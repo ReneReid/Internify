@@ -21,6 +21,8 @@ const WorkingExperience = (props) => {
         jobData={props.jobData}
         property={"experience"}
         keysList={props.keysList}
+        updateKeysList={props.updateKeysList}
+        updateKeysText={props.updateKeysText} 
       />
       <FormHelperText>Required</FormHelperText>
     </React.Fragment>
@@ -67,6 +69,8 @@ const GradePoint = (props) => {
           jobData={props.jobData.requirements}
           property={"gpa"}
           keysList={props.keysList}
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} 
         />
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -117,11 +121,14 @@ function TechRequirements(props) {
             handleChange={setRequirements}
             jobData={requirements}
             keysList={keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
           <GradePoint 
           handleChange={setRequirements} 
           jobData={props.jobData}
-          keysList={keysList} />
+          keysList={keysList} 
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
@@ -130,7 +137,8 @@ function TechRequirements(props) {
             handleChange={setRequirements}
             jobData={requirements}
             keysList={keysList}
-          />
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </Container>
       </div>
     );

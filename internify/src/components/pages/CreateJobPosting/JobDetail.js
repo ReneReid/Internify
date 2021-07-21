@@ -44,7 +44,8 @@ function JobDetail(props) {
           coopReq={data.coopReq}
           jobData={details}
           keysList={props.keysList}
-        />
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} />
       </Container>
     </div>
   ) : (null);

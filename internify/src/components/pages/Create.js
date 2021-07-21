@@ -19,8 +19,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
-import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
+import { updateRegKeys } from "../../store/actions/jobPostActions";
+import "./styles/Create.css";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -71,6 +72,8 @@ function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
+  const registeredKeys = props.jobs.registeredKeys;
+
   const [jobData, setJobData] = useState({
     jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
     dateCreated: "",
@@ -213,6 +216,31 @@ function Create(props) {
     return false;
   }
 
+  function updateKeysList(event, key, label){
+    if(chipsList.includes(key)){
+      if(registeredKeys.hasOwnProperty(key)){
+        if (event.target.checked) {
+          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
+        } else {
+          if (registeredKeys[key].includes(label)) {
+            registeredKeys[key] = registeredKeys[key].filter(
+              (obj) => obj !== label
+            );
+            props.actions.updateRegKeys(key, registeredKeys[key]);
+          }
+        }
+      } else {
+        props.actions.updateRegKeys(key, [label]);
+      }
+    }
+  }
+
+  function updateKeysText(v, data){
+    if(chipsList.includes(v)){
+      props.actions.updateRegKeys(v, data[v]);
+    }
+  }
+
   useEffect(() => {
     props.actions.getStudents();
   }, [props.actions]);
@@ -267,6 +295,8 @@ function Create(props) {
             handleChange={setJobData}
             jobData={jobData}
             keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <TechRequirements
             currentStep={currentStep}
@@ -274,6 +304,8 @@ function Create(props) {
             jobData={jobData}
             data={mockTechStackData}
             keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <JobDetail
             currentStep={currentStep}
@@ -281,6 +313,8 @@ function Create(props) {
             jobData={jobData}
             data={mockJobDetailData}
             keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <ContactDetails
             currentStep={currentStep}
@@ -288,6 +322,8 @@ function Create(props) {
             jobData={jobData}
             data={mockJobDetailData}
             keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <Review currentStep={currentStep} jobData={jobData} />
           {currentStep < 5 ? (
@@ -330,6 +366,7 @@ function matchDispatchToProps(dispatch) {
         addJobsData: addJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
+        updateRegKeys: updateRegKeys
       },
       dispatch
     ),
