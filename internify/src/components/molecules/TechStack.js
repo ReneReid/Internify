@@ -121,7 +121,7 @@ const TechStack = (props) => {
           {languages.map((x) => {
             return (
               <CheckBox
-                key={uuidv4()}
+                key={x}
                 name={x}
                 label={x}
                 onChange={(e) => handleLanguageChange(e, "languages", x)}
@@ -141,7 +141,7 @@ const TechStack = (props) => {
           {frameworks.map((x) => {
             return (
               <CheckBox
-                key={uuidv4()}
+                key={x}
                 name={x}
                 label={x}
                 onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
@@ -161,7 +161,7 @@ const TechStack = (props) => {
         {workTools.map((x) => {
             return (
               <CheckBox
-                key={uuidv4()}
+                key={x}
                 name={x}
                 label={x}
                 onChange={(e) => handleWorkToolsChange(e, "tools", x)}
@@ -181,7 +181,7 @@ const TechStack = (props) => {
         {csConcepts.map((x) => {
             return (
               <CheckBox
-                key={uuidv4()}
+                key={x}
                 name={x}
                 label={x}
                 onChange={(e) => handleConceptsChange(e, "concepts", x)}
