@@ -1,8 +1,7 @@
 import { React, useEffect, useState } from "react";
-import Notes from "../molecules/Notes";
-import Score from "../molecules/Score";
 import { useSelector } from "react-redux";
 import { ChipBasic } from "../atoms/Chips";
+import Feedback1 from "../molecules/pages/Feedback1";
 import "./styles/Feedback.css";
 
 const Feedback = ({ page }) => {
@@ -12,10 +11,9 @@ const Feedback = ({ page }) => {
   useEffect(() => {}, []);
 
   if (page === 1) {
-    const msg1 = `Total student body of ${allStudents.length}`;
     return (
-      <div>
-        <ChipBasic label={msg1} />
+      <div className="feedback_page1_outer">
+        <Feedback1 data={allStudents} />
       </div>
     );
   } else if (page === 2) {
