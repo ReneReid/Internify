@@ -15,7 +15,6 @@ export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_USER:
       const newUser = action.payload;
-      state.userList.push(newUser);
       state.user = newUser
       return {...state, user: state.user};
 
@@ -23,9 +22,9 @@ export default function userReducer(state = initialState, action) {
     case REMOVE_USER:
       return state.filter((user) => user.id !== action.payload.id);
 
-    // TODO: Fix this
     case UPDATE_USER:
-      state.user = action.payload;
+      const updatedUser = action.payload;
+      state.user = updatedUser;
       return {...state, user: state.user};
 
     // TODO: Fix this

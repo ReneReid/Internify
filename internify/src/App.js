@@ -57,7 +57,7 @@ function App() {
         <Route path="/profile">
           <AuthNavbar />
           <Profile/>
-          <Footer absolute={true}/>
+          <Footer/>
         </Route>
         <Route path="/create">
           <AuthNavbar />

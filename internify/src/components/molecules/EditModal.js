@@ -11,7 +11,6 @@ const EditModal = (props) => {
   let toggle = props.toggle;
   let setToggle = props.setToggle;
 
-
   const [profile, setProfile] = useState({
     ...props.user
   });
@@ -74,7 +73,7 @@ const EditModal = (props) => {
               onChange={(e) =>
                 setProfile({ ...profile, jobTitle: e.target.value })
               }
-              defaultValue={profile.title}
+              defaultValue={profile.jobTitle}
             />
           </Grid>
           <Grid item xs={6}>

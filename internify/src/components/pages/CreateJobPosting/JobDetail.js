@@ -31,7 +31,7 @@ function JobDetail(props) {
           label={"Job Description"}
           type={"text"}
           rows={8}
-          rowsMax={200}
+          maxRows={200}
           onChange={(e) => setDetails({...details, description: e.target.value})}
           defaultValue={details.description}
           helperText={"Required"}
