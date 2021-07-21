@@ -9,7 +9,7 @@ function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
     description: "",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     academicReq: [],
