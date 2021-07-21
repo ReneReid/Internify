@@ -19,7 +19,7 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 2) {
-    const msg1 = `Total student body of ${allStudents.length}`;
+    const msg1 = `${allStudents.length} total students`;
     const msg2 = `${pageObjects.page1Object.seeking} students are currently seeking a Job`;
     return (
       <div>
@@ -34,15 +34,15 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 3) {
-    const msg1 = `Total student body of ${allStudents.length}`;
-    const msg2 = `${pageObjects.page1Object.seeking} students are currently seeking a Job`;
-    const msg3 = `Students also meeting experience requirements: ${pageObjects.page2Object.experience}`;
-    const msg4 = `Students also meeting gpa requirements: ${pageObjects.page2Object.gpa}`;
-    const msg5 = `Students also meeting language requirements: ${pageObjects.page2Object.languages}`;
-    const msg6 = `Students also meeting framework requirements: ${pageObjects.page2Object.frameworks}`;
-    const msg7 = `Students also meeting tool requirements: ${pageObjects.page2Object.toolsMatches}`;
-    const msg8 = `Students also meeting concepts requirements: ${pageObjects.page2Object.concepts}`;
-    const total = `You have ${pageObjects.page2Object.page2Students.length} total matches thus far`;
+    const msg1 = `${allStudents.length} total students`;
+    const msg2 = `${pageObjects.page1Object.seeking} students seeking a Job`;
+    const msg3 = `${pageObjects.page2Object.experience} students also meet experience requirements`;
+    const msg4 = `${pageObjects.page2Object.gpa} students also meet gpa requirements`;
+    const msg5 = `${pageObjects.page2Object.languages} students also meet language requirements`;
+    const msg6 = `${pageObjects.page2Object.frameworks} students also meet framework requirements`;
+    const msg7 = `${pageObjects.page2Object.toolsMatches} students also meet worktools requirements`;
+    const msg8 = `${pageObjects.page2Object.concepts} students also meet cs concepts requirements`;
+    const total = `${pageObjects.page2Object.page2Students.length} total matches thus far`;
 
     return (
       <div>
@@ -78,18 +78,18 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 4) {
-    const msg1 = `Total student body of ${allStudents.length}`;
-    const msg2 = `${pageObjects.page1Object.seeking} students are currently seeking a Job`;
-    const msg3 = `Students also meeting experience requirements: ${pageObjects.page2Object.experience}`;
-    const msg4 = `Students also meeting gpa requirements: ${pageObjects.page2Object.gpa}`;
-    const msg5 = `Students also meeting language requirements: ${pageObjects.page2Object.languages}`;
-    const msg6 = `Students also meeting framework requirements: ${pageObjects.page2Object.frameworks}`;
-    const msg7 = `Students also meeting tool requirements: ${pageObjects.page2Object.toolsMatches}`;
-    const msg8 = `Students also meeting concepts requirements: ${pageObjects.page2Object.concepts}`;
-    const msg9 = `Students also meeting citizenship requirements: ${pageObjects.page3Object.candidates}`;
-    const msg10 = `Students also meeting co-op requirements: ${pageObjects.page3Object.coop}`;
-    const msg11 = `Students also meeting academic requirements: ${pageObjects.page3Object.academicReq}`;
-    const total = `You have ${pageObjects.page3Object.page3Students.length} total matches thus far`;
+    const msg1 = `${allStudents.length} total students`;
+    const msg2 = `${pageObjects.page1Object.seeking} students seeking a Job`;
+    const msg3 = `${pageObjects.page2Object.experience} students also meet experience requirements`;
+    const msg4 = `${pageObjects.page2Object.gpa} students also meet gpa requirements`;
+    const msg5 = `${pageObjects.page2Object.languages} students also meet language requirements`;
+    const msg6 = `${pageObjects.page2Object.frameworks} students also meet framework requirements`;
+    const msg7 = `${pageObjects.page2Object.toolsMatches} students also meet worktools requirements`;
+    const msg8 = `${pageObjects.page2Object.concepts} students also meet cs concepts requirements`;
+    const msg9 = `${pageObjects.page3Object.candidates} students also meet citizenship requirements`;
+    const msg10 = `${pageObjects.page3Object.coop} students also meet coop requirements`;
+    const msg11 = `${pageObjects.page3Object.academicReq} students also meet academic requirements`;
+    const total = `${pageObjects.page3Object.page3Students.length} total matches`;
     return (
       <div>
         <ul>
@@ -133,18 +133,18 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 5) {
-    const msg1 = `Total student body of ${allStudents.length}`;
-    const msg2 = `${pageObjects.page1Object.seeking} students are currently seeking a Job`;
-    const msg3 = `Students also meeting experience requirements: ${pageObjects.page2Object.experience}`;
-    const msg4 = `Students also meeting gpa requirements: ${pageObjects.page2Object.gpa}`;
-    const msg5 = `Students also meeting language requirements: ${pageObjects.page2Object.languages}`;
-    const msg6 = `Students also meeting framework requirements: ${pageObjects.page2Object.frameworks}`;
-    const msg7 = `Students also meeting tool requirements: ${pageObjects.page2Object.toolsMatches}`;
-    const msg8 = `Students also meeting concepts requirements: ${pageObjects.page2Object.concepts}`;
-    const msg9 = `Students also meeting citizenship requirements: ${pageObjects.page3Object.candidates}`;
-    const msg10 = `Students also meeting co-op requirements: ${pageObjects.page3Object.coop}`;
-    const msg11 = `Students also meeting academic requirements: ${pageObjects.page3Object.academicReq}`;
-    const total = `You have ${pageObjects.page3Object.page3Students.length} total matches thus far`;
+    const msg1 = `${allStudents.length} total students`;
+    const msg2 = `${pageObjects.page1Object.seeking} students seeking a Job`;
+    const msg3 = `${pageObjects.page2Object.experience} students also meet experience requirements`;
+    const msg4 = `${pageObjects.page2Object.gpa} students also meet gpa requirements`;
+    const msg5 = `${pageObjects.page2Object.languages} students also meet language requirements`;
+    const msg6 = `${pageObjects.page2Object.frameworks} students also meet framework requirements`;
+    const msg7 = `${pageObjects.page2Object.toolsMatches} students also meet worktools requirements`;
+    const msg8 = `${pageObjects.page2Object.concepts} students also meet cs concepts requirements`;
+    const msg9 = `${pageObjects.page3Object.candidates} students also meet citizenship requirements`;
+    const msg10 = `${pageObjects.page3Object.coop} students also meet cool requirements`;
+    const msg11 = `${pageObjects.page3Object.academicReq} students also meet academic requirements`;
+    const total = `${pageObjects.page3Object.page3Students.length} total matches`;
     return (
       <div>
         <ul>
