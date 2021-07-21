@@ -1,21 +1,26 @@
 import React from "react";
 import { ChipBasic } from "../../atoms/Chips";
 
-const Feedback3 = ({ data }) => {
+const Feedback4 = ({ data }) => {
   const keyArray = Object.keys(data);
   return (
-    <div className="feedback_page3_inner">
+    <div className="feedback_page4_inner">
       <ul>
         {keyArray.map((x) => {
-          if (x === "toolsMatches") {
-            const msg = `${data[x]} students also meet work tools requirements`;
+          if (x === "academicReq") {
+            const msg = `${data[x]} students also meet academic requirements`;
             return (
               <li>
                 <ChipBasic label={msg} />
               </li>
             );
-          } else if (x === "page2Students") {
-            // Null
+          } else if (x === "page3Students") {
+            const msg = `${data[x].length} total matches`;
+            return (
+              <li>
+                <ChipBasic label={msg} />
+              </li>
+            );
           } else {
             const msg = `${data[x]} students also meet ${x} requirements`;
             return (
@@ -30,4 +35,4 @@ const Feedback3 = ({ data }) => {
   );
 };
 
-export default Feedback3;
+export default Feedback4;
