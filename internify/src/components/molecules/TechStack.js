@@ -14,6 +14,8 @@ const TechStack = (props) => {
   const frameworks = props.frameworks;
   const workTools = props.workTools;
   const csConcepts = props.csConcepts;
+  const keysList = props.keysList;
+  const registeredKeys = props.jobs.registeredKeys;
 
   const [langState, setLangState] = useState({
     Java: false,
@@ -42,21 +44,21 @@ const TechStack = (props) => {
     Recursion: false,
   });
 
-  function updateKeys(e, v, l){
-    if(props.keysList.includes(v)){
-      if(props.jobs.registeredKeys.hasOwnProperty(v)){
-        if (e.target.checked) {
-          props.actions.updateRegKeys(v, [...props.jobs.registeredKeys[v], l]);
+  function updateKeys(event, key, label){
+    if(keysList.includes(key)){
+      if(registeredKeys.hasOwnProperty(key)){
+        if (event.target.checked) {
+          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
         } else {
-          if (props.jobs.registeredKeys[v].includes(l)) {
-            props.jobs.registeredKeys[v] = props.jobs.registeredKeys[v].filter(
-              (obj) => obj !== l
+          if (registeredKeys[key].includes(label)) {
+            registeredKeys[key] = registeredKeys[key].filter(
+              (obj) => obj !== label
             );
-            props.actions.updateRegKeys(v, props.jobs.registeredKeys[v]);
+            props.actions.updateRegKeys(key, registeredKeys[key]);
           }
         }
       } else {
-        props.actions.updateRegKeys(v, [l]);
+        props.actions.updateRegKeys(key, [label]);
       }
     }
   }
