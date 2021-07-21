@@ -98,7 +98,6 @@ function Create(props) {
   const allStudents = useSelector((state) => state.students.studentList);
   const page1Object = useSelector((state) => state.matches.page1Object);
   const page2Object = useSelector((state) => state.matches.page2Object);
-  const page3Object = useSelector((state) => state.matches.page3Object);
 
   function parseConcepts(concepts) {
     let parsedConcepts = [];
