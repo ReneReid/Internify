@@ -43,6 +43,7 @@ function JobDetail(props) {
           academicReq={data.academicReq}
           coopReq={data.coopReq}
           jobData={details}
+          keysList={props.keysList}
         />
       </Container>
     </div>
