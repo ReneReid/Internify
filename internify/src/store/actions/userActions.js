@@ -32,6 +32,7 @@ export const updateUser = (data) => (dispatch) => {
   axios
     .put(`/api/users/${data.authId}`, data)
     .then((res) => {
+      console.log(JSON.parse(res.config.data));
       dispatch({
         type: UPDATE_USER,
         payload: JSON.parse(res.config.data),

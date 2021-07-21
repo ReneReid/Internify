@@ -5,9 +5,12 @@ import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addNewJob } from "../../store/actions/jobPostActions";
+import { updateUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
+  const user = props.user;
   const data = props.data;
+  const jobId = data.jobId;
   const header = data?.header
     ? data.header
     : {
@@ -27,10 +30,11 @@ const JobPosting = (props) => {
     details.candidates,
   ];
 
-  function sendJob(){
-    props.actions.addNewJob(data);
+  function sendJob() {
+    props.actions.addNewJob({...data, dateCreated: Date.now() });
+    props.actions.updateUser({ authId: user.uid, jobPostings: [jobId] });
   }
-  
+
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>
@@ -70,8 +74,8 @@ const JobPosting = (props) => {
         ) : null}
         {details.academicReq && requirements.isGpaRequired ? (
           <li>
-            Must have at least or is at <b>{requirements.gpaValue} GPA</b> standing
-            or equivalent
+            Must have at least or is at <b>{requirements.gpaValue} GPA</b>{" "}
+            standing or equivalent
           </li>
         ) : null}
         <li style={{ marginBottom: "0.25em" }}>
@@ -130,7 +134,12 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <ButtonFilled  onClick={() => sendJob()} startIcon={<AddCircleOutline />}>Create</ButtonFilled>
+        <ButtonFilled
+          onClick={() => sendJob()}
+          startIcon={<AddCircleOutline />}
+        >
+          Create
+        </ButtonFilled>
       </div>
     </div>
   );
@@ -139,12 +148,16 @@ const JobPosting = (props) => {
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
+    users: state.users,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addNewJob: addNewJob }, dispatch),
+    actions: bindActionCreators(
+      { addNewJob: addNewJob, updateUser: updateUser },
+      dispatch
+    ),
   };
 }
 
