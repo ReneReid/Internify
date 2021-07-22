@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ButtonFilled } from "../atoms/index";
 import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addNewJob } from "../../store/actions/jobPostActions";
+import { addJob } from "../../store/actions/jobPostActions";
 import { updateUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
@@ -31,8 +32,9 @@ const JobPosting = (props) => {
   ];
 
   function sendJob() {
-    props.actions.addNewJob({...data, dateCreated: Date.now() });
+    props.actions.addJob({ ...data, dateCreated: Date.now() });
     props.actions.updateUser({ authId: user.uid, jobPostings: [jobId] });
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -134,12 +136,14 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <ButtonFilled
-          onClick={() => sendJob()}
-          startIcon={<AddCircleOutline />}
-        >
-          Create
-        </ButtonFilled>
+        <Link to={`/view/${jobId}`}>
+          <ButtonFilled
+            onClick={() => sendJob()}
+            startIcon={<AddCircleOutline />}
+          >
+            Create
+          </ButtonFilled>
+        </Link>
       </div>
     </div>
   );
@@ -155,7 +159,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addNewJob: addNewJob, updateUser: updateUser },
+      { addJob: addJob, updateUser: updateUser },
       dispatch
     ),
   };

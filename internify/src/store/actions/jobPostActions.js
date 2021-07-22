@@ -1,16 +1,29 @@
 import axios from "axios";
 import {
-  GET_ONE_JOB,
+  GET_JOB,
+  GET_BULK_JOBS,
   GET_ALL_JOBS,
   ADD_JOB,
   DELETE_JOB,
 } from "./types/jobPostTypes";
 import { ADD_JOB_HEADER } from "./types/jobPostTypes";
 
-export const getOneJob = (_id) => (dispatch) => {
-  axios.get(`/api/jobs/getOne/${_id}`).then((res) => {
+export const getJob = (data) => (dispatch) => {
+  axios
+    .get(`/api/jobs/${data}`)
+    .then((res) => {
+      dispatch({
+        type: GET_JOB,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.error(err));
+};
+
+export const getBulkJobs = (data) => (dispatch) => {
+  axios.get(`/api/jobs/bulk`).then((res) => {
     dispatch({
-      type: GET_ONE_JOB,
+      type: GET_BULK_JOBS,
       payload: res.data,
     });
   });
@@ -25,7 +38,7 @@ export const getJobs = () => (dispatch) => {
   });
 };
 
-export const addNewJob = (job) => (dispatch) => {
+export const addJob = (job) => (dispatch) => {
   axios.post("/api/jobs/", job).then((res) => {
     dispatch({
       type: ADD_JOB,

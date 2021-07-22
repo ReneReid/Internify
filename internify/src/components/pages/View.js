@@ -1,5 +1,5 @@
-import { React } from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
@@ -7,9 +7,23 @@ import { ViewPosting } from "../molecules/index";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import LinkIcon from "@material-ui/icons/Link";
 import { mockJobPosting } from "../../models/mockData";
+import { bindActionCreators } from "redux";
+import { connect, useSelector } from "react-redux";
+import { getJob } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
 
-const View = () => {
+const View = (props) => {
+  let { slug } = useParams();
+  const store = useSelector((state) => state.jobs.currentPosting);
+  const [job, setJob] = useState({});
+
+  useEffect(() => {
+    // TODO: props.actions keeps getting called infinitely
+    // props.actions.getJob(slug);
+    // setJob(store.currentPosting);
+  }, [props.actions, slug, store]);
+  console.log(job);
+  
   return (
     <Grid
       container
@@ -69,4 +83,16 @@ const View = () => {
   );
 };
 
-export default View;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ getJob: getJob }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(View);

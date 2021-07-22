@@ -5,6 +5,7 @@ import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getUser, updateUser } from "../../store/actions/userActions";
+import { getJob } from "../../store/actions/jobPostActions";
 import {
   RoomOutlined,
   MailOutlineOutlined,
@@ -18,7 +19,6 @@ import { AccountCircle } from "@material-ui/icons";
 
 const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
-
   const currentUser = useSelector((state) => state.users.user);
 
   // console.log(currentUser);
@@ -279,6 +279,7 @@ const Profile = ({ data }) => {
 function mapStateToProps(state) {
   return {
     users: state.users,
+    jobs: state.jobs,
   };
 }
 

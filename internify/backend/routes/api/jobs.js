@@ -15,8 +15,9 @@ router.get('/', function(req, res, next) {
 //@desc     Get Single Job Document
 //@access   Public
 router.get('/:id', function(req, res, next) {
-  JobPostingData.findById(req.params.id)
-    .then(jobs => res.status(200).json(jobs))
+  const jobId = req.params.id;
+  JobPostingData.findOne({ jobId: jobId})
+    .then(job => res.status(200).json(job))
     .catch(err => res.status(404).json({success: false}));
 });
 

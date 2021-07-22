@@ -64,7 +64,7 @@ function App() {
           <Create />
           <Footer/>
         </Route>
-        <Route path="/view/:id">
+        <Route path="/view/:slug">
           <AuthNavbar />
           <View />
           <Footer/>
