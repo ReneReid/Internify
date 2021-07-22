@@ -79,7 +79,7 @@ function Create(props) {
     },
     details: {
       description: "",
-      position: "",
+      positionType: "",
       pay: "",
       candidates: "",
       academicReq: [],
