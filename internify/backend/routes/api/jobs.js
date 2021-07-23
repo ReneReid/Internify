@@ -27,6 +27,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var newJob = new JobPostingData({
       jobId: req.body.jobId,
+      dateCreated: req.body.dateCreated,
       header: req.body.header, 
       requirements: req.body.requirements,
       details: req.body.details,

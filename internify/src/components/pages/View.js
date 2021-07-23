@@ -1,30 +1,25 @@
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Container, Grid } from "@material-ui/core";
-import { ChevronLeft } from "@material-ui/icons";
+import { Container, Grid, Typography } from "@material-ui/core";
+import { ChevronLeft, CreateOutlined } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import LinkIcon from "@material-ui/icons/Link";
-import { mockJobPosting } from "../../models/mockData";
-import { bindActionCreators } from "redux";
-import { connect, useSelector } from "react-redux";
-import { getJob } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
+import axios from "axios";
 
-const View = (props) => {
+const View = () => {
   let { slug } = useParams();
-  const store = useSelector((state) => state.jobs.currentPosting);
-  const [job, setJob] = useState({});
+  const [job, setJob] = useState(null);
 
   useEffect(() => {
-    // TODO: props.actions keeps getting called infinitely
-    // props.actions.getJob(slug);
-    // setJob(store.currentPosting);
-  }, [props.actions, slug, store]);
-  console.log(job);
-  
-  return (
+    axios
+      .get(`/api/jobs/${slug}`)
+      .then((res) => setJob(res.data))
+      .catch((err) => console.error(err));
+  }, [slug]);
+
+  return job ? (
     <Grid
       container
       style={{ paddingTop: "1em" }}
@@ -44,7 +39,7 @@ const View = (props) => {
       {/** Middle Job Posting */}
       <Grid item xs={7}>
         <Container maxWidth="md">
-          <ViewPosting data={mockJobPosting} />
+          <ViewPosting data={job} />
         </Container>
       </Grid>
 
@@ -68,7 +63,7 @@ const View = (props) => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined styles={{}} startIcon={<CreateOutlinedIcon />}>
+              <ButtonOutlined styles={{}} startIcon={<CreateOutlined />}>
                 Edit
               </ButtonOutlined>
               {"    "}
@@ -80,19 +75,9 @@ const View = (props) => {
         </Grid>
       </Grid>
     </Grid>
+  ) : (
+    <Typography>Loading</Typography>
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ getJob: getJob }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(View);
+export default View;
