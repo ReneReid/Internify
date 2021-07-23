@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { ChipBasic } from "../atoms/Chips";
+import { ChipNote } from "../atoms/Chips";
 import Feedback1 from "../molecules/pages/Feedback1";
 import Feedback2 from "../molecules/pages/Feedback2";
 import Feedback3 from "../molecules/pages/Feedback3";
@@ -20,18 +20,22 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 2) {
+    const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
     return (
       <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
+        <ChipNote label={msg} />
       </div>
     );
   } else if (page === 3) {
+    const msg = `${pageObjects.page2Object.page2Students.length} total matches`;
     return (
       <div className="feedback_outer">
         <Feedback1 data={allStudents} />
         <Feedback2 data={pageObjects.page1Object} />
         <Feedback3 data={pageObjects.page2Object} />
+        <ChipNote label={msg} />
       </div>
     );
   } else if (page === 4) {
