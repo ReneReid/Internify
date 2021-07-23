@@ -2,7 +2,7 @@ import React from "react";
 import { ChipNote } from "../../atoms/Chips";
 import "./styles/Feedback.css";
 
-const Feedback2 = ({ data }) => {
+const SeekingStudents = ({ data }) => {
   const keyArray = Object.keys(data);
   return (
     <div className="feedback_page2_inner">
@@ -25,4 +25,4 @@ const Feedback2 = ({ data }) => {
   );
 };
 
-export default Feedback2;
+export default SeekingStudents;

@@ -2,7 +2,7 @@ import React from "react";
 import { ChipNote } from "../../atoms/Chips";
 import "./styles/Feedback.css";
 
-const Feedback1 = ({ data }) => {
+const TotalStudents = ({ data }) => {
   const msg1 = `${data.length} total students`;
   return (
     <div className="feedback_page1_inner">
@@ -16,4 +16,4 @@ const Feedback1 = ({ data }) => {
   );
 };
 
-export default Feedback1;
+export default TotalStudents;

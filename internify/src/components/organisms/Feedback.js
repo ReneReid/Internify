@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ChipNote } from "../atoms/Chips";
-import TotalStudents from "../molecules/pages/Feedback1";
-import SeekingStudents from "../molecules/pages/Feedback2";
-import TechMatchStudents from "../molecules/pages/Feedback3";
-import FinalReqStudents from "../molecules/pages/Feedback4";
+import TotalStudents from "../molecules/pages/TotalStudents";
+import SeekingStudents from "../molecules/pages/SeekingStudents";
+import TechMatchStudents from "../molecules/pages/TechMatchStudents";
+import FinalReqStudents from "../molecules/pages/FinalReqStudents";
 import "./styles/Feedback.css";
 
 const Feedback = ({ page }) => {
