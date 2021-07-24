@@ -1,4 +1,4 @@
-import { React } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
@@ -7,9 +7,24 @@ import { ViewPosting } from "../molecules/index";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import LinkIcon from "@material-ui/icons/Link";
 import { mockJobPosting } from "../../models/mockData";
+import Alert from "@material-ui/lab/Alert";
 import "./styles/View.css";
 
 const View = () => {
+
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  function copyToClipboard(){
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        setCopySuccess(true);
+        setTimeout(() => {
+          setCopySuccess(false);
+        }, 2000);
+      })
+      .catch(err => console.error(err));
+  }
+
   return (
     <Grid
       container
@@ -58,9 +73,14 @@ const View = () => {
                 Edit
               </ButtonOutlined>
               {"    "}
-              <ButtonOutlined styles={{}} startIcon={<LinkIcon />}>
+              <ButtonOutlined styles={{}} startIcon={<LinkIcon />} onClick={copyToClipboard}>
                 Copy Link
               </ButtonOutlined>
+              {copySuccess &&
+                <Alert variant="outlined" severity="success" style={{marginTop: "1em"}}>
+                Successful copy to clipboard!
+              </Alert>
+              }
             </div>
           </div>
         </Grid>
