@@ -12,18 +12,15 @@ import {
   Star,
   CheckCircleOutline,
 } from "@material-ui/icons";
-import "./styles/Profile.css";
 import { useSelector } from "react-redux";
 import { AccountCircle } from "@material-ui/icons";
+import axios from "axios";
+import qs from "qs";
+import "./styles/Profile.css";
 
 const Profile = ({ data }) => {
   const [toggle, setToggle] = useState(false);
   const currentUser = useSelector((state) => state.users.user);
-
-  // console.log(currentUser);
-  // console.log(currentUser.hasOwnProperty("email"));
-  // console.log(currentUser.email);
-
   const [user, setUser] = useState({
     authId: "",
     name: "",
@@ -42,6 +39,7 @@ const Profile = ({ data }) => {
   });
 
   const [labels, setLabels] = useState([]);
+  const [jobPostingData, setJobPostingData] = useState(null);
 
   useEffect(() => {
     setUser({
@@ -71,7 +69,22 @@ const Profile = ({ data }) => {
       status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
     });
     setLabels([user.jobPostings?.length + " postings"]);
-  }, [currentUser, user.jobPostings?.length]);
+
+    if (user.jobPostings.length > 0) {
+      const jobIds = user.jobPostings;
+      axios
+        .get("/api/jobs/bulk", {
+          params: { data: jobIds },
+          paramsSerializer: (params) => {
+            return qs.stringify(params);
+          },
+        })
+        .then((res) => {
+          setJobPostingData(res.data[0]);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [currentUser, user.jobPostings]);
 
   return (
     <Grid
@@ -257,8 +270,8 @@ const Profile = ({ data }) => {
           {/* Posting table */}
           <Grid item>
             <div className="profile_left_posting_table">
-              {user.jobPostings?.length > 0 ? (
-                <TableBasic className="posting_table" data={user.jobPostings} />
+              {user.jobPostings.length > 0 && jobPostingData ? (
+                <TableBasic className="posting_table" data={jobPostingData} />
               ) : (
                 <div className="profile_no_posting_message">
                   You don't have any job postings. Create one by clicking on the

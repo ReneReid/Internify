@@ -5,8 +5,8 @@ import { ChevronLeft, CreateOutlined } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
 import LinkIcon from "@material-ui/icons/Link";
-import "./styles/View.css";
 import axios from "axios";
+import "./styles/View.css";
 
 const View = () => {
   let { slug } = useParams();

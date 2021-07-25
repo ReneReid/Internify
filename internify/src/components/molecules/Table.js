@@ -23,14 +23,19 @@ function createBasicData(jobId, title, dateCreated, score) {
   return { jobId, title, dateCreated, score };
 }
 
-function createData(isStarred, title, dateCreated, score) {
-  return { isStarred, title, dateCreated, score };
+function createData(isStarred, jobId, title, dateCreated, score) {
+  return { isStarred, jobId, title, dateCreated, score };
 }
 
 export const TableBasic = (props) => {
   const classes = useStyles();
   const rows = props.data?.map((x) => {
-    return createBasicData(x.jobId, x.title, x.dateCreated, x.score);
+    return createBasicData(
+      x.jobId,
+      x.header?.title,
+      x.dateCreated ? new Date(x.dateCreated) : null,
+      x.score ? x.score : null
+    );
   });
 
   return (
@@ -49,7 +54,13 @@ export const TableBasic = (props) => {
               {row.title}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.dateCreated}
+              {row.dateCreated
+                ? row.dateCreated.getDate() +
+                  "/" +
+                  row.dateCreated.getMonth() +
+                  "/" +
+                  row.dateCreated.getFullYear()
+                : ""}
             </TableCell>
             <TableCell className={classes.row} align="left">
               {row.score}
