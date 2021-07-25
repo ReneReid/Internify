@@ -8,6 +8,7 @@ const SeekingStudents = ({ data }) => {
     <div className="feedback_page2_inner">
       <ul className="feedback_list">
         {keyArray.map((x) => {
+          // list refers to array of students within object
           if (x === "page1Students") {
             // Null
           } else {

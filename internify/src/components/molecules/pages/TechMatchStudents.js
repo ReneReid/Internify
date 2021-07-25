@@ -16,7 +16,7 @@ const TechMatchStudents = ({ data }) => {
               </li>
             );
           } else if (x === "page2Students") {
-            // Null
+            // list refers to array of students within object
           } else {
             const msg = `${data[x]} students also meet ${x} requirements`;
             return (

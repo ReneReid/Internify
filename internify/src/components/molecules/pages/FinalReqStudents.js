@@ -16,6 +16,7 @@ const FinalReqStudents = ({ data }) => {
               </li>
             );
           } else if (x === "page3Students") {
+            // list refers to array of students within object
             const msg = `${data[x].length} total matches`;
             return (
               <li key={x}>
