@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { StarPlain, StarColoured } from "../atoms/Icon";
 
 const useStyles = makeStyles({
@@ -49,7 +50,13 @@ export const TableBasic = (props) => {
       </TableHead>
       <TableBody>
         {rows.map((row) => (
-          <TableRow key={row.jobId}>
+          <TableRow
+            key={row.jobId}
+            hover
+            component={Link}
+            to={`/view/${row.jobId}`}
+            style={{ textDecoration: "none" }}
+          >
             <TableCell className={classes.row} align="left">
               {row.title}
             </TableCell>

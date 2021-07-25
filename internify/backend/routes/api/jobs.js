@@ -20,10 +20,10 @@ router.get("/bulk/", function (req, res, next) {
   var jobPostings = [];
 
   function getJobPosting(jobId) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       JobPostingData.findOne({ jobId: jobId })
         .then((job) => resolve(job))
-        .catch((err) => console.error(err));
+        .catch((err) => reject(err));
     });
   }
 
