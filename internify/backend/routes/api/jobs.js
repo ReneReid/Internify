@@ -1,58 +1,89 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var JobPostingData = require('../../models/JobPostingData');
+var JobPostingData = require("../../models/JobPostingData");
 
 //@route    GET api/jobs/getAll
 //@desc     Get All Job Documents
 //@access   Public
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
   JobPostingData.find()
-    .then(jobs => res.status(200).json(jobs))
-    .catch(err => res.status(404).json({success: false}));
+    .then((jobs) => res.status(200).json(jobs))
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
+//@route    GET api/jobs/getBulk
+//@desc     Get Bulk Job Documents
+//@access   Public
+router.get("/bulk/", function (req, res, next) {
+  const jobIds = req.query.data;
+  var promises = [];
+  var jobPostings = [];
+
+  function getJobPosting(jobId) {
+    return new Promise((resolve) => {
+      JobPostingData.findOne({ jobId: jobId })
+        .then((job) => resolve(job))
+        .catch((err) => console.error(err));
+    });
+  }
+
+  jobIds.forEach((jobId) => {
+    promises.push(getJobPosting(jobId));
+  });
+
+  Promise.all(promises)
+    .then((values) => {
+      jobPostings.push(values);
+    })
+    .catch((err) => {
+      res.status(404).json({ success: false });
+    })
+    .finally(() => {
+      res.status(200).json(jobPostings);
+    });
 });
 
 //@route    GET api/jobs/getOne/:id
 //@desc     Get Single Job Document
 //@access   Public
-router.get('/:id', function(req, res, next) {
+router.get("/:id", function (req, res, next) {
   const jobId = req.params.id;
-  JobPostingData.findOne({ jobId: jobId})
-    .then(job => res.status(200).json(job))
-    .catch(err => res.status(404).json({success: false}));
+  JobPostingData.findOne({ jobId: jobId })
+    .then((job) => res.status(200).json(job))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 //@route    POST api/jobs
-//@desc     Create A Job Document 
+//@desc     Create A Job Document
 //@access   Public
-router.post('/', function(req, res, next) {
-    var newJob = new JobPostingData({
-      jobId: req.body.jobId,
-      dateCreated: req.body.dateCreated,
-      header: req.body.header, 
-      requirements: req.body.requirements,
-      details: req.body.details,
-      contact: req.body.contact
-    });
+router.post("/", function (req, res, next) {
+  var newJob = new JobPostingData({
+    jobId: req.body.jobId,
+    dateCreated: req.body.dateCreated,
+    header: req.body.header,
+    requirements: req.body.requirements,
+    details: req.body.details,
+    contact: req.body.contact,
+  });
 
-    // save new job to database
-    newJob
-      .save()
-      .then(job => res.status(200).json(job))
-      .catch(err => res.status(404).json({success: false}));
-
+  // save new job to database
+  newJob
+    .save()
+    .then((job) => res.status(200).json(job))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 //@route    DELETE api/jobs/:id
 //@desc     DELETE A Job Document
 //@access   Public
-router.delete('/:id', function(req, res, next) {
-    
-  JobPostingData
-    .findById(req.params.id)
-    .then(job => job.remove().then(() => res.status(200).json({success: true})))
-    .catch(err => {
+router.delete("/:id", function (req, res, next) {
+  JobPostingData.findById(req.params.id)
+    .then((job) =>
+      job.remove().then(() => res.status(200).json({ success: true }))
+    )
+    .catch((err) => {
       console.log(err);
-      res.status(404).json({success: false})
+      res.status(404).json({ success: false });
     });
 });
 
