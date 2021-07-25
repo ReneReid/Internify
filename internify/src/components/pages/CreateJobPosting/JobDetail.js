@@ -9,7 +9,7 @@ function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
     description: "",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     academicReq: [],
@@ -32,7 +32,9 @@ function JobDetail(props) {
           type={"text"}
           rows={8}
           rowsMax={200}
-          onChange={(e) => setDetails({...details, description: e.target.value})}
+          onChange={(e) =>
+            setDetails({ ...details, description: e.target.value })
+          }
           defaultValue={details.description}
           helperText={"Required"}
         />
@@ -46,7 +48,7 @@ function JobDetail(props) {
         />
       </Container>
     </div>
-  ) : (null);
+  ) : null;
 }
 
 export default JobDetail;
