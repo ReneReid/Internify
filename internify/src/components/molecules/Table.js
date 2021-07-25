@@ -53,9 +53,9 @@ export const TableBasic = (props) => {
           <TableRow
             key={row.jobId}
             hover
-            component={Link}
-            to={`/view/${row.jobId}`}
-            style={{ textDecoration: "none" }}
+            onClick={() => {
+              window.open(`/view/${row.jobId}`);
+            }}
           >
             <TableCell className={classes.row} align="left">
               {row.title}
@@ -67,7 +67,7 @@ export const TableBasic = (props) => {
                   row.dateCreated.getMonth() +
                   "/" +
                   row.dateCreated.getFullYear()
-                : ""}
+                : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
               {row.score}
