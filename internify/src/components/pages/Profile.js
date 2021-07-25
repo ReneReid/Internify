@@ -243,25 +243,28 @@ const Profile = ({ data }) => {
       </Grid>
 
       {/* Right-hand grid item: Status,  */}
-      <Grid item xs={6} style={{ paddingTop: "5em" }}>
+      <Grid item xs={6}>
         {/* Recruiting status & postings container */}
         <Grid
           container
           spacing={1}
           direction="column"
           alignItems="flex-start"
+          justifyContent="center"
           style={{ paddingLeft: "5em" }}
         >
           {/* Recruiting status */}
           <Grid item>
             <div className="profile_left_status">
               <ul className="profile_left_status_list">
-                <h2>{user.status ? "Status" : "Postings"}</h2>
                 {user.status ? (
-                  <li>
-                    <Star color="secondary" fontSize="inherit" />
-                    <b>{user.status}</b> {"  "}
-                  </li>
+                  <>
+                    <h2>Status </h2>
+                    <li>
+                      <Star color="secondary" fontSize="inherit" />
+                      <b>{user.status}</b> {"  "}
+                    </li>
+                  </>
                 ) : null}
               </ul>
             </div>
@@ -269,6 +272,7 @@ const Profile = ({ data }) => {
 
           {/* Posting table */}
           <Grid item>
+            <h2>Postings</h2>
             <div className="profile_left_posting_table">
               {user.jobPostings.length > 0 && jobPostingData ? (
                 <TableBasic className="posting_table" data={jobPostingData} />
