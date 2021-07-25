@@ -6,7 +6,7 @@ import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJob } from "../../store/actions/jobPostActions";
-import { updateUser } from "../../store/actions/userActions";
+import { updateJobsOfUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
   const user = props.user;
@@ -33,7 +33,7 @@ const JobPosting = (props) => {
 
   function sendJob() {
     props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateUser({ authId: user.uid, jobPostings: [jobId] });
+    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
     window.scrollTo(0, 0);
   }
 
@@ -159,7 +159,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJob: addJob, updateUser: updateUser },
+      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
       dispatch
     ),
   };

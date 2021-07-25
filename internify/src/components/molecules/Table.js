@@ -7,7 +7,6 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import { StarPlain, StarColoured } from "../atoms/Icon";
 
 const useStyles = makeStyles({

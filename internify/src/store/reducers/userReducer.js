@@ -4,6 +4,7 @@ import {
   UPDATE_USER,
   GET_USERS,
   GET_USER,
+  UPDATE_JOBS_OF_USER,
 } from "../actions/types/userTypes";
 
 const initialState = {
@@ -25,6 +26,11 @@ export default function userReducer(state = initialState, action) {
     case UPDATE_USER:
       const updatedUser = action.payload;
       state.user = updatedUser;
+      return {...state, user: state.user};
+
+    case UPDATE_JOBS_OF_USER:
+      const newJobs = action.payload;
+      state.user.jobPostings?.push(newJobs);
       return {...state, user: state.user};
 
     // TODO: Fix this
