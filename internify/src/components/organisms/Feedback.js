@@ -20,10 +20,12 @@ const Feedback = ({ page }) => {
       </div>
     );
   } else if (page === 2) {
+    const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
     return (
       <div className="feedback_outer">
         <TotalStudents data={allStudents} />
         <SeekingStudents data={pageObjects.page1Object} />
+        <ChipEye label={msg} />
       </div>
     );
   } else if (page === 3) {
