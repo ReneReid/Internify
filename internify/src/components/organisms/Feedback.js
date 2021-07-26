@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ChipNote } from "../atoms/Chips";
 import TotalStudents from "../molecules/pages/TotalStudents";
