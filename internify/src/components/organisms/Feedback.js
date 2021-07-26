@@ -25,35 +25,31 @@ const Feedback = ({ page }) => {
     );
   } else if (page === 2) {
     const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
-    if (display) {
-      return (
-        <div className="feedback_outer">
-          <TotalStudents data={allStudents} />
-          <SeekingStudents data={pageObjects.page1Object} />
+    return (
+      <div className="feedback_outer">
+        <TotalStudents data={allStudents} />
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        {display ? (
           <IconButton
             aria-label="display-toggle"
             onClick={() => {
               setDisplay(!display);
             }}
           >
-            <VisibilityIcon />
+            <ChipEye icon={<VisibilityIcon />} label={msg} />
           </IconButton>
-        </div>
-      );
-    } else {
-      return (
-        <div className="feedback_outer">
+        ) : (
           <IconButton
             aria-label="display-toggle"
             onClick={() => {
               setDisplay(!display);
             }}
           >
-            <VisibilityIcon />
+            <ChipEye icon={<VisibilityOffIcon />} label={msg} />
           </IconButton>
-        </div>
-      );
-    }
+        )}
+      </div>
+    );
   } else if (page === 3) {
     const msg = `${pageObjects.page2Object.page2Students.length} total matches`;
     return (
