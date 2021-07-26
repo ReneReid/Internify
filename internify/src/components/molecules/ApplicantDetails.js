@@ -30,7 +30,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           <RadioButtonsGroup
             jobData={jobData}
-            property={"position"}
+            property={"positionType"}
             data={location}
           />
         </div>

@@ -65,7 +65,7 @@ const JobPostingSchema = new Schema({
     description: {
       type: String,
     },
-    position: {
+    positionType: {
       type: String,
     },
     pay: {

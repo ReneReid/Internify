@@ -9,7 +9,7 @@ function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
     description: "",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     academicReq: [],
@@ -46,7 +46,7 @@ function JobDetail(props) {
         />
       </Container>
     </div>
-  ) : (null);
+  ) : null;
 }
 
 export default JobDetail;

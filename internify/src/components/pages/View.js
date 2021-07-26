@@ -4,6 +4,7 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { ChevronLeft, CreateOutlined } from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
+import Alert from "@material-ui/lab/Alert";
 import LinkIcon from "@material-ui/icons/Link";
 import axios from "axios";
 import "./styles/View.css";
@@ -11,6 +12,7 @@ import "./styles/View.css";
 const View = () => {
   let { slug } = useParams();
   const [job, setJob] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,6 +20,17 @@ const View = () => {
       .then((res) => setJob(res.data))
       .catch((err) => console.error(err));
   }, [slug]);
+
+  function copyToClipboard(){
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        setCopySuccess(true);
+        setTimeout(() => {
+          setCopySuccess(false);
+        }, 2000);
+      })
+      .catch(err => console.error(err));
+  }
 
   return job ? (
     <Grid
@@ -67,9 +80,14 @@ const View = () => {
                 Edit
               </ButtonOutlined>
               {"    "}
-              <ButtonOutlined styles={{}} startIcon={<LinkIcon />}>
+              <ButtonOutlined styles={{}} startIcon={<LinkIcon />} onClick={copyToClipboard}>
                 Copy Link
               </ButtonOutlined>
+              {copySuccess &&
+                <Alert variant="outlined" severity="success" style={{marginTop: "1em"}}>
+                Successful copy to clipboard!
+              </Alert>
+              }
             </div>
           </div>
         </Grid>
