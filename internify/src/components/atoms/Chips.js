@@ -27,6 +27,17 @@ export const ChipClickable = withStyles(() => ({
 
 export const ChipNote = withStyles(() => ({
   root: {
+    backgroundColor: "#FCE9A7",
+    color: "#000000",
+    fontWeight: "bold",
+    borderRadius: "20px",
+    fontSize: "16px",
+    fontFamily: "Helvetica",
+  },
+}))(Chip);
+
+export const ChipEye = withStyles(() => ({
+  root: {
     backgroundColor: "#F8D144",
     color: "#000000",
     fontWeight: "bold",

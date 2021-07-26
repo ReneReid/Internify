@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { ChipNote } from "../atoms/Chips";
+import { ChipEye } from "../atoms/Chips";
 import TotalStudents from "../molecules/pages/TotalStudents";
 import SeekingStudents from "../molecules/pages/SeekingStudents";
 import TechMatchStudents from "../molecules/pages/TechMatchStudents";
@@ -33,7 +33,7 @@ const Feedback = ({ page }) => {
         <TotalStudents data={allStudents} />
         <SeekingStudents data={pageObjects.page1Object} />
         <TechMatchStudents data={pageObjects.page2Object} />
-        <ChipNote label={msg} />
+        <ChipEye label={msg} />
       </div>
     );
   } else if (page === 4) {
