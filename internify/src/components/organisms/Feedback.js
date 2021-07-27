@@ -29,23 +29,33 @@ const Feedback = ({ page }) => {
         <h2> {allStudents.length} total students </h2>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         {display ? (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         ) : (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityOffIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         )}
       </div>
     );
@@ -57,23 +67,33 @@ const Feedback = ({ page }) => {
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         {display ? (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         ) : (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityOffIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         )}
       </div>
     );
@@ -82,27 +102,37 @@ const Feedback = ({ page }) => {
     return (
       <div className="feedback_outer">
         <h2> {allStudents.length} total students </h2>
-        <SeekingStudents data={pageObjects.page1Object} display = {display}/>
-        <TechMatchStudents data={pageObjects.page2Object} display = {display} />
-        <FinalReqStudents data={pageObjects.page3Object} display = {display} />
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        <TechMatchStudents data={pageObjects.page2Object} display={display} />
+        <FinalReqStudents data={pageObjects.page3Object} display={display} />
         {display ? (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         ) : (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityOffIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         )}
       </div>
     );
@@ -111,27 +141,37 @@ const Feedback = ({ page }) => {
     return (
       <div className="feedback_outer">
         <h2> {allStudents.length} total students </h2>
-        <SeekingStudents data={pageObjects.page1Object} display = {display} />
-        <TechMatchStudents data={pageObjects.page2Object} display = {display} />
-        <FinalReqStudents data={pageObjects.page3Object} display = {display} />
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        <TechMatchStudents data={pageObjects.page2Object} display={display} />
+        <FinalReqStudents data={pageObjects.page3Object} display={display} />
         {display ? (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         ) : (
-          <IconButton
-            aria-label="display-toggle"
-            onClick={() => {
-              setDisplay(!display);
-            }}
-          >
-            <ChipEye icon={<VisibilityOffIcon />} label={msg} />
-          </IconButton>
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
         )}
       </div>
     );
