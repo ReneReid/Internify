@@ -21,15 +21,16 @@ const View = () => {
       .catch((err) => console.error(err));
   }, [slug]);
 
-  function copyToClipboard(){
-    navigator.clipboard.writeText(window.location.href)
+  function copyToClipboard() {
+    navigator.clipboard
+      .writeText(window.location.href)
       .then(() => {
         setCopySuccess(true);
         setTimeout(() => {
           setCopySuccess(false);
         }, 2000);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }
 
   return job ? (
@@ -68,7 +69,14 @@ const View = () => {
             <div className="view_page_details_list">
               <ul className="view_page_details_list">
                 <li>
-                  <b>Date created:</b> 05/25/2021
+                  <b>Date created: </b>
+                  {job.dateCreated
+                    ? new Date(job.dateCreated).getDate() +
+                      "/" +
+                      (new Date(job.dateCreated).getMonth() + 1) +
+                      "/" +
+                      new Date(job.dateCreated).getFullYear()
+                    : null}
                 </li>
                 <li>
                   <b>Score: </b>80%
@@ -80,14 +88,22 @@ const View = () => {
                 Edit
               </ButtonOutlined>
               {"    "}
-              <ButtonOutlined styles={{}} startIcon={<LinkIcon />} onClick={copyToClipboard}>
+              <ButtonOutlined
+                styles={{}}
+                startIcon={<LinkIcon />}
+                onClick={copyToClipboard}
+              >
                 Copy Link
               </ButtonOutlined>
-              {copySuccess &&
-                <Alert variant="outlined" severity="success" style={{marginTop: "1em"}}>
-                Successful copy to clipboard!
-              </Alert>
-              }
+              {copySuccess && (
+                <Alert
+                  variant="outlined"
+                  severity="success"
+                  style={{ marginTop: "1em" }}
+                >
+                  Successful copy to clipboard!
+                </Alert>
+              )}
             </div>
           </div>
         </Grid>

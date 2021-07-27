@@ -63,7 +63,7 @@ export const TableBasic = (props) => {
               {row.dateCreated
                 ? row.dateCreated.getDate() +
                   "/" +
-                  row.dateCreated.getMonth() +
+                  (row.dateCreated.getMonth() + 1) +
                   "/" +
                   row.dateCreated.getFullYear()
                 : null}
