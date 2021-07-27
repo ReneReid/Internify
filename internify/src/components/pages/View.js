@@ -68,7 +68,7 @@ const View = () => {
           <div className="view_page_creation_details">
             <div className="view_page_details_list">
               <ul className="view_page_details_list">
-                <li>
+                <li key={"date-created"}>
                   <b>Date created: </b>
                   {job.dateCreated
                     ? new Date(job.dateCreated).getDate() +
@@ -78,7 +78,7 @@ const View = () => {
                       new Date(job.dateCreated).getFullYear()
                     : null}
                 </li>
-                <li>
+                <li key={"job-posting-score"}>
                   <b>Score: </b>80%
                 </li>
               </ul>
