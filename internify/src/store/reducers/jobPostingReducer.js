@@ -1,7 +1,8 @@
-import { ADD_JOB_HEADER } from "../actions/types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS } from "../actions/types/jobPostTypes";
 
 const initialState = {
   currentPosting: {},
+  currentListOfJobs: []
 };
 
 export default function JobPostingReducer(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function JobPostingReducer(state = initialState, action) {
       return {
         ...state,
         currentPosting: action.payload,
+      };
+    case GET_ALL_JOBS:
+      return {
+        ...state,
+        currentListOfJobs: action.payload,
       };
     default:
       return state;

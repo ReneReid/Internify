@@ -7,6 +7,7 @@ import {
   GET_USER,
   UPDATE_JOBS_OF_USER,
 } from "./types/userTypes";
+import { getJobs } from "./jobPostActions";
 
 export const addUser = (data) => (dispatch) => {
   axios
@@ -49,7 +50,7 @@ export const updateJobsOfUser = (data) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: UPDATE_JOBS_OF_USER,
-        payload: JSON.parse(res.config.data),
+        payload: data.jobId,
       });
     })
     .catch((err) => {
@@ -58,19 +59,24 @@ export const updateJobsOfUser = (data) => (dispatch) => {
 };
 
 export const getUsers = (data) => (dispatch) => {
+
   axios.get("api/users/").then((res) => {
     dispatch({
       type: GET_USERS,
       payload: res.data,
     });
   });
+
 };
 
 export const getUser = (data) => (dispatch) => {
-  axios.get(`api/users/${data}`).then((res) => {
+  axios.get(`api/users/${data.uid}`).then((res) => {
     dispatch({
       type: GET_USER,
       payload: res.data,
     });
+      dispatch(getJobs(res.data));
   });
 };
+
+

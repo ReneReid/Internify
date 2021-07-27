@@ -18,7 +18,6 @@ const LoginForm = (props) => {
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         const authId = result.user.uid;
-        props.actions.getUser(authId);
 
         return authId;
       })
@@ -42,7 +41,6 @@ const LoginForm = (props) => {
       .then((result) => {
         // signed in
         const authId = result.user.uid;
-        props.actions.getUser(authId);
 
         return authId;
       })

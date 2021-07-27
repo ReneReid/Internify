@@ -1,5 +1,6 @@
 import axios from "axios";
-import { ADD_JOB_HEADER } from "./types/jobPostTypes";
+import qs from "qs";
+import { ADD_JOB_HEADER, GET_ALL_JOBS } from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -17,13 +18,22 @@ export const getBulkJobs = (data) => (dispatch) => {
   });
 };
 
-export const getJobs = () => (dispatch) => {
-  axios.get("/api/jobs/").then((res) => {
-    // dispatch({
-    //   type: GET_ALL_JOBS,
-    //   payload: res.data,
-    // });
-  });
+export const getJobs = (user) => (dispatch) => {
+  const jobIds = user.jobPostings;
+      axios
+        .get("/api/jobs/bulk", {
+          params: { data: jobIds },
+          paramsSerializer: (params) => {
+            return qs.stringify(params);
+          },
+        })
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_JOBS,
+            payload: res.data[0],
+          });
+        })
+        .catch((err) => console.error(err));
 };
 
 export const addJob = (job) => (dispatch) => {

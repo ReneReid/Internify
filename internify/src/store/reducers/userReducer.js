@@ -29,7 +29,7 @@ export default function userReducer(state = initialState, action) {
       return {...state, user: state.user};
 
     case UPDATE_JOBS_OF_USER:
-      const newJobs = action.payload;
+      const newJobs = action.payload.jobPostings;
       state.user.jobPostings?.push(newJobs);
       return {...state, user: state.user};
 

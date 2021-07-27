@@ -12,79 +12,16 @@ import {
   Star,
   CheckCircleOutline,
 } from "@material-ui/icons";
-import { useSelector } from "react-redux";
 import { AccountCircle } from "@material-ui/icons";
-import axios from "axios";
-import qs from "qs";
 import "./styles/Profile.css";
 
-const Profile = ({ data }) => {
+const Profile = (props) => {
   const [toggle, setToggle] = useState(false);
-  const currentUser = useSelector((state) => state.users.user);
-  const [user, setUser] = useState({
-    authId: "",
-    name: "",
-    handle: "",
-    jobTitle: "",
-    company: "",
-    bio: "",
-    email: "",
-    website: "",
-    linkedIn: "",
-    location: "",
-    profilePicture: "",
-    contact: "",
-    jobPostings: [],
-    status: "",
-  });
-
-  const [labels, setLabels] = useState([]);
-  const [jobPostingData, setJobPostingData] = useState(null);
 
   useEffect(() => {
-    setUser({
-      authId: currentUser.hasOwnProperty("authId") ? currentUser.authId : "",
-      name: currentUser.hasOwnProperty("name") ? currentUser.name : "",
-      handle: currentUser.hasOwnProperty("handle") ? currentUser.handle : "",
-      jobTitle: currentUser.hasOwnProperty("jobTitle")
-        ? currentUser.jobTitle
-        : "",
-      company: currentUser.hasOwnProperty("company") ? currentUser.company : "",
-      bio: currentUser.hasOwnProperty("bio") ? currentUser.bio : "",
-      email: currentUser.hasOwnProperty("email") ? currentUser.email : "",
-      website: currentUser.hasOwnProperty("website") ? currentUser.website : "",
-      linkedIn: currentUser.hasOwnProperty("linkedIn")
-        ? currentUser.linkedIn
-        : "",
-      location: currentUser.hasOwnProperty("location")
-        ? currentUser.location
-        : "",
-      profilePicture: currentUser.hasOwnProperty("profilePicture")
-        ? currentUser.profilePicture
-        : "",
-      contact: currentUser.hasOwnProperty("contact") ? currentUser.contact : "",
-      jobPostings: currentUser.hasOwnProperty("jobPostings")
-        ? currentUser.jobPostings
-        : [],
-      status: currentUser.hasOwnProperty("status") ? currentUser.status : "",
-    });
-    setLabels([user.jobPostings?.length + " postings"]);
+    props.actions.getUser(props.user);
 
-    if (user.jobPostings.length > 0) {
-      const jobIds = user.jobPostings;
-      axios
-        .get("/api/jobs/bulk", {
-          params: { data: jobIds },
-          paramsSerializer: (params) => {
-            return qs.stringify(params);
-          },
-        })
-        .then((res) => {
-          setJobPostingData(res.data[0]);
-        })
-        .catch((err) => console.error(err));
-    }
-  }, [currentUser, user.jobPostings]);
+  }, [props.actions]);
 
   return (
     <Grid
@@ -138,9 +75,9 @@ const Profile = ({ data }) => {
               alignItems="center"
             >
               <Grid item>
-                {user.profilePicture ? (
+                {props.users.user.profilePicture ? (
                   <img
-                    src={user.profilePicture}
+                    src={props.users.user.profilePicture}
                     alt="Profile pic"
                     className="profile_img"
                   />
@@ -154,14 +91,14 @@ const Profile = ({ data }) => {
               <Grid item>
                 <ul className="profile_handle_desc">
                   <li key={"displayName"}>
-                    <h2>{user.name}</h2>
+                    <h2>{props.users.user.name}</h2>
                   </li>
                   <li key={"handle"}>
-                    <b>{user.handle ? "@" + user.handle : ""}</b>
+                    <b>{props.users.user.handle ? "@" + props.users.user.handle : ""}</b>
                   </li>
                   <li key={"jobTitle"}>
-                    {user.jobTitle}
-                    {user.company ? " @ " + user.company : ""}
+                    {props.users.user.jobTitle}
+                    {props.users.user.company ? " @ " + props.users.user.company : ""}
                   </li>
                 </ul>
               </Grid>
@@ -175,7 +112,7 @@ const Profile = ({ data }) => {
               justifyContent="center"
               alignItems="center"
             >
-              <div className="profile_labels">
+            {/* <div className="profile_labels">
                 <ul id="profile_labels_list">
                   {labels?.map((label) => (
                     <li key={label}>
@@ -186,7 +123,7 @@ const Profile = ({ data }) => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </Grid>
 
             {/* Profile description */}
@@ -199,7 +136,7 @@ const Profile = ({ data }) => {
             >
               <Grid item>
                 <div className="profile_inner_desc">
-                  <p> {user.bio} </p>
+                  <p> {props.users.user.bio} </p>
                 </div>
               </Grid>
             </Grid>
@@ -216,22 +153,22 @@ const Profile = ({ data }) => {
                 <div className="profile_inner_contact">
                   <ul className="profile_inner_contact_list">
                     <h3>Contact</h3>
-                    {user.location ? (
-                      <li key={user.location}>
+                    {props.users.user.location ? (
+                      <li key={props.users.user.location}>
                         <RoomOutlined color="secondary" />
-                        {user.location}
+                        {props.users.user.location}
                       </li>
                     ) : null}
-                    {user.email ? (
-                      <li key={user.email}>
+                    {props.users.user.email ? (
+                      <li key={props.users.user.email}>
                         <MailOutlineOutlined color="primary" />
-                        {user.email}
+                        {props.users.user.email}
                       </li>
                     ) : null}
-                    {user.contact ? (
-                      <li key={user.contact}>
+                    {props.users.user.contact ? (
+                      <li key={props.users.user.contact}>
                         <PhoneAndroidOutlined color="primary" />
-                        {user.contact}
+                        {props.users.user.contact}
                       </li>
                     ) : null}
                   </ul>
@@ -257,12 +194,12 @@ const Profile = ({ data }) => {
           <Grid item>
             <div className="profile_left_status">
               <ul className="profile_left_status_list">
-                {user.status ? (
+                {props.users.user.status ? (
                   <>
                     <h2>Status </h2>
                     <li>
                       <Star color="secondary" fontSize="inherit" />
-                      <b>{user.status}</b> {"  "}
+                      <b>{props.users.user.status}</b> {"  "}
                     </li>
                   </>
                 ) : null}
@@ -274,8 +211,8 @@ const Profile = ({ data }) => {
           <Grid item>
             <h2>Postings</h2>
             <div className="profile_left_posting_table">
-              {user.jobPostings.length > 0 && jobPostingData ? (
-                <TableBasic className="posting_table" data={jobPostingData} />
+              {props.jobs.currentListOfJobs ? (
+                <TableBasic className="posting_table" data={props.jobs.currentListOfJobs} />
               ) : (
                 <div className="profile_no_posting_message">
                   You don't have any job postings. Create one by clicking on the
@@ -286,7 +223,7 @@ const Profile = ({ data }) => {
           </Grid>
         </Grid>
       </Grid>
-      <EditModal toggle={toggle} setToggle={setToggle} user={user} />
+      <EditModal toggle={toggle} setToggle={setToggle} user={props.users.user} />
       <CreateJobButton />
     </Grid>
   );
@@ -295,13 +232,14 @@ const Profile = ({ data }) => {
 function mapStateToProps(state) {
   return {
     users: state.users,
+    jobs: state.jobs
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser, updateUser: updateUser },
+      { getUser: getUser, updateUser: updateUser, getUser: getUser },
       dispatch
     ),
   };
