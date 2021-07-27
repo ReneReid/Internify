@@ -43,7 +43,8 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);}
+        setUser(user);
+      }
       setIsLoading(false);
     });
   });
@@ -57,18 +58,18 @@ function App() {
       <Switch>
         <Route path="/profile">
           <AuthNavbar />
-          <Profile user={user}/>
-          <Footer/>
+          <Profile user={user} />
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
           <Create />
-          <Footer/>
+          <Footer />
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
           <View />
-          <Footer/>
+          <Footer />
         </Route>
         <Redirect to="/profile" />
       </Switch>

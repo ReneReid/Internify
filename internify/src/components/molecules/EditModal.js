@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ButtonFilled, ButtonWhite } from "../atoms/index";
 import { Dialog, DialogContent, DialogTitle, Grid } from "@material-ui/core";
 import { TextFieldInput, MultiLineTextField } from "../atoms/index";
@@ -11,14 +11,7 @@ const EditModal = (props) => {
   let toggle = props.toggle;
   let setToggle = props.setToggle;
 
-  const [profile, setProfile] = useState({
-    ...props.users.user
-  });
-
   const handleCancel = () => {
-    setProfile({
-      ...props.users.user
-    });
     setToggle(false);
   };
 

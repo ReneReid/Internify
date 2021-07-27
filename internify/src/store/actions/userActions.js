@@ -70,7 +70,7 @@ export const getUsers = (data) => (dispatch) => {
 };
 
 export const getUser = (data) => (dispatch) => {
-  axios.get(`api/users/${data.uid}`).then((res) => {
+  axios.get(`api/users/${data}`).then((res) => {
     dispatch({
       type: GET_USER,
       payload: res.data,

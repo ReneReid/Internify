@@ -17,11 +17,12 @@ import "./styles/Profile.css";
 
 const Profile = (props) => {
   const [toggle, setToggle] = useState(false);
+  var labels = [`${props.users.user.jobPostings?.length} Postings`];
 
   useEffect(() => {
-    props.actions.getUser(props.user);
+    props.actions.getUser(props.user.uid);
+  }, [props.actions, props.user]);
 
-  }, [props.actions]);
 
   return (
     <Grid
@@ -112,7 +113,7 @@ const Profile = (props) => {
               justifyContent="center"
               alignItems="center"
             >
-            {/* <div className="profile_labels">
+            <div className="profile_labels">
                 <ul id="profile_labels_list">
                   {labels?.map((label) => (
                     <li key={label}>
@@ -123,7 +124,7 @@ const Profile = (props) => {
                     </li>
                   ))}
                 </ul>
-              </div> */}
+              </div>
             </Grid>
 
             {/* Profile description */}
@@ -239,7 +240,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser, getUser: getUser },
+      { getUser: getUser },
       dispatch
     ),
   };

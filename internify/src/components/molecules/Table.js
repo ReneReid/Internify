@@ -53,7 +53,7 @@ export const TableBasic = (props) => {
             key={row.jobId}
             hover
             onClick={() => {
-              window.open(`/view/${row.jobId}`);
+              window.open(`/view/${row.jobId}`, "_self");
             }}
           >
             <TableCell className={classes.row} align="left">
