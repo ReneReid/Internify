@@ -36,7 +36,7 @@ export const updateUser = (data) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: UPDATE_USER,
-        payload: JSON.parse(res.config.data),
+        payload: data,
       });
     })
     .catch((err) => {

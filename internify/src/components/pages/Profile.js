@@ -4,7 +4,7 @@ import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
 import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getUser, updateUser } from "../../store/actions/userActions";
+import { getUser } from "../../store/actions/userActions";
 import {
   RoomOutlined,
   MailOutlineOutlined,
@@ -239,7 +239,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser, updateUser: updateUser, getUser: getUser },
+      { getUser: getUser, getUser: getUser },
       dispatch
     ),
   };

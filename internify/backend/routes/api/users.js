@@ -109,11 +109,9 @@ router.put("/:id", function (req, res, next) {
       console.log(jobPosting);
       if (jobPosting) {
         UserData.findOneAndUpdate(
-          { authId: authId },
-          {
-            $push: { jobPostings: jobPosting },
-          }
-        )
+          { authId: authId }, 
+          { $push: { jobPostings: jobPosting }}, 
+          {useFindAndModify: false})
           .then(() => res.status(200).json(user[0]))
           .catch((err) => res.status(404).json({ success: false }));
       }
