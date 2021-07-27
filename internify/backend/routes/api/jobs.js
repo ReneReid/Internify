@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var JobPostingData = require("../../models/JobPostingData");
 
-//@route    GET api/jobs/getAll
+//@route    GET api/jobs
 //@desc     Get All Job Documents
 //@access   Public
 router.get("/", function (req, res, next) {
@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
-//@route    GET api/jobs/getBulk
+//@route    GET api/jobs/bulk
 //@desc     Get Bulk Job Documents
 //@access   Public
 router.get("/bulk/", function (req, res, next) {
@@ -43,7 +43,7 @@ router.get("/bulk/", function (req, res, next) {
     });
 });
 
-//@route    GET api/jobs/getOne/:id
+//@route    GET api/jobs/:id
 //@desc     Get Single Job Document
 //@access   Public
 router.get("/:id", function (req, res, next) {
