@@ -39,12 +39,7 @@ const UserSchema = new Schema({
     type: String,
   },
   jobPostings: {
-    type: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "JobPostingData",
-      },
-    ],
+    type: [String],
   },
   status: {
     type: String,

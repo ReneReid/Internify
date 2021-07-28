@@ -1,14 +1,16 @@
-import { ADD_JOB_HEADER, UPDATE_KEYS } from "../actions/types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS } from "../actions/types/jobPostTypes";
 
 const initialState = {
   registeredKeys: {},
   currentPosting: {},
-  finalJobPostingsList: [],
+  currentListOfJobs: []
 };
 
 export default function JobPostingReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_JOB_HEADER:
+      const newJob = action.payload;
+      state.currentPosting = newJob;
       return {
         ...state,
         currentPosting: action.payload,
@@ -18,6 +20,11 @@ export default function JobPostingReducer(state = initialState, action) {
         ...state, 
         registeredKeys: {...state.registeredKeys, [action.payload.key]: action.payload.val}
       }
+    case GET_ALL_JOBS:
+      return {
+        ...state,
+        currentListOfJobs: action.payload,
+      };
     default:
       return state;
   }

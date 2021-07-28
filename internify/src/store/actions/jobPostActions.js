@@ -1,35 +1,45 @@
 import axios from "axios";
-import {
-  GET_ONE_JOB,
-  GET_ALL_JOBS,
-  ADD_JOB,
-  DELETE_JOB,
-  UPDATE_KEYS
-} from "./types/jobPostTypes";
-import { ADD_JOB_HEADER } from "./types/jobPostTypes";
+import qs from "qs";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS } from "./types/jobPostTypes";
 
-export const getOneJob = (_id) => (dispatch) => {
-  axios.get(`/api/jobs/getOne/${_id}`).then((res) => {
-    dispatch({
-      type: GET_ONE_JOB,
-      payload: res.data,
-    });
+export const getJob = (data) => async() => {
+  const res = await axios
+    .get(`/api/jobs/${data}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.error(err));
+  return res;
+};
+
+export const getBulkJobs = (data) => (dispatch) => {
+  axios.get(`/api/jobs/bulk`).then((res) => {
+    //TODO: Calling the action only returns the promise
   });
 };
 
-export const getJobs = () => (dispatch) => {
-  axios.get("/api/jobs/").then((res) => {
-    dispatch({
-      type: GET_ALL_JOBS,
-      payload: res.data,
-    });
-  });
+export const getJobs = (user) => (dispatch) => {
+  const jobIds = user.jobPostings;
+      axios
+        .get("/api/jobs/bulk", {
+          params: { data: jobIds },
+          paramsSerializer: (params) => {
+            return qs.stringify(params);
+          },
+        })
+        .then((res) => {
+          dispatch({
+            type: GET_ALL_JOBS,
+            payload: res.data[0],
+          });
+        })
+        .catch((err) => console.error(err));
 };
 
-export const addNewJob = (job) => (dispatch) => {
+export const addJob = (job) => (dispatch) => {
   axios.post("/api/jobs/", job).then((res) => {
     dispatch({
-      type: ADD_JOB,
+      type: ADD_JOB_HEADER,
       payload: res.data,
     });
   });
@@ -37,14 +47,15 @@ export const addNewJob = (job) => (dispatch) => {
 
 export const deleteJob = (_id) => (dispatch) => {
   axios.delete(`/api/jobs/${_id}`).then(() => {
-    dispatch({
-      type: DELETE_JOB,
-      payload: _id,
-    });
+    // dispatch({
+    //   type: DELETE_JOB,
+    //   payload: _id,
+    // });
   });
 };
 
 export const addJobsData = (data) => (dispatch) => {
+  // TODO: Refactor reducer type to update job header
   dispatch({
     type: ADD_JOB_HEADER,
     payload: data,

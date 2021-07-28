@@ -65,7 +65,7 @@ const JobPostingSchema = new Schema({
     description: {
       type: String,
     },
-    position: {
+    positionType: {
       type: String,
     },
     pay: {
@@ -99,7 +99,6 @@ const JobPostingSchema = new Schema({
     },
   },
 });
-module.exports = JobPostingData = mongoose.model(
-  "JobPostingData",
-  JobPostingSchema
-);
+
+const JobPostingData = mongoose.model("JobPostingData", JobPostingSchema);
+module.exports = JobPostingData;

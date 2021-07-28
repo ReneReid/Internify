@@ -21,6 +21,8 @@ import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import { updateRegKeys } from "../../store/actions/jobPostActions";
+import firebase from "firebase/app";
+import "firebase/auth";
 import "./styles/Create.css";
 
 const mockTechStackData = {
@@ -75,7 +77,7 @@ function Create(props) {
   const registeredKeys = props.jobs.registeredKeys;
 
   const [jobData, setJobData] = useState({
-    jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    jobId: uuidv4(),
     dateCreated: "",
     dateUpdated: "",
     score: 0,
@@ -98,7 +100,7 @@ function Create(props) {
     },
     details: {
       description: "",
-      position: "",
+      positionType: "",
       pay: "",
       candidates: "",
       academicReq: [],
@@ -112,9 +114,12 @@ function Create(props) {
       applicationSteps: "",
     },
   });
+  const user = firebase.auth().currentUser;
 
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
+  const page1Object = useSelector((state) => state.matches.page1Object);
+  const page2Object = useSelector((state) => state.matches.page2Object);
 
   function parseConcepts(concepts) {
     let parsedConcepts = [];
@@ -252,17 +257,36 @@ function Create(props) {
 
     if (!checkIfEmpty(curr)) {
       setError(false);
-      setCurrentStep(currentStep + 1);
 
       props.actions.addJobsData(jobData);
       const posting = createJobObject(jobData);
 
-      if (currentStep === 4) {
+      if (currentStep === 1) {
         props.actions.processMatches({
           students: allStudents,
           posting: posting,
+          page: currentStep,
         });
       }
+
+      if (currentStep === 2) {
+        props.actions.processMatches({
+          students: page1Object.page1Students,
+          posting: posting,
+          page: currentStep,
+        });
+      }
+
+      if (currentStep === 3) {
+        props.actions.processMatches({
+          students: page2Object.page2Students,
+          posting: posting,
+          page: currentStep,
+        });
+      }
+
+      setCurrentStep(currentStep + 1);
+
       window.scrollTo(0, 0);
     } else {
       setError(true);
@@ -278,7 +302,11 @@ function Create(props) {
         justifyContent="flex-end"
       >
         <Grid item xs={2}>
-          <Grid container justifyContent="flex-end" style={{ paddingTop: "1em" }}>
+          <Grid
+            container
+            justifyContent="flex-end"
+            style={{ paddingTop: "1em" }}
+          >
             {currentStep > 1 ? (
               <ButtonClear
                 onClick={() => setCurrentStep(currentStep - 1)}
@@ -325,7 +353,7 @@ function Create(props) {
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
           />
-          <Review currentStep={currentStep} jobData={jobData} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -345,7 +373,7 @@ function Create(props) {
         </Grid>
         <Grid item xs={3}>
           <ul><RegisteredKeys /></ul>
-          {currentStep === 5 ? <Feedback /> : null}
+          <Feedback page={currentStep} />
         </Grid>
       </Grid>
     </div>

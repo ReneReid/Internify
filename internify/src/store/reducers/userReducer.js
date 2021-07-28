@@ -4,6 +4,7 @@ import {
   UPDATE_USER,
   GET_USERS,
   GET_USER,
+  UPDATE_JOBS_OF_USER,
 } from "../actions/types/userTypes";
 
 const initialState = {
@@ -15,7 +16,6 @@ export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_USER:
       const newUser = action.payload;
-      state.userList.push(newUser);
       state.user = newUser
       return {...state, user: state.user};
 
@@ -23,9 +23,14 @@ export default function userReducer(state = initialState, action) {
     case REMOVE_USER:
       return state.filter((user) => user.id !== action.payload.id);
 
-    // TODO: Fix this
     case UPDATE_USER:
-      state.user = action.payload;
+      const updatedUser = action.payload;
+      state.user = updatedUser;
+      return {...state, user: state.user};
+
+    case UPDATE_JOBS_OF_USER:
+      const newJobs = action.payload.jobPostings;
+      state.user.jobPostings?.push(newJobs);
       return {...state, user: state.user};
 
     // TODO: Fix this

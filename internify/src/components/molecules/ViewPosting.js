@@ -37,37 +37,49 @@ const ViewPosting = (props) => {
           return <li key={list}>{list}</li>;
         })}
         {details.coOp === "Yes" ? (
-          <li>Must be enrolled in an accredited Co-op program</li>
+          <li key={"coop-true"}>
+            Must be enrolled in an accredited Co-op program
+          </li>
         ) : null}
       </ul>
 
       <h4 className="view_posting_subheader">Technical Requirements</h4>
       <ul className="view_posting_list_2">
         {requirements.experience ? (
-          <li>
+          <li key={"working-experience"}>
             Must have <b>{requirements.experience}</b> of working experience
           </li>
         ) : (
-          <li>No prior work experience is required</li>
+          <li key={"no-working-experience"}>
+            No prior work experience is required
+          </li>
         )}
         {details.academicReq ? (
-          <li>
-            Obtained or is currently enrolled in a{" "}
-            <b>
+          <li key={"academic-requirements"}>
+            Obtained or is currently enrolled in one or either:{" "}
+            <ul>
               {
-                // TODO: Temporary fix for now. We need a way to display all academic requirements if more than 1 is seleced
-                details.academicReq[1]
+                details.academicReq.map((req) => {
+                  return (
+                    <li key={req}>
+                      <b>{req}</b>
+                    </li>
+                  );
+                })
               }
-            </b>
+            </ul>
           </li>
         ) : null}
         {details.academicReq && requirements.isGpaRequired ? (
-          <li>
+          <li key={"gpa-requirement"}>
             Must have at least or is at <b>{requirements.gpaValue} GPA</b>{" "}
             standing or equivalent
           </li>
         ) : null}
-        <li style={{ marginBottom: "0.25em" }}>
+        <li
+          key={"coding-language-requirement"}
+          style={{ marginBottom: "0.25em" }}
+        >
           Experience with the following programming languages:
         </li>
         <ul className="view_posting_list_nested">
@@ -79,7 +91,9 @@ const ViewPosting = (props) => {
             );
           })}
         </ul>
-        <li>Experience with the following frameworks:</li>
+        <li key={"framework-requirement"}>
+          Experience with the following frameworks:
+        </li>
         <ul className="view_posting_list_nested">
           {requirements.frameworks.map((framework) => {
             return (
@@ -89,7 +103,9 @@ const ViewPosting = (props) => {
             );
           })}
         </ul>
-        <li>Experience with the following work tools:</li>
+        <li key={"tool-requirement"}>
+          Experience with the following work tools:
+        </li>
         <ul className="view_posting_list_nested">
           {requirements.tools.map((tool) => {
             return (
@@ -99,7 +115,9 @@ const ViewPosting = (props) => {
             );
           })}
         </ul>
-        <li>General understanding and comprehension of:</li>
+        <li key={"concept-requirement"}>
+          General understanding and comprehension of:
+        </li>
         <ul className="view_posting_list_nested">
           {requirements.concepts.map((concept) => {
             return (
