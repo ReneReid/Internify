@@ -18,9 +18,8 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData } from "../../store/actions/jobPostActions";
+import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
-import { updateRegKeys } from "../../store/actions/jobPostActions";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
@@ -248,6 +247,9 @@ function Create(props) {
 
   useEffect(() => {
     props.actions.getStudents();
+    return () => {
+      props.actions.resetKey();
+    }
   }, [props.actions]);
 
   function updateStore() {
@@ -403,7 +405,8 @@ function matchDispatchToProps(dispatch) {
         addJobsData: addJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
-        updateRegKeys: updateRegKeys
+        updateRegKeys: updateRegKeys,
+        resetKey: resetKey
       },
       dispatch
     ),
