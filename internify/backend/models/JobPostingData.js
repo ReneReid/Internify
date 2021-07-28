@@ -99,7 +99,6 @@ const JobPostingSchema = new Schema({
     },
   },
 });
-module.exports = JobPostingData = mongoose.model(
-  "JobPostingData",
-  JobPostingSchema
-);
+
+const JobPostingData = mongoose.model("JobPostingData", JobPostingSchema);
+module.exports = JobPostingData;

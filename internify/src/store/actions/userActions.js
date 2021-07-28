@@ -5,7 +5,9 @@ import {
   UPDATE_USER,
   GET_USERS,
   GET_USER,
+  UPDATE_JOBS_OF_USER,
 } from "./types/userTypes";
+import { getJobs } from "./jobPostActions";
 
 export const addUser = (data) => (dispatch) => {
   axios
@@ -42,13 +44,29 @@ export const updateUser = (data) => (dispatch) => {
     });
 };
 
+export const updateJobsOfUser = (data) => (dispatch) => {
+  axios
+    .put(`/api/users/${data.authId}`, data)
+    .then((res) => {
+      dispatch({
+        type: UPDATE_JOBS_OF_USER,
+        payload: data.jobId,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 export const getUsers = (data) => (dispatch) => {
+
   axios.get("api/users/").then((res) => {
     dispatch({
       type: GET_USERS,
       payload: res.data,
     });
   });
+
 };
 
 export const getUser = (data) => (dispatch) => {
@@ -57,5 +75,8 @@ export const getUser = (data) => (dispatch) => {
       type: GET_USER,
       payload: res.data,
     });
+      dispatch(getJobs(res.data));
   });
 };
+
+

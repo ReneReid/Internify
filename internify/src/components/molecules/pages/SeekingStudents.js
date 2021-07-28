@@ -9,17 +9,14 @@ const SeekingStudents = ({ data }) => {
       <ul className="feedback_list">
         {keyArray.map((x) => {
           // list refers to array of students within object
-          if (x === "page1Students") {
-            // Null
-          } else {
-            const msg = `${data[x]} students currently ${x} a job`;
-            return (
-              <li key={x}>
-                {" "}
-                <ChipNote label={msg} />{" "}
-              </li>
-            );
-          }
+          if (x === "page1Students") return null;
+          const msg = `${data[x]} students currently ${x} a job`;
+          return (
+            <li key={x}>
+              {" "}
+              <ChipNote label={msg} />{" "}
+            </li>
+          );
         })}
       </ul>
     </div>

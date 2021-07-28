@@ -18,8 +18,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import { addJobsData } from "../../store/actions/jobPostActions";
-import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "./styles/Create.css";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -56,7 +58,7 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const [jobData, setJobData] = useState({
-    jobId: uuidv4(), // Add an underscore at some point (all instances of id across all objects and files)
+    jobId: uuidv4(),
     dateCreated: "",
     dateUpdated: "",
     score: 0,
@@ -93,6 +95,7 @@ function Create(props) {
       applicationSteps: "",
     },
   });
+  const user = firebase.auth().currentUser;
 
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
@@ -294,7 +297,7 @@ function Create(props) {
             jobData={jobData}
             data={mockJobDetailData}
           />
-          <Review currentStep={currentStep} jobData={jobData} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
