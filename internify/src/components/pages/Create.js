@@ -375,12 +375,12 @@ function Create(props) {
         alignItems="flex-start"
         justifyContent="flex-end"
         >
+          <h2 className="keys_title">Registered Keys</h2>
           <div className="reg_keys_container"> 
-          <h2>Registered Keys</h2>
           <ul style={{marginLeft: "-10%"}}><RegisteredKeys /></ul>
           </div>
+          <h2 className="keys_title">Summary</h2>
           <div className="reg_keys_container">
-          <h2>Summary</h2>
           <Feedback page={currentStep} />
           </div>
         </Grid>
