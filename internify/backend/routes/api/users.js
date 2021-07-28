@@ -85,6 +85,7 @@ router.put("/:id", function (req, res, next) {
     website: req.body.website,
     status: req.body.status,
   };
+  var jobPosting = req.body.jobPostings[0];
 
   for (var field in args) {
     if (
@@ -92,10 +93,10 @@ router.put("/:id", function (req, res, next) {
       args[field] === [] ||
       args[field] === null ||
       args[field] === undefined
-    )
+    ) {
       delete args[field];
+    }
   }
-
   UserData.findOneAndUpdate(
     { authId: authId },
     {
@@ -104,7 +105,17 @@ router.put("/:id", function (req, res, next) {
       },
     }
   )
-    .then((user) => res.status(200).json(user[0]))
+    .then((user) => {
+      console.log(jobPosting);
+      if (jobPosting) {
+        UserData.findOneAndUpdate(
+          { authId: authId }, 
+          { $push: { jobPostings: jobPosting }}, 
+          {useFindAndModify: false})
+          .then(() => res.status(200).json(user[0]))
+          .catch((err) => res.status(404).json({ success: false }));
+      }
+    })
     .catch((err) => res.status(404).json({ success: false }));
 });
 

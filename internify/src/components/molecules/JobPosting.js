@@ -1,13 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ButtonFilled } from "../atoms/index";
 import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addNewJob } from "../../store/actions/jobPostActions";
+import { addJob } from "../../store/actions/jobPostActions";
+import { updateJobsOfUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
+  const user = props.user;
   const data = props.data;
+  const jobId = data.jobId;
   const header = data?.header
     ? data.header
     : {
@@ -27,10 +31,12 @@ const JobPosting = (props) => {
     details.candidates,
   ];
 
-  function sendJob(){
-    props.actions.addNewJob(data);
+  function sendJob() {
+    props.actions.addJob({ ...data, dateCreated: Date.now() });
+    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+    window.scrollTo(0, 0);
   }
-  
+
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>
@@ -44,37 +50,49 @@ const JobPosting = (props) => {
           return <li key={list}>{list}</li>;
         })}
         {details.coOp === "Yes" ? (
-          <li>Must be enrolled in an accredited Co-op program</li>
+          <li key={"coop-true"}>
+            Must be enrolled in an accredited Co-op program
+          </li>
         ) : null}
       </ul>
 
       <h4 className="job_posting_subheader">Technical Requirements</h4>
       <ul className="job_posting_list_2">
         {requirements.experience ? (
-          <li>
+          <li key={"working-experience"}>
             Must have <b>{requirements.experience}</b> of working experience
           </li>
         ) : (
-          <li>No prior work experience is required</li>
+          <li key={"no-working-experience"}>
+            No prior work experience is required
+          </li>
         )}
         {details.academicReq ? (
-          <li>
-            Obtained or is currently enrolled in a{" "}
-            <b>
+          <li key={"academic-requirements"}>
+            Obtained or is currently enrolled in one or either:{" "}
+            <ul>
               {
-                // TODO: Temporary fix for now. We need a way to display all academic requirements if more than 1 is seleced
-                details.academicReq[1]
+                details.academicReq.map((req) => {
+                  return (
+                    <li key={req}>
+                      <b>{req}</b>
+                    </li>
+                  );
+                })
               }
-            </b>
+            </ul>
           </li>
         ) : null}
         {details.academicReq && requirements.isGpaRequired ? (
-          <li>
-            Must have at least or is at <b>{requirements.gpaValue} GPA</b> standing
-            or equivalent
+          <li key={"gpa-requirement"}>
+            Must have at least or is at <b>{requirements.gpaValue} GPA</b>{" "}
+            standing or equivalent
           </li>
         ) : null}
-        <li style={{ marginBottom: "0.25em" }}>
+        <li
+          key={"coding-language-requirement"}
+          style={{ marginBottom: "0.25em" }}
+        >
           Experience with the following programming languages:
         </li>
         <ul className="job_posting_list_nested">
@@ -86,7 +104,9 @@ const JobPosting = (props) => {
             );
           })}
         </ul>
-        <li>Experience with the following frameworks:</li>
+        <li key={"framework-requirement"}>
+          Experience with the following frameworks:
+        </li>
         <ul className="job_posting_list_nested">
           {requirements.frameworks.map((framework) => {
             return (
@@ -96,7 +116,9 @@ const JobPosting = (props) => {
             );
           })}
         </ul>
-        <li>Experience with the following work tools:</li>
+        <li key={"tool-requirement"}>
+          Experience with the following work tools:
+        </li>
         <ul className="job_posting_list_nested">
           {requirements.tools.map((tool) => {
             return (
@@ -106,7 +128,9 @@ const JobPosting = (props) => {
             );
           })}
         </ul>
-        <li>General understanding and comprehension of:</li>
+        <li key={"concept-requirement"}>
+          General understanding and comprehension of:
+        </li>
         <ul className="job_posting_list_nested">
           {requirements.concepts.map((concept) => {
             return (
@@ -130,7 +154,14 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <ButtonFilled  onClick={() => sendJob()} startIcon={<AddCircleOutline />}>Create</ButtonFilled>
+        <Link to={`/view/${jobId}`}>
+          <ButtonFilled
+            onClick={() => sendJob()}
+            startIcon={<AddCircleOutline />}
+          >
+            Create
+          </ButtonFilled>
+        </Link>
       </div>
     </div>
   );
@@ -139,12 +170,16 @@ const JobPosting = (props) => {
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
+    users: state.users,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addNewJob: addNewJob }, dispatch),
+    actions: bindActionCreators(
+      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
+      dispatch
+    ),
   };
 }
 
