@@ -18,11 +18,7 @@ const FinalReqStudents = ({ data, display }) => {
               );
             } else if (x === "page3Students") {
               // list refers to array of students within object
-              return (
-                <li key={x}>
-                  <div></div>
-                </li>
-              );
+              return null;
             } else {
               const msg = `${data[x]} students also meet ${x} requirements`;
               return (
@@ -36,7 +32,7 @@ const FinalReqStudents = ({ data, display }) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return null;
   }
 };
 

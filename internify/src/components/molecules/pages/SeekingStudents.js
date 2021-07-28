@@ -11,17 +11,12 @@ const SeekingStudents = ({ data, display }) => {
           {keyArray.map((x) => {
             // list refers to array of students within object
             if (x === "page1Students") {
-              return (
-                <li key={x}>
-                  <div></div>
-                </li>
-              );
+              return null;
             } else {
               const msg = `${data[x]} students currently ${x} a job`;
               return (
                 <li key={x}>
-                  {" "}
-                  <ChipNote label={msg} />{" "}
+                  <ChipNote label={msg} />
                 </li>
               );
             }
@@ -30,7 +25,7 @@ const SeekingStudents = ({ data, display }) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return null;
   }
 };
 

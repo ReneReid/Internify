@@ -17,11 +17,7 @@ const TechMatchStudents = ({ data, display }) => {
                 </li>
               );
             } else if (x === "page2Students") {
-              return (
-                <li key={x}>
-                  <div></div>
-                </li>
-              );
+              return null;
               // list refers to array of students within object
             } else {
               const msg = `${data[x]} students also meet ${x} requirements`;
@@ -36,7 +32,7 @@ const TechMatchStudents = ({ data, display }) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return null;
   }
 };
 
