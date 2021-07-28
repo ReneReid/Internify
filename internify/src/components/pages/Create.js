@@ -371,9 +371,18 @@ function Create(props) {
             </div>
           )}
         </Grid>
-        <Grid item xs={3}>
-          <ul><RegisteredKeys /></ul>
+        <Grid item xs={3} 
+        alignItems="flex-start"
+        justifyContent="flex-end"
+        >
+          <div className="reg_keys_container"> 
+          <h2>Registered Keys</h2>
+          <ul style={{marginLeft: "-10%"}}><RegisteredKeys /></ul>
+          </div>
+          <div className="reg_keys_container">
+          <h2>Summary</h2>
           <Feedback page={currentStep} />
+          </div>
         </Grid>
       </Grid>
     </div>

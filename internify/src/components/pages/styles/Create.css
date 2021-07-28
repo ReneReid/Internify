@@ -10,3 +10,9 @@
 .form_validation_error {
     margin-top: 1em;
 }
+
+.reg_keys_container {
+    margin-left: -15%;
+    max-height: 300px;
+    overflow-y: scroll;
+}

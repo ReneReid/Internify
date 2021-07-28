@@ -19,7 +19,7 @@ const Feedback = ({ page }) => {
   if (page === 1) {
     return (
       <div className="feedback_outer">
-        <h1> Summary </h1>
+        <h2> Summary </h2>
         <h2> {allStudents.length} total students </h2>
       </div>
     );
