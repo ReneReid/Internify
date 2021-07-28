@@ -223,7 +223,7 @@ function Create(props) {
   function updateKeysList(event, key, label){
     if(chipsList.includes(key)){
       if(registeredKeys.hasOwnProperty(key)){
-        if (event.target.checked) {
+        if (event.target.checked && !registeredKeys[key].includes(label)) {
           props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
         } else {
           if (registeredKeys[key].includes(label)) {
