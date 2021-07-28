@@ -373,13 +373,10 @@ function Create(props) {
             </div>
           )}
         </Grid>
-        <Grid item xs={3} 
-        alignItems="flex-start"
-        justifyContent="flex-end"
-        >
+        <Grid item xs={3} >
           <h2 className="keys_title">Registered Keys</h2>
           <div className="reg_keys_container"> 
-          <ul style={{marginLeft: "-10%"}}><RegisteredKeys /></ul>
+          <RegisteredKeys />
           </div>
           <h2 className="keys_title">Summary</h2>
           <div className="reg_keys_container">
