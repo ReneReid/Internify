@@ -30,8 +30,18 @@ const ViewPosting = (props) => {
     const doc = new jsPDF();
     //TODO: Write the document
 
+    // Header
+    doc.setFont("helvetica", "bold");
+    doc.text(`${header.title}`, 10, 10);
+    doc.setFontSize(10);
+    doc.text(`${header.company}`, 10, 18);
+    doc.setFont("helvetica", "normal");
+    doc.text(`${header.location}`, 10, 24);
 
-    doc.save(`${header.title}.pdf`)
+    // Bio
+    doc.text(`${details.description}`, 10, 35);
+
+    doc.save(`${header.title}.pdf`);
   };
 
   const JobPosting = () => {
