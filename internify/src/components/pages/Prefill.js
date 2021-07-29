@@ -7,8 +7,18 @@ import "./styles/Prefill.css";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      marginBottom: "7em",
-    }
+      marginBottom: "5em",
+    },
+    prefill_btn_left: {
+      marginLeft: "1.25em",
+      marginTop: "-0.5em"
+    },
+    prefill_btn_right: {
+      marginRight: "0.5em",
+      marginTop: "-0.5em"
+    },
+    
+
   }));
 
 function Prefill() {
@@ -24,7 +34,7 @@ function Prefill() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        spacing={5}
+        spacing={7}
         >
           <Grid item xs={12}>
               <h2 className="prefill_option_title">Choose an option:</h2>
@@ -42,13 +52,13 @@ function Prefill() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        spacing={5}
+        spacing={7}
         >
           <Grid item>
-          <ButtonFilled onClick={() => handleUpdate()}>Preview Prefills</ButtonFilled>
+          <ButtonFilled className={classes.prefill_btn_left} onClick={() => handleUpdate()}>Preview Prefills</ButtonFilled>
           </Grid>
           <Grid item>
-          <ButtonFilled onClick={() => handleUpdate()}>Make New Posting</ButtonFilled>
+          <ButtonFilled className={classes.prefill_btn_right} onClick={() => handleUpdate()}>Make New Posting</ButtonFilled>
           </Grid>
         </Grid>
       </div>
