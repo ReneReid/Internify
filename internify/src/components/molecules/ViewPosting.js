@@ -29,22 +29,32 @@ const ViewPosting = (props) => {
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF();
     const maxWidth = 190;
+    const leftMargin = 10;
     //TODO: Write the document
 
     // Header
     doc.setFont("helvetica", "bold");
-    doc.text(`${header.title}`, 10, 15);
+    doc.text(`${header.title}`, leftMargin, 15);
     doc.setFontSize(14);
-    doc.text(`${header.company}`, 10, 25);
+    doc.text(`${header.company}`, leftMargin, 25);
     doc.setFont("helvetica", "normal");
-    doc.text(`${header.location}`, 10, 32);
+    doc.text(`${header.location}`, leftMargin, 32);
 
     // Bio
     var textLines = doc.splitTextToSize(`${details.description}`, maxWidth);
-    doc.text(textLines, 10, 42);
+    doc.text(textLines, leftMargin, 50);
 
     // Job points
-    // var bioHeight = (textLines.length * 10 * lineHeight) / ptsPerInch;
+    var bioHeight = (textLines.length * leftMargin * doc.getLineHeight()) / 20;
+    var referenceHeight = 50 + bioHeight;
+    doc.setFont("helvetica", "bold");
+    doc.text("Job points:", leftMargin, referenceHeight);
+    doc.setFont("helvetica", "normal");
+    var points = "";
+    jobPoints.forEach((point) => {
+      points += (`\u2022 ${point}    `);
+    });
+    doc.text(points, leftMargin + 5, referenceHeight + 10);
 
     // Save file
     doc.save(`${header.title}.pdf`);
