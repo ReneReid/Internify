@@ -4,11 +4,11 @@ import { Stepper, InputFormContactDetails } from "../../molecules/index";
 
 const ContactDetails = (props) => {
   const [contact, setContact] = useState({
-    name: "",
-    email: "",
-    linkedIn: "",
-    other: "",
-    applicationSteps: "",
+    name: props? props.jobData.contact.name: "",
+    email: props? props.jobData.contact.email: "",
+    linkedIn: props? props.jobData.contact.linkedIn: "",
+    other: props? props.jobData.contact.other: "",
+    applicationSteps: props? props.jobData.contact.applicationSteps: "",
   });
 
   useEffect(() => {

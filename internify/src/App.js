@@ -5,6 +5,7 @@ import AuthNavbar from "./components/organisms/AuthNavbar";
 import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
+import Edit from "./components/pages/Edit";
 import Profile from "./components/pages/Profile";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
@@ -69,6 +70,11 @@ function App() {
         <Route path="/view/:slug">
           <AuthNavbar />
           <View />
+          <Footer />
+        </Route>
+        <Route path="/edit/:slug">
+          <AuthNavbar />
+          <Edit />
           <Footer />
         </Route>
         <Redirect to="/profile" />

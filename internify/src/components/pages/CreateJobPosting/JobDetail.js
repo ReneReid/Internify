@@ -8,7 +8,7 @@ import "./styles/JobDetail.css";
 function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
-    description: "",
+    description: props? props.jobData.details.description: "",
     positionType: "",
     pay: "",
     candidates: "",
