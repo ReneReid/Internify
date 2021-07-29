@@ -39,8 +39,13 @@ const ViewPosting = (props) => {
     doc.text(`${header.location}`, 10, 24);
 
     // Bio
-    doc.text(`${details.description}`, 10, 35);
+    var textLines = doc.splitTextToSize(`${details.description}`, 190);
+    doc.text(textLines, 10, 35);
 
+    // Job points
+
+
+    // Save file
     doc.save(`${header.title}.pdf`);
   };
 
