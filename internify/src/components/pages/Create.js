@@ -278,6 +278,7 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
+            pathway={"create"}
           />
           <TechRequirements
             currentStep={currentStep}

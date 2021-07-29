@@ -25,6 +25,8 @@ function CreateJobHeader(props) {
   if (props.currentStep !== 1) {
     return null;
   } else {
+    let mssg = "";
+    (props.pathway==="create")? mssg = "1. Create a Job Header": mssg="1. Edit Job Header";
     return (
       <div className="create_form_container">
         <Container
@@ -33,7 +35,7 @@ function CreateJobHeader(props) {
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
-            <h1>1. Create a Job Header</h1>
+            <h1>{mssg}</h1>
             <InputFormJobHeader handleChange={setHeader} jobData={header} />
             <LengthSubHeader handleChange={setHeader} jobData={header} />
             <FormHelperText>Required</FormHelperText>

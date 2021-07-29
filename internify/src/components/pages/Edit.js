@@ -255,6 +255,7 @@ function Edit(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
+            pathway={"edit"}
           />
           <TechRequirements
             currentStep={currentStep}
