@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonFilled } from "../atoms/index";
 import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import { jsPDF } from "jspdf";
+import html2pdf from "html2pdf.js";
 import "./styles/ViewPosting.css";
 
 const ViewPosting = (props) => {
@@ -26,106 +27,17 @@ const ViewPosting = (props) => {
   ];
 
   const handleClick = () => {
-    // Default export is a4 paper, portrait, using millimeters for units
-    const doc = new jsPDF();
-    const maxWidth = 190;
-    const leftMargin = 10;
-    const firstLeftIndent = leftMargin + 5;
-    const secondLeftIndent = firstLeftIndent + 10;
-
-    //Font setter functions
-    const setFontBold = () => {
-      doc.setFont("helvetica", "bold");
-    };
-    const setFontNormal = () => {
-      doc.setFont("helvetica", "normal");
+    var element = document.getElementsByClassName("view_posting_container")[0];
+    const opt = {
+      margin: 0,
+      filename: `${header.title}.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, dpi: 300, letterRendering: true, useCORS: true },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
     };
 
-    // Header
-    setFontBold();
-    doc.text(`${header.title}`, leftMargin, 15);
-    doc.setFontSize(14);
-    doc.text(`${header.company}`, leftMargin, 25);
-    setFontNormal();
-    doc.text(`${header.location}`, leftMargin, 32);
-
-    // Bio
-    var textLines = doc.splitTextToSize(`${details.description}`, maxWidth);
-    doc.text(textLines, leftMargin, 50);
-
-    // Job points
-    const bioHeight =
-      (textLines.length * leftMargin * doc.getLineHeight()) / 20;
-    var referenceHeight = 50 + bioHeight;
-    setFontBold();
-    doc.text("Job points", leftMargin, referenceHeight);
-    setFontNormal();
-    var points = "";
-    jobPoints.forEach((point) => {
-      points += `\u2022 ${point}    `;
-    });
-    doc.text(points, firstLeftIndent, referenceHeight + 10);
-    if (details.coOp) {
-      doc.text(
-        `\u2022 Must be enrolled in an accredited Co-op program`,
-        firstLeftIndent,
-        referenceHeight + 20
-      );
-      referenceHeight += 10;
-    }
-
-    // Technical requirements
-    referenceHeight += 25;
-    setFontBold();
-    doc.text("Technical Requirements", leftMargin, referenceHeight);
-    setFontNormal();
-    doc.text(
-      `\u2022 Must have at least ${
-        requirements.experience.split(/ (.*)/)[1]
-      } of working experience`,
-      firstLeftIndent,
-      (referenceHeight += 10)
-    );
-
-    doc.text(`\u2022 Obtained or is currently enrolled in one or either:`, firstLeftIndent, referenceHeight += 10);
-    setFontBold();
-    details.academicReq.forEach((req) => {
-      doc.text(`\u2022 ${req}`, secondLeftIndent, referenceHeight += 10);
-    });
-    setFontNormal();
-
-    doc.text(`\u2022 Experience with the following programming languages:`, firstLeftIndent, referenceHeight += 10);
-    setFontBold();
-    requirements.languages.forEach((language) => {
-      doc.text(`\u2022 ${language}`, secondLeftIndent, referenceHeight += 10);
-    });
-    setFontNormal();
-
-    doc.text(`\u2022 Experience with the following frameworks:`, firstLeftIndent, referenceHeight += 10);
-    setFontBold();
-    requirements.frameworks.forEach((framework) => {
-      doc.text(`\u2022 ${framework}`, secondLeftIndent, referenceHeight += 10);
-    });
-    setFontNormal();
-
-    doc.text(`\u2022 Experience with the following work tools:`, firstLeftIndent, referenceHeight += 10);
-    setFontBold();
-    requirements.tools.forEach((tool) => {
-      doc.text(`\u2022 ${tool}`, secondLeftIndent, referenceHeight += 10);
-    });
-    setFontNormal();
-
-
-    doc.text(`\u2022 General understanding and comprehension of:`, firstLeftIndent, referenceHeight += 10);
-    setFontBold();
-    requirements.concepts.forEach((concept) => {
-      doc.text(`\u2022 ${concept}`, secondLeftIndent, referenceHeight += 10);
-    });
-    setFontNormal();
-
-
-    // Save file
-    doc.save(`${header.title}.pdf`);
+    html2pdf().from(element).set(opt).save();
   };
 
   const JobPosting = () => {
