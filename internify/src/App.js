@@ -8,6 +8,7 @@ import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
+import Prefill from "./components/pages/Prefill";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -59,6 +60,11 @@ function App() {
         <Route path="/profile">
           <AuthNavbar />
           <Profile user={user} />
+          <Footer />
+        </Route>
+        <Route path="/prefill">
+          <AuthNavbar />
+          <Prefill />
           <Footer />
         </Route>
         <Route path="/create">
