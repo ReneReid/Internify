@@ -9,12 +9,12 @@ router.get("/", function (req, res, next) {
   MatchesData.find().then((matches) => res.json(matches));
 });
 
-//@route    PUT api/matches:id
+//@route    PUT api/matches
 //@desc     Insert a particular match
 //@access   Public
-router.put("/:jobId", function (req, res, next) {
+router.put("/", function (req, res, next) {
   var newMatch = new MatchesData({
-    jobId: req.params.jobId,
+    jobId: req.body.jobId,
     matches: req.body.matches,
   });
 
