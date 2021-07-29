@@ -9,7 +9,7 @@ export const processMatches = (data) => (dispatch) => {
 };
 
 export const addMatch = (match) => (dispatch) => {
-  axios.post("/api/matches/", match).then((res) => {
+  axios.put("/api/matches/", match).then((res) => {
     dispatch({
       type: ADD_MATCH,
       payload: res.data,

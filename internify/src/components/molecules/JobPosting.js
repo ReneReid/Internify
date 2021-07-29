@@ -6,7 +6,9 @@ import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJob } from "../../store/actions/jobPostActions";
+import { addMatch } from "../../store/actions/matchesActions";
 import { updateJobsOfUser } from "../../store/actions/userActions";
+import { useSelector } from "react-redux";
 
 const JobPosting = (props) => {
   const user = props.user;
@@ -35,6 +37,23 @@ const JobPosting = (props) => {
     props.actions.addJob({ ...data, dateCreated: Date.now() });
     props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
     window.scrollTo(0, 0);
+  }
+
+  const matchesObject = useSelector(
+    (state) => state.matches.page3Object.page3Students
+  );
+
+  function sendMatch() {
+    let studentIDs = [];
+    for (let i = 0; i < matchesObject.length; i++) {
+      studentIDs.push(matchesObject[i]["_id"]);
+    }
+
+    let matchesObj = {};
+    matchesObj["jobId"] = jobId;
+    matchesObj["matches"] = studentIDs;
+
+    props.actions.addMatch(matchesObj);
   }
 
   return (
@@ -71,15 +90,13 @@ const JobPosting = (props) => {
           <li key={"academic-requirements"}>
             Obtained or is currently enrolled in one or either:{" "}
             <ul>
-              {
-                details.academicReq.map((req) => {
-                  return (
-                    <li key={req}>
-                      <b>{req}</b>
-                    </li>
-                  );
-                })
-              }
+              {details.academicReq.map((req) => {
+                return (
+                  <li key={req}>
+                    <b>{req}</b>
+                  </li>
+                );
+              })}
             </ul>
           </li>
         ) : null}
@@ -156,7 +173,10 @@ const JobPosting = (props) => {
       <div className="job_posting_submit">
         <Link to={`/view/${jobId}`}>
           <ButtonFilled
-            onClick={() => sendJob()}
+            onClick={() => {
+              sendJob();
+              sendMatch();
+            }}
             startIcon={<AddCircleOutline />}
           >
             Create
@@ -177,7 +197,11 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
+      {
+        addJob: addJob,
+        updateJobsOfUser: updateJobsOfUser,
+        addMatch: addMatch,
+      },
       dispatch
     ),
   };

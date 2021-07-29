@@ -13,6 +13,7 @@ router.get("/", function (req, res, next) {
 //@desc     Insert a particular match
 //@access   Public
 router.put("/", function (req, res, next) {
+  console.log("PUT request received.");
   var newMatch = new MatchesData({
     jobId: req.body.jobId,
     matches: req.body.matches,
@@ -23,4 +24,7 @@ router.put("/", function (req, res, next) {
     .save()
     .then((match) => res.status(200).json(match))
     .catch((err) => res.status(404).json({ success: false }));
+  res.status(200).json("done");
 });
+
+module.exports = router;
