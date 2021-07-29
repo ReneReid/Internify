@@ -26,18 +26,18 @@ const ViewPosting = (props) => {
   ];
 
   const handleClick = () => {
+    // Default export is a4 paper, portrait, using millimeters for units
+    const doc = new jsPDF();
+    const maxWidth = 190;
+    const leftMargin = 10;
+
+    //Font setter functions
     const setBold = () => {
       doc.setFont("helvetica", "bold");
     };
     const setNormal = () => {
       doc.setFont("helvetica", "normal");
     };
-
-    // Default export is a4 paper, portrait, using millimeters for units
-    const doc = new jsPDF();
-    const maxWidth = 190;
-    const leftMargin = 10;
-    //TODO: Write the document
 
     // Header
     setBold();
@@ -62,9 +62,13 @@ const ViewPosting = (props) => {
       points += (`\u2022 ${point}    `);
     });
     doc.text(points, leftMargin + 5, referenceHeight + 10);
+    if (details.coOp) {
+      doc.text(`\u2022 Must be enrolled in an accredited Co-op program`, leftMargin + 5, referenceHeight + 20);
+      referenceHeight += 10;
+    }
 
     // Technical requirements
-    referenceHeight = referenceHeight + 25;
+    referenceHeight += 25;
     setBold();
     doc.text("Technical Requirements", leftMargin, referenceHeight);
 
