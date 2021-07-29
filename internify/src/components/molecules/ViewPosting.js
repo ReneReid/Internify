@@ -1,7 +1,6 @@
 import React from "react";
 import { ButtonFilled } from "../atoms/index";
 import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
-import { jsPDF } from "jspdf";
 import html2pdf from "html2pdf.js";
 import "./styles/ViewPosting.css";
 
