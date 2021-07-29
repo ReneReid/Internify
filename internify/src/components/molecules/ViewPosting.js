@@ -31,6 +31,7 @@ const ViewPosting = (props) => {
     const maxWidth = 190;
     const leftMargin = 10;
     const firstLeftIndent = leftMargin + 5;
+    const secondLeftIndent = firstLeftIndent + 10;
 
     //Font setter functions
     const setFontBold = () => {
@@ -85,6 +86,43 @@ const ViewPosting = (props) => {
       firstLeftIndent,
       (referenceHeight += 10)
     );
+
+    doc.text(`\u2022 Obtained or is currently enrolled in one or either:`, firstLeftIndent, referenceHeight += 10);
+    setFontBold();
+    details.academicReq.forEach((req) => {
+      doc.text(`\u2022 ${req}`, secondLeftIndent, referenceHeight += 10);
+    });
+    setFontNormal();
+
+    doc.text(`\u2022 Experience with the following programming languages:`, firstLeftIndent, referenceHeight += 10);
+    setFontBold();
+    requirements.languages.forEach((language) => {
+      doc.text(`\u2022 ${language}`, secondLeftIndent, referenceHeight += 10);
+    });
+    setFontNormal();
+
+    doc.text(`\u2022 Experience with the following frameworks:`, firstLeftIndent, referenceHeight += 10);
+    setFontBold();
+    requirements.frameworks.forEach((framework) => {
+      doc.text(`\u2022 ${framework}`, secondLeftIndent, referenceHeight += 10);
+    });
+    setFontNormal();
+
+    doc.text(`\u2022 Experience with the following work tools:`, firstLeftIndent, referenceHeight += 10);
+    setFontBold();
+    requirements.tools.forEach((tool) => {
+      doc.text(`\u2022 ${tool}`, secondLeftIndent, referenceHeight += 10);
+    });
+    setFontNormal();
+
+
+    doc.text(`\u2022 General understanding and comprehension of:`, firstLeftIndent, referenceHeight += 10);
+    setFontBold();
+    requirements.concepts.forEach((concept) => {
+      doc.text(`\u2022 ${concept}`, secondLeftIndent, referenceHeight += 10);
+    });
+    setFontNormal();
+
 
     // Save file
     doc.save(`${header.title}.pdf`);
