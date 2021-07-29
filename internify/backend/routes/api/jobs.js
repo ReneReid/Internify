@@ -53,6 +53,31 @@ router.get("/:id", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
+//@route    PUT api/jobs/:id
+//@desc     edit single job document
+//@access   Public
+router.put("/:id", function (req, res, next) {
+  const jobId = req.params.id;
+  JobPostingData.findOne({ jobId: jobId })
+    .then((job) => {
+      job.dateUpdated = req.body.dateUpdated
+        ? req.body.dateUpdated
+        : job.dateUpdated;
+      job.score = req.body.score ? req.body.score : job.score;
+      job.header = req.body.header ? req.body.header : job.header;
+      job.requirements = req.body.requirements
+        ? req.body.requirements
+        : job.requirements;
+      job.details = req.body.details ? req.body.details : job.details;
+      job.contact = req.body.contact ? req.body.contact : job.contact;
+
+      job.save().then(() => {
+        JobPostingData.find().then((jobs) => res.json(jobs));
+      });
+    })
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
 //@route    POST api/jobs
 //@desc     Create A Job Document
 //@access   Public
