@@ -26,6 +26,13 @@ const ViewPosting = (props) => {
   ];
 
   const handleClick = () => {
+    const setBold = () => {
+      doc.setFont("helvetica", "bold");
+    };
+    const setNormal = () => {
+      doc.setFont("helvetica", "normal");
+    };
+
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF();
     const maxWidth = 190;
@@ -33,11 +40,11 @@ const ViewPosting = (props) => {
     //TODO: Write the document
 
     // Header
-    doc.setFont("helvetica", "bold");
+    setBold();
     doc.text(`${header.title}`, leftMargin, 15);
     doc.setFontSize(14);
     doc.text(`${header.company}`, leftMargin, 25);
-    doc.setFont("helvetica", "normal");
+    setNormal();
     doc.text(`${header.location}`, leftMargin, 32);
 
     // Bio
@@ -45,16 +52,21 @@ const ViewPosting = (props) => {
     doc.text(textLines, leftMargin, 50);
 
     // Job points
-    var bioHeight = (textLines.length * leftMargin * doc.getLineHeight()) / 20;
+    const bioHeight = (textLines.length * leftMargin * doc.getLineHeight()) / 20;
     var referenceHeight = 50 + bioHeight;
-    doc.setFont("helvetica", "bold");
-    doc.text("Job points:", leftMargin, referenceHeight);
-    doc.setFont("helvetica", "normal");
+    setBold();
+    doc.text("Job points", leftMargin, referenceHeight);
+    setNormal();
     var points = "";
     jobPoints.forEach((point) => {
       points += (`\u2022 ${point}    `);
     });
     doc.text(points, leftMargin + 5, referenceHeight + 10);
+
+    // Technical requirements
+    referenceHeight = referenceHeight + 25;
+    setBold();
+    doc.text("Technical Requirements", leftMargin, referenceHeight);
 
     // Save file
     doc.save(`${header.title}.pdf`);
