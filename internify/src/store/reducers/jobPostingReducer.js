@@ -1,4 +1,4 @@
-import { ADD_JOB_HEADER, GET_ALL_JOBS } from "../actions/types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, EDIT_JOB_HEADER } from "../actions/types/jobPostTypes";
 
 const initialState = {
   currentPosting: {},
@@ -19,6 +19,16 @@ export default function JobPostingReducer(state = initialState, action) {
         ...state,
         currentListOfJobs: action.payload,
       };
+    
+    case EDIT_JOB_HEADER:
+      const updatedJobs = state.map(job => {
+        if (job._id === action.payload._id) {
+          return { ...job, ...action.payload }
+        }
+        return job;
+      })
+      return updatedJobs;
+
     default:
       return state;
   }

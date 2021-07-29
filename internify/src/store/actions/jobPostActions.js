@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, EDIT_JOB_HEADER } from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -59,5 +59,16 @@ export const addJobsData = (data) => (dispatch) => {
   dispatch({
     type: ADD_JOB_HEADER,
     payload: data,
+  });
+};
+
+export const editJobsData = (_id) => (dispatch) => {
+
+  axios.put(`/api/jobs/${_id}`).then((res) => {
+
+    dispatch({
+      type: EDIT_JOB_HEADER,
+      payload: res.data,
+    });
   });
 };

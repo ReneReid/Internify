@@ -17,7 +17,7 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData } from "../../store/actions/jobPostActions";
+import { editJobsData } from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
 import axios from "axios";
@@ -55,7 +55,7 @@ const currStep = {
 };
 
 // modify this so that it fits the "edit" paradigm
-function Create(props) {
+function Edit(props) {
   let { slug } = useParams();
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
@@ -146,7 +146,7 @@ function Create(props) {
     return editedLanguages;
   }
 
-  function createJobObject(jobPosting) {
+  function editJobObject(jobPosting) {
     // parsing functions
     const experience = parseExperience(jobPosting.requirements.experience);
     const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
@@ -191,8 +191,8 @@ function Create(props) {
     if (!checkIfEmpty(curr)) {
       setError(false);
 
-      props.actions.addJobsData(jobData);
-      const posting = createJobObject(jobData);
+      props.actions.editJobsData(jobData);
+      const posting = editJobObject(jobData);
 
       if (currentStep === 1) {
         props.actions.processMatches({
@@ -311,7 +311,7 @@ function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
-        addJobsData: addJobsData,
+        editJobsData: editJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
       },
@@ -320,4 +320,4 @@ function matchDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Create);
+export default connect(mapStateToProps, matchDispatchToProps)(Edit);
