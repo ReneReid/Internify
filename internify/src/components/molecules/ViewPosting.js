@@ -30,21 +30,22 @@ const ViewPosting = (props) => {
     const doc = new jsPDF();
     const maxWidth = 190;
     const leftMargin = 10;
+    const firstLeftIndent = leftMargin + 5;
 
     //Font setter functions
-    const setBold = () => {
+    const setFontBold = () => {
       doc.setFont("helvetica", "bold");
     };
-    const setNormal = () => {
+    const setFontNormal = () => {
       doc.setFont("helvetica", "normal");
     };
 
     // Header
-    setBold();
+    setFontBold();
     doc.text(`${header.title}`, leftMargin, 15);
     doc.setFontSize(14);
     doc.text(`${header.company}`, leftMargin, 25);
-    setNormal();
+    setFontNormal();
     doc.text(`${header.location}`, leftMargin, 32);
 
     // Bio
@@ -52,25 +53,38 @@ const ViewPosting = (props) => {
     doc.text(textLines, leftMargin, 50);
 
     // Job points
-    const bioHeight = (textLines.length * leftMargin * doc.getLineHeight()) / 20;
+    const bioHeight =
+      (textLines.length * leftMargin * doc.getLineHeight()) / 20;
     var referenceHeight = 50 + bioHeight;
-    setBold();
+    setFontBold();
     doc.text("Job points", leftMargin, referenceHeight);
-    setNormal();
+    setFontNormal();
     var points = "";
     jobPoints.forEach((point) => {
-      points += (`\u2022 ${point}    `);
+      points += `\u2022 ${point}    `;
     });
-    doc.text(points, leftMargin + 5, referenceHeight + 10);
+    doc.text(points, firstLeftIndent, referenceHeight + 10);
     if (details.coOp) {
-      doc.text(`\u2022 Must be enrolled in an accredited Co-op program`, leftMargin + 5, referenceHeight + 20);
+      doc.text(
+        `\u2022 Must be enrolled in an accredited Co-op program`,
+        firstLeftIndent,
+        referenceHeight + 20
+      );
       referenceHeight += 10;
     }
 
     // Technical requirements
     referenceHeight += 25;
-    setBold();
+    setFontBold();
     doc.text("Technical Requirements", leftMargin, referenceHeight);
+    setFontNormal();
+    doc.text(
+      `\u2022 Must have at least ${
+        requirements.experience.split(/ (.*)/)[1]
+      } of working experience`,
+      firstLeftIndent,
+      (referenceHeight += 10)
+    );
 
     // Save file
     doc.save(`${header.title}.pdf`);
