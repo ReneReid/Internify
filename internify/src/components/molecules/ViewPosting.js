@@ -28,22 +28,23 @@ const ViewPosting = (props) => {
   const handleClick = () => {
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF();
+    const maxWidth = 190;
     //TODO: Write the document
 
     // Header
     doc.setFont("helvetica", "bold");
-    doc.text(`${header.title}`, 10, 10);
-    doc.setFontSize(10);
-    doc.text(`${header.company}`, 10, 18);
+    doc.text(`${header.title}`, 10, 15);
+    doc.setFontSize(14);
+    doc.text(`${header.company}`, 10, 25);
     doc.setFont("helvetica", "normal");
-    doc.text(`${header.location}`, 10, 24);
+    doc.text(`${header.location}`, 10, 32);
 
     // Bio
-    var textLines = doc.splitTextToSize(`${details.description}`, 190);
-    doc.text(textLines, 10, 35);
+    var textLines = doc.splitTextToSize(`${details.description}`, maxWidth);
+    doc.text(textLines, 10, 42);
 
     // Job points
-
+    // var bioHeight = (textLines.length * 10 * lineHeight) / ptsPerInch;
 
     // Save file
     doc.save(`${header.title}.pdf`);
