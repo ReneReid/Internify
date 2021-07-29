@@ -17,6 +17,7 @@ import "./styles/Profile.css";
 
 const Profile = (props) => {
   const [toggle, setToggle] = useState(false);
+
   var labels = [`${props.users.user.jobPostings?.length} Postings`];
 
   useEffect(() => {

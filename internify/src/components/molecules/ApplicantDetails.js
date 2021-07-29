@@ -11,7 +11,8 @@ function ApplicantDetails(props) {
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
 
-  const handleChange = (event) => {
+  const handleChange = (event, key, label) => {
+    props.updateKeysList(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -32,7 +33,9 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"positionType"}
             data={location}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -43,7 +46,9 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"pay"}
             data={payment}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -54,7 +59,9 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"candidates"}
             data={citizenship}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>
@@ -63,7 +70,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={handleChange} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
@@ -77,7 +84,9 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"coOp"}
             data={coopReq}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>

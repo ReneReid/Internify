@@ -7,11 +7,12 @@ import { withStyles } from "@material-ui/core/styles";
  */
 
 export const ChipBasic = withStyles(() => ({
-  root: {
-    backgroundColor: "#043A74",
-    color: "#FFFFFF",
-    fontWeight: "bold",
-  },
+    root: {
+      backgroundColor: "#043A74",
+      color: "#FFFFFF",
+      fontWeight: "bold",
+      margin: "0.25em"
+    }
 }))(Chip);
 
 export const ChipClickable = withStyles(() => ({

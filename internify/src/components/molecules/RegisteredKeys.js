@@ -1,11 +1,39 @@
-import React from 'react'
+import React from 'react';
+import { ChipBasic } from "../atoms/index";
+import { connect } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
-const RegisteredKeys = () => {
+const RegisteredKeys = (props) => {
+    const registeredKeys = props.jobs.registeredKeys;
+
     return (
-        <div className="keys_container">
-            <h3>Registered keys</h3>
-        </div>
-    )
+          <div className="registed_keys_container" style={{display: "flexbox"}}>
+          {Object.keys(registeredKeys).map(key => {
+              const current = registeredKeys[key];
+              if(Array.isArray(current)){
+                const result = current.map(ele => {
+                  return (
+                   <ChipBasic label={ele} key={uuidv4()}/>
+                  )
+                });
+                return result;
+              } else {
+                return (
+                  <ChipBasic label={current} key={uuidv4()}/>
+                );
+              }
+          })}
+          </div>
+    );
+
 }
 
-export default RegisteredKeys
+
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+export default connect(mapStateToProps)(RegisteredKeys);
+
