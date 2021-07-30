@@ -12,8 +12,8 @@ router.get("/", function (req, res, next) {
 //@route    GET api/matches/:id
 //@desc     Get single Matches Document
 //@access   Public
-router.get("/:id", function (req, res, next) {
-  MatchesData.find({ jobId: req.params.id })
+router.get("/:jobId", function (req, res, next) {
+  MatchesData.find({ jobId: req.params.jobId })
     .then((match) => res.status(200).json(match))
     .catch((err) => res.status(404).json({ success: false }));
 });
@@ -34,6 +34,17 @@ router.post("/", function (req, res, next) {
     .then((match) => res.status(200).json(match))
     .catch((err) => res.status(404).json({ success: false }));
   res.status(200).json("done");
+});
+
+//@route DELETE api/matches/:jobId
+//@desc Deletes a particular match
+//@access Public
+router.delete("/:jobId", function (req, res, next) {
+  MatchesData.findOneAndDelete({ jobId: req.params.jobId })
+    .then(() => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
