@@ -162,7 +162,7 @@ const JobPosting = (props) => {
             onClick={() => props.onSubmit(data, jobId, props)}
             startIcon={<AddCircleOutline />}
           >
-            Create
+            {props.buttonName}
           </ButtonFilled>
         </Link>
       </div>

@@ -207,7 +207,7 @@ function Create(props) {
             jobData={jobData}
             data={mockJobDetailData}
           />
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} buttonName={"Create"} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>

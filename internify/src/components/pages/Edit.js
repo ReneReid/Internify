@@ -181,7 +181,7 @@ function Edit(props) {
             jobData={jobData}
             data={mockJobDetailData}
           /> 
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} buttonName={"Edit"} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
