@@ -9,11 +9,20 @@ router.get("/", function (req, res, next) {
   MatchesData.find().then((matches) => res.json(matches));
 });
 
-//@route    PUT api/matches
+//@route    GET api/matches/:id
+//@desc     Get single Matches Document
+//@access   Public
+router.get("/:id", function (req, res, next) {
+  MatchesData.find({ jobId: req.params.id })
+    .then((match) => res.status(200).json(match))
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
+//@route    POST api/matches
 //@desc     Insert a particular match
 //@access   Public
-router.put("/", function (req, res, next) {
-  console.log("PUT request received.");
+router.post("/", function (req, res, next) {
+  console.log("POST request received.");
   var newMatch = new MatchesData({
     jobId: req.body.jobId,
     matches: req.body.matches,

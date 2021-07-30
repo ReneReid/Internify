@@ -1,4 +1,9 @@
-import { PROCESS_MATCHES, ADD_MATCH } from "./types/matchesTypes";
+import {
+  PROCESS_MATCHES,
+  ADD_MATCH,
+  GET_MATCH,
+  GET_MATCHES,
+} from "./types/matchesTypes";
 import axios from "axios";
 
 export const processMatches = (data) => (dispatch) => {
@@ -9,10 +14,40 @@ export const processMatches = (data) => (dispatch) => {
 };
 
 export const addMatch = (match) => (dispatch) => {
-  axios.put("/api/matches/", match).then((res) => {
+  axios.post("/api/matches/", match).then((res) => {
     dispatch({
       type: ADD_MATCH,
       payload: res.data,
     });
   });
+};
+
+// Make a get request by id here
+export const getOneMatch = (data) => (dispatch) => {
+  axios
+    .put(`/api/matches/${data.jobId}`)
+    .then((res) => {
+      dispatch({
+        type: GET_MATCH,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+// Get all matches
+export const getMatches = () => (dispatch) => {
+  axios
+    .get("/api/matches/")
+    .then((res) => {
+      dispatch({
+        type: GET_MATCHES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
