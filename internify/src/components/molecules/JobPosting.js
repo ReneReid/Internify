@@ -5,7 +5,7 @@ import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addJob } from "../../store/actions/jobPostActions";
+import { addJob, editJobsData } from "../../store/actions/jobPostActions";
 import { updateJobsOfUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
@@ -30,12 +30,15 @@ const JobPosting = (props) => {
     details.pay,
     details.candidates,
   ];
+// extract sendNewJob() into Create.js, and make a version sendUpdatedJob() of Edit.js - send down as props, pass down to review, passed down to job posting, 
+  // function sendJob() {
+  //   props.actions.addJob({ ...data, dateCreated: Date.now() });
+  //   props.actions.editJobsData(data);
+  //   props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+  //   window.scrollTo(0, 0);
+  // }
 
-  function sendJob() {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
-    window.scrollTo(0, 0);
-  }
+
 
   return (
     <div className="job_posting_container">
@@ -155,8 +158,8 @@ const JobPosting = (props) => {
 
       <div className="job_posting_submit">
         <Link to={`/view/${jobId}`}>
-          <ButtonFilled
-            onClick={() => sendJob()}
+          <ButtonFilled // call props.onClick!!!! (instead of sendJob())
+            onClick={() => props.onSubmit(data, jobId, props)}
             startIcon={<AddCircleOutline />}
           >
             Create
@@ -177,7 +180,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
+      { addJob: addJob, updateJobsOfUser: updateJobsOfUser, editJobsData: editJobsData },
       dispatch
     ),
   };

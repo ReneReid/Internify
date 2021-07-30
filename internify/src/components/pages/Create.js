@@ -17,11 +17,13 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData } from "../../store/actions/jobPostActions";
+import { addJob, addJobsData } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
+import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
+
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -102,106 +104,13 @@ function Create(props) {
   const page1Object = useSelector((state) => state.matches.page1Object);
   const page2Object = useSelector((state) => state.matches.page2Object);
 
-  function parseConcepts(concepts) {
-    let parsedConcepts = [];
-    for (let i = 0; i < concepts.length; i++) {
-      if (concepts[i] === "Object Oriented Programming") {
-        parsedConcepts.push("Object-Oriented Programming");
-      } else {
-        parsedConcepts.push(concepts[i]);
-      }
-    }
-    return parsedConcepts;
+  function addNewJob(data, jobId, props) {
+    props.actions.addJob({ ...data, dateCreated: Date.now() });
+    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+    window.scrollTo(0, 0);
   }
 
-  function parseExperience(experience) {
-    if (experience === "none") {
-      return 0;
-    } else {
-      const expArray = experience.split(" ");
-      return parseInt(expArray[1]);
-    }
-  }
-
-  function parseCitizenshipReqs(candidates) {
-    let reqs = [];
-    // anyone case
-    if (candidates === "Anyone") {
-      reqs = ["Anyone"]; // always return true in checker for this!
-      return reqs;
-    } else {
-      // logic-handling for other cases
-      const expArray = candidates.split(" ");
-      if (expArray.includes("Citizens") && expArray.includes("PR")) {
-        reqs = ["Citizen", "Permanent Residency"];
-        return reqs;
-      }
-      if (expArray.includes("Citizens")) {
-        reqs = ["Citizen"];
-        return reqs;
-      }
-      reqs = ["Citizen", "Permanent Residency", "International"];
-      return reqs;
-    }
-  }
-
-  function parseCoopReqs(coOp) {
-    if (coOp === "Yes") {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function parseLanguages(languages) {
-    let editedLanguages = [];
-    for (let i = 0; i < languages.length; i++) {
-      if (languages[i] === "C++") {
-        editedLanguages.push("Cpp");
-        editedLanguages.push("C++");
-      } else if (languages[i] === "Cpp") {
-        editedLanguages.push("C++");
-        editedLanguages.push("Cpp");
-      } else {
-        editedLanguages.push(languages[i]);
-      }
-    }
-    return editedLanguages;
-  }
-
-  function createJobObject(jobPosting) {
-    // parsing functions
-    const experience = parseExperience(jobPosting.requirements.experience);
-    const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
-    const coOp = parseCoopReqs(jobPosting.details.coOp);
-    const concepts = parseConcepts(jobPosting.requirements.concepts);
-    const languages = parseLanguages(jobPosting.requirements.languages);
-
-    return {
-      jobId: jobPosting.jobId,
-      experience: experience,
-      gpa: jobPosting.requirements.gpa,
-      gpaValue: jobPosting.requirements.gpaValue,
-      languages: languages,
-      frameworks: jobPosting.requirements.frameworks,
-      tools: jobPosting.requirements.tools,
-      concepts: concepts,
-      candidates: candidates,
-      academicReq: jobPosting.details.academicReq,
-      coOp: coOp,
-    };
-  }
-  function checkIfEmpty(obj) {
-    const sub = jobData[obj];
-    for (var key in sub) {
-      const currVal = sub[key];
-      if (currVal === "" || currVal.length === 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-
+  
   useEffect(() => {
     props.actions.getStudents();
   }, [props.actions]);
@@ -211,7 +120,7 @@ function Create(props) {
     window.scrollTo(0, 0);
     const curr = currStep[currentStep];
 
-    if (!checkIfEmpty(curr)) {
+    if (!checkIfEmpty(curr, jobData)) {
       setError(false);
 
       props.actions.addJobsData(jobData);
@@ -278,7 +187,7 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
-            pathway={"create"}
+            title={"1. Create a Job Header"}
           />
           <TechRequirements
             currentStep={currentStep}
@@ -298,7 +207,7 @@ function Create(props) {
             jobData={jobData}
             data={mockJobDetailData}
           />
-          <Review currentStep={currentStep} jobData={jobData} user={user} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>

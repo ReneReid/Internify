@@ -88,13 +88,13 @@ const GradePoint = (props) => {
 function TechRequirements(props) {
   const data = props.data;
   const [requirements, setRequirements] = useState({
-    experience: props? props.jobData.requirements.experience: "",
-    gpa: props? props.jobData.requirements.gpa: "",
-    gpaValue: props? props.jobData.requirements.gpaValue: "",
-    languages: props? props.jobData.requirements.languages: [],
-    frameworks: props? props.jobData.requirements.frameworks: [],
-    tools: props? props.jobData.requirements.tools: [],
-    concepts: props? props.jobData.requirements.concepts: [],
+    experience: props.jobData.requirements.experience,
+    gpa: props.jobData.requirements.gpa,
+    gpaValue: props.jobData.requirements.gpaValue,
+    languages: props.jobData.requirements.languages,
+    frameworks: props.jobData.requirements.frameworks,
+    tools: props.jobData.requirements.tools,
+    concepts: props.jobData.requirements.concepts,
   });
 
   useEffect(() => {

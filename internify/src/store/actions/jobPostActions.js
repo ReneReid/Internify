@@ -1,8 +1,12 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, EDIT_JOB_HEADER } from "./types/jobPostTypes";
+import {
+  ADD_JOB_HEADER,
+  GET_ALL_JOBS,
+  EDIT_JOB_HEADER,
+} from "./types/jobPostTypes";
 
-export const getJob = (data) => async() => {
+export const getJob = (data) => async () => {
   const res = await axios
     .get(`/api/jobs/${data}`)
     .then((res) => {
@@ -20,20 +24,20 @@ export const getBulkJobs = (data) => (dispatch) => {
 
 export const getJobs = (user) => (dispatch) => {
   const jobIds = user.jobPostings;
-      axios
-        .get("/api/jobs/bulk", {
-          params: { data: jobIds },
-          paramsSerializer: (params) => {
-            return qs.stringify(params);
-          },
-        })
-        .then((res) => {
-          dispatch({
-            type: GET_ALL_JOBS,
-            payload: res.data[0],
-          });
-        })
-        .catch((err) => console.error(err));
+  axios
+    .get("/api/jobs/bulk", {
+      params: { data: jobIds },
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_ALL_JOBS,
+        payload: res.data[0],
+      });
+    })
+    .catch((err) => console.error(err));
 };
 
 export const addJob = (job) => (dispatch) => {
@@ -62,13 +66,16 @@ export const addJobsData = (data) => (dispatch) => {
   });
 };
 
-export const editJobsData = (_id) => (dispatch) => {
-
-  axios.put(`/api/jobs/${_id}`).then((res) => {
-
-    dispatch({
-      type: EDIT_JOB_HEADER,
-      payload: res.data,
+export const editJobsData = (job) => (dispatch) => {
+  axios
+    .put(`/api/jobs/${job._id}`, job)
+    .then((res) => {
+      dispatch({
+        type: EDIT_JOB_HEADER,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
     });
-  });
 };

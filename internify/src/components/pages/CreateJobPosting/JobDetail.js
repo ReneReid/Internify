@@ -8,12 +8,12 @@ import "./styles/JobDetail.css";
 function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
-    description: props? props.jobData.details.description: "",
-    positionType: "",
-    pay: "",
-    candidates: "",
-    academicReq: [],
-    coOp: "",
+    description: props.jobData.details.description,
+    positionType: props.jobData.details.positionType,
+    pay: props.jobData.details.pay,
+    candidates: props.jobData.details.candidates,
+    academicReq: props.jobData.details.academicReq,
+    coOp: props.jobData.details.coOp,
   });
 
   useEffect(() => {

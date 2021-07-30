@@ -12,7 +12,7 @@ function Review(props) {
       <Container maxWidth="md">
         <Stepper stepNumber={4} />
         <h1>5. Review</h1>
-        <JobPosting data={jobData} user={user}/>
+        <JobPosting data={jobData} user={user} onSubmit={props.onSubmit}/>
       </Container>
     </div>
   ) : null;

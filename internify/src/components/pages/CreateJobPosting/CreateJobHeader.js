@@ -10,12 +10,12 @@ import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
   const [header, setHeader] = useState({
-    title: props? props.jobData.header.title: "",
-    company: props? props.jobData.header.company: "",
-    location: props? props.jobData.header.location: "",
-    startDate: props? props.jobData.header.startDate: "",
-    position: props? props.jobData.header.position: [],
-    length: props? props.jobData.header.length: "",
+    title: props.jobData.header.title,
+    company: props.jobData.header.company,
+    location: props.jobData.header.location,
+    startDate: props.jobData.header.startDate,
+    position: props.jobData.header.position,
+    length: props.jobData.header.length,
   });
 
   useEffect(() => {
@@ -25,8 +25,6 @@ function CreateJobHeader(props) {
   if (props.currentStep !== 1) {
     return null;
   } else {
-    let mssg = "";
-    (props.pathway==="create")? mssg = "1. Create a Job Header": mssg="1. Edit Job Header";
     return (
       <div className="create_form_container">
         <Container
@@ -35,7 +33,7 @@ function CreateJobHeader(props) {
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
-            <h1>{mssg}</h1>
+            <h1>{props.title}</h1>
             <InputFormJobHeader handleChange={setHeader} jobData={header} />
             <LengthSubHeader handleChange={setHeader} jobData={header} />
             <FormHelperText>Required</FormHelperText>
