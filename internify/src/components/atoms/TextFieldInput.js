@@ -14,6 +14,16 @@ function TextFieldInput(props) {
     }
   }
 
+  function blurForm(e){
+    const text = e.target.value;
+    if(text === ''){
+      setValidInput(true);
+    } else {
+      props.onBlur();
+      setValidInput(false);
+    }
+  }
+
   return (
     <TextField
       fullWidth
@@ -23,7 +33,7 @@ function TextFieldInput(props) {
       type={props.type}
       onChange={props.onChange}
       defaultValue={props.defaultValue}
-      onBlur={validateForm}
+      onBlur={props.onBlur ? blurForm : validateForm}
       error={validInput}
       helperText={validInput ? 'This section is required' : 'Required'}
       variant="outlined"

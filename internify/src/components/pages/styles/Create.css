@@ -10,3 +10,14 @@
 .form_validation_error {
     margin-top: 1em;
 }
+
+.reg_keys_container {
+    margin-left: -15%;
+    max-height: 19rem;
+    overflow-y: scroll;
+}
+
+.keys_title{
+    margin-left: -15%; 
+    margin-bottom: 0.25rem;
+}

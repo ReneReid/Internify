@@ -94,7 +94,6 @@ const View = () => {
               </ButtonOutlined>
               {"    "}
               <ButtonOutlined
-                styles={{}}
                 startIcon={<LinkIcon />}
                 onClick={copyToClipboard}
               >

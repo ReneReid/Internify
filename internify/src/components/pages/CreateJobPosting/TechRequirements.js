@@ -20,6 +20,9 @@ const WorkingExperience = (props) => {
         data={workExpData}
         jobData={props.jobData}
         property={"experience"}
+        keysList={props.keysList}
+        updateKeysList={props.updateKeysList}
+        updateKeysText={props.updateKeysText} 
       />
       <FormHelperText>Required</FormHelperText>
     </React.Fragment>
@@ -65,6 +68,9 @@ const GradePoint = (props) => {
           data={gpaData}
           jobData={props.jobData.requirements}
           property={"gpa"}
+          keysList={props.keysList}
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} 
         />
         <FormHelperText>Required</FormHelperText>
       </div>
@@ -87,6 +93,8 @@ const GradePoint = (props) => {
 
 function TechRequirements(props) {
   const data = props.data;
+  const keysList = props.keysList;
+
   const [requirements, setRequirements] = useState({
     experience: props.jobData.requirements.experience,
     gpa: props.jobData.requirements.gpa,
@@ -112,8 +120,15 @@ function TechRequirements(props) {
           <WorkingExperience
             handleChange={setRequirements}
             jobData={requirements}
-          />
-          <GradePoint handleChange={setRequirements} jobData={props.jobData} />
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
+          <GradePoint 
+          handleChange={setRequirements} 
+          jobData={props.jobData}
+          keysList={keysList} 
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
@@ -121,7 +136,9 @@ function TechRequirements(props) {
             csConcepts={data.csConcepts}
             handleChange={setRequirements}
             jobData={requirements}
-          />
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </Container>
       </div>
     );

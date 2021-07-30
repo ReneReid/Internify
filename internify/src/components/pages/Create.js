@@ -9,6 +9,7 @@ import {
 } from "./CreateJobPosting/index";
 import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
+import RegisteredKeys from "../molecules/RegisteredKeys";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
@@ -17,7 +18,7 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJob, addJobsData } from "../../store/actions/jobPostActions";
+import { addJob, addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -55,10 +56,27 @@ const currStep = {
   4: "contact",
 };
 
+const chipsList = [
+  "title",
+  "position",
+  "location",
+  "experience",
+  "languages",
+  "frameworks",
+  "tools",
+  "concepts",
+  "pay",
+  "candidates",
+  "academicReq",
+  "positionType"
+]
+
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
+  const registeredKeys = props.jobs.registeredKeys;
+
   const [jobData, setJobData] = useState({
     jobId: uuidv4(),
     dateCreated: "",
@@ -110,9 +128,36 @@ function Create(props) {
     window.scrollTo(0, 0);
   }
 
-  
+  function updateKeysList(event, key, label){
+    if(chipsList.includes(key)){
+      if(registeredKeys.hasOwnProperty(key)){
+        if (event.target.checked && !registeredKeys[key].includes(label)) {
+          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
+        } else {
+          if (registeredKeys[key].includes(label)) {
+            registeredKeys[key] = registeredKeys[key].filter(
+              (obj) => obj !== label
+            );
+            props.actions.updateRegKeys(key, registeredKeys[key]);
+          }
+        }
+      } else {
+        props.actions.updateRegKeys(key, [label]);
+      }
+    }
+  }
+
+  function updateKeysText(v, data){
+    if(chipsList.includes(v)){
+      props.actions.updateRegKeys(v, data[v]);
+    }
+  }
+
   useEffect(() => {
     props.actions.getStudents();
+    return () => {
+      props.actions.resetKey();
+    }
   }, [props.actions]);
 
   function updateStore() {
@@ -188,24 +233,36 @@ function Create(props) {
             handleChange={setJobData}
             jobData={jobData}
             title={"1. Create a Job Header"}
+            keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <TechRequirements
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
             data={mockTechStackData}
+            keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <JobDetail
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
             data={mockJobDetailData}
+            keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <ContactDetails
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
             data={mockJobDetailData}
+            keysList={chipsList}
+            updateKeysList={updateKeysList}
+            updateKeysText={updateKeysText}
           />
           <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} buttonName={"Create"} />
           {currentStep < 5 ? (
@@ -225,8 +282,15 @@ function Create(props) {
             </div>
           )}
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} >
+          <h2 className="keys_title">Registered Keys</h2>
+          <div className="reg_keys_container"> 
+          <RegisteredKeys />
+          </div>
+          <h2 className="keys_title">Summary</h2>
+          <div className="reg_keys_container">
           <Feedback page={currentStep} />
+          </div>
         </Grid>
       </Grid>
     </div>
@@ -247,6 +311,8 @@ function matchDispatchToProps(dispatch) {
         addJobsData: addJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
+        updateRegKeys: updateRegKeys,
+        resetKey: resetKey
       },
       dispatch
     ),

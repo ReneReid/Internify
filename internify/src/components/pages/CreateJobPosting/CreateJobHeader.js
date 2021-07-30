@@ -9,6 +9,7 @@ import {
 import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
+  const keysList = props.keysList;
   const [header, setHeader] = useState({
     title: props.jobData.header.title,
     company: props.jobData.header.company,
@@ -34,10 +35,29 @@ function CreateJobHeader(props) {
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
             <h1>{props.title}</h1>
-            <InputFormJobHeader handleChange={setHeader} jobData={header} />
-            <LengthSubHeader handleChange={setHeader} jobData={header} />
+
+            <InputFormJobHeader 
+            handleChange={setHeader} 
+            jobData={header}
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText}
+            />
+            <LengthSubHeader 
+            handleChange={setHeader} 
+            jobData={header}
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText}
+            />
             <FormHelperText>Required</FormHelperText>
-            <PositionSubHeader handleChange={setHeader} jobData={header} />
+            <PositionSubHeader 
+            handleChange={setHeader} 
+            jobData={header}
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} 
+            />
             <FormHelperText>Required</FormHelperText>
           </div>
         </Container>

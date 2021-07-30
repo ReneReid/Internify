@@ -7,10 +7,11 @@ function RadioButtonsGroup(props) {
   const data = props.data;
   const jobData = props.jobData;
   const [value, setValue] = React.useState('');
-
+  
   const handleChange = (event) => {
     setValue(event.target.value);
     jobData[props.property] = event.target.value;
+    props.updateKeysText(props.property, jobData);
   };
 
   return (
@@ -27,3 +28,4 @@ function RadioButtonsGroup(props) {
 }
 
 export default RadioButtonsGroup;
+

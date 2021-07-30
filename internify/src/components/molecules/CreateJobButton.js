@@ -4,7 +4,7 @@ import "./styles/CreateJobButton.css";
 
 const CreateJobButton = () => {
   return (
-    <Link className="create_job_button" to="/create">
+    <Link className="create_job_button" to="/selection">
       <Add style={{ fontSize: 70 }} />
     </Link>
   );

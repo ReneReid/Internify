@@ -9,6 +9,7 @@ import Edit from "./components/pages/Edit";
 import Profile from "./components/pages/Profile";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
+import Prefill from "./components/pages/Prefill";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -61,6 +62,11 @@ function App() {
           <AuthNavbar />
           <Profile user={user} />
           <Footer />
+        </Route>
+        <Route path="/selection">
+          <AuthNavbar />
+          <Prefill />
+          <Footer absolute={true}/>
         </Route>
         <Route path="/create">
           <AuthNavbar />
