@@ -32,7 +32,7 @@ const JobPosting = (props) => {
     details.candidates,
   ];
   
-  data.score = useSelector((state) => state.matches.page3Object?.page3Students?.length);
+  data.matches = useSelector((state) => state.matches.page3Object?.page3Students?.length);
 
   function sendJob() {
     props.actions.addJob({ ...data, dateCreated: Date.now() });

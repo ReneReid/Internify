@@ -6,7 +6,7 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
-  score: {
+  matches: {
     type: Number,
   },
   dateCreated: {
@@ -15,7 +15,7 @@ const JobPostingSchema = new Schema({
   dateUpdated: {
     type: Date,
   },
-  score: {
+  matches: {
     type: Number,
   },
   header: {

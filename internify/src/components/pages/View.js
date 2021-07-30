@@ -78,8 +78,8 @@ const View = () => {
                       new Date(job.dateCreated).getFullYear()
                     : null}
                 </li>
-                <li key={"job-posting-score"}>
-                  Score: <b>{job.score}</b>
+                <li key={"job-posting-matches"}>
+                  Matches: <b>{job.matches}</b>
                 </li>
               </ul>
             </div>
