@@ -297,7 +297,7 @@ function Create(props) {
     } else {
       setError(true);
     }
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -378,10 +378,14 @@ function Create(props) {
           )}
         </Grid>
         <Grid item xs={3}>
-          <h2 className="keys_title">Registered Keys</h2>
-          <div className="reg_keys_container">
-            <RegisteredKeys />
-          </div>
+          {Object.keys(props.jobs.registeredKeys).length > 0 ? (
+            <>
+              <h2 className="keys_title">Registered Keys</h2>
+              <div className="reg_keys_container">
+                <RegisteredKeys />
+              </div>
+            </>
+          ) : null}
           <h2 className="keys_title">Summary</h2>
           <div className="reg_keys_container">
             <Feedback page={currentStep} />
