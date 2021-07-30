@@ -3,6 +3,8 @@ import { Grid, makeStyles } from "@material-ui/core";
 import { ButtonFilled } from "../atoms/index";
 import { ReactComponent as PrefillFilledIcon } from "../../assets/Prefill/prefill_icon.svg";
 import { ReactComponent as PrefillEmptyIcon } from "../../assets/Prefill/prefill_empty_icon.svg";
+import { Link } from "react-router-dom";
+import { Add } from "../atoms/Icon";
 import "./styles/Prefill.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Prefill() {
     const classes = useStyles();
-
-    function handleUpdate(){
-      // TODO: NAVIGATE TO PAGES
-    }
 
     return (
         <div className={classes.root}>
@@ -55,10 +53,14 @@ function Prefill() {
         spacing={7}
         >
           <Grid item>
-          <ButtonFilled className={classes.prefill_btn_left} onClick={() => handleUpdate()}>Preview Prefills</ButtonFilled>
+          <Link to="/create" style={{ textDecoration: "none" }}>
+          <ButtonFilled className={classes.prefill_btn_left}>Preview Prefills</ButtonFilled>
+          </Link>
           </Grid>
           <Grid item>
-          <ButtonFilled className={classes.prefill_btn_right} onClick={() => handleUpdate()}>Make New Posting</ButtonFilled>
+          <Link to="/create" style={{ textDecoration: "none" }}>
+          <ButtonFilled className={classes.prefill_btn_right}>Make New Posting</ButtonFilled>
+          </Link>
           </Grid>
         </Grid>
       </div>

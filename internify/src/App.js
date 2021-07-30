@@ -62,10 +62,10 @@ function App() {
           <Profile user={user} />
           <Footer />
         </Route>
-        <Route path="/prefill">
+        <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer />
+          <Footer absolute={true}/>
         </Route>
         <Route path="/create">
           <AuthNavbar />
