@@ -1,19 +1,15 @@
 import CheckBox from "../atoms/CheckBox";
 import React from "react";
-import { useState } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateCheckBox } from "../../store/actions/jobPostActions";
 
 function PositionSubHeader(props) {
   const data = props.jobData;
-
-  const [state, setCheckedState] = useState({
-    Internship: false,
-    Coop: false,
-    NewGrad: false,
-    PartTime: false,
-  });
+  const checked = props.jobs.checkedBoxes;
 
   const handleChange = (e, v, l) => {
-    setCheckedState({ ...state, [e.target.name]: e.target.checked });
+    props.actions.updateCheckBox(e.target.name);
     filterChecked(e);
     props.updateKeysList(e, v, l);
   };
@@ -38,29 +34,47 @@ function PositionSubHeader(props) {
           name={"Internship"}
           label={"Internship"}
           onChange={(e) => handleChange(e, "position", "Internship")}
-          checked={state.Internship}
+          checked={checked.Internship}
         />
         <CheckBox
           name={"Coop"}
           label={"Co-op"}
           onChange={(e) => handleChange(e, "position", "Co-op")}
-          checked={state.Coop}
+          checked={checked.Coop}
         />
         <CheckBox
           name={"NewGrad"}
           label={"New Grad"}
           onChange={(e) => handleChange(e, "position", "New Grad")}
-          checked={state.NewGrad}
+          checked={checked.NewGrad}
         />
         <CheckBox
           name={"PartTime"}
           label={"Part-time"}
           onChange={(e) => handleChange(e, "position", "Part-time")}
-          checked={state.PartTime}
+          checked={checked.PartTime}
         />
       </div>
     </div>
   );
 }
 
-export default PositionSubHeader;
+
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateCheckBox: updateCheckBox
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(PositionSubHeader);
