@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Slider, FormHelperText } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateCheckBox } from "../../../store/actions/jobPostActions";
 import "./styles/TechRequirements.css";
 
 const workExpData = [
@@ -138,11 +141,30 @@ function TechRequirements(props) {
             jobData={requirements}
             keysList={keysList}
             updateKeysList={props.updateKeysList}
-            updateKeysText={props.updateKeysText} />
+            updateKeysText={props.updateKeysText}
+            updateCheckBox={props.actions.updateCheckBox}
+            checkedState={props.jobs.checkedBoxes}  />
         </Container>
       </div>
     );
   }
 }
 
-export default TechRequirements;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateCheckBox: updateCheckBox
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(TechRequirements);
