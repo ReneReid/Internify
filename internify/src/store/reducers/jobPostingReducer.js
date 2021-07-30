@@ -21,6 +21,12 @@ const initialState = {
     "Object Oriented Programming": false,
     "Functional Programming": false,
     "Recursion": false,
+    "Associate's Degree": false,
+    "Bachelor's Degree": false,
+    "Master's Degree": false,
+    "Ph.D": false,
+    "Diploma": false,
+    "Certification": false
   },
   registeredKeys: {},
   currentPosting: {},

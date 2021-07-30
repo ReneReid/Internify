@@ -5,6 +5,7 @@ import { TextField, FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
+  const checked = props.checkedState;
   const location = props.location;
   const payment = props.payment;
   const citizenship = props.citizenship;
@@ -13,6 +14,7 @@ function ApplicantDetails(props) {
 
   const handleChange = (event, key, label) => {
     props.updateKeysList(event, key, label);
+    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -70,7 +72,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={checked[x]}/>
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />

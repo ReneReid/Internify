@@ -3,6 +3,9 @@ import { Container } from "@material-ui/core";
 import { Stepper } from "../../molecules/index";
 import ApplicantDetails from "../../molecules/ApplicantDetails";
 import MultiLineTextField from "../../atoms/MultiLineTextField";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateCheckBox } from "../../../store/actions/jobPostActions";
 import "./styles/JobDetail.css";
 
 function JobDetail(props) {
@@ -45,10 +48,30 @@ function JobDetail(props) {
           jobData={details}
           keysList={props.keysList}
           updateKeysList={props.updateKeysList}
-          updateKeysText={props.updateKeysText} />
+          updateKeysText={props.updateKeysText}
+          updateCheckBox={props.actions.updateCheckBox}
+          checkedState={props.jobs.checkedBoxes} />
       </Container>
     </div>
   ) : null;
 }
 
-export default JobDetail;
+
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        updateCheckBox: updateCheckBox
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(JobDetail);
