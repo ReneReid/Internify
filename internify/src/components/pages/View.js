@@ -79,7 +79,7 @@ const View = () => {
                     : null}
                 </li>
                 <li key={"job-posting-score"}>
-                  <b>Score: </b>80%
+                  Score: <b>{job.score}</b>
                 </li>
               </ul>
             </div>

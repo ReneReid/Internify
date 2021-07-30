@@ -11,8 +11,8 @@ import {
   PhoneAndroidOutlined,
   Star,
   CheckCircleOutline,
+  AccountCircle
 } from "@material-ui/icons";
-import { AccountCircle } from "@material-ui/icons";
 import "./styles/Profile.css";
 
 const Profile = (props) => {

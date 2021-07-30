@@ -18,7 +18,11 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import {
+  addJobsData,
+  resetKey,
+  updateRegKeys,
+} from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -66,8 +70,8 @@ const chipsList = [
   "pay",
   "candidates",
   "academicReq",
-  "positionType"
-]
+  "positionType",
+];
 
 function Create(props) {
   const classes = useStyles();
@@ -220,9 +224,9 @@ function Create(props) {
     return false;
   }
 
-  function updateKeysList(event, key, label){
-    if(chipsList.includes(key)){
-      if(registeredKeys.hasOwnProperty(key)){
+  function updateKeysList(event, key, label) {
+    if (chipsList.includes(key)) {
+      if (registeredKeys.hasOwnProperty(key)) {
         if (event.target.checked && !registeredKeys[key].includes(label)) {
           props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
         } else {
@@ -239,8 +243,8 @@ function Create(props) {
     }
   }
 
-  function updateKeysText(v, data){
-    if(chipsList.includes(v)){
+  function updateKeysText(v, data) {
+    if (chipsList.includes(v)) {
       props.actions.updateRegKeys(v, data[v]);
     }
   }
@@ -249,7 +253,7 @@ function Create(props) {
     props.actions.getStudents();
     return () => {
       props.actions.resetKey();
-    }
+    };
   }, [props.actions]);
 
   function updateStore() {
@@ -373,14 +377,14 @@ function Create(props) {
             </div>
           )}
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={3}>
           <h2 className="keys_title">Registered Keys</h2>
-          <div className="reg_keys_container"> 
-          <RegisteredKeys />
+          <div className="reg_keys_container">
+            <RegisteredKeys />
           </div>
           <h2 className="keys_title">Summary</h2>
           <div className="reg_keys_container">
-          <Feedback page={currentStep} />
+            <Feedback page={currentStep} />
           </div>
         </Grid>
       </Grid>
@@ -403,7 +407,7 @@ function matchDispatchToProps(dispatch) {
         processMatches: processMatches,
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
-        resetKey: resetKey
+        resetKey: resetKey,
       },
       dispatch
     ),

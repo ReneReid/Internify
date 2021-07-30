@@ -6,6 +6,9 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
+  score: {
+    type: Number,
+  },
   dateCreated: {
     type: Date,
   },
