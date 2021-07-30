@@ -39,19 +39,29 @@ const JobPosting = (props) => {
     window.scrollTo(0, 0);
   }
 
-  const matchesObject = useSelector(
-    (state) => state.matches.page3Object.page3Students
-  );
+  const matchesObject = useSelector((state) => state.matches);
 
   function sendMatch() {
+    const allStudents = matchesObject.page3Object.page3Students;
     let studentIDs = [];
-    for (let i = 0; i < matchesObject.length; i++) {
-      studentIDs.push(matchesObject[i]["_id"]);
+    for (let i = 0; i < allStudents.length; i++) {
+      studentIDs.push(allStudents[i]["_id"]);
     }
 
     let matchesObj = {};
     matchesObj["jobId"] = jobId;
     matchesObj["matches"] = studentIDs;
+    matchesObj["seeking"] = matchesObject.page1Object.seeking;
+    matchesObj["concepts"] = matchesObject.page2Object.concepts;
+    matchesObj["experience"] = matchesObject.page2Object.experience;
+    matchesObj["frameworks"] = matchesObject.page2Object.frameworks;
+    matchesObj["gpa"] = matchesObject.page2Object.gpa;
+    matchesObj["languages"] = matchesObject.page2Object.languages;
+    matchesObj["academicReq"] = matchesObject.page3Object.academicReq;
+    matchesObj["candidates"] = matchesObject.page3Object.candidates;
+    matchesObj["coop"] = matchesObject.page3Object.coop;
+
+    console.log(matchesObj);
 
     props.actions.addMatch(matchesObj);
   }

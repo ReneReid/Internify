@@ -26,6 +26,15 @@ router.post("/", function (req, res, next) {
   var newMatch = new MatchesData({
     jobId: req.body.jobId,
     matches: req.body.matches,
+    seeking: req.body.seeking,
+    concepts: req.body.concepts,
+    experience: req.body.experience,
+    frameworks: req.body.frameworks,
+    gpa: req.body.gpa,
+    languages: req.body.languages,
+    academicReq: req.body.academicReq,
+    candidates: req.body.candidates,
+    coop: req.body.coop,
   });
 
   // save new matches obj to database
