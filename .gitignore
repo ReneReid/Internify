@@ -9,7 +9,6 @@ yarn.lock
 
 # testing
 /coverage
-/backend/config
 
 
 # production
