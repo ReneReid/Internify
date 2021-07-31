@@ -30,15 +30,6 @@ const JobPosting = (props) => {
     details.pay,
     details.candidates,
   ];
-// extract sendNewJob() into Create.js, and make a version sendUpdatedJob() of Edit.js - send down as props, pass down to review, passed down to job posting, 
-  // function sendJob() {
-  //   props.actions.addJob({ ...data, dateCreated: Date.now() });
-  //   props.actions.editJobsData(data);
-  //   props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
-  //   window.scrollTo(0, 0);
-  // }
-
-
 
   return (
     <div className="job_posting_container">
@@ -158,7 +149,7 @@ const JobPosting = (props) => {
 
       <div className="job_posting_submit">
         <Link to={`/view/${jobId}`}>
-          <ButtonFilled // call props.onClick!!!! (instead of sendJob())
+          <ButtonFilled
             onClick={() => props.onSubmit(data, jobId, props)}
             startIcon={<AddCircleOutline />}
           >

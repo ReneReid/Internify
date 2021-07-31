@@ -69,7 +69,6 @@ function Edit(props) {
     axios
       .get(`/api/jobs/${slug}`)
       .then((res) => setJobData(res.data))
-      .then(() => console.log(jobData))
       .catch((err) => console.error(err));
   }, [slug]);
 
