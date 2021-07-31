@@ -5,10 +5,7 @@ import "./styles/InputFormContactDetails.css";
 
 function InputFormContactDetails(props) {
   let jobData = props.jobData;
-
-  const handleChange = (value) => {
-    props.handleChange({ ...jobData, applicationSteps: value });
-  };
+  const handleChange = props.handleChange;
 
   return (
     <div className="input_contact_form">
@@ -21,6 +18,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, name: e.target.value })
           }
+          defaultValue={jobData.name}
         />
       </div>
 
@@ -33,6 +31,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, email: e.target.value })
           }
+          defaultValue={jobData.email}
         />
       </div>
 
@@ -45,6 +44,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, linkedIn: e.target.value })
           }
+          defaultValue={jobData.linkedIn}
         />
       </div>
 
@@ -57,6 +57,7 @@ function InputFormContactDetails(props) {
           onChange={(e) =>
             props.handleChange({ ...jobData, other: e.target.value })
           }
+          defaultValue={jobData.other}
         />
       </div>
 
@@ -67,8 +68,9 @@ function InputFormContactDetails(props) {
           label={"Application steps"}
           type={"text"}
           rows={4}
-          handleChange={handleChange}
-          value={jobData.applicationSteps}
+          onChange={(e) => handleChange({...jobData, applicationSteps: e.target.value})}
+          defaultValue={jobData.applicationSteps}
+          helperText={"Required"}
         />
       </div>
     </div>

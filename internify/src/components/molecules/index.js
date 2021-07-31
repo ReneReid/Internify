@@ -8,8 +8,11 @@ import TechStack from "./TechStack";
 import InputFormContactDetails from "./InputFormContactDetails";
 import JobPosting from "./JobPosting";
 import EditModal from "./EditModal";
+import CreateJobButton from "./CreateJobButton";
+import ViewPosting from "./ViewPosting";
 
 export {
+  CreateJobButton,
   EditModal,
   PositionSubHeader,
   InputFormJobHeader,
@@ -21,4 +24,5 @@ export {
   TableStar,
   TechStack,
   InputFormContactDetails,
+  ViewPosting,
 };

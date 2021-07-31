@@ -15,6 +15,7 @@ function MultiLineTextField(props) {
         rows={props.rows}
         placeholder={props.placeholder}
         onChange={props.onChange}
+        helperText={props.helperText}
         />
     )
 }

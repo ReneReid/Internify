@@ -8,8 +8,8 @@ const Login = () => {
   return (
     <div className="login">
       <Navbar />
-      <LoginForm/>
-      <Footer />
+      <LoginForm />
+      <Footer absolute={true}/>
     </div>
   );
 };

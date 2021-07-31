@@ -19,18 +19,23 @@ const useStyles = makeStyles({
   },
 });
 
-function createBasicData(title, dateCreated, score) {
-  return { title, dateCreated, score };
+function createBasicData(jobId, title, dateCreated,  matches) {
+  return { jobId, title, dateCreated, matches };
 }
 
-function createData(isStarred, title, dateCreated, score) {
-  return { isStarred, title, dateCreated, score };
+function createData(isStarred, jobId, title, dateCreated, matches) {
+  return { isStarred, jobId, title, dateCreated, matches };
 }
 
 export const TableBasic = (props) => {
   const classes = useStyles();
   const rows = props.data?.map((x) => {
-    return createBasicData(x.title, x.dateCreated, x.score);
+    return createBasicData(
+      x.jobId,
+      x.header?.title,
+      x.dateCreated ? new Date(x.dateCreated) : null,
+      x.matches ? x.matches : null
+    );
   });
 
   return (
@@ -39,20 +44,32 @@ export const TableBasic = (props) => {
         <TableRow>
           <TableCell align="left">Posting&nbsp;title</TableCell>
           <TableCell align="left">Date&nbsp;created</TableCell>
-          <TableCell align="left">Score</TableCell>
+          <TableCell align="left">Matches</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {rows.map((row) => (
-          <TableRow key={row.name}>
+          <TableRow
+            key={row.jobId}
+            hover
+            onClick={() => {
+              window.open(`/view/${row.jobId}`, "_self");
+            }}
+          >
             <TableCell className={classes.row} align="left">
               {row.title}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.dateCreated}
+              {row.dateCreated
+                ? row.dateCreated.getDate() +
+                  "/" +
+                  (row.dateCreated.getMonth() + 1) +
+                  "/" +
+                  row.dateCreated.getFullYear()
+                : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.score}
+              {row.matches}
             </TableCell>
           </TableRow>
         ))}
@@ -64,7 +81,7 @@ export const TableBasic = (props) => {
 export const TableStar = (props) => {
   const classes = useStyles();
   const rows = props.data?.map((x) => {
-    return createData(x.isStarred, x.title, x.dateCreated, x.score);
+    return createData(x.isStarred, x.title, x.dateCreated, x.matches);
   });
   console.log(rows);
 
@@ -75,7 +92,7 @@ export const TableStar = (props) => {
           <TableCell align="left" />
           <TableCell align="left">Posting&nbsp;title</TableCell>
           <TableCell align="left">Date&nbsp;created</TableCell>
-          <TableCell align="left">Score</TableCell>
+          <TableCell align="left">Matches</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -91,7 +108,7 @@ export const TableStar = (props) => {
               {row.dateCreated}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.score}
+              {row.matches}
             </TableCell>
           </TableRow>
         ))}

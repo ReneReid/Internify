@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-import { TextField } from "@material-ui/core";
+import { TextField, FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
@@ -11,7 +11,8 @@ function ApplicantDetails(props) {
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
 
-  const handleChange = (event) => {
+  const handleChange = (event, key, label) => {
+    props.updateKeysList(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -30,10 +31,13 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           <RadioButtonsGroup
             jobData={jobData}
-            property={"position"}
+            property={"positionType"}
             data={location}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="job_details_container">
         <h3>How will this position pay?*</h3>
@@ -42,8 +46,11 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"pay"}
             data={payment}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="job_details_container">
         <h3>What candidates will this position accept?*</h3>
@@ -52,20 +59,24 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"candidates"}
             data={citizenship}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
       <div className="job_details_container">
         <h3>Are there academic requirements?*</h3>
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={handleChange} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
       <div className="job_details_container">
         <h3>Is co-op enrollment required?*</h3>
         <div className="job_details_radio_container">
@@ -73,9 +84,12 @@ function ApplicantDetails(props) {
             jobData={jobData}
             property={"coOp"}
             data={coopReq}
-          />
+            keysList={props.keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </div>
       </div>
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 }

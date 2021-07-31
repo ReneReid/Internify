@@ -43,8 +43,8 @@ const mockJobPosting = {
     gpa: null,
     languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
     frameworks: ["React", "Angular", "MaterialUI"],
-    workTools: ["GitHub", "Jira", "Azure", "Kubernetes"],
-    csConcepts: [
+    tools: ["GitHub", "Jira", "Azure", "Kubernetes"],
+    concepts: [
       "Object Oriented Programming",
       "Functional Programming",
       "Computer Networks",
@@ -68,4 +68,75 @@ const mockJobPosting = {
   },
 };
 
-export { mockJobDetailData, mockTechStackData, mockJobPosting };
+const mockJobPostingList = [
+  {
+    jobId: "1",
+    title: "Software Developer",
+    dateCreated: "05/25/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    jobId: "2",
+    title: "Quality Assurance Developer",
+    dateCreated: "05/18/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    jobId: "3",
+    title: "Software Developer",
+    dateCreated: "04/30/2021",
+    score: "Good",
+    link: "",
+  },
+  {
+    jobId: "4",
+    title: "Test Developer",
+    dateCreated: "04/28/2021",
+    score: "Okay",
+    link: "",
+  },
+  {
+    jobId: "5",
+    title: "QA Analyst",
+    dateCreated: "04/28/2021",
+    score: "Okay",
+    link: "",
+  },
+  {
+    jobId: "6",
+    title: "Software Developer",
+    dateCreated: "04/22/2021",
+    score: "Excellent",
+    link: "",
+  },
+  {
+    jobId: "7",
+    title: "Full-Stack Developer",
+    dateCreated: "03/05/2021",
+    score: "Excellent",
+    link: "",
+  },
+];
+
+const mockProfileData = {
+  name: "Angela Smith",
+  handle: "angelas",
+  jobTitle: "Technical Recruiter",
+  company: "Synch Incorporated",
+  bio: "Angela is a university recruiter at Synch incorporated. Synch Inc. is a fast-paced security solutions tech startup founded in 2018. With a team of 30, we are looking to expand with young and fresh talent!",
+  email: "angelas@synch.com",
+  website: "synchinc.com/careers",
+  linkedIn: "linkedin.com/in/angelasmith",
+  location: "Vancouver, BC",
+  photo: "",
+  jobPostings: mockJobPostingList,
+};
+
+export {
+  mockJobDetailData,
+  mockTechStackData,
+  mockJobPosting,
+  mockProfileData,
+};

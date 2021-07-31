@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Slider } from "@material-ui/core";
+import { Container, Slider, FormHelperText } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
 import "./styles/TechRequirements.css";
@@ -20,12 +20,17 @@ const WorkingExperience = (props) => {
         data={workExpData}
         jobData={props.jobData}
         property={"experience"}
+        keysList={props.keysList}
+        updateKeysList={props.updateKeysList}
+        updateKeysText={props.updateKeysText} 
       />
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 };
 
 const GradePoint = (props) => {
+  const handleChange = props.handleChange;
   const marks = [
     {
       value: 50,
@@ -61,9 +66,13 @@ const GradePoint = (props) => {
       <div className="gpa_radio">
         <RadioButtonsGroup
           data={gpaData}
-          jobData={props.jobData}
+          jobData={props.jobData.requirements}
           property={"gpa"}
+          keysList={props.keysList}
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} 
         />
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="gpa_slider">
         <Slider
@@ -74,14 +83,18 @@ const GradePoint = (props) => {
           max={100}
           marks={marks}
           valueLabelDisplay="on"
+          onChange={(e, v) => handleChange({...props.jobData.requirements, gpaValue: v})}
         />
       </div>
+      <FormHelperText>Required</FormHelperText>
     </React.Fragment>
   );
 };
 
 function TechRequirements(props) {
   const data = props.data;
+  const keysList = props.keysList;
+
   const [requirements, setRequirements] = useState({
     experience: "",
     gpa: "",
@@ -100,15 +113,22 @@ function TechRequirements(props) {
     return null;
   } else {
     return (
-      <div className="Create">
-        <Container maxWidth="md" style={{ padding: "0 10em" }}>
+      <div className="create_form_container">
+        <Container maxWidth="md">
           <Stepper stepNumber={1} />
           <h1>2. Technical Requirements</h1>
           <WorkingExperience
             handleChange={setRequirements}
             jobData={requirements}
-          />
-          <GradePoint handle={props.handleChange} jobData={props.jobData} />
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
+          <GradePoint 
+          handleChange={setRequirements} 
+          jobData={props.jobData}
+          keysList={keysList} 
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
@@ -116,7 +136,9 @@ function TechRequirements(props) {
             csConcepts={data.csConcepts}
             handleChange={setRequirements}
             jobData={requirements}
-          />
+            keysList={keysList}
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
         </Container>
       </div>
     );

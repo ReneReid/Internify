@@ -1,77 +1,181 @@
 import { React, useEffect, useState } from "react";
-import RegisteredKeys from "../molecules/RegisteredKeys";
-import Notes from "../molecules/Notes";
-import Score from "../molecules/Score";
 import { useSelector } from "react-redux";
+import { ChipEye } from "../atoms/Chips";
+import IconButton from "@material-ui/core/IconButton";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import SeekingStudents from "../molecules/pages/SeekingStudents";
+import TechMatchStudents from "../molecules/pages/TechMatchStudents";
+import FinalReqStudents from "../molecules/pages/FinalReqStudents";
 import "./styles/Feedback.css";
 
-const Feedback = () => {
-  const students = useSelector((state) => state.students.studentList);
-  const matchLength = 5; // dummy placeholder for future matcher implementation
+const Feedback = ({ page }) => {
+  const allStudents = useSelector((state) => state.students.studentList);
+  const pageObjects = useSelector((state) => state.matches);
+  const [display, setDisplay] = useState(false);
 
-  // State setting for props in sub-components rendering
-  const [score, setScore] = useState(0);
-  const [cMatches, setCMatches] = useState(0);
-  const [ubcMatches, setUbcMatches] = useState(0);
-  const [totalMatches, setTotalMatches] = useState(0);
-  const totalStudents = students.length;
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    calculateScore(students);
-    notesContent(students);
-  });
-
-  function calculateScore(students) {
-    const rawScore = matchLength / students.length;
-    const displayScore = Math.sqrt(rawScore);
-    setScore(displayScore);
+  if (page === 1) {
+    return (
+      <div className="feedback_outer">
+        <h4>{allStudents.length} total students</h4>
+      </div>
+    );
+  } else if (page === 2) {
+    const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
+    return (
+      <div className="feedback_outer">
+        <h4> {allStudents.length} total students </h4>
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        {display ? (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        ) : (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        )}
+      </div>
+    );
+  } else if (page === 3) {
+    const msg = `${pageObjects.page2Object.page2Students.length} total matches`;
+    return (
+      <div className="feedback_outer">
+        <h4> {allStudents.length} total students </h4>
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        <TechMatchStudents data={pageObjects.page2Object} display={display} />
+        {display ? (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        ) : (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        )}
+      </div>
+    );
+  } else if (page === 4) {
+    const msg = `${pageObjects.page3Object.page3Students.length} total matches`;
+    return (
+      <div className="feedback_outer">
+        <h4>{allStudents.length} total students</h4>
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        <TechMatchStudents data={pageObjects.page2Object} display={display} />
+        <FinalReqStudents data={pageObjects.page3Object} display={display} />
+        {display ? (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        ) : (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        )}
+      </div>
+    );
+  } else if (page === 5) {
+    const msg = `${pageObjects.page3Object.page3Students.length} total matches`;
+    return (
+      <div className="feedback_outer">
+        <h2> {allStudents.length} total students </h2>
+        <SeekingStudents data={pageObjects.page1Object} display={display} />
+        <TechMatchStudents data={pageObjects.page2Object} display={display} />
+        <FinalReqStudents data={pageObjects.page3Object} display={display} />
+        {display ? (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        ) : (
+          <ChipEye
+            icon={
+              <IconButton
+                aria-label="display-toggle"
+                onClick={() => {
+                  setDisplay(!display);
+                }}
+              >
+                <VisibilityOffIcon />
+              </IconButton>
+            }
+            label={msg}
+          />
+        )}
+      </div>
+    );
   }
-
-  function notesContent(students) {
-    // randomly pick students to match
-    let matches = [];
-    for (let i = 0; i < matchLength; i++) {
-      const pick = Math.floor(Math.random() * 10);
-      matches.push(students[pick]);
-    }
-    setTotalMatches(matches.length);
-
-    // matches with UBC students
-    let matchesUBC = 0;
-    for (let match of matches) {
-      const matchBSc = match["degree"]["BSc"];
-      const matchMSc = match["degree"]["MSc"];
-      const matchPhD = match["degree"]["PhD"];
-      const name = "University of British Columbia";
-
-      if (matchBSc === name || matchMSc === name || matchPhD === name) {
-        matchesUBC++;
-      }
-    }
-    setUbcMatches(matchesUBC);
-
-    // matches with Canadian students
-    let matchesCanada = 0;
-    for (let match of matches) {
-      const location = match["location"];
-      if (location === "Canada") {
-        matchesCanada++;
-      }
-    }
-    setCMatches(matchesCanada);
-  }
-
-  return (
-    <div className="feedback_container">
-      <RegisteredKeys />
-      <Notes
-        canadaMatches={cMatches}
-        ubcMatches={ubcMatches}
-        totalMatches={totalMatches}
-        totalStudents={totalStudents}
-      />
-      <Score score={score} />
-    </div>
-  );
 };
+
 export default Feedback;

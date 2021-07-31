@@ -1,44 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { ButtonFilled, ButtonWhite } from "../atoms/index";
 import { Dialog, DialogContent, DialogTitle, Grid } from "@material-ui/core";
 import { TextFieldInput, MultiLineTextField } from "../atoms/index";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateUser } from "../../store/actions/userActions";
 import "./styles/EditModal.css";
 
 const EditModal = (props) => {
   let toggle = props.toggle;
-  const [profile, setProfile] = useState({
-    name: "",
-    title: "",
-    handle: "",
-    email: "",
-    location: "",
-    bio: "",
-    contactNumber: "",
-    website: "",
-    linkedIn: "",
-    status: "",
-    company: "",
-  });
+  let setToggle = props.setToggle;
 
   const handleCancel = () => {
-    setProfile({
-      name: "",
-      title: "",
-      handle: "",
-      email: "",
-      location: "",
-      bio: "",
-      contactNumber: "",
-      website: "",
-      linkedIn: "",
-      status: "",
-      company: "",
-    });
+    setToggle(false);
   };
 
   const handleUpdate = () => {
-    //TODO: Make POST request to update user information with `profile`
-    console.log(profile);
+    props.actions.updateUser(props.users.user);
+    setToggle(false);
+  };
+
+  const handleChange = (e, v) => {
+    props.users.user[v] = e.target.value;
   }
 
   return toggle ? (
@@ -53,7 +36,8 @@ const EditModal = (props) => {
               label="Name"
               type="text"
               placeholder="Tommy Tho"
-              onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+              onChange={(e) => handleChange(e, "name")}
+              defaultValue={props.users.user.name}
             />
           </Grid>
           <Grid item xs={6}>
@@ -63,9 +47,10 @@ const EditModal = (props) => {
               label="Handle"
               type="text"
               placeholder="@tommytho"
-              onChange={(e) =>
-                setProfile({ ...profile, handle: e.target.value })
+              onChange={(e) => 
+                handleChange(e, "handle")
               }
+              defaultValue={props.users.user.handle}
             />
           </Grid>
         </Grid>
@@ -78,8 +63,9 @@ const EditModal = (props) => {
               type="text"
               placeholder="Technical Recruiter"
               onChange={(e) =>
-                setProfile({ ...profile, title: e.target.value })
+                handleChange(e, "jobTitle")
               }
+              defaultValue={props.users.user.jobTitle}
             />
           </Grid>
           <Grid item xs={6}>
@@ -90,8 +76,9 @@ const EditModal = (props) => {
               type="text"
               placeholder="Internify Solutions Inc."
               onChange={(e) =>
-                setProfile({ ...profile, company: e.target.value })
+                handleChange(e, "company")
               }
+              defaultValue={props.users.user.company}
             />
           </Grid>
         </Grid>
@@ -102,8 +89,11 @@ const EditModal = (props) => {
             label={"Bio"}
             type={"text"}
             rows={4}
-            defaultValue={profile.bio}
-            onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
+            defaultValue={props.users.user.bio}
+            onChange={(e) => 
+              handleChange(e, "bio")
+            }
+            helperText={"Required"}
           />
         </div>
         <Grid container spacing={2} style={{ padding: "0.5em 0"}}>
@@ -115,8 +105,9 @@ const EditModal = (props) => {
               type="text"
               placeholder="tommy@internify.com"
               onChange={(e) =>
-                setProfile({ ...profile, email: e.target.value })
+                handleChange(e, "email")
               }
+              defaultValue={props.users.user.email}
             />
           </Grid>
           <Grid item xs={6}>
@@ -127,8 +118,9 @@ const EditModal = (props) => {
               type="text"
               placeholder="tommytho.com"
               onChange={(e) =>
-                setProfile({ ...profile, website: e.target.value })
+                handleChange(e, "website")
               }
+              defaultValue={props.users.user.website}
             />
           </Grid>
         </Grid>
@@ -141,8 +133,9 @@ const EditModal = (props) => {
               type="text"
               placeholder="linkedin.com/in/tommythowm"
               onChange={(e) =>
-                setProfile({ ...profile, linkedIn: e.target.value })
+                handleChange(e, "linkedIn")
               }
+              defaultValue={props.users.user.linkedIn}
             />
           </Grid>
           <Grid item xs={6}>
@@ -153,12 +146,13 @@ const EditModal = (props) => {
               type="text"
               placeholder="Vancouver, BC"
               onChange={(e) =>
-                setProfile({ ...profile, location: e.target.value })
+                handleChange(e, "location")
               }
+              defaultValue={props.users.user.location}
             />
           </Grid>
         </Grid>
-        <Grid container spacing={2} justify="flex-end">
+        <Grid container spacing={2} justifyContent="flex-end">
           <Grid item>
             <ButtonWhite onClick={() => handleCancel()}>Cancel</ButtonWhite>
           </Grid>
@@ -171,4 +165,17 @@ const EditModal = (props) => {
   ) : null;
 };
 
-export default EditModal;
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ updateUser: updateUser }, dispatch),
+  };
+}
+
+
+export default connect(mapStateToProps, matchDispatchToProps)(EditModal);

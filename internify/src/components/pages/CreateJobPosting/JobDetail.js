@@ -9,16 +9,12 @@ function JobDetail(props) {
   const data = props.data;
   const [details, setDetails] = useState({
     description: "",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     academicReq: [],
     coOp: "",
   });
-
-  const handleChange = (value) => {
-    setDetails({...details, description: value});
-  };
 
   useEffect(() => {
     props.jobData.details = details;
@@ -26,7 +22,7 @@ function JobDetail(props) {
 
   return props.currentStep === 3 ? (
     <div className="create_form_container">
-      <Container maxWidth="md" style={{ padding: "0 10em" }}>
+      <Container maxWidth="md">
         <Stepper stepNumber={2} />
         <h1>3. Job Details</h1>
         <MultiLineTextField
@@ -35,9 +31,10 @@ function JobDetail(props) {
           label={"Job Description"}
           type={"text"}
           rows={8}
-          rowsMax={200}
-          handleChange={handleChange}
-          value={details.description}
+          maxRows={200}
+          onChange={(e) => setDetails({...details, description: e.target.value})}
+          defaultValue={details.description}
+          helperText={"Required"}
         />
         <ApplicantDetails
           location={data.location}
@@ -46,10 +43,12 @@ function JobDetail(props) {
           academicReq={data.academicReq}
           coopReq={data.coopReq}
           jobData={details}
-        />
+          keysList={props.keysList}
+          updateKeysList={props.updateKeysList}
+          updateKeysText={props.updateKeysText} />
       </Container>
     </div>
-  ) : (null);
+  ) : null;
 }
 
 export default JobDetail;
