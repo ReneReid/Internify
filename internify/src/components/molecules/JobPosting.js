@@ -154,7 +154,7 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <Link to={`/view/${jobId}`}>
+        <Link to={`/profile`}>
           <ButtonFilled
             onClick={() => sendJob()}
             startIcon={<AddCircleOutline />}
