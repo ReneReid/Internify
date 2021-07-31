@@ -19,14 +19,14 @@ const Feedback = ({ page }) => {
   if (page === 1) {
     return (
       <div className="feedback_outer">
-        <h2> {allStudents.length} total students </h2>
+        <h4>{allStudents.length} total students</h4>
       </div>
     );
   } else if (page === 2) {
     const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h2> {allStudents.length} total students </h2>
+        <h4> {allStudents.length} total students </h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         {display ? (
           <ChipEye
@@ -63,7 +63,7 @@ const Feedback = ({ page }) => {
     const msg = `${pageObjects.page2Object.page2Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h2> {allStudents.length} total students </h2>
+        <h4> {allStudents.length} total students </h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         {display ? (
@@ -101,7 +101,7 @@ const Feedback = ({ page }) => {
     const msg = `${pageObjects.page3Object.page3Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h2> {allStudents.length} total students </h2>
+        <h4>{allStudents.length} total students</h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         <FinalReqStudents data={pageObjects.page3Object} display={display} />

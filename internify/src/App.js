@@ -51,9 +51,6 @@ function App() {
   });
 
   let routes;
-  if (isLoading) {
-    routes = <div>Loading</div>;
-  }
   if (user) {
     routes = (
       <Switch>

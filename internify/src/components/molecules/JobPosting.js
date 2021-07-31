@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ButtonFilled } from "../atoms/index";
 import { AddCircleOutline } from "@material-ui/icons";
@@ -30,6 +31,8 @@ const JobPosting = (props) => {
     details.pay,
     details.candidates,
   ];
+  
+  data.matches = useSelector((state) => state.matches.page3Object?.page3Students?.length);
 
   function sendJob() {
     props.actions.addJob({ ...data, dateCreated: Date.now() });
@@ -154,7 +157,7 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <Link to={`/view/${jobId}`}>
+        <Link to={`/profile`}>
           <ButtonFilled
             onClick={() => sendJob()}
             startIcon={<AddCircleOutline />}

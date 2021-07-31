@@ -12,12 +12,6 @@ export const getJob = (data) => async() => {
   return res;
 };
 
-export const getBulkJobs = (data) => (dispatch) => {
-  axios.get(`/api/jobs/bulk`).then((res) => {
-    //TODO: Calling the action only returns the promise
-  });
-};
-
 export const getJobs = (user) => (dispatch) => {
   const jobIds = user.jobPostings;
       axios
