@@ -4,7 +4,6 @@ import { ButtonFilled } from "../atoms/index";
 import { ReactComponent as PrefillFilledIcon } from "../../assets/Prefill/prefill_icon.svg";
 import { ReactComponent as PrefillEmptyIcon } from "../../assets/Prefill/prefill_empty_icon.svg";
 import { Link } from "react-router-dom";
-import { Add } from "../atoms/Icon";
 import "./styles/Prefill.css";
 
 const useStyles = makeStyles((theme) => ({
