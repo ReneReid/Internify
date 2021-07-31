@@ -6,13 +6,16 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
+  matches: {
+    type: Number,
+  },
   dateCreated: {
     type: Date,
   },
   dateUpdated: {
     type: Date,
   },
-  score: {
+  matches: {
     type: Number,
   },
   header: {
