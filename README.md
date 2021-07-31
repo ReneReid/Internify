@@ -2,7 +2,7 @@
 
 ### Project Description
 
-**Internify** will be a platform that guides recruiters on building the ideal job posting for interns. One of the key features of this platform is that it will inform recruiters on job requirements based on data collected from the applicant pool i.e. percentage of applicants which have a certain amount of experience with a technology. The platform will store demographic data (i.e. mock data of technical skills and job experience, job-market information, and recruiter login profiles) to assist job postings created by recruiters unfamiliar with the technical requirements or context of the roles they are posting. An additional functionality that can be added may include an Internet of Things (IoT) dashboard to highlight the score quality of job postings when compared to others on the platform.
+**Internify** is a platform that guides recruiters on building the ideal job posting for interns. One of the key features of this platform is that it provides feedback to recruiters on job requirements based on data collected from the applicant pool. The platform stores demographic data (i.e. mock data of technical skills and job experience, job-market information, and recruiter login profiles); the number of matching students with regards to job requirements, such as experience with a technology or GPA, informs recruiters on how coherent or otherwise realistic their job posting requirements are. Additional functionality includes providing recruiters with the option to use pre-filled templates for job posts, categorized by technical roles (such as backend developer, front end developer, etc), which can be further tailored by the recruiter to meet their specific needs.
 
 ### Minimal Requirements
 
