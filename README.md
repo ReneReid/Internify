@@ -2,7 +2,7 @@
 
 ### Project Description
 
-**Internify** is a platform that guides recruiters on building the ideal job posting for interns. One of the key features of this platform is that it provides feedback to recruiters on job requirements based on data collected from the applicant pool. The platform stores demographic data (i.e. mock data of technical skills and job experience, job-market information, and recruiter login profiles); the number of matching students with regards to job requirements, such as experience with a technology or GPA, informs recruiters on how coherent or otherwise realistic their job posting requirements are. Additional functionality includes providing recruiters with the option to use pre-filled templates for job posts, categorized by technical roles (such as backend developer, front end developer, etc), which can be further tailored by the recruiter to meet their specific needs.
+Internify is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists recruiters in creating accurate and detail-oriented job descriptions to help reach the ideal candidate.
 
 ### Minimal Requirements
 
@@ -44,7 +44,11 @@ _Task requirements that will **most likely** complete_
 ### Stretch Requirements
 
 _Task requirements that we plan to have **at least 1** complete_
+Update: Stretch requirements were updated to better orient the app towards serving the users who will be using the app to make job postings rather than to search and apply for jobs.
 
-1. Add ‘seeker’/’student’ user type for users who want to use the platform to search for jobs
-2. Allow applicants who use the platform to apply for jobs via job postings
-3. Allow creation of student profiles so that recruiters can search for students
+1. ~~Add ‘seeker’/’student’ user type for users who want to use the platform to search for jobs~~
+2. ~~Allow applicants who use the platform to apply for jobs via job postings~~
+3. ~~Allow creation of student profiles so that recruiters can search for students~~
+4. Feature prefilled job templates for users to select so that they are able to quickly make a job posting
+5. Allow users to share job postings
+6. Allow users to export job postings so that they are able to store them locally and/or print them
