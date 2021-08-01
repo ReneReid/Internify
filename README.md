@@ -2,7 +2,7 @@
 
 ### Project Description
 
-Internify is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists recruiters in creating accurate and detail-oriented job descriptions to help reach the ideal candidate.
+Internify is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters seek out their ideal candidate.
 
 ### Minimal Requirements
 
