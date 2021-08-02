@@ -20,6 +20,7 @@ mongoose
 var jobsRouter = require("./routes/api/jobs");
 var studentRouter = require("./routes/api/students");
 var userRouter = require("./routes/api/users");
+var matchesRouter = require("./routes/api/matches");
 
 var app = express();
 
