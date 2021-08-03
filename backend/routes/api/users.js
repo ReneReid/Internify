@@ -109,9 +109,10 @@ router.put("/:id", function (req, res, next) {
       console.log(jobPosting);
       if (jobPosting) {
         UserData.findOneAndUpdate(
-          { authId: authId }, 
-          { $push: { jobPostings: jobPosting }}, 
-          {useFindAndModify: false})
+          { authId: authId },
+          { $push: { jobPostings: jobPosting } },
+          { useFindAndModify: false }
+        )
           .then(() => res.status(200).json(user[0]))
           .catch((err) => res.status(404).json({ success: false }));
       }
@@ -133,5 +134,9 @@ router.delete("/:id", function (req, res, next) {
       res.status(404).json({ success: false });
     });
 });
+
+//@route    PUT api/users/:id
+//@desc     Create a User document
+//@access   Public
 
 module.exports = router;
