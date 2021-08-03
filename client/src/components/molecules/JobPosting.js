@@ -37,7 +37,7 @@ const JobPosting = (props) => {
     (state) => state.matches.page3Object?.page3Students?.length
   );
 
-  const matchesObject = useSelector((state) => state.matches);
+  const matchesObject = props.matches;
 
   function sendJob() {
     props.actions.addJob({ ...data, dateCreated: Date.now() });
@@ -203,6 +203,7 @@ function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     users: state.users,
+    matches: state.matches,
   };
 }
 
