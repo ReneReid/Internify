@@ -201,7 +201,7 @@ const Profile = (props) => {
                     <h2>Status </h2>
                     <li>
                       <Star color="secondary" fontSize="inherit" />
-                      <b>{props.users.user.status}</b> {"  "}
+                      <b>{"  "}{props.users.user.status}</b>
                     </li>
                   </>
                 ) : null}
