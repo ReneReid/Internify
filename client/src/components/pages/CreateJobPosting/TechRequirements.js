@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Slider, FormHelperText } from "@material-ui/core";
 import { Stepper, TechStack } from "../../molecules/index";
 import RadioButtonsGroup from "../../molecules/RadioButtonsGroup";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateCheckBox } from "../../../store/actions/jobPostActions";
 import "./styles/TechRequirements.css";
 
 const workExpData = [
