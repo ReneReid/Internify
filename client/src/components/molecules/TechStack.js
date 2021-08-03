@@ -5,7 +5,6 @@ import "./styles/TechStack.css";
 
 const TechStack = (props) => {
   let jobData = props.jobData;
-  const checked = props.checkedState;
   const languages = props.languages;
   const frameworks = props.frameworks;
   const workTools = props.workTools;
@@ -13,7 +12,6 @@ const TechStack = (props) => {
 
   function handleLanguageChange(event, val, label) {
     props.updateKeysList(event, val, label);
-    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData.languages.push(event.target.name);
     } else {
@@ -27,7 +25,6 @@ const TechStack = (props) => {
 
   function handleFrameworksChange(event, val, label) {
     props.updateKeysList(event, val, label);
-    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData.frameworks.push(event.target.name);
     } else {
@@ -41,7 +38,6 @@ const TechStack = (props) => {
 
   function handleWorkToolsChange(event, val, label) {
     props.updateKeysList(event, val, label);
-    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData.tools.push(event.target.name);
     } else {
@@ -55,7 +51,6 @@ const TechStack = (props) => {
 
   function handleConceptsChange(event, val, label) {
     props.updateKeysList(event, val, label);
-    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData.concepts.push(event.target.name);
     } else {
@@ -81,7 +76,7 @@ const TechStack = (props) => {
                 name={x}
                 label={x}
                 onChange={(e) => handleLanguageChange(e, "languages", x)}
-                checked={checked[x]}
+                checked={jobData.languages.includes(x) ? true : false}
               />
             );
           })}
@@ -101,7 +96,7 @@ const TechStack = (props) => {
                 name={x}
                 label={x}
                 onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
-                checked={checked[x]}
+                checked={jobData.frameworks.includes(x) ? true : false}
               />
             );
           })}
@@ -121,7 +116,7 @@ const TechStack = (props) => {
                 name={x}
                 label={x}
                 onChange={(e) => handleWorkToolsChange(e, "tools", x)}
-                checked={checked[x]}
+                checked={jobData.tools.includes(x) ? true : false}
               />
             );
           })}
@@ -141,7 +136,7 @@ const TechStack = (props) => {
                 name={x}
                 label={x}
                 onChange={(e) => handleConceptsChange(e, "concepts", x)}
-                checked={checked[x]}
+                checked={jobData.concepts.includes(x) ? true : false}
               />
             );
           })}
