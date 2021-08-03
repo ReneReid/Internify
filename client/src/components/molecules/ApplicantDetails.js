@@ -5,7 +5,6 @@ import { TextField, FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
-  const checked = props.checkedState;
   const location = props.location;
   const payment = props.payment;
   const citizenship = props.citizenship;
