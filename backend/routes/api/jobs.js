@@ -59,6 +59,7 @@ router.get("/:id", function (req, res, next) {
 router.put("/:id", function (req, res, next) {
   const jobId = req.params.id;
   var args = {
+    matches: req.body.matches,
     score: req.body.score,
     header: req.body.header,
     requirements: req.body.requirements,
