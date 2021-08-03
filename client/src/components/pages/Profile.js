@@ -199,7 +199,7 @@ const Profile = (props) => {
                 {props.users.user.status ? (
                   <>
                     <h2>Status </h2>
-                    <li>
+                    <li key="Status">
                       <Star color="secondary" fontSize="inherit" />
                       <b>{"  "}{props.users.user.status}</b>
                     </li>
