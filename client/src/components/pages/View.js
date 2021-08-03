@@ -6,6 +6,7 @@ import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
 import LinkIcon from "@material-ui/icons/Link";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import axios from "axios";
 import "./styles/View.css";
 
@@ -93,6 +94,10 @@ const View = () => {
                 onClick={copyToClipboard}
               >
                 Copy Link
+              </ButtonOutlined>
+              {"    "}
+              <ButtonOutlined styles={{}} startIcon={<HighlightOffIcon />}>
+                Delete
               </ButtonOutlined>
               {copySuccess && (
                 <Alert
