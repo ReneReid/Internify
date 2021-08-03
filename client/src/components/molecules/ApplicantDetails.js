@@ -14,7 +14,6 @@ function ApplicantDetails(props) {
 
   const handleChange = (event, key, label) => {
     props.updateKeysList(event, key, label);
-    props.updateCheckBox(event.target.name);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
     } else {
@@ -72,7 +71,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={checked[x]}/>
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={jobData.academicReq.includes(x) ? true : false}/>
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
