@@ -34,6 +34,25 @@ const View = () => {
       .catch((err) => console.error(err));
   }
 
+  function deleteJob() {
+    axios
+      .delete(`/api/jobs/${slug}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  }
+
+  function updateUser() {
+    // Not sure how to do this
+  }
+
+  function deleteMatch() {
+    // Endpoints not in this branch yet
+  }
+
+  function deleteButtonHandle() {
+    deleteJob();
+  }
+
   return job ? (
     <Grid
       container
@@ -96,7 +115,11 @@ const View = () => {
                 Copy Link
               </ButtonOutlined>
               {"    "}
-              <ButtonOutlined styles={{}} startIcon={<HighlightOffIcon />}>
+              <ButtonOutlined
+                styles={{}}
+                startIcon={<HighlightOffIcon />}
+                onClick={() => deleteButtonHandle()}
+              >
                 Delete
               </ButtonOutlined>
               {copySuccess && (

@@ -78,14 +78,13 @@ router.post("/", function (req, res, next) {
 //@desc     DELETE A Job Document
 //@access   Public
 router.delete("/:id", function (req, res, next) {
-  JobPostingData.findById(req.params.id)
-    .then((job) =>
-      job.remove().then(() => res.status(200).json({ success: true }))
-    )
-    .catch((err) => {
-      console.log(err);
-      res.status(404).json({ success: false });
-    });
+  const jobId = req.params.id;
+  JobPostingData.findOneAndDelete({ jobId: jobId })
+    .then(() => {
+      console.log("Success");
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
