@@ -84,7 +84,12 @@ const View = () => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined styles={{}} startIcon={<CreateOutlined />}>
+            <ButtonOutlined 
+              styles={{}} 
+              startIcon={<CreateOutlined />}
+              onClick={() => {
+                window.open(`/edit/${job.jobId}`, "_self");
+              }}>
                 Edit
               </ButtonOutlined>
               {"    "}

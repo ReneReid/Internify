@@ -96,13 +96,13 @@ function TechRequirements(props) {
   const keysList = props.keysList;
 
   const [requirements, setRequirements] = useState({
-    experience: "",
-    gpa: "",
-    gpaValue: "",
-    languages: [],
-    frameworks: [],
-    tools: [],
-    concepts: [],
+    experience: props.jobData.requirements.experience,
+    gpa: props.jobData.requirements.gpa,
+    gpaValue: props.jobData.requirements.gpaValue,
+    languages: props.jobData.requirements.languages,
+    frameworks: props.jobData.requirements.frameworks,
+    tools: props.jobData.requirements.tools,
+    concepts: props.jobData.requirements.concepts,
   });
 
   useEffect(() => {

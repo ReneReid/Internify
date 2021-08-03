@@ -6,6 +6,7 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
+import Edit from "./components/pages/Edit";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import Prefill from "./components/pages/Prefill";
@@ -72,6 +73,11 @@ function App() {
         <Route path="/view/:slug">
           <AuthNavbar />
           <View />
+          <Footer />
+        </Route>
+        <Route path="/edit/:slug">
+          <AuthNavbar />
+          <Edit />
           <Footer />
         </Route>
         <Redirect to="/profile" />

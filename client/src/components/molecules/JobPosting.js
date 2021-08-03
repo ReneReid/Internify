@@ -6,7 +6,7 @@ import { AddCircleOutline } from "@material-ui/icons";
 import "./styles/JobPosting.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addJob } from "../../store/actions/jobPostActions";
+import { addJob, editJobsData } from "../../store/actions/jobPostActions";
 import { updateJobsOfUser } from "../../store/actions/userActions";
 
 const JobPosting = (props) => {
@@ -159,10 +159,10 @@ const JobPosting = (props) => {
       <div className="job_posting_submit">
         <Link to={`/profile`}>
           <ButtonFilled
-            onClick={() => sendJob()}
+            onClick={() => props.onSubmit(data, jobId, props)}
             startIcon={<AddCircleOutline />}
           >
-            Create
+            {props.buttonName}
           </ButtonFilled>
         </Link>
       </div>
@@ -180,7 +180,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
+      { addJob: addJob, updateJobsOfUser: updateJobsOfUser, editJobsData: editJobsData },
       dispatch
     ),
   };

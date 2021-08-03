@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, EDIT_JOB_HEADER } from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -68,3 +68,17 @@ export const resetKey = () => (dispatch) => {
     type: RESET_KEY,
   });
 }
+
+export const editJobsData = (job) => (dispatch) => {
+  axios
+    .put(`/api/jobs/${job._id}`, job)
+    .then((res) => {
+      dispatch({
+        type: EDIT_JOB_HEADER,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};

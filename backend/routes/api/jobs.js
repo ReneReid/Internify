@@ -53,6 +53,24 @@ router.get("/:id", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
+//@route    PUT api/jobs/:id
+//@desc     edit single job document
+//@access   Public
+router.put("/:id", function (req, res, next) {
+  const jobId = req.params.id;
+  var args = {
+    score: req.body.score,
+    header: req.body.header,
+    requirements: req.body.requirements,
+    details: req.body.details,
+    contact: req.body.contact,
+  };
+  JobPostingData.findByIdAndUpdate(
+    jobId, { $set: { ...args, }, }
+  )
+  .catch((err) => res.status(404).json({ success: false }));
+});
+
 //@route    POST api/jobs
 //@desc     Create A Job Document
 //@access   Public
