@@ -3,24 +3,15 @@ import { Container } from "@material-ui/core";
 import { Stepper } from "../../molecules/index";
 import ApplicantDetails from "../../molecules/ApplicantDetails";
 import MultiLineTextField from "../../atoms/MultiLineTextField";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateCheckBox } from "../../../store/actions/jobPostActions";
 import "./styles/JobDetail.css";
 
 function JobDetail(props) {
   const data = props.data;
-  const [details, setDetails] = useState({
-    description: "",
-    positionType: "",
-    pay: "",
-    candidates: "",
-    academicReq: [],
-    coOp: "",
-  });
+  const jobData = props.jobData;
+  const [details, setDetails] = useState(jobData.details);
 
   useEffect(() => {
-    props.jobData.details = details;
+    jobData.details = details;
   });
 
   return props.currentStep === 3 ? (
@@ -49,29 +40,11 @@ function JobDetail(props) {
           keysList={props.keysList}
           updateKeysList={props.updateKeysList}
           updateKeysText={props.updateKeysText}
-          updateCheckBox={props.actions.updateCheckBox}
-          checkedState={props.jobs.checkedBoxes} />
+          />
       </Container>
     </div>
   ) : null;
 }
 
 
-function mapStateToProps(state) {
-  return {
-    jobs: state.jobs,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(
-      {
-        updateCheckBox: updateCheckBox
-      },
-      dispatch
-    ),
-  };
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(JobDetail);
+export default JobDetail;
