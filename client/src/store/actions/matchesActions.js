@@ -15,12 +15,17 @@ export const processMatches = (data) => (dispatch) => {
 };
 
 export const addMatch = (match) => (dispatch) => {
-  axios.post("/api/matches/", match).then((res) => {
-    dispatch({
-      type: ADD_MATCH,
-      payload: res.data,
+  axios
+    .post("/api/matches/", match)
+    .then((res) => {
+      dispatch({
+        type: ADD_MATCH,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
     });
-  });
 };
 
 // Make a get request by id here

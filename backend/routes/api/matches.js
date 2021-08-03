@@ -6,7 +6,9 @@ var MatchesData = require("../../models/MatchesData");
 //@desc     Get All Matches Documents
 //@access   Public
 router.get("/", function (req, res, next) {
-  MatchesData.find().then((matches) => res.json(matches));
+  MatchesData.find()
+    .then((matches) => res.json(matches))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 //@route    GET api/matches/:id
