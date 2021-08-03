@@ -34,12 +34,6 @@ const JobPosting = (props) => {
   
   data.matches = useSelector((state) => state.matches.page3Object?.page3Students?.length);
 
-  function sendJob() {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
-    window.scrollTo(0, 0);
-  }
-
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>
