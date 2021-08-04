@@ -51,14 +51,15 @@ const JobPosting = (props) => {
 
     let notesObj = {};
     notesObj["seeking"] = matchesObject.page1Object.seeking;
-    notesObj["concepts"] = matchesObject.page2Object.concepts;
     notesObj["experience"] = matchesObject.page2Object.experience;
-    notesObj["frameworks"] = matchesObject.page2Object.frameworks;
     notesObj["gpa"] = matchesObject.page2Object.gpa;
     notesObj["languages"] = matchesObject.page2Object.languages;
-    notesObj["academicReq"] = matchesObject.page3Object.academicReq;
+    notesObj["frameworks"] = matchesObject.page2Object.frameworks;
+    notesObj["toolsMatches"] = matchesObject.page2Object.toolsMatches;
+    notesObj["concepts"] = matchesObject.page2Object.concepts;
     notesObj["candidates"] = matchesObject.page3Object.candidates;
     notesObj["coop"] = matchesObject.page3Object.coop;
+    notesObj["academicReq"] = matchesObject.page3Object.academicReq;
 
     data.notes = notesObj;
     data.matches = studentIDs;

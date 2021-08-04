@@ -136,6 +136,39 @@ const View = (props) => {
                 </Alert>
               )}
             </div>
+            <div className="view_page_feedback">
+              <h2> 1000 total students </h2>
+              {display ? <h1> Hello </h1> : <div></div>}
+              {display ? (
+                <ChipEye
+                  icon={
+                    <IconButton
+                      aria-label="display-toggle"
+                      onClick={() => {
+                        setDisplay(!display);
+                      }}
+                    >
+                      <VisibilityIcon />
+                    </IconButton>
+                  }
+                  label="2"
+                />
+              ) : (
+                <ChipEye
+                  icon={
+                    <IconButton
+                      aria-label="display-toggle"
+                      onClick={() => {
+                        setDisplay(!display);
+                      }}
+                    >
+                      <VisibilityOffIcon />
+                    </IconButton>
+                  }
+                  label="1"
+                />
+              )}
+            </div>
           </div>
         </Grid>
       </Grid>
