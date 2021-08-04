@@ -76,7 +76,7 @@ const GradePoint = (props) => {
       </div>
       <div className="gpa_slider">
         <Slider
-          defaultValue={props.jobData.requirements.gpaValue == "" ? 50 : props.jobData.requirements.gpaValue}
+          defaultValue={props.jobData.requirements.gpaValue === "" ? 50 : props.jobData.requirements.gpaValue}
           aria-labelledby="discrete-slider-always"
           step={1}
           min={50}
