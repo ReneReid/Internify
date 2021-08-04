@@ -50,7 +50,9 @@ router.get("/bulk/", function (req, res, next) {
 router.get("/:id", function (req, res, next) {
   const jobId = req.params.id;
   JobPostingData.findOne({ jobId: jobId })
-    .then((job) => res.status(200).json(job))
+    .then((job) => {
+      res.status(200).json(job);
+    })
     .catch((err) => res.status(404).json({ success: false }));
 });
 
