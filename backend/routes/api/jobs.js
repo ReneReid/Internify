@@ -68,6 +68,7 @@ router.post("/", function (req, res, next) {
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
+    notes: req.body.notes,
   });
 
   // save new job to database

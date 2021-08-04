@@ -102,7 +102,7 @@ const View = (props) => {
                     : null}
                 </li>
                 <li key={"job-posting-matches"}>
-                  Matches: <b>{job.matches}</b>
+                  Matches: <b>{job.matches.length}</b>
                 </li>
               </ul>
             </div>

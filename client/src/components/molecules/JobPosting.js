@@ -33,28 +33,21 @@ const JobPosting = (props) => {
     details.candidates,
   ];
 
-  data.matches = useSelector(
-    (state) => state.matches.page3Object?.page3Students?.length
-  );
-
   const matchesObject = props.matches;
 
   function sendJob() {
+    createNotes();
     props.actions.addJob({ ...data, dateCreated: Date.now() });
     props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
     window.scrollTo(0, 0);
   }
 
-  function sendMatch() {
+  function createNotes() {
     const allStudents = matchesObject.page3Object.page3Students;
     let studentIDs = [];
     for (let i = 0; i < allStudents.length; i++) {
       studentIDs.push(allStudents[i]["_id"]);
     }
-
-    let matchesObj = {};
-    matchesObj["jobId"] = jobId;
-    matchesObj["matches"] = studentIDs;
 
     let notesObj = {};
     notesObj["seeking"] = matchesObject.page1Object.seeking;
@@ -67,10 +60,36 @@ const JobPosting = (props) => {
     notesObj["candidates"] = matchesObject.page3Object.candidates;
     notesObj["coop"] = matchesObject.page3Object.coop;
 
-    matchesObj["notes"] = notesObj;
-
-    props.actions.addMatch(matchesObj);
+    data.notes = notesObj;
+    data.matches = studentIDs;
   }
+
+  // function sendMatch() {
+  //   const allStudents = matchesObject.page3Object.page3Students;
+  //   let studentIDs = [];
+  //   for (let i = 0; i < allStudents.length; i++) {
+  //     studentIDs.push(allStudents[i]["_id"]);
+  //   }
+
+  //   let matchesObj = {};
+  //   matchesObj["jobId"] = jobId;
+  //   matchesObj["matches"] = studentIDs;
+
+  //   let notesObj = {};
+  //   notesObj["seeking"] = matchesObject.page1Object.seeking;
+  //   notesObj["concepts"] = matchesObject.page2Object.concepts;
+  //   notesObj["experience"] = matchesObject.page2Object.experience;
+  //   notesObj["frameworks"] = matchesObject.page2Object.frameworks;
+  //   notesObj["gpa"] = matchesObject.page2Object.gpa;
+  //   notesObj["languages"] = matchesObject.page2Object.languages;
+  //   notesObj["academicReq"] = matchesObject.page3Object.academicReq;
+  //   notesObj["candidates"] = matchesObject.page3Object.candidates;
+  //   notesObj["coop"] = matchesObject.page3Object.coop;
+
+  //   matchesObj["notes"] = notesObj;
+
+  //   props.actions.addMatch(matchesObj);
+  // }
 
   return (
     <div className="job_posting_container">
@@ -191,7 +210,6 @@ const JobPosting = (props) => {
           <ButtonFilled
             onClick={() => {
               sendJob();
-              sendMatch();
             }}
             startIcon={<AddCircleOutline />}
           >

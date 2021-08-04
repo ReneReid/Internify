@@ -7,13 +7,16 @@ const JobPostingSchema = new Schema({
     type: String,
   },
   matches: {
-    type: Number,
+    type: Object,
   },
   dateCreated: {
     type: Date,
   },
   dateUpdated: {
     type: Date,
+  },
+  notes: {
+    type: Object,
   },
   header: {
     title: {
