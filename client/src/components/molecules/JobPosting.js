@@ -55,15 +55,19 @@ const JobPosting = (props) => {
     let matchesObj = {};
     matchesObj["jobId"] = jobId;
     matchesObj["matches"] = studentIDs;
-    matchesObj["seeking"] = matchesObject.page1Object.seeking;
-    matchesObj["concepts"] = matchesObject.page2Object.concepts;
-    matchesObj["experience"] = matchesObject.page2Object.experience;
-    matchesObj["frameworks"] = matchesObject.page2Object.frameworks;
-    matchesObj["gpa"] = matchesObject.page2Object.gpa;
-    matchesObj["languages"] = matchesObject.page2Object.languages;
-    matchesObj["academicReq"] = matchesObject.page3Object.academicReq;
-    matchesObj["candidates"] = matchesObject.page3Object.candidates;
-    matchesObj["coop"] = matchesObject.page3Object.coop;
+
+    let notesObj = {};
+    notesObj["seeking"] = matchesObject.page1Object.seeking;
+    notesObj["concepts"] = matchesObject.page2Object.concepts;
+    notesObj["experience"] = matchesObject.page2Object.experience;
+    notesObj["frameworks"] = matchesObject.page2Object.frameworks;
+    notesObj["gpa"] = matchesObject.page2Object.gpa;
+    notesObj["languages"] = matchesObject.page2Object.languages;
+    notesObj["academicReq"] = matchesObject.page3Object.academicReq;
+    notesObj["candidates"] = matchesObject.page3Object.candidates;
+    notesObj["coop"] = matchesObject.page3Object.coop;
+
+    matchesObj["notes"] = notesObj;
 
     props.actions.addMatch(matchesObj);
   }

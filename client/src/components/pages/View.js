@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { ViewPosting } from "../molecules/index";
+import { ViewFeedback } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
 import "./styles/View.css";
@@ -30,12 +31,6 @@ const View = (props) => {
       .get(`/api/jobs/${slug}`)
       .then((res) => {
         setJob(res.data);
-        axios
-          .get(`/api/matches/${slug}`)
-          .then((res) => {
-            setMatch(res.data[0]);
-          })
-          .catch((err) => console.error(err));
       })
       .catch((err) => console.error(err));
   }, [slug]);
@@ -140,37 +135,6 @@ const View = (props) => {
                 >
                   Successful copy to clipboard!
                 </Alert>
-              )}
-            </div>
-            <div className="view_page_feedback">
-              {display ? (
-                <ChipEye
-                  icon={
-                    <IconButton
-                      aria-label="display-toggle"
-                      onClick={() => {
-                        setDisplay(!display);
-                      }}
-                    >
-                      <VisibilityIcon />
-                    </IconButton>
-                  }
-                  label="test on"
-                />
-              ) : (
-                <ChipEye
-                  icon={
-                    <IconButton
-                      aria-label="display-toggle"
-                      onClick={() => {
-                        setDisplay(!display);
-                      }}
-                    >
-                      <VisibilityOffIcon />
-                    </IconButton>
-                  }
-                  label="test off"
-                />
               )}
             </div>
           </div>
