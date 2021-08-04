@@ -137,7 +137,7 @@ const View = (props) => {
             </div>
             <div className="view_page_feedback">
               <h2> 1000 total students </h2>
-              <ViewFeedback display={display} />
+              <ViewFeedback data={job.notes} display={display} />
               {display ? (
                 <ChipEye
                   icon={
@@ -150,7 +150,7 @@ const View = (props) => {
                       <VisibilityIcon />
                     </IconButton>
                   }
-                  label="2"
+                  label={job.matches.length + " total matches"}
                 />
               ) : (
                 <ChipEye
@@ -164,7 +164,7 @@ const View = (props) => {
                       <VisibilityOffIcon />
                     </IconButton>
                   }
-                  label="1"
+                  label={job.matches.length + " total matches"}
                 />
               )}
             </div>

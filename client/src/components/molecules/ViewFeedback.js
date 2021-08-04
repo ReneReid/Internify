@@ -1,6 +1,7 @@
 import React from "react";
+import { ChipNote } from "../atoms/Chips";
 
-const ViewFeedback = ({ display }) => {
+const ViewFeedback = ({ data, display }) => {
   if (display) {
     return (
       <div>
