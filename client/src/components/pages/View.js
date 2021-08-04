@@ -9,7 +9,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import axios from "axios";
 import "./styles/View.css";
 
-const View = () => {
+const View = (props) => {
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -84,9 +84,11 @@ const View = () => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined styles={{}} startIcon={<CreateOutlined />}>
-                Edit
-              </ButtonOutlined>
+              {props.status === "authenticated" && (
+                <ButtonOutlined styles={{}} startIcon={<CreateOutlined />}>
+                  Edit
+                </ButtonOutlined>
+              )}
               {"    "}
               <ButtonOutlined
                 startIcon={<LinkIcon />}

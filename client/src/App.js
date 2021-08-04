@@ -62,7 +62,7 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
         </Route>
         <Route path="/create">
           <AuthNavbar />
@@ -71,7 +71,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View status={"authenticated"}/>
+          <View status={"authenticated"} />
           <Footer />
         </Route>
         <Redirect to="/profile" />
@@ -83,12 +83,12 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/view/:slug">
+          <View status={"nonauthenticated"} />
+          <Footer />
+        </Route>
         <Route path="/">
           <Landing />
-        </Route>
-        <Route path="/view/:slug">
-          <View status={"nonauthenticated"}/>
-          <Footer />
         </Route>
         <Redirect to="/" />
       </Switch>
