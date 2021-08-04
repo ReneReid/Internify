@@ -12,8 +12,7 @@ import { ChipEye } from "../atoms/Chips";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import { ViewPosting } from "../molecules/index";
-import { ViewFeedback } from "../molecules/index";
+import { ViewPosting, ViewFeedback } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
 import "./styles/View.css";
@@ -138,7 +137,7 @@ const View = (props) => {
             </div>
             <div className="view_page_feedback">
               <h2> 1000 total students </h2>
-              {display ? <h1> Hello </h1> : <div></div>}
+              <ViewFeedback display={display} />
               {display ? (
                 <ChipEye
                   icon={
