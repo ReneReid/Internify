@@ -41,7 +41,6 @@ app.use("/api/users", userRouter);
 app.use("/api/matches", matchesRouter);
 
 // Serve static assests if in production
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/../client/build")));
   app.get("*", (req, res) => {

@@ -24,7 +24,6 @@ const Profile = (props) => {
     props.actions.getUser(props.user.uid);
   }, [props.actions, props.user]);
 
-
   return (
     <Grid
       container

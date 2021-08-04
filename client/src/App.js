@@ -71,7 +71,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View />
+          <View user={user}/>
           <Footer />
         </Route>
         <Redirect to="/profile" />
