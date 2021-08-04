@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-function createBasicData(jobId, title, dateCreated,  matches) {
+function createBasicData(jobId, title, dateCreated, matches) {
   return { jobId, title, dateCreated, matches };
 }
 
