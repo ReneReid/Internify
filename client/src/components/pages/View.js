@@ -41,6 +41,7 @@ const View = ({ user }) => {
       .catch((err) => console.error(err));
   }
 
+  // Make this a promise
   function handleUserUpdate(authId) {
     axios
       .get(`/api/users/${authId}`)
@@ -79,6 +80,7 @@ const View = ({ user }) => {
     console.log("Not done yet!");
   }
 
+  // Need to make this a Promise chain
   function deleteButtonHandle() {
     handleUserUpdate(user.uid);
     deleteJob();
