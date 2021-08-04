@@ -69,7 +69,7 @@ const View = ({ user }) => {
 
     // Send patch request
     axios
-      .patch(`/api/users/${user._id}`, newUser)
+      .patch(`/api/users/${newUser._id}`, newUser)
       .then((res) => res.status(200).json({ success: true }))
       .catch((err) => err.status(404).json({ success: false }));
   }
