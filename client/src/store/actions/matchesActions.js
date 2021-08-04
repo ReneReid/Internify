@@ -29,7 +29,7 @@ export const addMatch = (match) => (dispatch) => {
 };
 
 // Make a get request by id here
-export const getOneMatch = (data) => (dispatch) => {
+export const getMatch = (data) => (dispatch) => {
   axios
     .put(`/api/matches/${data.jobId}`)
     .then((res) => {
