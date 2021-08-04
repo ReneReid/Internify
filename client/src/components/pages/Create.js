@@ -83,7 +83,8 @@ function Create(props) {
     jobId: uuidv4(),
     dateCreated: "",
     dateUpdated: "",
-    matches: {},
+    matches: 0,
+    students: {},
     notes: {},
     header: {
       title: "",

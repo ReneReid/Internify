@@ -33,6 +33,10 @@ const JobPosting = (props) => {
     details.candidates,
   ];
 
+  data.matches = useSelector(
+    (state) => state.matches.page3Object?.page3Students?.length
+  );
+
   const matchesObject = props.matches;
 
   function sendJob() {
@@ -62,7 +66,7 @@ const JobPosting = (props) => {
     notesObj["academicReq"] = matchesObject.page3Object.academicReq;
 
     data.notes = notesObj;
-    data.matches = studentIDs;
+    data.students = studentIDs;
   }
 
   return (

@@ -100,7 +100,7 @@ const View = (props) => {
                     : null}
                 </li>
                 <li key={"job-posting-matches"}>
-                  Matches: <b>{job.matches.length}</b>
+                  Matches: <b>{job.matches}</b>
                 </li>
               </ul>
             </div>
@@ -150,7 +150,7 @@ const View = (props) => {
                       <VisibilityIcon />
                     </IconButton>
                   }
-                  label={job.matches.length + " total matches"}
+                  label={job.matches + " total matches"}
                 />
               ) : (
                 <ChipEye
@@ -164,7 +164,7 @@ const View = (props) => {
                       <VisibilityOffIcon />
                     </IconButton>
                   }
-                  label={job.matches.length + " total matches"}
+                  label={job.matches + " total matches"}
                 />
               )}
             </div>

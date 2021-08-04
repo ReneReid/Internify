@@ -34,7 +34,7 @@ export const TableBasic = (props) => {
       x.jobId,
       x.header?.title,
       x.dateCreated ? new Date(x.dateCreated) : null,
-      x.matches.length ? x.matches.length : null
+      x.matches ? x.matches : null
     );
   });
 

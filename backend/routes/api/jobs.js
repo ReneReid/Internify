@@ -63,6 +63,7 @@ router.post("/", function (req, res, next) {
   var newJob = new JobPostingData({
     jobId: req.body.jobId,
     matches: req.body.matches,
+    students: req.body.students,
     dateCreated: req.body.dateCreated,
     header: req.body.header,
     requirements: req.body.requirements,

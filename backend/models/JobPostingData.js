@@ -7,6 +7,9 @@ const JobPostingSchema = new Schema({
     type: String,
   },
   matches: {
+    type: Number,
+  },
+  students: {
     type: Object,
   },
   dateCreated: {
