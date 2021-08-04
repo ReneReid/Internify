@@ -11,7 +11,7 @@ import {
   PhoneAndroidOutlined,
   Star,
   CheckCircleOutline,
-  AccountCircle
+  AccountCircle,
 } from "@material-ui/icons";
 import "./styles/Profile.css";
 
@@ -23,7 +23,6 @@ const Profile = (props) => {
   useEffect(() => {
     props.actions.getUser(props.user.uid);
   }, [props.actions, props.user]);
-
 
   return (
     <Grid
@@ -96,11 +95,17 @@ const Profile = (props) => {
                     <h2>{props.users.user.name}</h2>
                   </li>
                   <li key={"handle"}>
-                    <b>{props.users.user.handle ? "@" + props.users.user.handle : ""}</b>
+                    <b>
+                      {props.users.user.handle
+                        ? "@" + props.users.user.handle
+                        : ""}
+                    </b>
                   </li>
                   <li key={"jobTitle"}>
                     {props.users.user.jobTitle}
-                    {props.users.user.company ? " @ " + props.users.user.company : ""}
+                    {props.users.user.company
+                      ? " @ " + props.users.user.company
+                      : ""}
                   </li>
                 </ul>
               </Grid>
@@ -114,7 +119,7 @@ const Profile = (props) => {
               justifyContent="center"
               alignItems="center"
             >
-            <div className="profile_labels">
+              <div className="profile_labels">
                 <ul id="profile_labels_list">
                   {labels?.map((label) => (
                     <li key={label}>
@@ -214,7 +219,10 @@ const Profile = (props) => {
             <h2>Postings</h2>
             <div className="profile_left_posting_table">
               {props.jobs.currentListOfJobs ? (
-                <TableBasic className="posting_table" data={props.jobs.currentListOfJobs} />
+                <TableBasic
+                  className="posting_table"
+                  data={props.jobs.currentListOfJobs}
+                />
               ) : (
                 <div className="profile_no_posting_message">
                   You don't have any job postings. Create one by clicking on the
@@ -225,7 +233,11 @@ const Profile = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      <EditModal toggle={toggle} setToggle={setToggle} user={props.users.user} />
+      <EditModal
+        toggle={toggle}
+        setToggle={setToggle}
+        user={props.users.user}
+      />
       <CreateJobButton />
     </Grid>
   );
@@ -234,16 +246,13 @@ const Profile = (props) => {
 function mapStateToProps(state) {
   return {
     users: state.users,
-    jobs: state.jobs
+    jobs: state.jobs,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(
-      { getUser: getUser },
-      dispatch
-    ),
+    actions: bindActionCreators({ getUser: getUser }, dispatch),
   };
 }
 

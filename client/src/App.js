@@ -62,7 +62,7 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
         </Route>
         <Route path="/create">
           <AuthNavbar />
@@ -71,7 +71,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View />
+          <View user={user} />
           <Footer />
         </Route>
         <Redirect to="/profile" />

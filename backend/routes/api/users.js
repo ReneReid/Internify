@@ -135,8 +135,8 @@ router.delete("/:id", function (req, res, next) {
     });
 });
 
-//@route    PUT api/users/:id
-//@desc     Create a User document
+//@route    PATCH api/users/:id
+//@desc     Modifies a user document, by replacing user with user in body
 //@access   Public
 
 module.exports = router;

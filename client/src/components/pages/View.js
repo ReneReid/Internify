@@ -10,7 +10,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import axios from "axios";
 import "./styles/View.css";
 
-const View = () => {
+const View = ({ props }) => {
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -41,9 +41,7 @@ const View = () => {
       .catch((err) => console.error(err));
   }
 
-  function updateUser() {
-    // Not sure how to do this
-  }
+  function updateUser() {}
 
   function deleteMatch() {
     // Endpoints not in this branch yet
