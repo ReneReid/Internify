@@ -7,17 +7,11 @@ import "./styles/JobDetail.css";
 
 function JobDetail(props) {
   const data = props.data;
-  const [details, setDetails] = useState({
-    description: props.jobData.details.description,
-    positionType: props.jobData.details.positionType,
-    pay: props.jobData.details.pay,
-    candidates: props.jobData.details.candidates,
-    academicReq: props.jobData.details.academicReq,
-    coOp: props.jobData.details.coOp,
-  });
+  const jobData = props.jobData;
+  const [details, setDetails] = useState(jobData.details);
 
   useEffect(() => {
-    props.jobData.details = details;
+    jobData.details = details;
   });
 
   return props.currentStep === 3 ? (
@@ -45,10 +39,12 @@ function JobDetail(props) {
           jobData={details}
           keysList={props.keysList}
           updateKeysList={props.updateKeysList}
-          updateKeysText={props.updateKeysText} />
+          updateKeysText={props.updateKeysText}
+          />
       </Container>
     </div>
   ) : null;
 }
+
 
 export default JobDetail;

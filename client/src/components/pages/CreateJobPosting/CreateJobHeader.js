@@ -10,14 +10,7 @@ import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
   const keysList = props.keysList;
-  const [header, setHeader] = useState({
-    title: props.jobData.header.title,
-    company: props.jobData.header.company,
-    location: props.jobData.header.location,
-    startDate: props.jobData.header.startDate,
-    position: props.jobData.header.position,
-    length: props.jobData.header.length,
-  });
+  const [header, setHeader] = useState(props.jobData.header);
 
   useEffect(() => {
     props.jobData.header = header;

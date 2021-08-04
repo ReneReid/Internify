@@ -70,7 +70,7 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={jobData.academicReq.includes(x) ? true : false}/>
             );
           })}
           <TextField id="optional_academics" label="Other" variant="filled" />
