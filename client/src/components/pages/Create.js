@@ -120,9 +120,9 @@ function Create(props) {
   const user = firebase.auth().currentUser;
 
   // Grab all students from database
-  const allStudents = useSelector((state) => state.students.studentList);
-  const page1Object = useSelector((state) => state.matches.page1Object);
-  const page2Object = useSelector((state) => state.matches.page2Object);
+  const allStudents = props.students.studentList;
+  const page1Object = props.matches.page1Object;
+  const page2Object = props.matches.page2Object;
 
   function parseConcepts(concepts) {
     let parsedConcepts = [];
@@ -297,7 +297,7 @@ function Create(props) {
     } else {
       setError(true);
     }
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -400,6 +400,7 @@ function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     students: state.students,
+    matches: state.matches,
   };
 }
 
