@@ -76,7 +76,7 @@ const GradePoint = (props) => {
       </div>
       <div className="gpa_slider">
         <Slider
-          defaultValue={50}
+          defaultValue={props.jobData.requirements.gpaValue == "" ? 50 : props.jobData.requirements.gpaValue}
           aria-labelledby="discrete-slider-always"
           step={1}
           min={50}
@@ -93,20 +93,13 @@ const GradePoint = (props) => {
 
 function TechRequirements(props) {
   const data = props.data;
+  const jobData = props.jobData;
   const keysList = props.keysList;
 
-  const [requirements, setRequirements] = useState({
-    experience: "",
-    gpa: "",
-    gpaValue: "",
-    languages: [],
-    frameworks: [],
-    tools: [],
-    concepts: [],
-  });
+  const [requirements, setRequirements] = useState(jobData.requirements);
 
   useEffect(() => {
-    props.jobData.requirements = requirements;
+    jobData.requirements = requirements;
   });
 
   if (props.currentStep !== 2) {
@@ -124,11 +117,11 @@ function TechRequirements(props) {
             updateKeysList={props.updateKeysList}
             updateKeysText={props.updateKeysText} />
           <GradePoint 
-          handleChange={setRequirements} 
-          jobData={props.jobData}
-          keysList={keysList} 
-          updateKeysList={props.updateKeysList}
-          updateKeysText={props.updateKeysText} />
+            handleChange={setRequirements} 
+            jobData={props.jobData}
+            keysList={keysList} 
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
@@ -138,7 +131,8 @@ function TechRequirements(props) {
             jobData={requirements}
             keysList={keysList}
             updateKeysList={props.updateKeysList}
-            updateKeysText={props.updateKeysText} />
+            updateKeysText={props.updateKeysText}
+            />
         </Container>
       </div>
     );

@@ -3,7 +3,7 @@ import TextFieldInput from "../atoms/TextFieldInput";
 import "./styles/InputFormJobHeader.css";
 
 function InputFormJobHeader(props) {
-  const data = props.jobData;
+  const jobData = props.jobData;
   const handleChange = props.handleChange;
 
   return (
@@ -14,9 +14,9 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Job Title"}
           type={"text"}
-          onChange={(e) => handleChange({...data, title: e.target.value})}
-          onBlur={() => props.updateKeysText("title", data)}
-          defaultValue={data.title}
+          onChange={(e) => handleChange({...jobData, title: e.target.value})}
+          onBlur={() => props.updateKeysText("title", jobData)}
+          defaultValue={jobData.title}
         />
       </div>
       <div className="input_title_row">
@@ -25,9 +25,9 @@ function InputFormJobHeader(props) {
           className={"i-form-outer"}
           label={"Company"}
           type={"text"}
-          onChange={(e) => handleChange({...data, company: e.target.value})}
-          onBlur={() => props.updateKeysText("company", data)}
-          defaultValue={data.company}
+          onChange={(e) => handleChange({...jobData, company: e.target.value})}
+          onBlur={() => props.updateKeysText("company", jobData)}
+          defaultValue={jobData.company}
         />
       </div>
       <div className="input_title_row">
@@ -37,9 +37,9 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Location"}
             type={"text"}
-            onChange={(e) => handleChange({...data, location: e.target.value})}
-            onBlur={() => props.updateKeysText("location", data)}
-            defaultValue={data.location}
+            onChange={(e) => handleChange({...jobData, location: e.target.value})}
+            onBlur={() => props.updateKeysText("location", jobData)}
+            defaultValue={jobData.location}
           />
         </div>
         <div className="input_title_col">
@@ -48,9 +48,9 @@ function InputFormJobHeader(props) {
             className={"i-form-inner"}
             label={"Start Date"}
             type={"date"}
-            onChange={(e) => handleChange({...data, startDate: e.target.value})}
-            onBlur={() => props.updateKeysText("startDate", data)}
-            defaultValue={data.startDate}
+            onChange={(e) => handleChange({...jobData, startDate: e.target.value})}
+            onBlur={() => props.updateKeysText("startDate", jobData)}
+            defaultValue={jobData.startDate}
           />
         </div>
       </div>

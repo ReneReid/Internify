@@ -6,11 +6,11 @@ import FormControl from '@material-ui/core/FormControl';
 function RadioButtonsGroup(props) {
   const data = props.data;
   const jobData = props.jobData;
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(jobData[props.property]);
   
   const handleChange = (event) => {
-    setValue(event.target.value);
     jobData[props.property] = event.target.value;
+    setValue(event.target.value);
     props.updateKeysText(props.property, jobData);
   };
 
@@ -19,7 +19,7 @@ function RadioButtonsGroup(props) {
       <RadioGroup aria-label="position-length" name="pos1" value={value} onChange={handleChange}>
         <div>
           {data.map((x) => {
-            return <RadioButton key={x} value={x} label={x}/>;
+            return <RadioButton key={x} value={x} label={x} />;
           })}
         </div>
       </RadioGroup>

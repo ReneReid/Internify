@@ -1,29 +1,20 @@
 import CheckBox from "../atoms/CheckBox";
 import React from "react";
-import { useState } from "react";
 
 function PositionSubHeader(props) {
-  const data = props.jobData;
-
-  const [state, setCheckedState] = useState({
-    Internship: false,
-    Coop: false,
-    NewGrad: false,
-    PartTime: false,
-  });
+  const jobData = props.jobData;
 
   const handleChange = (e, v, l) => {
-    setCheckedState({ ...state, [e.target.name]: e.target.checked });
     filterChecked(e);
     props.updateKeysList(e, v, l);
   };
 
   function filterChecked(e){
     if (e.target.checked) {
-      data.position.push(e.target.name);
+      jobData.position.push(e.target.name);
     } else {
-      if (data.position.includes(e.target.name)) {
-        data.position = data.position.filter(
+      if (jobData.position.includes(e.target.name)) {
+        jobData.position = jobData.position.filter(
           (obj) => obj !== e.target.name
         );
       }
@@ -38,29 +29,30 @@ function PositionSubHeader(props) {
           name={"Internship"}
           label={"Internship"}
           onChange={(e) => handleChange(e, "position", "Internship")}
-          checked={state.Internship}
+          checked={jobData.position.includes("Internship") ? true : false}
         />
         <CheckBox
           name={"Coop"}
           label={"Co-op"}
           onChange={(e) => handleChange(e, "position", "Co-op")}
-          checked={state.Coop}
+          checked={jobData.position.includes("Coop") ? true : false}
         />
         <CheckBox
           name={"NewGrad"}
           label={"New Grad"}
           onChange={(e) => handleChange(e, "position", "New Grad")}
-          checked={state.NewGrad}
+          checked={jobData.position.includes("NewGrad") ? true : false}
         />
         <CheckBox
           name={"PartTime"}
           label={"Part-time"}
           onChange={(e) => handleChange(e, "position", "Part-time")}
-          checked={state.PartTime}
+          checked={jobData.position.includes("PartTime") ? true : false}
         />
       </div>
     </div>
   );
 }
+
 
 export default PositionSubHeader;
