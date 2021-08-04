@@ -138,5 +138,19 @@ router.delete("/:id", function (req, res, next) {
 //@route    PATCH api/users/:id
 //@desc     Modifies a user document, by replacing user with user in body
 //@access   Public
+router.patch("/:id", function (req, res, next) {
+  const authId = req.params.id;
+  var args = {
+    bio: req.body.bio,
+    company: req.body.company,
+    email: req.body.email,
+    jobPostings: req.body.jobPostings,
+    jobTitle: req.body.jobTitle,
+    name: req.body.name,
+  };
+  UserData.findByIdAndUpdate(authId, { $set: { ...args } })
+    .then(() => res.status(200).json({ success: true }))
+    .catch(() => res.status(404).json({ success: false }));
+});
 
 module.exports = router;

@@ -41,7 +41,7 @@ const View = ({ user }) => {
       .catch((err) => console.error(err));
   }
 
-  function getUser(authId) {
+  function handleUserUpdate(authId) {
     axios
       .get(`/api/users/${authId}`)
       .then((res) => {
@@ -55,28 +55,34 @@ const View = ({ user }) => {
     let newJobPostings = data.jobPostings.filter((posting) => {
       return posting !== slug;
     });
-
     // create new User
     const newUser = {
       authId: data.authId,
+      _id: data._id,
       bio: data.bio,
       company: data.company,
       email: data.email,
       jobTitle: data.jobTitle,
       name: data.name,
-      _id: data._id,
       jobPostings: newJobPostings,
     };
 
-    console.log(newUser);
+    // Send patch request
+    axios
+      .patch(`/api/users/${user._id}`, newUser)
+      .then((res) => res.status(200).json({ success: true }))
+      .catch((err) => err.status(404).json({ success: false }));
   }
 
   function deleteMatch() {
     // Endpoints not in this branch yet
+    console.log("Not done yet!");
   }
 
   function deleteButtonHandle() {
-    getUser(user.uid);
+    handleUserUpdate(user.uid);
+    deleteJob();
+    deleteMatch();
   }
 
   return job ? (
