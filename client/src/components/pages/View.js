@@ -24,7 +24,6 @@ const View = (props) => {
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
   const [display, setDisplay] = useState(false);
-  const [match, setMatch] = useState(null);
 
   useEffect(() => {
     axios

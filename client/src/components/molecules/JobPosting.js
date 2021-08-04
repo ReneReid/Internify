@@ -64,33 +64,6 @@ const JobPosting = (props) => {
     data.matches = studentIDs;
   }
 
-  // function sendMatch() {
-  //   const allStudents = matchesObject.page3Object.page3Students;
-  //   let studentIDs = [];
-  //   for (let i = 0; i < allStudents.length; i++) {
-  //     studentIDs.push(allStudents[i]["_id"]);
-  //   }
-
-  //   let matchesObj = {};
-  //   matchesObj["jobId"] = jobId;
-  //   matchesObj["matches"] = studentIDs;
-
-  //   let notesObj = {};
-  //   notesObj["seeking"] = matchesObject.page1Object.seeking;
-  //   notesObj["concepts"] = matchesObject.page2Object.concepts;
-  //   notesObj["experience"] = matchesObject.page2Object.experience;
-  //   notesObj["frameworks"] = matchesObject.page2Object.frameworks;
-  //   notesObj["gpa"] = matchesObject.page2Object.gpa;
-  //   notesObj["languages"] = matchesObject.page2Object.languages;
-  //   notesObj["academicReq"] = matchesObject.page3Object.academicReq;
-  //   notesObj["candidates"] = matchesObject.page3Object.candidates;
-  //   notesObj["coop"] = matchesObject.page3Object.coop;
-
-  //   matchesObj["notes"] = notesObj;
-
-  //   props.actions.addMatch(matchesObj);
-  // }
-
   return (
     <div className="job_posting_container">
       <h3 className="job_posting_title">{header.title}</h3>
