@@ -56,6 +56,21 @@ const currStep = {
   4: "contact",
 };
 
+const chipsList = [
+  "title",
+  "position",
+  "location",
+  "experience",
+  "languages",
+  "frameworks",
+  "tools",
+  "concepts",
+  "pay",
+  "candidates",
+  "academicReq",
+  "positionType",
+];
+
 // modify this so that it fits the "edit" paradigm
 function Edit(props) {
   let { slug } = useParams();
@@ -86,21 +101,6 @@ function Edit(props) {
     window.scrollTo(0, 0);
   }
 
-  const chipsList = [
-    "title",
-    "position",
-    "location",
-    "experience",
-    "languages",
-    "frameworks",
-    "tools",
-    "concepts",
-    "pay",
-    "candidates",
-    "academicReq",
-    "positionType",
-  ];
-
   function updateKeysList(event, key, label) {
     if (chipsList.includes(key)) {
       if (registeredKeys.hasOwnProperty(key)) {
@@ -128,6 +128,9 @@ function Edit(props) {
 
   useEffect(() => {
     props.actions.getStudents();
+    return () => {
+      props.actions.resetKey();
+    };
   }, [props.actions]);
 
   function updateStore() {
