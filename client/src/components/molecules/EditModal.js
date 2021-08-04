@@ -170,7 +170,7 @@ const EditModal = (props) => {
             <TextFieldInput
               id="edit_profile_contact"
               className="edit_profile_contact"
-              label="Contact"
+              label="Contact Number"
               type="text"
               placeholder="+1 (778) 111 1111"
               onChange={(e) =>
