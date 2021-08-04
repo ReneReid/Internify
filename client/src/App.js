@@ -8,6 +8,7 @@ import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
+import Home from "./components/pages/Home";
 import Prefill from "./components/pages/Prefill";
 import "./App.css";
 import {
@@ -54,6 +55,11 @@ function App() {
   if (user) {
     routes = (
       <Switch>
+        <Route path="/home">
+          <AuthNavbar />
+          <Home user={user}/>
+          <Footer absolute={true}/>
+        </Route>
         <Route path="/profile">
           <AuthNavbar />
           <Profile user={user} />
@@ -74,7 +80,7 @@ function App() {
           <View />
           <Footer />
         </Route>
-        <Redirect to="/profile" />
+        <Redirect to="/home" />
       </Switch>
     );
   } else {
