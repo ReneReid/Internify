@@ -10,7 +10,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import axios from "axios";
 import "./styles/View.css";
 
-const View = ({ props }) => {
+const View = ({ user }) => {
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -41,14 +41,42 @@ const View = ({ props }) => {
       .catch((err) => console.error(err));
   }
 
-  function updateUser() {}
+  function getUser(authId) {
+    axios
+      .get(`/api/users/${authId}`)
+      .then((res) => {
+        // Create the object here, pass into updateUser, ensure the new jobPosting removes slug
+        updateUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function updateUser(data) {
+    let newJobPostings = data.jobPostings.filter((posting) => {
+      return posting !== slug;
+    });
+
+    // create new User
+    const newUser = {
+      authId: data.authId,
+      bio: data.bio,
+      company: data.company,
+      email: data.email,
+      jobTitle: data.jobTitle,
+      name: data.name,
+      _id: data._id,
+      jobPostings: newJobPostings,
+    };
+
+    console.log(newUser);
+  }
 
   function deleteMatch() {
     // Endpoints not in this branch yet
   }
 
   function deleteButtonHandle() {
-    deleteJob();
+    getUser(user.uid);
   }
 
   return job ? (
