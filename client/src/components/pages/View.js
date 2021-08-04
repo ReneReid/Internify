@@ -7,9 +7,12 @@ import { ViewPosting } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
 import LinkIcon from "@material-ui/icons/Link";
 import axios from "axios";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
 
-const View = () => {
+const View = (props) => {
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -17,9 +20,11 @@ const View = () => {
   useEffect(() => {
     axios
       .get(`/api/jobs/${slug}`)
-      .then((res) => setJob(res.data))
+      .then((res) => {
+        setJob(res.data)
+        props.actions.addJobsData(res.data)})
       .catch((err) => console.error(err));
-  }, [slug]);
+  }, [slug, props.actions]);
 
   function copyToClipboard() {
     navigator.clipboard
@@ -84,14 +89,14 @@ const View = () => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
+            <Link to={`/edit/${job.jobId}`}>
             <ButtonOutlined 
               styles={{}} 
               startIcon={<CreateOutlined />}
-              onClick={() => {
-                window.open(`/edit/${job.jobId}`, "_self");
-              }}>
+              >
                 Edit
               </ButtonOutlined>
+            </Link>
               {"    "}
               <ButtonOutlined
                 startIcon={<LinkIcon />}
@@ -118,4 +123,21 @@ const View = () => {
   );
 };
 
-export default View;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        addJobsData: addJobsData,
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(View);
