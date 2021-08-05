@@ -6,6 +6,9 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
+  author: {
+    type: String,
+  },
   matches: {
     type: Number,
   },

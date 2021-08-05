@@ -27,7 +27,7 @@ const JobPosting = (props) => {
 
   const jobPoints = [
     ...header.position,
-    details.position,
+    details.positionType,
     details.pay,
     details.candidates,
   ];

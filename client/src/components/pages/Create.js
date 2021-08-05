@@ -78,9 +78,11 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
+  const user = firebase.auth().currentUser;
 
   const [jobData, setJobData] = useState({
     jobId: uuidv4(),
+    author: user.uid,
     dateCreated: "",
     dateUpdated: "",
     matches: 0,
@@ -117,7 +119,6 @@ function Create(props) {
       applicationSteps: "",
     },
   });
-  const user = firebase.auth().currentUser;
 
   // Grab all students from database
   const allStudents = useSelector((state) => state.students.studentList);
