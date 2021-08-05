@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import { ChipRed, ChipYellow, ChipBlue } from "../atoms/Chips";
 import { StarPlain, StarColoured } from "../atoms/Icon";
 
 const useStyles = makeStyles({
@@ -69,7 +70,21 @@ export const TableBasic = (props) => {
                 : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.matches}
+              {row.matches < 25 && (
+                <div>
+                  <ChipRed label="Okay" />
+                </div>
+              )}
+              {row.matches >= 25 && row.matches < 50 && (
+                <div>
+                  <ChipYellow label="Good" />
+                </div>
+              )}
+              {row.matches > 50 && (
+                <div>
+                  <ChipBlue label="Excellent" />
+                </div>
+              )}
             </TableCell>
           </TableRow>
         ))}
