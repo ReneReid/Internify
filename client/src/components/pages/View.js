@@ -28,7 +28,7 @@ const View = (props) => {
         setJob(res.data)
         props.actions.addJobsData(res.data)})
       .catch((err) => console.error(err));
-  }, [slug, props.actions]);
+  }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
     navigator.clipboard

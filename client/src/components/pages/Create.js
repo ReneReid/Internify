@@ -159,7 +159,7 @@ function Create(props) {
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions]);
+  }, [props.actions, props.students.studentList.length]);
 
   function updateStore() {
     // dispatch to matches reducer

@@ -3,7 +3,6 @@ import {
   GET_ALL_JOBS,
   UPDATE_KEYS,
   RESET_KEY,
-  EDIT_JOB_HEADER,
 } from "../actions/types/jobPostTypes";
 
 const initialState = {

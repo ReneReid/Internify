@@ -80,8 +80,6 @@ function Edit(props) {
   const [jobData, setJobData] = useState(null);
   const registeredKeys = props.jobs.registeredKeys;
 
-
-
   useEffect(() => {
     axios
       .get(`/api/jobs/${slug}`)
@@ -140,7 +138,7 @@ function Edit(props) {
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions]);
+  }, [props.actions, props.students.studentList.length]);
 
   function updateStore() {
     // dispatch to matches reducer

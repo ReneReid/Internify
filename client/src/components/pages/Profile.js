@@ -26,7 +26,7 @@ const Profile = (props) => {
     if(props.students.studentList.length === 0){
       props.actions.getStudents();
     }
-  }, [props.actions, props.user]);
+  }, [props.actions, props.user, props.students.studentList.length]);
 
 
   return (
