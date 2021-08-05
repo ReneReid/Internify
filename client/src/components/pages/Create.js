@@ -18,7 +18,7 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJob, addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -153,7 +153,9 @@ function Create(props) {
   }
 
   useEffect(() => {
-    props.actions.getStudents();
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
     return () => {
       props.actions.resetKey();
     };

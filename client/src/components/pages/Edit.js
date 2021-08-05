@@ -134,7 +134,9 @@ function Edit(props) {
   }
 
   useEffect(() => {
-    props.actions.getStudents();
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
     return () => {
       props.actions.resetKey();
     };

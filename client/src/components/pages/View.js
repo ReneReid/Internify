@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
+import { getStudents } from "../../store/actions/studentActions";
 
 const View = (props) => {
   let { slug } = useParams();
@@ -18,6 +19,9 @@ const View = (props) => {
   const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
     axios
       .get(`/api/jobs/${slug}`)
       .then((res) => {
@@ -126,6 +130,7 @@ const View = (props) => {
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
+    students: state.students
   };
 }
 
@@ -134,6 +139,7 @@ function matchDispatchToProps(dispatch) {
     actions: bindActionCreators(
       {
         addJobsData: addJobsData,
+        getStudents: getStudents
       },
       dispatch
     ),
