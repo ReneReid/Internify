@@ -104,7 +104,7 @@ const mockTechStackData = {
     "Design Principles & Patterns",
     "Functional Programming",
     "Object Oriented Programming",
-    "RESTify services",
+    "RESTify Services",
     "Recursion",
     "Web APIs",
   ],
