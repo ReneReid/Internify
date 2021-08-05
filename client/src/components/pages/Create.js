@@ -30,16 +30,25 @@ import "./styles/Create.css";
 
 const mockTechStackData = {
   languages: [
+    "Abap",
+    "Ada",
     "Assembly",
     "C",
     "C#",
     "C++",
     "CSS",
-    "Go!",
+    "Cobol",
+    "Dart",
+    "Go",
+    "Groovy",
     "HTML",
     "Java",
     "JavaScript",
-    "MATLAB",
+    "Julia",
+    "Kotlin",
+    "Lua",
+    "Matlab",
+    "Objective-C",
     "PHP",
     "Perl",
     "Python",
@@ -48,7 +57,10 @@ const mockTechStackData = {
     "Rust",
     "SQL",
     "Scala",
+    "Swift",
     "TypeScript",
+    "VBA",
+    "Visual Basic"
   ],
   frameworks: [
     "AWS",
