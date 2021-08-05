@@ -1,11 +1,15 @@
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { ChevronLeft, CreateOutlined } from "@material-ui/icons";
+import {
+  ChevronLeft,
+  CreateOutlined,
+  Link as LinkIcon,
+  HighlightOff,
+} from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
-import LinkIcon from "@material-ui/icons/Link";
 import axios from "axios";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -14,6 +18,7 @@ import "./styles/View.css";
 import { getStudents } from "../../store/actions/studentActions";
 
 const View = (props) => {
+  let user = props.user;
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -38,6 +43,15 @@ const View = (props) => {
         setTimeout(() => {
           setCopySuccess(false);
         }, 2000);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  function handleDelete() {
+    axios
+      .delete(`/api/jobs/${slug}`, { data: { userId: user.uid } })
+      .then((res) => {
+        window.open("/profile", "_self");
       })
       .catch((err) => console.error(err));
   }
@@ -95,18 +109,25 @@ const View = (props) => {
             <div className="view_page_buttons_list">
             <Link to={`/edit/${job.jobId}`}>
             <ButtonOutlined 
-              styles={{}} 
+              style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
               startIcon={<CreateOutlined />}
               >
                 Edit
               </ButtonOutlined>
             </Link>
-              {"    "}
               <ButtonOutlined
+                style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
                 startIcon={<LinkIcon />}
                 onClick={copyToClipboard}
               >
                 Copy Link
+              </ButtonOutlined>
+              <ButtonOutlined
+                style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
+                startIcon={<HighlightOff />}
+                onClick={() => handleDelete()}
+              >
+                Delete
               </ButtonOutlined>
               {copySuccess && (
                 <Alert

@@ -28,7 +28,6 @@ const Profile = (props) => {
     }
   }, [props.actions, props.user, props.students.studentList.length]);
 
-
   return (
     <Grid
       container
@@ -203,9 +202,9 @@ const Profile = (props) => {
                 {props.users.user.status ? (
                   <>
                     <h2>Status </h2>
-                    <li>
+                    <li key="Status">
                       <Star color="secondary" fontSize="inherit" />
-                      <b>{props.users.user.status}</b> {"  "}
+                      <b>{"  "}{props.users.user.status}</b>
                     </li>
                   </>
                 ) : null}

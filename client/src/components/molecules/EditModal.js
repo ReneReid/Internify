@@ -131,7 +131,7 @@ const EditModal = (props) => {
               className="edit_profile_linkedin"
               label="LinkedIn"
               type="text"
-              placeholder="linkedin.com/in/tommythowm"
+              placeholder="linkedin.com/in/username"
               onChange={(e) =>
                 handleChange(e, "linkedIn")
               }
@@ -152,6 +152,48 @@ const EditModal = (props) => {
             />
           </Grid>
         </Grid>
+        <Grid container spacing={2} style={{ padding: "0.5em 0"}}>
+          <Grid item xs={6}>
+            <TextFieldInput
+              id="edit_profile_picture"
+              className="edit_profile_picture"
+              label="Profile Image URL"
+              type="text"
+              placeholder="Link to image"
+              onChange={(e) =>
+                handleChange(e, "profilePicture")
+              }
+              defaultValue={props.users.user.profilePicture}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldInput
+              id="edit_profile_contact"
+              className="edit_profile_contact"
+              label="Contact Number"
+              type="text"
+              placeholder="+1 (778) 111 1111"
+              onChange={(e) =>
+                handleChange(e, "contact")
+              }
+              defaultValue={props.users.user.contact}
+            />
+          </Grid>
+        </Grid>
+        <div className={"edit_profile_bio"}>
+          <MultiLineTextField
+            id={"edit_profile_status"}
+            className={"edit_profile_bio"}
+            label={"Status"}
+            type={"text"}
+            rows={2}
+            defaultValue={props.users.user.status}
+            onChange={(e) => 
+              handleChange(e, "status")
+            }
+            helperText={"Required"}
+          />
+        </div>
         <Grid container spacing={2} justifyContent="flex-end">
           <Grid item>
             <ButtonWhite onClick={() => handleCancel()}>Cancel</ButtonWhite>

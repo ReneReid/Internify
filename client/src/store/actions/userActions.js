@@ -59,14 +59,12 @@ export const updateJobsOfUser = (data) => (dispatch) => {
 };
 
 export const getUsers = (data) => (dispatch) => {
-
   axios.get("api/users/").then((res) => {
     dispatch({
       type: GET_USERS,
       payload: res.data,
     });
   });
-
 };
 
 export const getUser = (data) => (dispatch) => {
@@ -75,8 +73,6 @@ export const getUser = (data) => (dispatch) => {
       type: GET_USER,
       payload: res.data,
     });
-      dispatch(getJobs(res.data));
+    dispatch(getJobs(res.data));
   });
 };
-
-

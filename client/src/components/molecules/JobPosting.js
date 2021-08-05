@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addJob } from "../../store/actions/jobPostActions";
 import { updateJobsOfUser } from "../../store/actions/userActions";
+import { addMatch } from "../../store/actions/matchesActions";
 
 const JobPosting = (props) => {
   const user = props.user;
@@ -31,8 +32,41 @@ const JobPosting = (props) => {
     details.pay,
     details.candidates,
   ];
-  
-  data.matches = useSelector((state) => state.matches.page3Object?.page3Students?.length);
+
+  data.matches = useSelector(
+    (state) => state.matches.page3Object?.page3Students?.length
+  );
+
+  const matchesObject = props.matches;
+
+  function sendJob() {
+    props.actions.addJob({ ...data, dateCreated: Date.now() });
+    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+    window.scrollTo(0, 0);
+  }
+
+  function sendMatch() {
+    const allStudents = matchesObject.page3Object.page3Students;
+    let studentIDs = [];
+    for (let i = 0; i < allStudents.length; i++) {
+      studentIDs.push(allStudents[i]["_id"]);
+    }
+
+    let matchesObj = {};
+    matchesObj["jobId"] = jobId;
+    matchesObj["matches"] = studentIDs;
+    matchesObj["seeking"] = matchesObject.page1Object.seeking;
+    matchesObj["concepts"] = matchesObject.page2Object.concepts;
+    matchesObj["experience"] = matchesObject.page2Object.experience;
+    matchesObj["frameworks"] = matchesObject.page2Object.frameworks;
+    matchesObj["gpa"] = matchesObject.page2Object.gpa;
+    matchesObj["languages"] = matchesObject.page2Object.languages;
+    matchesObj["academicReq"] = matchesObject.page3Object.academicReq;
+    matchesObj["candidates"] = matchesObject.page3Object.candidates;
+    matchesObj["coop"] = matchesObject.page3Object.coop;
+
+    props.actions.addMatch(matchesObj);
+  }
 
   return (
     <div className="job_posting_container">
@@ -68,15 +102,13 @@ const JobPosting = (props) => {
           <li key={"academic-requirements"}>
             Obtained or is currently enrolled in one or either:{" "}
             <ul>
-              {
-                details.academicReq.map((req) => {
-                  return (
-                    <li key={req}>
-                      <b>{req}</b>
-                    </li>
-                  );
-                })
-              }
+              {details.academicReq.map((req) => {
+                return (
+                  <li key={req}>
+                    <b>{req}</b>
+                  </li>
+                );
+              })}
             </ul>
           </li>
         ) : null}
@@ -153,7 +185,11 @@ const JobPosting = (props) => {
       <div className="job_posting_submit">
         <Link to={`/profile`}>
           <ButtonFilled
-            onClick={() => props.onSubmit(data, jobId, props)}
+            onClick={() => {
+              props.onSubmit(data, jobId, props);
+              sendJob();
+              sendMatch();
+            }}
             startIcon={<AddCircleOutline />}
           >
             {props.buttonName}
@@ -168,13 +204,18 @@ function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     users: state.users,
+    matches: state.matches,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { addJob: addJob, updateJobsOfUser: updateJobsOfUser },
+      {
+        addJob: addJob,
+        updateJobsOfUser: updateJobsOfUser,
+        addMatch: addMatch,
+      },
       dispatch
     ),
   };

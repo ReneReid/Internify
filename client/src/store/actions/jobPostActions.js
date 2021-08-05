@@ -39,13 +39,9 @@ export const addJob = (job) => (dispatch) => {
   });
 };
 
-export const deleteJob = (_id) => (dispatch) => {
-  axios.delete(`/api/jobs/${_id}`).then(() => {
-    // dispatch({
-    //   type: DELETE_JOB,
-    //   payload: _id,
-    // });
-  });
+export const deleteJob = (jobId) => (dispatch) => {
+  axios.delete(`/api/jobs/${jobId}`).then(() => {
+  }).catch((err) => console.error(err));
 };
 
 export const addJobsData = (data) => (dispatch) => {
