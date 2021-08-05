@@ -78,6 +78,7 @@ const mockTechStackData = {
     "Node",
     "Numpy",
     "Pandas",
+    "Postgres",
     "PyTorch",
     "React",
     "Redux",
