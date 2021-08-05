@@ -3,13 +3,7 @@ import Container from "@material-ui/core/Container";
 import { Stepper, InputFormContactDetails } from "../../molecules/index";
 
 const ContactDetails = (props) => {
-  const [contact, setContact] = useState({
-    name: props.jobData.contact.name,
-    email: props.jobData.contact.email,
-    linkedIn: props.jobData.contact.linkedIn,
-    other: props.jobData.contact.other,
-    applicationSteps: props.jobData.contact.applicationSteps,
-  });
+  const [contact, setContact] = useState(props.jobData.contact);
 
   useEffect(() => {
     props.jobData.contact = contact;
