@@ -1,3 +1,5 @@
+// add fullstack student and new grad
+
 const backendStudent = {
     "header": {
         "position": [
@@ -235,6 +237,7 @@ const frontendNewGrad = {
     "jobId": "00000000-0000-0000-0000-000000000003",
     "__v": 0
 }
+
 
 const mobileStudent = {
     "header": {
@@ -827,6 +830,127 @@ const webNewGrad = {
     "__v": 0
 }
 
+const fullstackStudent = {
+    "header": {
+        "position": [
+            "Coop"
+        ],
+        "title": "Full Stack Developer",
+        "company": "Add Company Name",
+        "location": "Add Location",
+        "startDate": "1999-12-31",
+        "length": "8 months"
+    },
+    "requirements": {
+        "languages": [
+            "TypeScript", 
+            "JavaScript",
+            "HTML",
+            "CSS"
+        ],
+        "frameworks": [
+            "Express",
+            "React",
+            "Redux",
+            "Angular"
+        ],
+        "tools": [
+            "GitHub"
+        ],
+        "concepts": [
+            "Object Oriented Programming",
+            "Asynchronous Programming",
+            "Recursion"
+        ],
+        "experience": "≥ 0 months",
+        "gpa": "Required",
+        "gpaValue": "75"
+    },
+    "details": {
+        "academicReq": [
+            "Bachelor's Degree"
+        ],
+        "description": "Add Description",
+        "position": "In-person",
+        "pay": "Salary",
+        "candidates": "Anyone",
+        "coOp": "No"
+    },
+    "contact": {
+        "name": "Add Name",
+        "email": "Add Email",
+        "linkedIn": "Add linkedIn",
+        "other": "Add Additional Information",
+        "applicationSteps": "Add Application Steps"
+    },
+    "_id": "00000000000000000000000e",
+    "jobId": "00000000-0000-0000-0000-00000000000e",
+    "__v": 0
+}
+
+const fullstackNewGrad = {
+    "header": {
+        "position": [
+            "FullTime"
+        ],
+        "title": "Full Stack Developer",
+        "company": "Add Company Name",
+        "location": "Add Location",
+        "startDate": "1999-12-31",
+        "length": "12 months"
+    },
+    "requirements": {
+        "languages": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "TypeScript"
+        ],
+        "frameworks": [
+            "Express",
+            "React",
+            "Redux",
+            "Angular"
+        ],
+        "tools": [
+            "GitHub",
+            "Jira",
+            "Confluence"
+        ],
+        "concepts": [
+            "Object Oriented Programming",
+            "Asynchronous Programming",
+            "Recursion",
+            "Functional Programming"
+        ],
+        "experience": "≥ 8 months",
+        "gpa": "Required",
+        "gpaValue": "75"
+    },
+    "details": {
+        "academicReq": [
+            "Bachelor's Degree"
+        ],
+        "description": "Add Description",
+        "position": "In-person",
+        "pay": "Salary",
+        "candidates": "Anyone",
+        "coOp": "No"
+    },
+    "contact": {
+        "name": "Add Name",
+        "email": "Add Email",
+        "linkedIn": "Add linkedIn",
+        "other": "Add Additional Information",
+        "applicationSteps": "Add Application Steps"
+    },
+    "_id": "00000000000000000000000f",
+    "jobId": "00000000-0000-0000-0000-00000000000f",
+    "__v": 0
+}
+
+
+
 
 export {
     backendStudent,
@@ -843,4 +967,6 @@ export {
     datascienceNewGrad,
     webStudent,
     webNewGrad,
+    fullstackStudent,
+    fullstackNewGrad
   };
