@@ -1,5 +1,5 @@
 import React from "react";
-import { SmallChipNote } from "../atoms/Chips";
+import { ChipNote } from "../atoms/Chips";
 import "./styles/ViewFeedback.css";
 
 const ViewFeedback = ({ data, display }) => {
@@ -12,7 +12,7 @@ const ViewFeedback = ({ data, display }) => {
             if (x === "toolsMatches") {
               return (
                 <li key={x}>
-                  <SmallChipNote
+                  <ChipNote
                     label={
                       data[x] + " students also meet work tools requirements"
                     }
@@ -22,7 +22,7 @@ const ViewFeedback = ({ data, display }) => {
             } else if (x === "academicReq") {
               return (
                 <li key={x}>
-                  <SmallChipNote
+                  <ChipNote
                     label={
                       data[x] + " students also meet academic requirements"
                     }
@@ -32,7 +32,7 @@ const ViewFeedback = ({ data, display }) => {
             } else {
               return (
                 <li key={x}>
-                  <SmallChipNote
+                  <ChipNote
                     label={
                       data[x] + " students also meet " + x + " requirements"
                     }

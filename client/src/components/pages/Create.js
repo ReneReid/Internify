@@ -389,7 +389,7 @@ function Create(props) {
             </>
           ) : null}
           <h2 className="keys_title">Summary</h2>
-          <div className="reg_keys_container">
+          <div className="feedback_notes_container">
             <Feedback page={currentStep} />
           </div>
         </Grid>
