@@ -59,17 +59,25 @@ router.get("/:id", function (req, res, next) {
 router.put("/:id", function (req, res, next) {
   const jobId = req.params.id;
   var args = {
+    jobId: jobId,
     matches: req.body.matches,
-    score: req.body.score,
+    dateCreated: req.body.dateCreated,
     header: req.body.header,
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
+    matches: req.body.matches,
   };
-  JobPostingData.findByIdAndUpdate(
-    jobId, { $set: { ...args, }, }
+  JobPostingData.findOneAndUpdate(
+    { jobId: jobId },
+    {
+      $set: {
+        ...args,
+      },
+    }
   )
-  .catch((err) => res.status(404).json({ success: false }));
+    .then((job) => res.status(200).json({ success: true }))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 //@route    POST api/jobs
