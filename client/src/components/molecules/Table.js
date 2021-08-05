@@ -35,7 +35,7 @@ export const TableBasic = (props) => {
       x.jobId,
       x.header?.title,
       x.dateCreated ? new Date(x.dateCreated) : null,
-      x.matches ? x.matches : null
+      x.matches ? x.matches : 0
     );
   });
 
@@ -72,17 +72,17 @@ export const TableBasic = (props) => {
             <TableCell className={classes.row} align="left">
               {row.matches < 25 && (
                 <div>
-                  <ChipRed label="Okay" />
+                  <ChipRed label={row.matches} />
                 </div>
               )}
-              {row.matches >= 25 && row.matches < 50 && (
+              {row.matches >= 25 && row.matches <= 75 && (
                 <div>
-                  <ChipYellow label="Good" />
+                  <ChipYellow label={row.matches} />
                 </div>
               )}
-              {row.matches > 50 && (
+              {row.matches > 75 && (
                 <div>
-                  <ChipBlue label="Excellent" />
+                  <ChipBlue label={row.matches} />
                 </div>
               )}
             </TableCell>
