@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import RegisteredKeys from "../molecules/RegisteredKeys";
-import { editJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import { resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
 import axios from "axios";
@@ -97,7 +97,14 @@ function Edit(props) {
   const page2Object = useSelector((state) => state.matches.page2Object);
 
   function editJob(data, jobId, props) {
-    props.actions.editJobsData(data);
+    axios
+    .put(`/api/jobs/${jobId}`, data)
+    .then((res) => {
+      setJobData(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
     window.scrollTo(0, 0);
   }
 
@@ -141,7 +148,6 @@ function Edit(props) {
     if (!checkIfEmpty(curr, jobData)) {
       setError(false);
 
-      props.actions.editJobsData(jobData);
       const posting = createJobObject(jobData);
 
       if (currentStep === 1) {
@@ -285,7 +291,6 @@ function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
-        editJobsData: editJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
