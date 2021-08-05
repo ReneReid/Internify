@@ -30,6 +30,19 @@ export const getJobs = (user) => (dispatch) => {
         .catch((err) => console.error(err));
 };
 
+export const getAllJobs = () => (dispatch) => {
+      axios
+        .get("/api/jobs")
+        .then((res) => {
+          console.log(res.data);
+          // dispatch({
+          //   type: GET_ALL_JOBS,
+          //   payload: res.data,
+          // });
+        })
+        .catch((err) => console.error(err));
+};
+
 export const addJob = (job) => (dispatch) => {
   axios.post("/api/jobs/", job).then((res) => {
     dispatch({

@@ -1,9 +1,11 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import { getUser } from "../../store/actions/userActions";
+import { getAllJobs } from "../../store/actions/jobPostActions";
+import { TableUsers } from "../molecules/index";
 
 import "./styles/Home.css";
 
@@ -11,6 +13,7 @@ const Home = (props) => {
 
   useEffect(() => {
     props.actions.getUser(props.user.uid);
+    props.actions.getAllJobs();
   }, [props.actions, props.user]);
 
   const firstName = props.users.user?.name?.split(" ")[0];
@@ -37,7 +40,7 @@ const Home = (props) => {
         </Grid>
 
         <Grid item>
-          Placeholder
+          <TableUsers data={props.jobs.currentListOfJobs}/>
         </Grid>
       </Grid>
     </div>
@@ -53,7 +56,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getUser: getUser }, dispatch),
+    actions: bindActionCreators({ getUser: getUser, getAllJobs: getAllJobs }, dispatch),
   };
 }
 

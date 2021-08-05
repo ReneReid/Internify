@@ -3,7 +3,7 @@ import InputFormJobHeader from "./InputFormJobHeader";
 import LengthSubHeader from "./LengthSubHeader";
 import RadioButtonsGroup from "./RadioButtonsGroup";
 import Stepper from "./Stepper";
-import { TableBasic, TableStar } from "./Table";
+import { TableBasic, TableStar, TableUsers } from "./Table";
 import TechStack from "./TechStack";
 import InputFormContactDetails from "./InputFormContactDetails";
 import JobPosting from "./JobPosting";
@@ -22,6 +22,7 @@ export {
   Stepper,
   TableBasic,
   TableStar,
+  TableUsers,
   TechStack,
   InputFormContactDetails,
   ViewPosting,
