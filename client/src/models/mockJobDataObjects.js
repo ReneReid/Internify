@@ -3,7 +3,7 @@ const backendStudent = {
         "position": [
             "Coop"
         ],
-        "title": "backend developer",
+        "title": "Backend Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -59,7 +59,7 @@ const backendNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "backend developer",
+        "title": "Backend Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -123,7 +123,7 @@ const frontendStudent = {
         "position": [
             "Coop"
         ],
-        "title": "frontend developer",
+        "title": "Frontend Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -179,7 +179,7 @@ const frontendNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "frontend developer",
+        "title": "Frontend Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -241,7 +241,7 @@ const mobileStudent = {
         "position": [
             "Coop"
         ],
-        "title": "mobile developer",
+        "title": "Mobile Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -295,7 +295,7 @@ const mobileNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "mobile developer",
+        "title": "Mobile Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -357,7 +357,7 @@ const gameStudent = {
         "position": [
             "Coop"
         ],
-        "title": "game developer",
+        "title": "Game Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -414,7 +414,7 @@ const gameNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "game developer",
+        "title": "Game Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -474,7 +474,7 @@ const graphicsStudent = {
         "position": [
             "Coop"
         ],
-        "title": "graphics developer",
+        "title": "Graphics Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -530,7 +530,7 @@ const graphicsNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "graphics developer",
+        "title": "Graphics Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -591,7 +591,7 @@ const datascienceStudent = {
         "position": [
             "Coop"
         ],
-        "title": "data scientist",
+        "title": "Data Scientist",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -647,7 +647,7 @@ const datascienceNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "data scientist",
+        "title": "Data Scientist",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -714,7 +714,7 @@ const webStudent = {
         "position": [
             "Coop"
         ],
-        "title": "web developer",
+        "title": "Web Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
@@ -770,7 +770,7 @@ const webNewGrad = {
         "position": [
             "FullTime"
         ],
-        "title": "data scientist",
+        "title": "Web Developer",
         "company": "Add Company Name",
         "location": "Add Location",
         "startDate": "1999-12-31",
