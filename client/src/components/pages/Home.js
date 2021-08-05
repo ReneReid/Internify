@@ -8,28 +8,26 @@ import { getUser } from "../../store/actions/userActions";
 import "./styles/Home.css";
 
 const Home = (props) => {
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     props.actions.getUser(props.user.uid);
-    setUser(props.users.user);
   }, [props.actions, props.user]);
 
-  const firstName = user.name.split(" ")[0];
+  const firstName = props.users.user?.name?.split(" ")[0];
 
   return (
     <div className="home_page">
       <Grid container spacing={2} direction="column">
         <Grid container alignItems="center" className="home_header">
           <Grid item className="home_header_picture">
-            {user?.profilePicture ? (
+            {props.users.user?.profilePicture ? (
               <img
-                src={user?.profilePicture}
+                src={props.users.user?.profilePicture}
                 alt="Profile pic"
                 className="profile_img"
               />
             ) : (
-              <AccountCircle className="profile_image_default" />
+              <AccountCircle style={{ fontSize: "6em" }} className="profile_image_default" />
             )}
           </Grid>
           <Grid item className="home_header_bio">

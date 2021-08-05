@@ -33,17 +33,15 @@ const Navbar = () => {
         justifyContent="flex-end"
         alignItems="center"
       >
-        <Link className="auth_navbar_item" to="/profile">
+        <Link className="auth_navbar_item" to="/home">
           Home
         </Link>
-
         <Link className="auth_navbar_item" to="placeHolder">
           Browse
         </Link>
         <Link className="auth_navbar_item" to="/profile">
           Profile
         </Link>
-
         <Link
           className="auth_navbar_item"
           to="placeHolder"
