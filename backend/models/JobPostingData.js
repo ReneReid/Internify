@@ -10,7 +10,7 @@ const JobPostingSchema = new Schema({
     type: Number,
   },
   students: {
-    type: Object,
+    type: [String],
   },
   dateCreated: {
     type: Date,

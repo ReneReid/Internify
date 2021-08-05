@@ -84,7 +84,7 @@ function Create(props) {
     dateCreated: "",
     dateUpdated: "",
     matches: 0,
-    students: {},
+    students: [],
     notes: {},
     header: {
       title: "",
