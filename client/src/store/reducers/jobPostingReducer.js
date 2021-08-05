@@ -14,8 +14,6 @@ const initialState = {
 export default function JobPostingReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_JOB_HEADER:
-      const newJob = action.payload;
-      state.currentPosting = newJob;
       return {
         ...state,
         currentPosting: action.payload,

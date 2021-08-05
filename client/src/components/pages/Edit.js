@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import RegisteredKeys from "../molecules/RegisteredKeys";
-import { resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
 import axios from "axios";
@@ -96,7 +96,7 @@ function Edit(props) {
 
   function editJob(data, jobId, props) {
     axios
-    .put(`/api/jobs/${jobId}`, data)
+    .put(`/api/jobs/${jobId}`, { ...data, dateCreated: Date.now() })
     .then((res) => {
       setJobData(res.data);
     })
@@ -148,6 +148,7 @@ function Edit(props) {
     if (!checkIfEmpty(curr, jobData)) {
       setError(false);
 
+      props.actions.addJobsData(jobData);
       const posting = createJobObject(jobData);
 
       if (currentStep === 1) {
@@ -180,7 +181,7 @@ function Edit(props) {
     } else {
       setError(true);
     }
-  }
+  };
 
   return jobData ? (
     <div className={classes.root}>
@@ -291,6 +292,7 @@ function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
+        addJobsData: addJobsData,
         processMatches: processMatches,
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
