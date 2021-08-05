@@ -1,61 +1,48 @@
 // NOTE: have not finalised the 4 will be choosing from this set
-// Temporarily have commented out categories that tentatively 
+// Temporarily have commented out categories that tentatively
 // are not part of the chosen set of mock job objects.
 // Once confirmed, will delete all categories unused.
 
-const backendStudent = {
-    header: {
-        position: [
-            "Coop"
-        ],
-        title: "Backend Developer",
-        company: "",
-        location: "",
-        startDate: "",
-        length: "8 months"
-    },
-    requirements: {
-        languages: [
-            "Java", 
-            "C++",
-            "C"
-        ],
-        frameworks: [
-            "Express",
-            "Django",
-            "CakePHP"
-        ],
-        tools: [
-            "GitHub"
-        ],
-        concepts: [
-            "Object Oriented Programming",
-            "Asynchronous Programming",
-            "Recursion"
-        ],
-        experience: "≥ 0 months",
-        gpa: "Required",
-        gpaValue: "70"
-    },
-    details: {
-        academicReq: [
-            "Bachelor's Degree"
-        ],
-        description: "",
-        position: "",
-        pay: "",
-        candidates: "",
-        coOp: ""
-    },
-    contact: {
-        name: "",
-        email: "",
-        linkedIn: "",
-        other: "",
-        applicationSteps: ""
-    },
+// create an empty job object
 
-}
+const backendStudent = {
+  header: {
+    position: ["Coop"],
+    title: "Backend Developer",
+    company: "",
+    location: "",
+    startDate: "",
+    length: "8 months",
+  },
+  requirements: {
+    languages: ["Java", "C++", "C"],
+    frameworks: ["Express", "Django", "CakePHP", "MongoDB"],
+    tools: ["GitHub"],
+    concepts: [
+      "Object Oriented Programming",
+      "Asynchronous Programming",
+      "Recursion",
+    ],
+    experience: "≥ 0 months",
+    gpa: "Required",
+    gpaValue: "70",
+  },
+  details: {
+    academicReq: ["Bachelor's Degree"],
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    coOp: "",
+  },
+  contact: {
+    name: "",
+    email: "",
+    linkedIn: "",
+    other: "",
+    applicationSteps: "",
+  },
+};
 
 // const backendNewGrad = {
 //     "header": {
@@ -70,7 +57,7 @@ const backendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Java", 
+//             "Java",
 //             "C++",
 //             "C",
 //             "Python",
@@ -118,60 +105,44 @@ const backendStudent = {
 
 // }
 
-
 const frontendStudent = {
-    header: {
-        position: [
-            "Coop"
-        ],
-        title: "Frontend Developer",
-        company: "",
-        location: "",
-        startDate: "",
-        length: "8 months"
-    },
-    requirements: {
-        languages: [
-            "JavaScript", 
-            "HTML",
-            "CSS",
-        ],
-        frameworks: [
-            "React",
-            "Redux"
-        ],
-        tools: [
-            "GitHub"
-        ],
-        concepts: [
-            "Object Oriented Programming",
-            "Asynchronous Programming",
-            "Recursion"
-        ],
-        experience: "≥ 0 months",
-        gpa: "Required",
-        "gpaValue": "70"
-    },
-    details: {
-        academicReq: [
-            "Bachelor's Degree"
-        ],
-        description: "",
-        position: "",
-        pay: "",
-        candidates: "",
-        coOp: ""
-    },
-    contact: {
-        name: "",
-        email: "",
-        linkedIn: "",
-        other: "",
-        applicationSteps: ""
-    },
-
-}
-
+  header: {
+    position: ["Coop"],
+    title: "Frontend Developer",
+    company: "",
+    location: "",
+    startDate: "",
+    length: "8 months",
+  },
+  requirements: {
+    languages: ["JavaScript", "HTML", "CSS"],
+    frameworks: ["React", "Redux"],
+    tools: ["GitHub"],
+    concepts: [
+      "Object Oriented Programming",
+      "Asynchronous Programming",
+      "Recursion",
+    ],
+    experience: "≥ 0 months",
+    gpa: "Required",
+    gpaValue: "70",
+  },
+  details: {
+    academicReq: ["Bachelor's Degree"],
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    coOp: "",
+  },
+  contact: {
+    name: "",
+    email: "",
+    linkedIn: "",
+    other: "",
+    applicationSteps: "",
+  },
+};
 
 // const frontendNewGrad = {
 //     "header": {
@@ -186,7 +157,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "JavaScript", 
+//             "JavaScript",
 //             "HTML",
 //             "CSS",
 //             "TypeScript"
@@ -233,7 +204,6 @@ const frontendStudent = {
 
 // }
 
-
 // const mobileStudent = {
 //     "header": {
 //         "position": [
@@ -247,7 +217,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Java", 
+//             "Java",
 //             "C#"
 //         ],
 //         "frameworks": [
@@ -299,7 +269,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Java", 
+//             "Java",
 //             "C#",
 //             "Objective-C",
 //             "HTML5"
@@ -359,7 +329,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Java", 
+//             "Java",
 //             "C++",
 //             "C"
 //         ],
@@ -400,7 +370,6 @@ const frontendStudent = {
 
 // }
 
-
 // const gameNewGrad = {
 //     "header": {
 //         "position": [
@@ -414,7 +383,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Java", 
+//             "Java",
 //             "C++",
 //             "C"
 //         ],
@@ -458,7 +427,6 @@ const frontendStudent = {
 
 // }
 
-
 // const graphicsStudent = {
 //     "header": {
 //         "position": [
@@ -472,7 +440,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Assembly", 
+//             "Assembly",
 //             "C++",
 //             "C"
 //         ],
@@ -526,7 +494,7 @@ const frontendStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Assembly", 
+//             "Assembly",
 //             "C++",
 //             "C"
 //         ],
@@ -573,58 +541,44 @@ const frontendStudent = {
 // }
 
 const datascienceStudent = {
-    header: {
-        position: [
-            "Coop"
-        ],
-        title: "Data Scientist",
-        company: "",
-        location: "",
-        startDate: "",
-        length: "8 months"
-    },
-    requirements: {
-        languages: [
-            "Python", 
-            "C++",
-            "C"
-        ],
-        frameworks: [
-            "Scikit-learn",
-            "Pandas",
-        ],
-        tools: [
-            "GitHub"
-        ],
-        concepts: [
-            "Object Oriented Programming",
-            "Asynchronous Programming",
-            "Recursion",
-            "Linear Algebra"
-        ],
-        experience: "≥ 0 months",
-        gpa: "Required",
-        gpaValue: "70"
-    },
-    details: {
-        academicReq: [
-            "Bachelor's Degree"
-        ],
-        description: "",
-        position: "",
-        pay: "",
-        candidates: "",
-        coOp: ""
-    },
-    contact: {
-        name: "",
-        email: "",
-        linkedIn: "",
-        other: "",
-        applicationSteps: ""
-    },
-
-}
+  header: {
+    position: ["Coop"],
+    title: "Data Scientist",
+    company: "",
+    location: "",
+    startDate: "",
+    length: "8 months",
+  },
+  requirements: {
+    languages: ["Python", "C++", "C"],
+    frameworks: ["Scikit-learn", "Pandas"],
+    tools: ["GitHub"],
+    concepts: [
+      "Object Oriented Programming",
+      "Asynchronous Programming",
+      "Recursion",
+      "Linear Algebra",
+    ],
+    experience: "≥ 0 months",
+    gpa: "Required",
+    gpaValue: "70",
+  },
+  details: {
+    academicReq: ["Bachelor's Degree"],
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    coOp: "",
+  },
+  contact: {
+    name: "",
+    email: "",
+    linkedIn: "",
+    other: "",
+    applicationSteps: "",
+  },
+};
 
 // const datascienceNewGrad = {
 //     "header": {
@@ -639,7 +593,7 @@ const datascienceStudent = {
 //     },
 //     "requirements": {
 //         "languages": [
-//             "Python", 
+//             "Python",
 //             "C++",
 //             "C",
 //             "SQL",
@@ -806,60 +760,43 @@ const datascienceStudent = {
 // }
 
 const fullstackStudent = {
-    header: {
-        position: [
-            "Coop"
-        ],
-        title: "Full Stack Developer",
-        company: "",
-        location: "",
-        startDate: "",
-        length: "8 months"
-    },
-    requirements: {
-        languages: [
-            "TypeScript", 
-            "JavaScript",
-            "HTML",
-            "CSS"
-        ],
-        frameworks: [
-            "Express",
-            "React",
-            "Redux",
-            "Angular"
-        ],
-        tools: [
-            "GitHub"
-        ],
-        concepts: [
-            "Object Oriented Programming",
-            "Asynchronous Programming",
-            "Recursion"
-        ],
-        experience: "≥ 0 months",
-        gpa: "Required",
-        gpaValue: "70"
-    },
-    details: {
-        academicReq: [
-            "Bachelor's Degree"
-        ],
-        description: "",
-        position: "",
-        pay: "",
-        candidates: "",
-        coOp: ""
-    },
-    contact: {
-        name: "",
-        email: "",
-        linkedIn: "",
-        other: "",
-        applicationSteps: ""
-    },
-
-}
+  header: {
+    position: ["Coop"],
+    title: "Full Stack Developer",
+    company: "",
+    location: "",
+    startDate: "",
+    length: "8 months",
+  },
+  requirements: {
+    languages: ["TypeScript", "JavaScript", "HTML", "CSS"],
+    frameworks: ["Express", "React", "Redux", "Angular", "MongoDB"],
+    tools: ["GitHub"],
+    concepts: [
+      "Object Oriented Programming",
+      "Asynchronous Programming",
+      "Recursion",
+    ],
+    experience: "≥ 0 months",
+    gpa: "Required",
+    gpaValue: "70",
+  },
+  details: {
+    academicReq: ["Bachelor's Degree"],
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    coOp: "",
+  },
+  contact: {
+    name: "",
+    email: "",
+    linkedIn: "",
+    other: "",
+    applicationSteps: "",
+  },
+};
 
 // const fullstackNewGrad = {
 //     "header": {
@@ -920,24 +857,57 @@ const fullstackStudent = {
 
 // }
 
-
-
+const blankStudent = {
+  header: {
+    position: [],
+    title: "",
+    company: "",
+    location: "",
+    startDate: "",
+    length: "",
+  },
+  requirements: {
+    languages: [],
+    frameworks: [],
+    tools: [],
+    concepts: [],
+    experience: "",
+    gpa: "",
+    gpaValue: "",
+  },
+  details: {
+    academicReq: [],
+    description: "",
+    position: "",
+    pay: "",
+    candidates: "",
+    coOp: "",
+  },
+  contact: {
+    name: "",
+    email: "",
+    linkedIn: "",
+    other: "",
+    applicationSteps: "",
+  },
+};
 
 export {
-    backendStudent,
-    // backendNewGrad,
-    frontendStudent,
-    // frontendNewGrad,
-    // mobileStudent,
-    // mobileNewGrad,
-    // gameStudent,
-    // gameNewGrad,
-    // graphicsStudent,
-    // graphicsNewGrad,
-    datascienceStudent,
-    // datascienceNewGrad,
-    // webStudent,
-    // webNewGrad,
-    fullstackStudent,
-    // fullstackNewGrad
-  };
+  backendStudent,
+  // backendNewGrad,
+  frontendStudent,
+  // frontendNewGrad,
+  // mobileStudent,
+  // mobileNewGrad,
+  // gameStudent,
+  // gameNewGrad,
+  // graphicsStudent,
+  // graphicsNewGrad,
+  datascienceStudent,
+  // datascienceNewGrad,
+  // webStudent,
+  // webNewGrad,
+  fullstackStudent,
+  // fullstackNewGrad
+  blankStudent,
+};
