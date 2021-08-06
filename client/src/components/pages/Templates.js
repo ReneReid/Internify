@@ -9,7 +9,7 @@ import {
   frontendStudent,
   datascienceStudent,
   fullstackStudent,
-} from "../../models/mockJobDataObjects";
+} from "../../models/templateJobDataObjects";
 import "./styles/View.css";
 
 const Templates = () => {
@@ -40,16 +40,16 @@ const Templates = () => {
         <Grid container direction="row">
           <div className="templates_container">
             <div class="template" onClick={() => dummyfunction()}>
-              <ViewPosting data={backendStudent} />
+              <ViewPosting data={backendStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={frontendStudent} />
+              <ViewPosting data={frontendStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={datascienceStudent} />
+              <ViewPosting data={datascienceStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={fullstackStudent} />
+              <ViewPosting data={fullstackStudent} hide={true}/>
             </div>
           </div>
         </Grid>

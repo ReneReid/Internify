@@ -5,7 +5,7 @@
 
 .templates_container {
   display: flex;
-  max-height: 500px;
+  /* max-height: 600px; */
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
