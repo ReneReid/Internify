@@ -36,9 +36,6 @@ const Navbar = () => {
         <Link className="auth_navbar_item" to="/home">
           Home
         </Link>
-        <Link className="auth_navbar_item" to="placeHolder">
-          Browse
-        </Link>
         <Link className="auth_navbar_item" to="/profile">
           Profile
         </Link>
