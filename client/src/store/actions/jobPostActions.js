@@ -35,10 +35,10 @@ export const getAllJobs = () => (dispatch) => {
         .get("/api/jobs")
         .then((res) => {
           console.log(res.data);
-          // dispatch({
-          //   type: GET_ALL_JOBS,
-          //   payload: res.data,
-          // });
+          dispatch({
+            type: GET_ALL_JOBS,
+            payload: res.data,
+          });
         })
         .catch((err) => console.error(err));
 };
