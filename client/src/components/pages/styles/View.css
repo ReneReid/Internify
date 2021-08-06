@@ -2,3 +2,21 @@
   list-style-type: none;
   padding: 0px;
 }
+
+.templates_container {
+  display: flex;
+  max-height: 500px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+.template {
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.template:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgb(0 0 0 0.2);
+}
