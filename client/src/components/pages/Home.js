@@ -46,7 +46,7 @@ const Home = (props) => {
         </Grid>
 
         <Grid item style={{ paddingLeft: "15%"}}>
-            <TableUsers data={props.jobs.currentListOfJobs} />
+            <TableUsers data={props.jobs.allJobPostings} />
         </Grid>
       </Grid>
       <CreateJobButton />

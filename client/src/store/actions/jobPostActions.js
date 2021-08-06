@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS } from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -23,7 +23,7 @@ export const getJobs = (user) => (dispatch) => {
         })
         .then((res) => {
           dispatch({
-            type: GET_ALL_JOBS,
+            type: GET_USER_JOBS,
             payload: res.data[0],
           });
         })
@@ -34,7 +34,6 @@ export const getAllJobs = () => (dispatch) => {
       axios
         .get("/api/jobs")
         .then((res) => {
-          console.log(res.data);
           dispatch({
             type: GET_ALL_JOBS,
             payload: res.data,

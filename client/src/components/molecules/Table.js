@@ -37,10 +37,6 @@ function createBasicData(jobId, title, dateCreated, matches) {
   return { jobId, title, dateCreated, matches };
 }
 
-function createStarredData(isStarred, jobId, title, dateCreated, matches) {
-  return { isStarred, jobId, title, dateCreated, matches };
-}
-
 function createDataWithAuthor(
   profilePicture,
   authorName,
@@ -109,44 +105,6 @@ export const TableBasic = (props) => {
                   <ChipBlue label={row.matches} />
                 </div>
               )}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
-
-export const TableStar = (props) => {
-  const classes = useStyles();
-  const rows = props.data?.map((x) => {
-    return createStarredData(x.isStarred, x.title, x.dateCreated, x.matches);
-  });
-
-  return (
-    <Table className={classes.table} aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell align="left" />
-          <TableCell align="left">Posting&nbsp;title</TableCell>
-          <TableCell align="left">Date&nbsp;created</TableCell>
-          <TableCell align="left">Matches</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.name}>
-            <TableCell className={classes.row} align="left">
-              {row.isStarred ? <StarColoured /> : <StarPlain />}
-            </TableCell>
-            <TableCell className={classes.row} align="left">
-              {row.title}
-            </TableCell>
-            <TableCell className={classes.row} align="left">
-              {row.dateCreated}
-            </TableCell>
-            <TableCell className={classes.row} align="left">
-              {row.matches}
             </TableCell>
           </TableRow>
         ))}
