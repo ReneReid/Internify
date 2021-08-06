@@ -9,7 +9,7 @@ const backendStudent = {
   },
   requirements: {
     languages: ["Java", "C++", "C"],
-    frameworks: ["Express", "Django", "CakePHP", "MongoDB"],
+    frameworks: ["MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -49,7 +49,7 @@ const frontendStudent = {
   },
   requirements: {
     languages: ["JavaScript", "HTML", "CSS"],
-    frameworks: ["React", "Redux"],
+    frameworks: ["React"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -88,8 +88,8 @@ const datascienceStudent = {
     length: "8 months",
   },
   requirements: {
-    languages: ["Python", "C++", "C"],
-    frameworks: ["Scikit-learn", "Pandas"],
+    languages: ["Python", "C++", "C", "SQL"],
+    frameworks: ["MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -130,7 +130,7 @@ const fullstackStudent = {
   },
   requirements: {
     languages: ["TypeScript", "JavaScript", "HTML", "CSS"],
-    frameworks: ["Express", "React", "Redux", "Angular", "MongoDB"],
+    frameworks: ["React", "Angular", "MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
