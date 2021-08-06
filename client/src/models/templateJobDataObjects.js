@@ -27,7 +27,7 @@ const backEndStudent = {
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     coOp: "No",
@@ -71,7 +71,7 @@ const frontEndStudent = {
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     coOp: "No",
@@ -115,7 +115,7 @@ const dataScienceStudent = {
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     coOp: "No",
@@ -159,7 +159,7 @@ const fullStackStudent = {
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     coOp: "No",
@@ -199,7 +199,7 @@ const blankStudent = {
   details: {
     academicReq: [],
     description: "",
-    position: "",
+    positionType: "",
     pay: "",
     candidates: "",
     coOp: "",
