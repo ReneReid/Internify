@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { ChipRed, ChipYellow, ChipBlue } from "../atoms/Chips";
 import { StarPlain, StarColoured } from "../atoms/Icon";
-import axios from "axios";
+import "./styles/Table.css";
 
 const useStyles = makeStyles({
   table: {
@@ -29,20 +29,15 @@ function createStarredData(isStarred, jobId, title, dateCreated, matches) {
   return { isStarred, jobId, title, dateCreated, matches };
 }
 
-function createDataWithAuthor(author, jobId, title, dateCreated, matches) {
-  //TODO: make api call to get author name and profilePicture
-  return axios
-    .get(`/api/users/${author}`)
-    .then((res) => {
-      const user = res.data;
-      const userName = user?.name;
-      const profilePicture = user?.profilePicture;
-      return { profilePicture, userName, jobId, title, dateCreated, matches };
-    })
-    .catch((err) => {
-      console.error(err);
-      return { profilePicture: null, userName: null, jobId, title, dateCreated, matches };
-    });
+function createDataWithAuthor(
+  profilePicture,
+  authorName,
+  jobId,
+  title,
+  dateCreated,
+  matches
+) {
+  return { profilePicture, authorName, jobId, title, dateCreated, matches };
 }
 
 export const TableBasic = (props) => {
@@ -151,15 +146,22 @@ export const TableStar = (props) => {
 export const TableUsers = (props) => {
   const classes = useStyles();
   const rows = props.data?.map((x) => {
-    return createDataWithAuthor(x.author, x.title, x.dateCreated, x.matches);
+    return createDataWithAuthor(
+      x.profilePicture,
+      x.authorName,
+      x.jobId,
+      x.header?.title,
+      new Date(x.dateCreated),
+      x.matches
+    );
   });
 
-  //TODO: Replace star columns with user name and user profile picture
   return (
     <Table className={classes.table} aria-label="simple table">
       <TableHead>
         <TableRow>
           <TableCell align="left" />
+          <TableCell align="left">User</TableCell>
           <TableCell align="left">Posting&nbsp;title</TableCell>
           <TableCell align="left">Date&nbsp;created</TableCell>
           <TableCell align="left">Matches</TableCell>
@@ -169,16 +171,43 @@ export const TableUsers = (props) => {
         {rows.map((row) => (
           <TableRow key={row.name}>
             <TableCell className={classes.row} align="left">
-              {row.isStarred ? <StarColoured /> : <StarPlain />}
+              <img
+                src={row.profilePicture}
+                className="table_profile_picture"
+                alt={row.authorName}
+              />
+            </TableCell>
+            <TableCell className={classes.row} align="left">
+              {row.authorName}
             </TableCell>
             <TableCell className={classes.row} align="left">
               {row.title}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.dateCreated}
+              {row.dateCreated
+                ? row.dateCreated.getDate() +
+                  "/" +
+                  (row.dateCreated.getMonth() + 1) +
+                  "/" +
+                  row.dateCreated.getFullYear()
+                : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.matches}
+              {row.matches < 25 && (
+                <div>
+                  <ChipRed label={row.matches} />
+                </div>
+              )}
+              {row.matches >= 25 && row.matches <= 75 && (
+                <div>
+                  <ChipYellow label={row.matches} />
+                </div>
+              )}
+              {row.matches > 75 && (
+                <div>
+                  <ChipBlue label={row.matches} />
+                </div>
+              )}
             </TableCell>
           </TableRow>
         ))}

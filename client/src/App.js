@@ -59,7 +59,7 @@ function App() {
         <Route path="/home">
           <AuthNavbar />
           <Home user={user}/>
-          <Footer absolute={true}/>
+          <Footer />
         </Route>
         <Route path="/profile">
           <AuthNavbar />

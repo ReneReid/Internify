@@ -6,6 +6,12 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
+  profilePicture: {
+    type: String,
+  },
+  authorName: {
+    type: String,
+  },
   author: {
     type: String,
   },
