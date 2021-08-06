@@ -80,9 +80,9 @@ const TechStack = (props) => {
                 />
               );
             })}
-            <FormHelperText>Required</FormHelperText>
           </Container>
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Frameworks*</h3>
@@ -99,9 +99,9 @@ const TechStack = (props) => {
                 />
               );
             })}
-            <FormHelperText>Required</FormHelperText>
           </Container>
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Work Tools and Others*</h3>
@@ -118,9 +118,9 @@ const TechStack = (props) => {
                 />
               );
             })}
-            <FormHelperText>Required</FormHelperText>
           </Container>
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Computer Science Concepts</h3>
@@ -137,9 +137,9 @@ const TechStack = (props) => {
                 />
               );
             })}
-            <FormHelperText>Required</FormHelperText>
           </Container>
         </div>
+        <FormHelperText>Required</FormHelperText>
       </div>
     </React.Fragment>
   );
