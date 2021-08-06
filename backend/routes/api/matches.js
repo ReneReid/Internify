@@ -44,7 +44,6 @@ router.post("/", function (req, res, next) {
     .save()
     .then((match) => res.status(200).json(match))
     .catch((err) => res.status(404).json({ success: false }));
-  // res.status(200).json("done");
 });
 
 //@route DELETE api/matches/:jobId
