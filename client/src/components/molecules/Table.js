@@ -297,10 +297,10 @@ export const TableUsers = (props) => {
               )}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.authorName}
+              <b>{row.authorName}</b>
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.title}
+              <b>{row.title}</b>
             </TableCell>
             <TableCell className={classes.row} align="left">
               {row.dateCreated

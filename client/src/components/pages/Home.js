@@ -6,6 +6,7 @@ import { AccountCircle } from "@material-ui/icons";
 import { getUser } from "../../store/actions/userActions";
 import { getAllJobs } from "../../store/actions/jobPostActions";
 import { TableUsers, CreateJobButton } from "../molecules/index";
+import { ReactComponent as Banner } from "../../assets/Home/home_asset.svg";
 
 import "./styles/Home.css";
 
@@ -19,6 +20,7 @@ const Home = (props) => {
 
   return (
     <div className="home_page">
+      <Banner className="home_banner"/>
       <Grid container spacing={2} direction="column">
         <Grid container alignItems="center" className="home_header">
           <Grid item className="home_header_picture">
