@@ -248,6 +248,7 @@ export const TableUsers = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  let index = 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -275,7 +276,7 @@ export const TableUsers = (props) => {
           : rows
         ).map((row) => (
           <TableRow
-            key={row.name}
+            key={index++}
             hover
             onClick={() => {
               window.open(`/view/${row.jobId}`, "_self");
