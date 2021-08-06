@@ -10,6 +10,7 @@ import JobPosting from "./JobPosting";
 import EditModal from "./EditModal";
 import CreateJobButton from "./CreateJobButton";
 import ViewPosting from "./ViewPosting";
+import TemplatePosting from "./TemplatePosting";
 
 export {
   CreateJobButton,
@@ -25,4 +26,5 @@ export {
   TechStack,
   InputFormContactDetails,
   ViewPosting,
+  TemplatePosting,
 };

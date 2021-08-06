@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear } from "../atoms";
-import { ViewPosting } from "../molecules/index";
+import { ViewPosting, TemplatePosting } from "../molecules/index";
 import {
   backEndStudent,
   frontEndStudent,
@@ -44,16 +44,16 @@ const Templates = () => {
           <Grid container direction="row">
             <div className="templates_container">
               <div className="template" onClick={() => dummyfunction()}>
-                <ViewPosting data={backEndStudent} hide={true} />
+                <TemplatePosting data={backEndStudent} hide={true} />
               </div>
               <div className="template" onClick={() => dummyfunction()}>
-                <ViewPosting data={frontEndStudent} hide={true} />
+                <TemplatePosting data={frontEndStudent} hide={true} />
               </div>
               <div className="template" onClick={() => dummyfunction()}>
-                <ViewPosting data={dataScienceStudent} hide={true} />
+                <TemplatePosting data={dataScienceStudent} hide={true} />
               </div>
               <div className="template" onClick={() => dummyfunction()}>
-                <ViewPosting data={fullStackStudent} hide={true} />
+                <TemplatePosting data={fullStackStudent} hide={true} />
               </div>
             </div>
           </Grid>

@@ -1,14 +1,6 @@
 .templates_container {
   display: flex;
-  max-height: 520px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  white-space: nowrap;
-}
-
-.templates_container {
-  display: flex;
-  /* max-height: 600px; */
+  max-height: 500px;
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
@@ -16,7 +8,7 @@
 
 .template {
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 .template:hover {
@@ -26,7 +18,7 @@
 
 .page_title {
   text-align: left;
-  margin-left: 25%;
+  margin-left: 22%;
   padding-bottom: 2%;
   margin-top: -4.2%;
 }
