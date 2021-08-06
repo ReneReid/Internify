@@ -1,4 +1,4 @@
-const backendStudent = {
+const backEndStudent = {
   header: {
     position: ["Coop"],
     title: "Backend Developer",
@@ -9,7 +9,7 @@ const backendStudent = {
   },
   requirements: {
     languages: ["Java", "C++", "C"],
-    frameworks: ["Express", "Django", "CakePHP", "MongoDB"],
+    frameworks: ["MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -38,7 +38,7 @@ const backendStudent = {
 };
 
 
-const frontendStudent = {
+const frontEndStudent = {
   header: {
     position: ["Coop"],
     title: "Frontend Developer",
@@ -49,7 +49,7 @@ const frontendStudent = {
   },
   requirements: {
     languages: ["JavaScript", "HTML", "CSS"],
-    frameworks: ["React", "Redux"],
+    frameworks: ["React"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -78,7 +78,7 @@ const frontendStudent = {
 };
 
 
-const datascienceStudent = {
+const dataScienceStudent = {
   header: {
     position: ["Coop"],
     title: "Data Scientist",
@@ -88,14 +88,13 @@ const datascienceStudent = {
     length: "8 months",
   },
   requirements: {
-    languages: ["Python", "C++", "C"],
-    frameworks: ["Scikit-learn", "Pandas"],
+    languages: ["Python", "C++", "C", "SQL"],
+    frameworks: ["MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
       "Asynchronous Programming",
-      "Recursion",
-      "Linear Algebra",
+      "Recursion"
     ],
     experience: "≥ 0 months",
     gpa: "Required",
@@ -119,7 +118,7 @@ const datascienceStudent = {
 };
 
 
-const fullstackStudent = {
+const fullStackStudent = {
   header: {
     position: ["Coop"],
     title: "Full Stack Developer",
@@ -130,7 +129,7 @@ const fullstackStudent = {
   },
   requirements: {
     languages: ["TypeScript", "JavaScript", "HTML", "CSS"],
-    frameworks: ["Express", "React", "Redux", "Angular", "MongoDB"],
+    frameworks: ["React", "Angular", "MongoDB"],
     tools: ["GitHub"],
     concepts: [
       "Object Oriented Programming",
@@ -195,9 +194,9 @@ const blankStudent = {
 };
 
 export {
-  backendStudent,
-  frontendStudent,
-  datascienceStudent,
-  fullstackStudent,
+  backEndStudent,
+  frontEndStudent,
+  dataScienceStudent,
+  fullStackStudent,
   blankStudent,
 };

@@ -5,10 +5,10 @@ import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear } from "../atoms";
 import { ViewPosting } from "../molecules/index";
 import {
-  backendStudent,
-  frontendStudent,
-  datascienceStudent,
-  fullstackStudent,
+  backEndStudent,
+  frontEndStudent,
+  dataScienceStudent,
+  fullStackStudent,
 } from "../../models/templateJobDataObjects";
 import "./styles/View.css";
 
@@ -40,16 +40,16 @@ const Templates = () => {
         <Grid container direction="row">
           <div className="templates_container">
             <div class="template" onClick={() => dummyfunction()}>
-              <ViewPosting data={backendStudent} hide={true}/>
+              <ViewPosting data={backEndStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={frontendStudent} hide={true}/>
+              <ViewPosting data={frontEndStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={datascienceStudent} hide={true}/>
+              <ViewPosting data={dataScienceStudent} hide={true}/>
             </div>
             <div class="template">
-              <ViewPosting data={fullstackStudent} hide={true}/>
+              <ViewPosting data={fullStackStudent} hide={true}/>
             </div>
           </div>
         </Grid>
