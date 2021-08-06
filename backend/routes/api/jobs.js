@@ -69,7 +69,8 @@ router.put("/:id", function (req, res, next) {
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
-    matches: req.body.matches,
+    notes: req.body.notes,
+    students: req.body.students,
   };
   JobPostingData.findOneAndUpdate(
     { jobId: jobId },

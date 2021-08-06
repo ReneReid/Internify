@@ -18,7 +18,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
 import RegisteredKeys from "../molecules/RegisteredKeys";
-import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import {
+  addJobsData,
+  resetKey,
+  updateRegKeys,
+} from "../../store/actions/jobPostActions";
 import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
 import axios from "axios";
@@ -87,7 +91,6 @@ function Edit(props) {
       .catch((err) => console.error(err));
   }, [slug]);
 
-
   // Grab all students from database
   const user = firebase.auth().currentUser;
   const allStudents = useSelector((state) => state.students.studentList);
@@ -96,13 +99,13 @@ function Edit(props) {
 
   function editJob(data, jobId, props) {
     axios
-    .put(`/api/jobs/${jobId}`, { ...data, dateCreated: Date.now() })
-    .then((res) => {
-      setJobData(res.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+      .put(`/api/jobs/${jobId}`, { ...data, dateCreated: Date.now() })
+      .then((res) => {
+        setJobData(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     window.scrollTo(0, 0);
   }
 
@@ -132,7 +135,7 @@ function Edit(props) {
   }
 
   useEffect(() => {
-    if(props.students.studentList.length === 0){
+    if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
     return () => {
@@ -181,7 +184,7 @@ function Edit(props) {
     } else {
       setError(true);
     }
-  };
+  }
 
   return jobData ? (
     <div className={classes.root}>
@@ -243,8 +246,14 @@ function Edit(props) {
             keysList={chipsList}
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
-          /> 
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} buttonName={"Update"} />
+          />
+          <Review
+            currentStep={currentStep}
+            jobData={jobData}
+            user={user}
+            onSubmit={editJob}
+            buttonName={"Update"}
+          />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -278,7 +287,7 @@ function Edit(props) {
         </Grid>
       </Grid>
     </div>
-  ) : (null);
+  ) : null;
 }
 
 function mapStateToProps(state) {
