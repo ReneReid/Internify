@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import { ChipRed, ChipYellow, ChipBlue } from "../atoms/Chips";
 import { StarPlain, StarColoured } from "../atoms/Icon";
 import axios from "axios";
 
@@ -51,7 +52,7 @@ export const TableBasic = (props) => {
       x.jobId,
       x.header?.title,
       x.dateCreated ? new Date(x.dateCreated) : null,
-      x.matches ? x.matches : null
+      x.matches ? x.matches : 0
     );
   });
 
@@ -86,7 +87,21 @@ export const TableBasic = (props) => {
                 : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.matches}
+              {row.matches < 25 && (
+                <div>
+                  <ChipRed label={row.matches} />
+                </div>
+              )}
+              {row.matches >= 25 && row.matches <= 75 && (
+                <div>
+                  <ChipYellow label={row.matches} />
+                </div>
+              )}
+              {row.matches > 75 && (
+                <div>
+                  <ChipBlue label={row.matches} />
+                </div>
+              )}
             </TableCell>
           </TableRow>
         ))}
