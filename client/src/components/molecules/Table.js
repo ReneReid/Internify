@@ -17,6 +17,7 @@ import {
   KeyboardArrowLeft,
   KeyboardArrowRight,
   LastPage,
+  AccountCircle,
 } from "@material-ui/icons";
 import { ChipRed, ChipYellow, ChipBlue } from "../atoms/Chips";
 import { StarPlain, StarColoured } from "../atoms/Icon";
@@ -270,16 +271,23 @@ export const TableUsers = (props) => {
       </TableHead>
       <TableBody>
         {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
+          ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          : rows
+        ).map((row) => (
           <TableRow key={row.name}>
-            <TableCell className={classes.row} align="left">
-              <img
-                src={row.profilePicture}
-                className="table_profile_picture"
-                alt={row.authorName}
-              />
+            <TableCell className={classes.row} align="center">
+              {row.profilePicture ? (
+                <img
+                  src={row.profilePicture}
+                  className="table_profile_picture"
+                  alt={row.authorName}
+                />
+              ) : (
+                <AccountCircle
+                  className="table_profile_picture"
+                  style={{ fontSize: 33 }}
+                />
+              )}
             </TableCell>
             <TableCell className={classes.row} align="left">
               {row.authorName}
