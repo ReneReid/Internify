@@ -1,5 +1,5 @@
 .create_job_button {
-  position: absolute;
+  position: fixed;
   bottom: 10%;
   right: 5%;
   border-radius: 50px;

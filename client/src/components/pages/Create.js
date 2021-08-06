@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import {
   CreateJobHeader,
   ContactDetails,
@@ -18,7 +17,11 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import {
+  addJobsData,
+  resetKey,
+  updateRegKeys,
+} from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -75,9 +78,11 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
+  const user = firebase.auth().currentUser;
 
   const [jobData, setJobData] = useState({
     jobId: uuidv4(),
+    author: user.uid,
     dateCreated: "",
     dateUpdated: "",
     matches: 0,
@@ -114,7 +119,6 @@ function Create(props) {
       applicationSteps: "",
     },
   });
-  const user = firebase.auth().currentUser;
 
   // Grab all students from database
   const allStudents = props.students.studentList;
@@ -122,7 +126,12 @@ function Create(props) {
   const page2Object = props.matches.page2Object;
 
   function addNewJob(data, jobId, props) {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
+    props.actions.addJob({
+      ...data,
+      profilePicture: props.users.user.profilePicture,
+      authorName: props.users.user.name,
+      dateCreated: Date.now(),
+    });
     props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
     window.scrollTo(0, 0);
   }
@@ -153,7 +162,7 @@ function Create(props) {
   }
 
   useEffect(() => {
-    if(props.students.studentList.length === 0){
+    if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
     return () => {
@@ -265,7 +274,13 @@ function Create(props) {
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
           />
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} buttonName={"Create"} />
+          <Review
+            currentStep={currentStep}
+            jobData={jobData}
+            user={user}
+            onSubmit={addNewJob}
+            buttonName={"Create"}
+          />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -307,6 +322,7 @@ function mapStateToProps(state) {
     jobs: state.jobs,
     students: state.students,
     matches: state.matches,
+    users: state.users,
   };
 }
 
