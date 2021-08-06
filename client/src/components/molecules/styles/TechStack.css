@@ -1,12 +1,15 @@
 .tech_stack_checkbox_container {
   display: flex;
   margin-bottom: 1em;
+  overflow: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .tech_stack_container {
   margin-bottom: 2em;
   max-height: 400px;
-  overflow: auto;
+  /* overflow: auto;
   overflow-y: hidden;
-  white-space: nowrap;
+  white-space: nowrap; */
 }
