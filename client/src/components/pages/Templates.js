@@ -30,6 +30,7 @@ const Templates = () => {
         <div className="page_title">
           <h1>Select Prefills</h1>
           <h4 className="message">Select from 4 available templates</h4>
+          <hr className="line_style"></hr>
         </div>
       </Grid>
       <Grid
@@ -42,16 +43,16 @@ const Templates = () => {
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
-              <div class="template" onClick={() => dummyfunction()}>
+              <div className="template" onClick={() => dummyfunction()}>
                 <ViewPosting data={backEndStudent} hide={true} />
               </div>
-              <div class="template" onClick={() => dummyfunction()}>
+              <div className="template" onClick={() => dummyfunction()}>
                 <ViewPosting data={frontEndStudent} hide={true} />
               </div>
-              <div class="template" onClick={() => dummyfunction()}>
+              <div className="template" onClick={() => dummyfunction()}>
                 <ViewPosting data={dataScienceStudent} hide={true} />
               </div>
-              <div class="template" onClick={() => dummyfunction()}>
+              <div className="template" onClick={() => dummyfunction()}>
                 <ViewPosting data={fullStackStudent} hide={true} />
               </div>
             </div>
