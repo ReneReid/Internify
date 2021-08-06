@@ -75,7 +75,6 @@ function ApplicantDetails(props) {
               <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={jobData.academicReq.includes(x) ? true : false}/>
             );
           })}
-          <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>
