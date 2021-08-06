@@ -20,3 +20,10 @@
   cursor: pointer;
   box-shadow: 0 5px 10px rgb(0 0 0 0.2);
 }
+
+.page_title {
+  padding-top: 2%;
+  text-align: left;
+  margin-left: 20%;
+  padding-bottom: 2%;
+}

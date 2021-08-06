@@ -19,6 +19,14 @@ const Templates = () => {
   }
 
   return (
+
+    <Grid>
+      <div className="page_title">
+      <h1 >Select Prefills</h1>
+      <h4>Select from 4 available templates</h4>
+      </div>
+      
+
     <Grid
       container
       style={{ paddingTop: "1em" }}
@@ -29,7 +37,7 @@ const Templates = () => {
       {/** Left side button */}
       <Grid item xs={2}>
         <Grid container justifyContent="flex-end">
-          <Link to="/profile">
+          <Link to="/selection">
             <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
           </Link>
         </Grid>
@@ -54,6 +62,7 @@ const Templates = () => {
           </div>
         </Grid>
       </Grid>
+    </Grid>
     </Grid>
   );
 
