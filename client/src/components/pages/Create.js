@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import {
   CreateJobHeader,
   ContactDetails,
@@ -18,7 +17,11 @@ import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import {
+  addJobsData,
+  resetKey,
+  updateRegKeys,
+} from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -27,13 +30,50 @@ import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
 import { backEndStudent, frontEndStudent, dataScienceStudent, fullStackStudent, blankStudent } from "../../models/templateJobDataObjects";
 
 const mockTechStackData = {
-  languages: ["Java", "JavaScript", "C++", "C"],
-  frameworks: ["React", "Angular", "HTML", "CSS"],
-  workTools: ["Jira", "Asana", "Confluence", "Notion"],
+  languages: [
+    "C",
+    "C#",
+    "C++",
+    "CSS",
+    "HTML",
+    "Java",
+    "JavaScript",
+    "MATLAB",
+    "Python",
+    "R",
+    "SQL",
+    "TypeScript"
+  ],
+  frameworks: [
+    "AWS",
+    "Angular",
+    "Bootstrap",
+    "Docker",
+    "Google Cloud",
+    "Linux",
+    "MongoDB",
+    "Node",
+    "React",
+    "Ruby on Rails",
+    "Unix",
+  ],
+  workTools: [
+    "Azure",
+    "GitHub",
+    "Jira",
+    "Jupyter"
+  ],
   csConcepts: [
-    "Object Oriented Programming",
+    "Agile Development",
+    "Algorithms",
+    "Asynchronous Programming",
+    "Data Structures",
+    "Design Principles & Patterns",
     "Functional Programming",
+    "Object Oriented Programming",
+    "RESTify Services",
     "Recursion",
+    "Web APIs",
   ],
 };
 
@@ -76,6 +116,7 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
+  const user = firebase.auth().currentUser;
 
   const [jobData, setJobData] = useState(setJobState());
   const user = firebase.auth().currentUser;
@@ -101,7 +142,12 @@ function Create(props) {
   }
 
   function addNewJob(data, jobId, props) {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
+    props.actions.addJob({
+      ...data,
+      profilePicture: props.users.user.profilePicture,
+      authorName: props.users.user.name,
+      dateCreated: Date.now(),
+    });
     props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
     window.scrollTo(0, 0);
   }
@@ -132,7 +178,7 @@ function Create(props) {
   }
 
   useEffect(() => {
-    if(props.students.studentList.length === 0){
+    if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
     props.actions.addJobsData(jobData);
@@ -245,7 +291,13 @@ function Create(props) {
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
           />
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} buttonName={"Create"} />
+          <Review
+            currentStep={currentStep}
+            jobData={jobData}
+            user={user}
+            onSubmit={addNewJob}
+            buttonName={"Create"}
+          />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -287,6 +339,7 @@ function mapStateToProps(state) {
     jobs: state.jobs,
     students: state.students,
     matches: state.matches,
+    users: state.users,
   };
 }
 

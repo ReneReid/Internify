@@ -78,81 +78,77 @@ const TechStack = (props) => {
         <h3>Coding Languages*</h3>
         <div className="tech_stack_checkbox_container">
           <Container maxWidth="md" style={{ padding: "0em" }}>
-          {languages.map((x) => {
-            return (
-              <CheckBox
-                key={x}
-                name={x}
-                label={x}
-                onChange={(e) => handleLanguageChange(e, "languages", x)}
-                checked={jobData.languages.includes(x) ? true : false}
-              />
-            );
-          })}
-          <FormHelperText>Required</FormHelperText>
+            {languages.map((x) => {
+              return (
+                <CheckBox
+                  key={x}
+                  name={x}
+                  label={x}
+                  onChange={(e) => handleLanguageChange(e, "languages", x)}
+                  checked={jobData.languages.includes(x) ? true : false}
+                />
+              );
+            })}
           </Container>
         </div>
-        <TextField id="tech_languages" label="Custom..." variant="filled" />
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Frameworks*</h3>
         <div className="tech_stack_checkbox_container">
-        <Container maxWidth="md" style={{ padding: "0em" }}>
-          {frameworks.map((x) => {
-            return (
-              <CheckBox
-                key={x}
-                name={x}
-                label={x}
-                onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
-                checked={jobData.frameworks.includes(x) ? true : false}
-              />
-            );
-          })}
-          <FormHelperText>Required</FormHelperText>
-        </Container>
+          <Container maxWidth="md" style={{ padding: "0em" }}>
+            {frameworks.map((x) => {
+              return (
+                <CheckBox
+                  key={x}
+                  name={x}
+                  label={x}
+                  onChange={(e) => handleFrameworksChange(e, "frameworks", x)}
+                  checked={jobData.frameworks.includes(x) ? true : false}
+                />
+              );
+            })}
+          </Container>
         </div>
-        <TextField id="tech_frameworks" label="Custom..." variant="filled" />
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Work Tools and Others*</h3>
         <div className="tech_stack_checkbox_container">
-        <Container maxWidth="md" style={{ padding: "0em" }}>
-        {workTools.map((x) => {
-            return (
-              <CheckBox
-                key={x}
-                name={x}
-                label={x}
-                onChange={(e) => handleWorkToolsChange(e, "tools", x)}
-                checked={jobData.tools.includes(x) ? true : false}
-              />
-            );
-          })}
-          <FormHelperText>Required</FormHelperText>
-        </Container>
+          <Container maxWidth="md" style={{ padding: "0em" }}>
+            {workTools.map((x) => {
+              return (
+                <CheckBox
+                  key={x}
+                  name={x}
+                  label={x}
+                  onChange={(e) => handleWorkToolsChange(e, "tools", x)}
+                  checked={jobData.tools.includes(x) ? true : false}
+                />
+              );
+            })}
+          </Container>
         </div>
-        <TextField id="tech_tools" label="Custom..." variant="filled" />
+        <FormHelperText>Required</FormHelperText>
       </div>
       <div className="tech_stack_container">
         <h3>Computer Science Concepts</h3>
         <div className="tech_stack_checkbox_container">
-        <Container maxWidth="md" style={{ padding: "0em" }}>
-        {csConcepts.map((x) => {
-            return (
-              <CheckBox
-                key={x}
-                name={x}
-                label={x}
-                onChange={(e) => handleConceptsChange(e, "concepts", x)}
-                checked={jobData.concepts.includes(x) ? true : false}
-              />
-            );
-          })}
-          <FormHelperText>Required</FormHelperText>
-        </Container>
+          <Container maxWidth="md" style={{ padding: "0em" }}>
+            {csConcepts.map((x) => {
+              return (
+                <CheckBox
+                  key={x}
+                  name={x}
+                  label={x}
+                  onChange={(e) => handleConceptsChange(e, "concepts", x)}
+                  checked={jobData.concepts.includes(x) ? true : false}
+                />
+              );
+            })}
+          </Container>
         </div>
-        <TextField id="tech_concepts" label="Custom..." variant="filled" />
+        <FormHelperText>Required</FormHelperText>
       </div>
     </React.Fragment>
   );

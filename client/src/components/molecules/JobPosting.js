@@ -11,7 +11,6 @@ import { updateJobsOfUser } from "../../store/actions/userActions";
 import { addMatch } from "../../store/actions/matchesActions";
 
 const JobPosting = (props) => {
-  const user = props.user;
   const data = props.data;
   const jobId = data.jobId;
   const header = data?.header
@@ -28,7 +27,7 @@ const JobPosting = (props) => {
 
   const jobPoints = [
     ...header.position,
-    details.position,
+    details.positionType,
     details.pay,
     details.candidates,
   ];
