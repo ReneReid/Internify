@@ -1,4 +1,4 @@
-const backendStudent = {
+const backEndStudent = {
   header: {
     position: ["Coop"],
     title: "Backend Developer",
@@ -38,7 +38,7 @@ const backendStudent = {
 };
 
 
-const frontendStudent = {
+const frontEndStudent = {
   header: {
     position: ["Coop"],
     title: "Frontend Developer",
@@ -78,7 +78,7 @@ const frontendStudent = {
 };
 
 
-const datascienceStudent = {
+const dataScienceStudent = {
   header: {
     position: ["Coop"],
     title: "Data Scientist",
@@ -119,7 +119,7 @@ const datascienceStudent = {
 };
 
 
-const fullstackStudent = {
+const fullStackStudent = {
   header: {
     position: ["Coop"],
     title: "Full Stack Developer",
@@ -195,9 +195,9 @@ const blankStudent = {
 };
 
 export {
-  backendStudent,
-  frontendStudent,
-  datascienceStudent,
-  fullstackStudent,
+  backEndStudent,
+  frontEndStudent,
+  dataScienceStudent,
+  fullStackStudent,
   blankStudent,
 };
