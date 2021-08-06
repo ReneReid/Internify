@@ -78,7 +78,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View user={user}/>
+          <View user={user} status={"authenticated"}/>
           <Footer />
         </Route>
         <Route path="/edit/:slug">
@@ -94,6 +94,10 @@ function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/view/:slug">
+          <View status={"nonauthenticated"} />
+          <Footer />
         </Route>
         <Route path="/">
           <Landing />
