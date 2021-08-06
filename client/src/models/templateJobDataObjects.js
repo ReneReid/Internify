@@ -1,4 +1,8 @@
 const backEndStudent = {
+  jobId: null,
+  dateCreated: "",
+  dateUpdated: "",
+  matches: 0,
   header: {
     position: ["Coop"],
     title: "Backend Developer",
@@ -16,16 +20,16 @@ const backEndStudent = {
       "Asynchronous Programming",
       "Recursion",
     ],
-    experience: "≥ 0 months",
-    gpa: "Required",
+    experience: "≥ 4 months",
+    gpa: "Optional",
     gpaValue: "70",
   },
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "In-person",
-    pay: "Salary",
-    candidates: "Anyone",
+    position: "",
+    pay: "",
+    candidates: "",
     coOp: "No",
   },
   contact: {
@@ -39,6 +43,10 @@ const backEndStudent = {
 
 
 const frontEndStudent = {
+  jobId: null,
+  dateCreated: "",
+  dateUpdated: "",
+  matches: 0,
   header: {
     position: ["Coop"],
     title: "Frontend Developer",
@@ -56,16 +64,16 @@ const frontEndStudent = {
       "Asynchronous Programming",
       "Recursion",
     ],
-    experience: "≥ 0 months",
-    gpa: "Required",
+    experience: "none",
+    gpa: "Optional",
     gpaValue: "70",
   },
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "In-person",
-    pay: "Salary",
-    candidates: "Anyone",
+    position: "",
+    pay: "",
+    candidates: "",
     coOp: "No",
   },
   contact: {
@@ -79,6 +87,10 @@ const frontEndStudent = {
 
 
 const dataScienceStudent = {
+  jobId: null,
+  dateCreated: "",
+  dateUpdated: "",
+  matches: 0,
   header: {
     position: ["Coop"],
     title: "Data Scientist",
@@ -96,16 +108,16 @@ const dataScienceStudent = {
       "Asynchronous Programming",
       "Recursion",
     ],
-    experience: "≥ 0 months",
-    gpa: "Required",
+    experience: "none",
+    gpa: "Optional",
     gpaValue: "70",
   },
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "In-person",
-    pay: "Salary",
-    candidates: "Anyone",
+    position: "",
+    pay: "",
+    candidates: "",
     coOp: "No",
   },
   contact: {
@@ -119,6 +131,10 @@ const dataScienceStudent = {
 
 
 const fullStackStudent = {
+  jobId: null,
+  dateCreated: "",
+  dateUpdated: "",
+  matches: 0,
   header: {
     position: ["Coop"],
     title: "Full Stack Developer",
@@ -136,16 +152,16 @@ const fullStackStudent = {
       "Asynchronous Programming",
       "Recursion",
     ],
-    experience: "≥ 0 months",
-    gpa: "Required",
+    experience: "none",
+    gpa: "Optional",
     gpaValue: "70",
   },
   details: {
     academicReq: ["Bachelor's Degree"],
     description: "Insert Description",
-    position: "In-person",
-    pay: "Salary",
-    candidates: "Anyone",
+    position: "",
+    pay: "",
+    candidates: "",
     coOp: "No",
   },
   contact: {
@@ -159,6 +175,10 @@ const fullStackStudent = {
 
 
 const blankStudent = {
+  jobId: null,
+  dateCreated: "",
+  dateUpdated: "",
+  matches: 0,
   header: {
     position: [],
     title: "",
