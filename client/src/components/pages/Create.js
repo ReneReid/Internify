@@ -116,7 +116,6 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
-  const user = firebase.auth().currentUser;
 
   const [jobData, setJobData] = useState(setJobState());
   const user = firebase.auth().currentUser;
