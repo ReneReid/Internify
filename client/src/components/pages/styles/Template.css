@@ -1,0 +1,16 @@
+.templates_container {
+  display: flex;
+  max-height: 520px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+.template {
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.template:hover {
+  cursor: pointer;
+}

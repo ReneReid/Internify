@@ -63,12 +63,12 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
         </Route>
         <Route path="/templates">
           <AuthNavbar />
           <Templates />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
         </Route>
         <Route path="/create">
           <AuthNavbar />

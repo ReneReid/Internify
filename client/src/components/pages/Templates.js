@@ -10,20 +10,9 @@ import {
   datascienceStudent,
   fullstackStudent,
 } from "../../models/mockJobDataObjects";
-import "./styles/View.css";
+import "./styles/Template.css";
 
 const Templates = () => {
-  let templateList = [
-    backendStudent,
-    frontendStudent,
-    datascienceStudent,
-    fullstackStudent,
-  ];
-
-  function dummyfunction() {
-    console.log("Hello");
-  }
-
   return (
     <Grid
       container
@@ -45,7 +34,7 @@ const Templates = () => {
       <Grid item xs={10}>
         <Grid container direction="row">
           <div className="templates_container">
-            <div class="template" onClick={() => dummyfunction()}>
+            <div class="template">
               <ViewPosting data={backendStudent} />
             </div>
             <div class="template">
