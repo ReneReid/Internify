@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear } from "../atoms";
-import { ViewPosting, TemplatePosting } from "../molecules/index";
+import { TemplatePosting } from "../molecules/index";
 import {
   backEndStudent,
   frontEndStudent,

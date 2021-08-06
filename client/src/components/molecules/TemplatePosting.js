@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/ViewPosting.css";
+import "./styles/TemplatePosting.css";
 
 const TemplatePosting = (props) => {
   const data = props.data;
@@ -24,18 +24,18 @@ const TemplatePosting = (props) => {
 
   const JobPosting = (props) => {
     return (
-      <div className="view_posting_container">
-        <h3 className="view_posting_title">{header.title}</h3>
+      <div className="template_posting_container">
+        <h3 className="template_posting_title">{header.title}</h3>
 
-        <h4 className="view_posting_subheader">Technical Requirements</h4>
-        <ul className="view_posting_list_2">
+        <h4 className="template_posting_subheader">Technical Requirements</h4>
+        <ul className="template_posting_list_2">
           <li
             key={"coding-language-requirement"}
             style={{ marginBottom: "0.25em" }}
           >
             Experience with the following programming languages:
           </li>
-          <ul className="view_posting_list_nested">
+          <ul className="template_posting_list_nested">
             {requirements.languages.map((language) => {
               return (
                 <li key={language}>
@@ -47,7 +47,7 @@ const TemplatePosting = (props) => {
           <li key={"framework-requirement"}>
             Experience with the following frameworks:
           </li>
-          <ul className="view_posting_list_nested">
+          <ul className="template_posting_list_nested">
             {requirements.frameworks.map((framework) => {
               return (
                 <li key={framework}>
@@ -59,7 +59,7 @@ const TemplatePosting = (props) => {
           <li key={"tool-requirement"}>
             Experience with the following work tools:
           </li>
-          <ul className="view_posting_list_nested">
+          <ul className="template_posting_list_nested">
             {requirements.tools.map((tool) => {
               return (
                 <li key={tool}>
@@ -71,7 +71,7 @@ const TemplatePosting = (props) => {
           <li key={"concept-requirement"}>
             General understanding and comprehension of:
           </li>
-          <ul className="view_posting_list_nested">
+          <ul className="template_posting_list_nested">
             {requirements.concepts.map((concept) => {
               return (
                 <li key={concept}>
