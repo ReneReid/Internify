@@ -6,6 +6,7 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
+import Edit from "./components/pages/Edit";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import Home from "./components/pages/Home";
@@ -77,7 +78,12 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View />
+          <View user={user}/>
+          <Footer />
+        </Route>
+        <Route path="/edit/:slug">
+          <AuthNavbar />
+          <Edit />
           <Footer />
         </Route>
         <Redirect to="/home" />

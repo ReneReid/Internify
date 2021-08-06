@@ -1,25 +1,39 @@
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { ChevronLeft, CreateOutlined } from "@material-ui/icons";
+import {
+  ChevronLeft,
+  CreateOutlined,
+  Link as LinkIcon,
+  HighlightOff,
+} from "@material-ui/icons";
 import { ButtonClear, ButtonOutlined } from "../atoms";
 import { ViewPosting } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
-import LinkIcon from "@material-ui/icons/Link";
 import axios from "axios";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
+import { getStudents } from "../../store/actions/studentActions";
 
-const View = () => {
+const View = (props) => {
+  let user = props.user;
   let { slug } = useParams();
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
     axios
       .get(`/api/jobs/${slug}`)
-      .then((res) => setJob(res.data))
+      .then((res) => {
+        setJob(res.data)
+        props.actions.addJobsData(res.data)})
       .catch((err) => console.error(err));
-  }, [slug]);
+  }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
     navigator.clipboard
@@ -29,6 +43,15 @@ const View = () => {
         setTimeout(() => {
           setCopySuccess(false);
         }, 2000);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  function handleDelete() {
+    axios
+      .delete(`/api/jobs/${slug}`, { data: { userId: user.uid } })
+      .then((res) => {
+        window.open("/profile", "_self");
       })
       .catch((err) => console.error(err));
   }
@@ -84,15 +107,27 @@ const View = () => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined styles={{}} startIcon={<CreateOutlined />}>
+            <Link to={`/edit/${job.jobId}`}>
+            <ButtonOutlined 
+              style={{ marginRight: "0.5em", marginBottom: "0.5em" }} 
+              startIcon={<CreateOutlined />}
+              >
                 Edit
               </ButtonOutlined>
-              {"    "}
+            </Link>
               <ButtonOutlined
+                style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
                 startIcon={<LinkIcon />}
                 onClick={copyToClipboard}
               >
                 Copy Link
+              </ButtonOutlined>
+              <ButtonOutlined
+                style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
+                startIcon={<HighlightOff />}
+                onClick={() => handleDelete()}
+              >
+                Delete
               </ButtonOutlined>
               {copySuccess && (
                 <Alert
@@ -113,4 +148,23 @@ const View = () => {
   );
 };
 
-export default View;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+    students: state.students
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        addJobsData: addJobsData,
+        getStudents: getStudents
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(View);

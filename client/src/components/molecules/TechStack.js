@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField, FormHelperText, Container } from "@material-ui/core";
 import CheckBox from "../atoms/CheckBox";
 import "./styles/TechStack.css";
@@ -9,8 +9,14 @@ const TechStack = (props) => {
   const frameworks = props.frameworks;
   const workTools = props.workTools;
   const csConcepts = props.csConcepts;
+  const [checkedLangState, setCheckedLangState] = useState(false);
+  const [checkedFrameState, setCheckedFrameState] = useState(false);
+  const [checkedToolsState, setCheckedToolsState] = useState(false);
+  const [checkedConceptState, setCheckedConceptState] = useState(false);
+
 
   function handleLanguageChange(event, val, label) {
+    setCheckedLangState(!checkedLangState);
     props.updateKeysList(event, val, label);
     if (event.target.checked) {
       jobData.languages.push(event.target.name);
@@ -24,6 +30,7 @@ const TechStack = (props) => {
   }
 
   function handleFrameworksChange(event, val, label) {
+    setCheckedFrameState(!checkedFrameState);
     props.updateKeysList(event, val, label);
     if (event.target.checked) {
       jobData.frameworks.push(event.target.name);
@@ -37,6 +44,7 @@ const TechStack = (props) => {
   }
 
   function handleWorkToolsChange(event, val, label) {
+    setCheckedToolsState(!checkedToolsState);
     props.updateKeysList(event, val, label);
     if (event.target.checked) {
       jobData.tools.push(event.target.name);
@@ -50,6 +58,7 @@ const TechStack = (props) => {
   }
 
   function handleConceptsChange(event, val, label) {
+    setCheckedConceptState(!checkedConceptState);
     props.updateKeysList(event, val, label);
     if (event.target.checked) {
       jobData.concepts.push(event.target.name);

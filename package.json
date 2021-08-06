@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node backend/bin/www",
-    "server": "nodemon backend/bin/www",
-    "dev": "concurrently \"npm run server\" \"cd client && npm run start\"",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "server": "nodemon --watch backend backend/bin/www",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "first-install": "npm install && cd client && npm install"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -22,6 +24,7 @@
     "qs": "^6.10.1"
   },
   "devDependencies": {
+    "kill-port": "^1.6.1",
     "nodemon": "^2.0.9"
   }
 }

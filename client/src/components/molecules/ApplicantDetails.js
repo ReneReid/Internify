@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
 import { TextField, FormHelperText } from "@material-ui/core";
@@ -10,8 +10,10 @@ function ApplicantDetails(props) {
   const citizenship = props.citizenship;
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
+  const [checkedState, setCheckedState] = useState(false);
 
   const handleChange = (event, key, label) => {
+    setCheckedState(!checkedState);
     props.updateKeysList(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
