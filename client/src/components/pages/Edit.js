@@ -244,7 +244,7 @@ function Edit(props) {
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
           /> 
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} buttonName={"Edit"} />
+          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} buttonName={"Update"} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
