@@ -5,7 +5,7 @@ import { Grid } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import { getUser } from "../../store/actions/userActions";
 import { getAllJobs } from "../../store/actions/jobPostActions";
-import { TableUsers } from "../molecules/index";
+import { TableUsers, CreateJobButton } from "../molecules/index";
 
 import "./styles/Home.css";
 
@@ -47,6 +47,7 @@ const Home = (props) => {
             <TableUsers data={props.jobs.currentListOfJobs} />
         </Grid>
       </Grid>
+      <CreateJobButton />
     </div>
   );
 };
