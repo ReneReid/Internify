@@ -5,6 +5,7 @@ import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getUser } from "../../store/actions/userActions";
+import { getStudents } from "../../store/actions/studentActions";
 import {
   RoomOutlined,
   MailOutlineOutlined,
@@ -22,7 +23,10 @@ const Profile = (props) => {
 
   useEffect(() => {
     props.actions.getUser(props.user.uid);
-  }, [props.actions, props.user]);
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
+  }, [props.actions, props.user, props.students.studentList.length]);
 
   return (
     <Grid
@@ -233,14 +237,17 @@ const Profile = (props) => {
 function mapStateToProps(state) {
   return {
     users: state.users,
-    jobs: state.jobs
+    jobs: state.jobs,
+    students: state.students,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser },
+      { getUser: getUser,
+        getStudents: getStudents,
+      },
       dispatch
     ),
   };

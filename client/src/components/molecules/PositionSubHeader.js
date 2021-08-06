@@ -1,10 +1,13 @@
+import { useState } from "react";
 import CheckBox from "../atoms/CheckBox";
 import React from "react";
 
 function PositionSubHeader(props) {
   const jobData = props.jobData;
-
+  const [checkedState, setCheckedState] = useState(false);
+ 
   const handleChange = (e, v, l) => {
+    setCheckedState(!checkedState);
     filterChecked(e);
     props.updateKeysList(e, v, l);
   };

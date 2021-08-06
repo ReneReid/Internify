@@ -47,3 +47,39 @@ export const ChipEye = withStyles(() => ({
     fontFamily: "Helvetica",
   },
 }))(Chip);
+
+export const ChipRed = withStyles(() => ({
+  root: {
+    backgroundColor: "#F5A3B8",
+    color: "#000000",
+    borderRadius: "5px",
+    fontSize: "12px",
+    width: "45px",
+    height: "24px",
+    fontFamily: "Helvetica",
+  },
+}))(Chip);
+
+export const ChipYellow = withStyles(() => ({
+  root: {
+    backgroundColor: "#FCE9A7",
+    color: "#000000",
+    borderRadius: "5px",
+    fontSize: "12px",
+    width: "45px",
+    height: "24px",
+    fontFamily: "Helvetica",
+  },
+}))(Chip);
+
+export const ChipBlue = withStyles(() => ({
+  root: {
+    backgroundColor: "#B0D5FC",
+    color: "#000000",
+    borderRadius: "5px",
+    fontSize: "12px",
+    width: "45px",
+    height: "24px",
+    fontFamily: "Helvetica",
+  },
+}))(Chip);

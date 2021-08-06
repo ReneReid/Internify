@@ -11,7 +11,6 @@ import { updateJobsOfUser } from "../../store/actions/userActions";
 import { addMatch } from "../../store/actions/matchesActions";
 
 const JobPosting = (props) => {
-  const user = props.user;
   const data = props.data;
   const jobId = data.jobId;
   const header = data?.header
@@ -28,7 +27,7 @@ const JobPosting = (props) => {
 
   const jobPoints = [
     ...header.position,
-    details.position,
+    details.positionType,
     details.pay,
     details.candidates,
   ];
@@ -38,13 +37,6 @@ const JobPosting = (props) => {
   );
 
   const matchesObject = props.matches;
-
-  function sendJob() {
-    createNotes();
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
-    window.scrollTo(0, 0);
-  }
 
   function createNotes() {
     const allStudents = matchesObject.page3Object.page3Students;
@@ -184,14 +176,15 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <Link to={`/profile`}>
+        <Link to={`/view/${jobId}`}>
           <ButtonFilled
             onClick={() => {
-              sendJob();
+              createNotes();
+              props.onSubmit(data, jobId, props);
             }}
             startIcon={<AddCircleOutline />}
           >
-            Create
+            {props.buttonName}
           </ButtonFilled>
         </Link>
       </div>

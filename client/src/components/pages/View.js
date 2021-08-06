@@ -15,7 +15,11 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import { ViewPosting, ViewFeedback } from "../molecules/index";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
+import { getStudents } from "../../store/actions/studentActions";
 
 const View = (props) => {
   let user = props.user;
@@ -25,13 +29,17 @@ const View = (props) => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
+    if (props.students.studentList.length === 0) {
+      props.actions.getStudents();
+    }
     axios
       .get(`/api/jobs/${slug}`)
       .then((res) => {
         setJob(res.data);
+        props.actions.addJobsData(res.data);
       })
       .catch((err) => console.error(err));
-  }, [slug]);
+  }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
     navigator.clipboard
@@ -105,12 +113,14 @@ const View = (props) => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-              <ButtonOutlined
-                style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
-                startIcon={<CreateOutlined />}
-              >
-                Edit
-              </ButtonOutlined>
+              <Link to={`/edit/${job.jobId}`}>
+                <ButtonOutlined
+                  style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
+                  startIcon={<CreateOutlined />}
+                >
+                  Edit
+                </ButtonOutlined>
+              </Link>
               <ButtonOutlined
                 style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
                 startIcon={<LinkIcon />}
@@ -177,4 +187,23 @@ const View = (props) => {
   );
 };
 
-export default View;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+    students: state.students,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        addJobsData: addJobsData,
+        getStudents: getStudents,
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(View);

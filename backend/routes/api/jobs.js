@@ -56,12 +56,42 @@ router.get("/:id", function (req, res, next) {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
+//@route    PUT api/jobs/:id
+//@desc     edit single job document
+//@access   Public
+router.put("/:id", function (req, res, next) {
+  const jobId = req.params.id;
+  var args = {
+    jobId: jobId,
+    matches: req.body.matches,
+    dateCreated: req.body.dateCreated,
+    header: req.body.header,
+    requirements: req.body.requirements,
+    details: req.body.details,
+    contact: req.body.contact,
+    matches: req.body.matches,
+  };
+  JobPostingData.findOneAndUpdate(
+    { jobId: jobId },
+    {
+      $set: {
+        ...args,
+      },
+    }
+  )
+    .then((job) => res.status(200).json({ success: true }))
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
 //@route    POST api/jobs
 //@desc     Create A Job Document
 //@access   Public
 router.post("/", function (req, res, next) {
   var newJob = new JobPostingData({
     jobId: req.body.jobId,
+    profilePicture: req.body.profilePicture,
+    authorName: req.body.authorName,
+    author: req.body.author,
     matches: req.body.matches,
     students: req.body.students,
     dateCreated: req.body.dateCreated,
