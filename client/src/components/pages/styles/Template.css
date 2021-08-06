@@ -36,8 +36,9 @@
 }
 
 .line_style {
-  color: #e2e2e2;
+  line-height: 2px;
+  border-color: #e2e2e2;
   stroke: solid;
-  stroke-width: 2px;
-  border-radius: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(0 0 0 0.2);
 }
