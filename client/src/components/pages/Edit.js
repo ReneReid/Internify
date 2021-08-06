@@ -96,7 +96,7 @@ function Edit(props) {
 
   function editJob(data, jobId, props) {
     axios
-    .put(`/api/jobs/${jobId}`, { ...data, dateCreated: Date.now() })
+    .put(`/api/jobs/${jobId}`, { ...data, dateUpdated: Date.now() })
     .then((res) => {
       setJobData(res.data);
     })
