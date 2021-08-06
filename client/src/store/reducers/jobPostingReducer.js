@@ -34,7 +34,6 @@ export default function JobPostingReducer(state = initialState, action) {
         registeredKeys: {},
       };
     case GET_ALL_JOBS:
-      console.log(action.payload);
       return {
         ...state,
         allJobPostings: action.payload,
