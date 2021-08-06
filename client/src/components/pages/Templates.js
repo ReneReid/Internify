@@ -12,9 +12,6 @@ import {
 } from "../../models/templateJobDataObjects";
 import "./styles/Template.css";
 
-function dummyfunction() {
-  console.log("Hello");
-}
 
 const Templates = () => {
   return (
@@ -43,17 +40,17 @@ const Templates = () => {
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
-              <div className="template" onClick={() => dummyfunction()}>
-                <TemplatePosting data={backEndStudent} hide={true} />
+              <div className="template" >
+                <TemplatePosting data={backEndStudent} hide={true}/>
               </div>
-              <div className="template" onClick={() => dummyfunction()}>
-                <TemplatePosting data={frontEndStudent} hide={true} />
+              <div className="template" >
+                <TemplatePosting data={frontEndStudent} hide={true}/>
               </div>
-              <div className="template" onClick={() => dummyfunction()}>
-                <TemplatePosting data={dataScienceStudent} hide={true} />
+              <div className="template" >
+                <TemplatePosting data={dataScienceStudent} hide={true}/>
               </div>
-              <div className="template" onClick={() => dummyfunction()}>
-                <TemplatePosting data={fullStackStudent} hide={true} />
+              <div className="template">
+                <TemplatePosting data={fullStackStudent} hide={true}/>
               </div>
             </div>
           </Grid>
