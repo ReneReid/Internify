@@ -106,7 +106,6 @@ router.put("/:id", function (req, res, next) {
     }
   )
     .then((user) => {
-      console.log(jobPosting);
       if (jobPosting) {
         UserData.findOneAndUpdate(
           { authId: authId }, 

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var JobPostingData = require("../../models/JobPostingData");
+var UserData = require("../../models/UserData");
 
 //@route    GET api/jobs
 //@desc     Get All Job Documents
@@ -105,12 +106,32 @@ router.post("/", function (req, res, next) {
 //@desc     DELETE A Job Document
 //@access   Public
 router.delete("/:id", function (req, res, next) {
-  JobPostingData.findById(req.params.id)
-    .then((job) =>
-      job.remove().then(() => res.status(200).json({ success: true }))
-    )
+  const jobId = req.params.id;
+  const userId = req.body.userId;
+
+  JobPostingData.deleteOne({ jobId: jobId })
+    .then(() => {
+      UserData.find({ authId: userId })
+        .then((user) => {
+          let jobPostings = user[0].jobPostings;
+          jobPostings = jobPostings.filter((x) => x !== jobId);
+          UserData.findOneAndUpdate(
+            { authId: userId },
+            {
+              $set: {
+                jobPostings: jobPostings,
+              },
+            },
+            { useFindAndModify: false }
+          )
+            .then((jobPostings) => res.status(200).json(jobPostings))
+            .catch((err) => {
+              res.status(400).json({ success: false });
+            });
+        })
+        .catch(() => res.status(400).json({ success: false }));
+    })
     .catch((err) => {
-      console.log(err);
       res.status(404).json({ success: false });
     });
 });
