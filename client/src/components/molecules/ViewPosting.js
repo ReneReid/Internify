@@ -39,7 +39,7 @@ const ViewPosting = (props) => {
     html2pdf().from(element).set(opt).save();
   };
 
-  const JobPosting = () => {
+  const JobPosting = (props) => {
     return (
       <div className="view_posting_container">
         <h3 className="view_posting_title">{header.title}</h3>
@@ -161,9 +161,9 @@ const ViewPosting = (props) => {
     <>
       <JobPosting />
       <div className="view_posting_submit">
-        <ButtonFilled startIcon={<PictureAsPdfIcon />} onClick={handleClick}>
+        {props.hide? null : <ButtonFilled startIcon={<PictureAsPdfIcon />} onClick={handleClick}>
           Export to PDF
-        </ButtonFilled>
+        </ButtonFilled>}
       </div>
     </>
   );

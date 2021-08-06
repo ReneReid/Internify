@@ -53,7 +53,7 @@ function Prefill() {
         spacing={7}
         >
           <Grid item>
-          <Link to="/create" style={{ textDecoration: "none" }}>
+          <Link to="/templates" style={{ textDecoration: "none" }}>
           <ButtonFilled className={classes.prefill_btn_left}>Preview Prefills</ButtonFilled>
           </Link>
           </Grid>
