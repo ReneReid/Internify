@@ -24,6 +24,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
 import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
+import { backEndStudent, frontEndStudent, dataScienceStudent, fullStackStudent, blankStudent } from "../../models/templateJobDataObjects";
 
 const mockTechStackData = {
   languages: ["Java", "JavaScript", "C++", "C"],
@@ -76,50 +77,28 @@ function Create(props) {
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
 
-  const [jobData, setJobData] = useState({
-    jobId: uuidv4(),
-    dateCreated: "",
-    dateUpdated: "",
-    matches: 0,
-    header: {
-      title: "",
-      company: "",
-      location: "",
-      startDate: "",
-      position: [],
-      length: "",
-    },
-    requirements: {
-      experience: "",
-      gpa: "",
-      gpaValue: "",
-      languages: [],
-      frameworks: [],
-      tools: [],
-      concepts: [],
-    },
-    details: {
-      description: "",
-      positionType: "",
-      pay: "",
-      candidates: "",
-      academicReq: [],
-      coOp: "",
-    },
-    contact: {
-      name: "",
-      email: "",
-      linkedIn: "",
-      other: "",
-      applicationSteps: "",
-    },
-  });
+  const [jobData, setJobData] = useState(setJobState());
   const user = firebase.auth().currentUser;
 
   // Grab all students from database
   const allStudents = props.students.studentList;
   const page1Object = props.matches.page1Object;
   const page2Object = props.matches.page2Object;
+
+  function setJobState(){
+    switch(props.jobs.selectedJobType) {
+      case "frontEnd":
+        return {...frontEndStudent, jobId: uuidv4()};
+      case "backEnd":
+        return {...backEndStudent, jobId: uuidv4()};
+      case "dataScience":
+        return {...dataScienceStudent, jobId: uuidv4()};
+      case "fullStack":
+        return {...fullStackStudent, jobId: uuidv4()};
+      default:
+        return {...blankStudent, jobId: uuidv4()};
+      }
+  }
 
   function addNewJob(data, jobId, props) {
     props.actions.addJob({ ...data, dateCreated: Date.now() });
@@ -156,6 +135,7 @@ function Create(props) {
     if(props.students.studentList.length === 0){
       props.actions.getStudents();
     }
+    props.actions.addJobsData(jobData);
     return () => {
       props.actions.resetKey();
     };
