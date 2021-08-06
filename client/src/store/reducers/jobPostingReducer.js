@@ -6,6 +6,7 @@ import {
 } from "../actions/types/jobPostTypes";
 
 const initialState = {
+  selectedJobType: "",
   registeredKeys: {},
   currentPosting: {},
   currentListOfJobs: [],
