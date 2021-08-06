@@ -10,7 +10,6 @@ import { TableUsers } from "../molecules/index";
 import "./styles/Home.css";
 
 const Home = (props) => {
-
   useEffect(() => {
     props.actions.getUser(props.user.uid);
     props.actions.getAllJobs();
@@ -30,17 +29,22 @@ const Home = (props) => {
                 className="profile_img"
               />
             ) : (
-              <AccountCircle style={{ fontSize: "6em" }} className="profile_image_default" />
+              <AccountCircle
+                style={{ fontSize: "6em" }}
+                className="profile_image_default"
+              />
             )}
           </Grid>
           <Grid item className="home_header_bio">
             <h1 style={{ marginTop: 0 }}>Hi, {firstName}</h1>
-            <p style={{ marginBottom: 0 }}>Take a look at the community's postings!</p>
+            <p style={{ marginBottom: 0 }}>
+              Take a look at the community's postings!
+            </p>
           </Grid>
         </Grid>
 
-        <Grid item>
-          <TableUsers data={props.jobs.currentListOfJobs}/>
+        <Grid item style={{ paddingLeft: "15%"}}>
+            <TableUsers data={props.jobs.currentListOfJobs} />
         </Grid>
       </Grid>
     </div>
@@ -56,7 +60,10 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getUser: getUser, getAllJobs: getAllJobs }, dispatch),
+    actions: bindActionCreators(
+      { getUser: getUser, getAllJobs: getAllJobs },
+      dispatch
+    ),
   };
 }
 

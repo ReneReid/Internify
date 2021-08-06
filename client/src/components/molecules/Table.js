@@ -274,7 +274,13 @@ export const TableUsers = (props) => {
           ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           : rows
         ).map((row) => (
-          <TableRow key={row.name}>
+          <TableRow
+            key={row.name}
+            hover
+            onClick={() => {
+              window.open(`/view/${row.jobId}`, "_self");
+            }}
+          >
             <TableCell className={classes.row} align="center">
               {row.profilePicture ? (
                 <img
@@ -305,9 +311,15 @@ export const TableUsers = (props) => {
                 : null}
             </TableCell>
             <TableCell className={classes.row} align="left">
-              {row.matches < 25 && (
+              {(row.matches < 25 ||
+                row.matches === undefined ||
+                row.matches === null) && (
                 <div>
-                  <ChipRed label={row.matches} />
+                  {row.matches ? (
+                    <ChipRed label={row.matches} />
+                  ) : (
+                    <ChipRed label={"0"} />
+                  )}
                 </div>
               )}
               {row.matches >= 25 && row.matches <= 75 && (
