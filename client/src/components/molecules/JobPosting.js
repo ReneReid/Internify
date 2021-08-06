@@ -177,7 +177,7 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <Link to={`/profile`}>
+        <Link to={`/view/${jobId}`}>
           <ButtonFilled
             onClick={() => {
               props.onSubmit(data, jobId, props);
