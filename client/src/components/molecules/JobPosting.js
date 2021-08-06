@@ -39,12 +39,6 @@ const JobPosting = (props) => {
 
   const matchesObject = props.matches;
 
-  function sendJob() {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
-    window.scrollTo(0, 0);
-  }
-
   function sendMatch() {
     const allStudents = matchesObject.page3Object.page3Students;
     let studentIDs = [];
@@ -183,15 +177,15 @@ const JobPosting = (props) => {
       </ul>
 
       <div className="job_posting_submit">
-        <Link to={`/profile`}>
+        <Link to={`/view/${jobId}`}>
           <ButtonFilled
             onClick={() => {
-              sendJob();
+              props.onSubmit(data, jobId, props);
               sendMatch();
             }}
             startIcon={<AddCircleOutline />}
           >
-            Create
+            {props.buttonName}
           </ButtonFilled>
         </Link>
       </div>

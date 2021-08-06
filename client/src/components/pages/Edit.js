@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   CreateJobHeader,
@@ -9,20 +10,20 @@ import {
 } from "./CreateJobPosting/index";
 import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
-import RegisteredKeys from "../molecules/RegisteredKeys";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
-import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
+import RegisteredKeys from "../molecules/RegisteredKeys";
 import { addJobsData, resetKey, updateRegKeys } from "../../store/actions/jobPostActions";
+import "./styles/Create.css";
 import { processMatches } from "../../store/actions/matchesActions";
+import axios from "axios";
 import firebase from "firebase/app";
 import "firebase/auth";
-import "./styles/Create.css";
 import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
 
 const mockTechStackData = {
@@ -70,60 +71,38 @@ const chipsList = [
   "positionType",
 ];
 
-function Create(props) {
+// modify this so that it fits the "edit" paradigm
+function Edit(props) {
+  let { slug } = useParams();
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
+  const [jobData, setJobData] = useState(null);
   const registeredKeys = props.jobs.registeredKeys;
 
-  const [jobData, setJobData] = useState({
-    jobId: uuidv4(),
-    dateCreated: "",
-    dateUpdated: "",
-    matches: 0,
-    header: {
-      title: "",
-      company: "",
-      location: "",
-      startDate: "",
-      position: [],
-      length: "",
-    },
-    requirements: {
-      experience: "",
-      gpa: "",
-      gpaValue: "",
-      languages: [],
-      frameworks: [],
-      tools: [],
-      concepts: [],
-    },
-    details: {
-      description: "",
-      positionType: "",
-      pay: "",
-      candidates: "",
-      academicReq: [],
-      coOp: "",
-    },
-    contact: {
-      name: "",
-      email: "",
-      linkedIn: "",
-      other: "",
-      applicationSteps: "",
-    },
-  });
-  const user = firebase.auth().currentUser;
+  useEffect(() => {
+    axios
+      .get(`/api/jobs/${slug}`)
+      .then((res) => setJobData(res.data))
+      .catch((err) => console.error(err));
+  }, [slug]);
+
 
   // Grab all students from database
-  const allStudents = props.students.studentList;
-  const page1Object = props.matches.page1Object;
-  const page2Object = props.matches.page2Object;
+  const user = firebase.auth().currentUser;
+  const allStudents = useSelector((state) => state.students.studentList);
+  const page1Object = useSelector((state) => state.matches.page1Object);
+  const page2Object = useSelector((state) => state.matches.page2Object);
 
-  function addNewJob(data, jobId, props) {
-    props.actions.addJob({ ...data, dateCreated: Date.now() });
-    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+  function editJob(data, jobId, props) {
+    axios
+    .put(`/api/jobs/${jobId}`, { ...data, dateCreated: Date.now() })
+    .then((res) => {
+      setJobData(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
     window.scrollTo(0, 0);
   }
 
@@ -202,9 +181,9 @@ function Create(props) {
     } else {
       setError(true);
     }
-  }
+  };
 
-  return (
+  return jobData ? (
     <div className={classes.root}>
       <Grid
         container
@@ -233,7 +212,7 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
-            title={"1. Create a Job Header"}
+            title={"1. Edit Job Header"}
             keysList={chipsList}
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
@@ -264,8 +243,8 @@ function Create(props) {
             keysList={chipsList}
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
-          />
-          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={addNewJob} buttonName={"Create"} />
+          /> 
+          <Review currentStep={currentStep} jobData={jobData} user={user} onSubmit={editJob} buttonName={"Update"} />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -299,14 +278,13 @@ function Create(props) {
         </Grid>
       </Grid>
     </div>
-  );
+  ) : (null);
 }
 
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     students: state.students,
-    matches: state.matches,
   };
 }
 
@@ -325,4 +303,4 @@ function matchDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Create);
+export default connect(mapStateToProps, matchDispatchToProps)(Edit);
