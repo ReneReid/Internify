@@ -39,16 +39,6 @@ const Templates = () => {
         alignItems="flex-start"
         justifyContent="flex-end"
       >
-        {/** Left side button */}
-        {/* <Grid item xs={2}>
-          <Grid container justifyContent="flex-end">
-            <Link to="/selection">
-              <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
-            </Link>
-          </Grid>
-        </Grid> */}
-
-        {/** Right-hand templates */}
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
