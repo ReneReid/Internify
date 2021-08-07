@@ -8,7 +8,7 @@
 .template_posting_container:hover {
   cursor: pointer;
   box-shadow: 0 5px 10px rgb(0 0 0 0.2);
-  background-color: #e2e2e2;
+  background-color: #faf9f6;
   overflow: visible;
 }
 
