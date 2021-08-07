@@ -20,6 +20,7 @@ import { bindActionCreators } from "redux";
 import { addJobsData } from "../../store/actions/jobPostActions";
 import "./styles/View.css";
 import { getStudents } from "../../store/actions/studentActions";
+import { delay } from "../../effects/filter.effects";
 
 const View = (props) => {
   let user = props.user;
@@ -32,13 +33,15 @@ const View = (props) => {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
-    axios
-      .get(`/api/jobs/${slug}`)
-      .then((res) => {
-        setJob(res.data);
-        props.actions.addJobsData(res.data);
-      })
-      .catch((err) => console.error(err));
+    delay(500).then(() => {
+      axios
+        .get(`/api/jobs/${slug}`)
+        .then((res) => {
+          setJob(res.data);
+          props.actions.addJobsData(res.data);
+        })
+        .catch((err) => console.error(err));
+    });
   }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
