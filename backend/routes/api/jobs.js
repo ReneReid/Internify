@@ -63,14 +63,17 @@ router.put("/:id", function (req, res, next) {
   const jobId = req.params.id;
   var args = {
     jobId: jobId,
+    profilePicture: req.body.profilePicture,
+    authorName: req.body.authorName,
+    author: req.body.author,
     matches: req.body.matches,
+    students: req.body.students,
     dateCreated: req.body.dateCreated,
     header: req.body.header,
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
     notes: req.body.notes,
-    students: req.body.students,
   };
   JobPostingData.findOneAndUpdate(
     { jobId: jobId },
