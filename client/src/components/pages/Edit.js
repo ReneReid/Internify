@@ -31,13 +31,45 @@ import "firebase/auth";
 import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
 
 const mockTechStackData = {
-  languages: ["Java", "JavaScript", "C++", "C"],
-  frameworks: ["React", "Angular", "HTML", "CSS"],
-  workTools: ["Jira", "Asana", "Confluence", "Notion"],
+  languages: [
+    "C",
+    "C#",
+    "C++",
+    "CSS",
+    "HTML",
+    "Java",
+    "JavaScript",
+    "MATLAB",
+    "Python",
+    "R",
+    "SQL",
+    "TypeScript",
+  ],
+  frameworks: [
+    "AWS",
+    "Angular",
+    "Bootstrap",
+    "Docker",
+    "Google Cloud",
+    "Linux",
+    "MongoDB",
+    "Node",
+    "React",
+    "Ruby on Rails",
+    "Unix",
+  ],
+  workTools: ["Azure", "GitHub", "Jira", "Jupyter"],
   csConcepts: [
-    "Object Oriented Programming",
+    "Agile Development",
+    "Algorithms",
+    "Asynchronous Programming",
+    "Data Structures",
+    "Design Principles & Patterns",
     "Functional Programming",
+    "Object Oriented Programming",
+    "RESTify Services",
     "Recursion",
+    "Web APIs",
   ],
 };
 
@@ -281,7 +313,7 @@ function Edit(props) {
             </>
           ) : null}
           <h2 className="keys_title">Summary</h2>
-          <div className="reg_keys_container">
+          <div className="feedback_notes_container">
             <Feedback page={currentStep} />
           </div>
         </Grid>
