@@ -11,6 +11,7 @@ import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import Home from "./components/pages/Home";
 import Prefill from "./components/pages/Prefill";
+import Templates from "./components/pages/Templates";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -70,6 +71,11 @@ function App() {
           <AuthNavbar />
           <Prefill />
           <Footer absolute={true}/>
+        </Route>
+        <Route path="/templates">
+          <AuthNavbar />
+          <Templates />
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
