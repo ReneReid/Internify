@@ -1,0 +1,19 @@
+.home_page {
+  padding: 2em 20%;
+  margin-top: 3em;
+}
+
+.home_header {
+  padding: 2em;
+}
+
+.home_header_bio {
+  padding-left: 2em;
+}
+
+.home_banner {
+  position: fixed;
+  top: -5%;
+  left: -8%;
+  z-index: -1;
+}
