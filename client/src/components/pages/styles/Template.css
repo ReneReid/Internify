@@ -4,11 +4,14 @@
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;
+  margin-right: 3%;
 }
+
 
 .template {
   display: inline-block;
   margin-left: 2%;
+  margin-right: 5%;
 }
 
 .template:hover {
