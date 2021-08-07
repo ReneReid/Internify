@@ -1,0 +1,33 @@
+.templates_container {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    white-space: nowrap;
+    margin-right: 3%;
+  }
+  
+  
+  .template {
+    display: inline-block;
+    margin-left: 2%;
+    margin-right: 5%;
+  }
+  
+  .template:hover {
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgb(0 0 0 0.2);
+  }
+  
+  .page_title {
+    text-align: left;
+    margin-left: 22%;
+    padding-bottom: 2%;
+    margin-top: -4.2%;
+  }
+  
+  .message {
+    font-weight: normal;
+  }
+  
+  
+  
