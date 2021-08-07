@@ -12,7 +12,6 @@ import {
 } from "../../models/templateJobDataObjects";
 import "./styles/Templates.css";
 
-
 const Templates = () => {
   return (
     <Grid>
@@ -39,17 +38,17 @@ const Templates = () => {
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
-              <div className="template" >
-                <TemplatePosting data={backEndStudent} hide={true}/>
-              </div>
-              <div className="template" >
-                <TemplatePosting data={frontEndStudent} hide={true}/>
-              </div>
-              <div className="template" >
-                <TemplatePosting data={dataScienceStudent} hide={true}/>
+              <div className="template">
+                <TemplatePosting data={backEndStudent} hide={true} />
               </div>
               <div className="template">
-                <TemplatePosting data={fullStackStudent} hide={true}/>
+                <TemplatePosting data={frontEndStudent} hide={true} />
+              </div>
+              <div className="template">
+                <TemplatePosting data={dataScienceStudent} hide={true} />
+              </div>
+              <div className="template">
+                <TemplatePosting data={fullStackStudent} hide={true} />
               </div>
             </div>
           </Grid>
@@ -60,4 +59,3 @@ const Templates = () => {
 };
 
 export default Templates;
-

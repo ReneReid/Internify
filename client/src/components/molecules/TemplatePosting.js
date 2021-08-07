@@ -12,15 +12,6 @@ const TemplatePosting = (props) => {
         description: "",
       };
   const requirements = data?.requirements;
-  const details = data?.details;
-  const contact = data?.contact;
-
-  const jobPoints = [
-    ...header.position,
-    details.position,
-    details.pay,
-    details.candidates,
-  ];
 
   const JobPosting = (props) => {
     return (
@@ -85,10 +76,7 @@ const TemplatePosting = (props) => {
     );
   };
 
-  return (
-      <JobPosting />
-  );
+  return <JobPosting />;
 };
 
 export default TemplatePosting;
-
