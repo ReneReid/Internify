@@ -1,6 +1,5 @@
 .templates_container {
   display: flex;
-  /* max-height: 500px; */
   overflow-x: scroll;
   overflow-y: scroll;
   white-space: nowrap;

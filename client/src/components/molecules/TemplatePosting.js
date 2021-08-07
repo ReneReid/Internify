@@ -86,9 +86,7 @@ const TemplatePosting = (props) => {
   };
 
   return (
-    <>
       <JobPosting />
-    </>
   );
 };
 
