@@ -94,7 +94,7 @@ const dataScienceStudent = {
     concepts: [
       "Object Oriented Programming",
       "Asynchronous Programming",
-      "Recursion"
+      "Recursion",
     ],
     experience: "≥ 0 months",
     gpa: "Required",
