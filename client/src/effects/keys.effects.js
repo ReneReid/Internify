@@ -1,35 +1,37 @@
 import { chipsList } from '../models/mockData';
 
-function setKeys(jobData, isEdit){
+function parsePosition(position) {
+  let editedPosition = [];
+  for (let i = 0; i < position.length; i++) {
+    if (position[i] === "PartTime") {
+      editedPosition.push("Part-time");
+    } else if (position[i] === "NewGrad") {
+      editedPosition.push("New Grad");
+    } else if (position[i] === "Coop") {
+      editedPosition.push("Co-op");
+    }  else {
+      editedPosition.push(position[i]);
+    }
+  }
+  return editedPosition;
+}
+
+function setKeys(jobData){
   let regKey = {};
-  if(isEdit){
-    regKey["title"] = jobData.title;
-    regKey["position"] = jobData.position;
-    regKey["location"] = jobData.location;
-    regKey["experience"] = jobData.experience;
-    regKey["languages"] = jobData.languages;
-    regKey["frameworks"] = jobData.frameworks;
-    regKey["tools"] = jobData.tools;
-    regKey["concepts"] = jobData.concepts;
-    regKey["pay"] = jobData.pay;
-    regKey["candidates"] = jobData.candidates;
-    regKey["positionType"] = jobData.positionType;
+  if(jobData.header.title !== "") {
+    regKey["title"] = jobData.header.title;
+    regKey["position"] = parsePosition(jobData.header.position);
+    regKey["location"] = jobData.header.location;
+    regKey["experience"] = jobData.requirements.experience;
+    regKey["languages"] = jobData.requirements.languages;
+    regKey["frameworks"] = jobData.requirements.frameworks;
+    regKey["tools"] = jobData.requirements.tools;
+    regKey["concepts"] = jobData.requirements.concepts;
+    regKey["academicReq"] = jobData.details.academicReq;
+    regKey["positionType"] = jobData.details.positionType;
     return regKey;
-  } else {
-      if(jobData.header.title !== ""){
-      regKey["title"] = jobData.header.title;
-      regKey["position"] = jobData.header.position;
-      regKey["location"] = jobData.header.location;
-      regKey["experience"] = jobData.requirements.experience;
-      regKey["languages"] = jobData.requirements.languages;
-      regKey["frameworks"] = jobData.requirements.frameworks;
-      regKey["tools"] = jobData.requirements.tools;
-      regKey["concepts"] = jobData.requirements.concepts;
-      regKey["academicReq"] = jobData.details.academicReq;
-      return regKey;
-      } else {
-        return {};
-      }
+    } else {
+      return {};
     }
   }
 
