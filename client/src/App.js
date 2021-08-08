@@ -45,17 +45,18 @@ function App() {
 
   useEffect(() => {
     const userLocal = JSON.parse(localStorage.getItem("user"));
+
     if (userLocal) {
-      setUser(true);
+      setUser(userLocal);
     } else {
-      setUser(false);
+      setUser(null);
     }
   }, localStorage.getItem("user"));
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      localStorage.setItem("user", true);
-      setUser(true);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
     } else {
       localStorage.removeItem("user");
     }
