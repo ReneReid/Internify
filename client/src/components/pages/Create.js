@@ -18,9 +18,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
 import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
-import { keysListEffect as keysListEffect }from "../../effects/keys.effects";
-import { setKeys as setKeys } from "../../effects/keys.effects";
-import { keysTextEffect as keysTextEffect } from "../../effects/keys.effects";
+import { keysListEffect, setKeys, keysTextEffect  }from "../../effects/keys.effects";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,7 +89,7 @@ function Create(props) {
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions, props.students.studentList.length]);
+  }, [props.actions, props.students.studentList.length, jobData, key]);
 
   function updateStore() {
     // dispatch to matches reducer
