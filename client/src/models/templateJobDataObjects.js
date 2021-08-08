@@ -23,7 +23,7 @@ const backEndStudent = {
       "Asynchronous Programming",
       "Recursion",
     ],
-    experience: "≥ 4 months",
+    experience: "none",
     gpa: "Optional",
     gpaValue: "70",
   },
