@@ -1,8 +1,11 @@
 const backEndStudent = {
   jobId: null,
+  author: null,
   dateCreated: "",
   dateUpdated: "",
   matches: 0,
+  students: [],
+  notes: {},
   header: {
     position: ["Coop"],
     title: "Backend Developer",
@@ -44,9 +47,12 @@ const backEndStudent = {
 
 const frontEndStudent = {
   jobId: null,
+  author: null,
   dateCreated: "",
   dateUpdated: "",
   matches: 0,
+  students: [],
+  notes: {},
   header: {
     position: ["Coop"],
     title: "Frontend Developer",
@@ -88,9 +94,12 @@ const frontEndStudent = {
 
 const dataScienceStudent = {
   jobId: null,
+  author: null,
   dateCreated: "",
   dateUpdated: "",
   matches: 0,
+  students: [],
+  notes: {},
   header: {
     position: ["Coop"],
     title: "Data Scientist",
@@ -132,9 +141,12 @@ const dataScienceStudent = {
 
 const fullStackStudent = {
   jobId: null,
+  author: null,
   dateCreated: "",
   dateUpdated: "",
   matches: 0,
+  students: [],
+  notes: {},
   header: {
     position: ["Coop"],
     title: "Full Stack Developer",
@@ -176,32 +188,35 @@ const fullStackStudent = {
 
 const blankStudent = {
   jobId: null,
+  author: null,
   dateCreated: "",
   dateUpdated: "",
   matches: 0,
+  students: [],
+  notes: {},
   header: {
-    position: [],
     title: "",
     company: "",
     location: "",
     startDate: "",
+    position: [],
     length: "",
   },
   requirements: {
+    experience: "",
+    gpa: "",
+    gpaValue: "",
     languages: [],
     frameworks: [],
     tools: [],
     concepts: [],
-    experience: "",
-    gpa: "",
-    gpaValue: "",
   },
   details: {
-    academicReq: [],
     description: "",
     positionType: "",
     pay: "",
     candidates: "",
+    academicReq: [],
     coOp: "",
   },
   contact: {

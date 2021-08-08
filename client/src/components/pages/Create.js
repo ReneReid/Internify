@@ -116,9 +116,8 @@ function Create(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
-
-  const [jobData, setJobData] = useState(setJobState());
   const user = firebase.auth().currentUser;
+  const [jobData, setJobData] = useState(setJobState());
 
   // Grab all students from database
   const allStudents = props.students.studentList;
@@ -128,15 +127,15 @@ function Create(props) {
   function setJobState(){
     switch(props.jobs.selectedJobType) {
       case "frontEnd":
-        return {...frontEndStudent, jobId: uuidv4()};
+        return {...frontEndStudent, jobId: uuidv4(), author: user.uid};
       case "backEnd":
-        return {...backEndStudent, jobId: uuidv4()};
+        return {...backEndStudent, jobId: uuidv4(), author: user.uid};
       case "dataScience":
-        return {...dataScienceStudent, jobId: uuidv4()};
+        return {...dataScienceStudent, jobId: uuidv4(), author: user.uid};
       case "fullStack":
-        return {...fullStackStudent, jobId: uuidv4()};
+        return {...fullStackStudent, jobId: uuidv4(), author: user.uid};
       default:
-        return {...blankStudent, jobId: uuidv4()};
+        return {...blankStudent, jobId: uuidv4(), author: user.uid};
       }
   }
 
