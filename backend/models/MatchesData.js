@@ -8,32 +8,8 @@ const MatchesSchema = new Schema({
   matches: {
     type: [String],
   },
-  seeking: {
-    type: Number,
-  },
-  concepts: {
-    type: Number,
-  },
-  experience: {
-    type: Number,
-  },
-  frameworks: {
-    type: Number,
-  },
-  gpa: {
-    type: Number,
-  },
-  languages: {
-    type: Number,
-  },
-  academicReq: {
-    type: Number,
-  },
-  candidates: {
-    type: Number,
-  },
-  coop: {
-    type: Number,
+  notes: {
+    type: Object,
   },
 });
 

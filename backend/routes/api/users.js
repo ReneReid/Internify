@@ -108,9 +108,10 @@ router.put("/:id", function (req, res, next) {
     .then((user) => {
       if (jobPosting) {
         UserData.findOneAndUpdate(
-          { authId: authId }, 
-          { $push: { jobPostings: jobPosting }}, 
-          {useFindAndModify: false})
+          { authId: authId },
+          { $push: { jobPostings: jobPosting } },
+          { useFindAndModify: false }
+        )
           .then(() => res.status(200).json(user[0]))
           .catch((err) => res.status(404).json({ success: false }));
       }
@@ -121,6 +122,7 @@ router.put("/:id", function (req, res, next) {
 //@route    DELETE api/:id
 //@desc     DELETE a User document
 //@access   Public (?)
+// In future -> deleting a user will have to remove the authId from the matches array inside jobPosting
 
 router.delete("/:id", function (req, res, next) {
   UserData.findById(req.params.id)
