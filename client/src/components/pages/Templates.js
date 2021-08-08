@@ -47,7 +47,7 @@ const Templates = (props) => {
             </Link>
             </div>
             <div className="template" onClick={() => props.actions.setSelectedJob("frontEnd")}>
-            <Link to="/create" style={{textDecoration: 'none', color: "black"}}>
+            <Link to="/create" style={{ textDecoration: 'none', color: "black"}}>
               <TemplatePosting data={frontEndStudent} hide={true} />
             </Link>
             </div>
