@@ -48,7 +48,6 @@ export const updateJobsOfUser = (data) => (dispatch) => {
   axios
     .put(`/api/users/${data.authId}`, data)
     .then((res) => {
-      console.log(data);
       dispatch({
         type: UPDATE_JOBS_OF_USER,
         payload: data,
