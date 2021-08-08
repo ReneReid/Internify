@@ -30,7 +30,8 @@ export default function userReducer(state = initialState, action) {
 
     case UPDATE_JOBS_OF_USER:
       const newJobs = action.payload.jobPostings;
-      state.user.jobPostings?.push(newJobs);
+      const uniqJobs = [...new Set(newJobs)];
+      state.user.jobPostings?.push(uniqJobs);
       return {...state, user: state.user};
 
     // TODO: Fix this
