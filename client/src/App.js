@@ -51,7 +51,7 @@ function App() {
     } else {
       setUser(null);
     }
-  }, localStorage.getItem("user"));
+  }, []);
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
