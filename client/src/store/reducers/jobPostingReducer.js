@@ -4,7 +4,8 @@ import {
   GET_USER_JOBS,
   UPDATE_KEYS,
   RESET_KEY,
-  SET_JOB_TYPE
+  SET_JOB_TYPE,
+  SET_KEY
 } from "../actions/types/jobPostTypes";
 
 const initialState = {
@@ -34,6 +35,11 @@ export default function JobPostingReducer(state = initialState, action) {
       return {
         ...state,
         registeredKeys: {},
+      };
+    case SET_KEY:
+      return {
+        ...state,
+        registeredKeys: action.payload,
       };
     case GET_ALL_JOBS:
       return {

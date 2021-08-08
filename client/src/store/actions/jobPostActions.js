@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS, SET_JOB_TYPE } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS, SET_JOB_TYPE, SET_KEY} from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -57,7 +57,6 @@ export const deleteJob = (jobId) => (dispatch) => {
 };
 
 export const addJobsData = (data) => (dispatch) => {
-  // TODO: Refactor reducer type to update job header
   dispatch({
     type: ADD_JOB_HEADER,
     payload: data,
@@ -74,6 +73,13 @@ export const updateRegKeys = (key, val) => (dispatch) => {
 export const resetKey = () => (dispatch) => {
   dispatch({
     type: RESET_KEY,
+  });
+}
+
+export const setKey = (regKeyObj) => (dispatch) => {
+  dispatch({
+    type: SET_KEY,
+    payload: regKeyObj
   });
 }
 
