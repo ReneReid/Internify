@@ -39,7 +39,7 @@ const UserSchema = new Schema({
     type: String,
   },
   jobPostings: {
-    type: [String],
+    type: {String},
   },
   status: {
     type: String,

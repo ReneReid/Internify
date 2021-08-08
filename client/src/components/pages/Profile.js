@@ -28,6 +28,7 @@ const Profile = (props) => {
     }
   }, [props.actions, props.user, props.students.studentList.length]);
 
+
   function removeDuplicates(arr) {
     let idSet = new Set();
     let uniqArr = [];
@@ -135,7 +136,7 @@ const Profile = (props) => {
                     <li key={label}>
                       <ChipBasic
                         icon={<CheckCircleOutline style={{ color: "white" }} />}
-                        label={label}
+                        label={`${removeDuplicates(props.jobs.currentListOfJobs).length} Postings`}
                       />
                     </li>
                   ))}

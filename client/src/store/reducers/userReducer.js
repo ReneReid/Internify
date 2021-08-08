@@ -1,3 +1,4 @@
+import { NewReleasesTwoTone } from "@material-ui/icons";
 import {
   ADD_USER,
   REMOVE_USER,
@@ -30,8 +31,9 @@ export default function userReducer(state = initialState, action) {
 
     case UPDATE_JOBS_OF_USER:
       const newJobs = action.payload.jobPostings;
-      const uniqJobs = [...new Set(newJobs)];
-      state.user.jobPostings?.push(uniqJobs);
+      state.user.jobPostings?.push(newJobs);
+      let uniqJobs = (arr) => arr.filter((v, i) => arr.indexOf(v) === i);
+      state.user.jobPostings = uniqJobs(state.user.jobPostings);
       return {...state, user: state.user};
 
     // TODO: Fix this
