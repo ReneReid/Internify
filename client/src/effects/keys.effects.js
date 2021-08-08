@@ -1,20 +1,36 @@
 import { chipsList } from '../models/mockData';
 
-function setKeys(jobData){
-  if(jobData.header.title !== ""){
-    let regKey = {};
-    regKey["title"] = jobData.header.title;
-    regKey["position"] = jobData.header.position;
-    regKey["location"] = jobData.header.location;
-    regKey["experience"] = jobData.requirements.experience;
-    regKey["languages"] = jobData.requirements.languages;
-    regKey["frameworks"] = jobData.requirements.frameworks;
-    regKey["tools"] = jobData.requirements.tools;
-    regKey["concepts"] = jobData.requirements.concepts;
-    regKey["academicReq"] = jobData.details.academicReq;
+function setKeys(jobData, isEdit){
+  let regKey = {};
+  if(isEdit){
+    regKey["title"] = jobData.title;
+    regKey["position"] = jobData.position;
+    regKey["location"] = jobData.location;
+    regKey["experience"] = jobData.experience;
+    regKey["languages"] = jobData.languages;
+    regKey["frameworks"] = jobData.frameworks;
+    regKey["tools"] = jobData.tools;
+    regKey["concepts"] = jobData.concepts;
+    regKey["pay"] = jobData.pay;
+    regKey["candidates"] = jobData.candidates;
+    regKey["positionType"] = jobData.positionType;
     return regKey;
-  }
-  return {};
+  } else {
+      if(jobData.header.title !== ""){
+      regKey["title"] = jobData.header.title;
+      regKey["position"] = jobData.header.position;
+      regKey["location"] = jobData.header.location;
+      regKey["experience"] = jobData.requirements.experience;
+      regKey["languages"] = jobData.requirements.languages;
+      regKey["frameworks"] = jobData.requirements.frameworks;
+      regKey["tools"] = jobData.requirements.tools;
+      regKey["concepts"] = jobData.requirements.concepts;
+      regKey["academicReq"] = jobData.details.academicReq;
+      return regKey;
+      } else {
+        return {};
+      }
+    }
   }
 
   function keysListEffect(event, key, label, registeredKeys, registeredKeysAction) {
