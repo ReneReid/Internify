@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS } from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS, SET_JOB_TYPE } from "./types/jobPostTypes";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -74,6 +74,13 @@ export const updateRegKeys = (key, val) => (dispatch) => {
 export const resetKey = () => (dispatch) => {
   dispatch({
     type: RESET_KEY,
+  });
+}
+
+export const setSelectedJob = (type) => (dispatch) => {
+  dispatch({
+    type: SET_JOB_TYPE,
+    payload: type
   });
 }
 
