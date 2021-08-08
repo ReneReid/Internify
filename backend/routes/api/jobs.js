@@ -50,7 +50,9 @@ router.get("/bulk/", function (req, res, next) {
 router.get("/:id", function (req, res, next) {
   const jobId = req.params.id;
   JobPostingData.findOne({ jobId: jobId })
-    .then((job) => res.status(200).json(job))
+    .then((job) => {
+      res.status(200).json(job);
+    })
     .catch((err) => res.status(404).json({ success: false }));
 });
 
@@ -61,13 +63,17 @@ router.put("/:id", function (req, res, next) {
   const jobId = req.params.id;
   var args = {
     jobId: jobId,
+    profilePicture: req.body.profilePicture,
+    authorName: req.body.authorName,
+    author: req.body.author,
     matches: req.body.matches,
+    students: req.body.students,
     dateCreated: req.body.dateCreated,
     header: req.body.header,
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
-    matches: req.body.matches,
+    notes: req.body.notes,
   };
   JobPostingData.findOneAndUpdate(
     { jobId: jobId },
@@ -91,11 +97,13 @@ router.post("/", function (req, res, next) {
     authorName: req.body.authorName,
     author: req.body.author,
     matches: req.body.matches,
+    students: req.body.students,
     dateCreated: req.body.dateCreated,
     header: req.body.header,
     requirements: req.body.requirements,
     details: req.body.details,
     contact: req.body.contact,
+    notes: req.body.notes,
   });
 
   // save new job to database
