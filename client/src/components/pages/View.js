@@ -108,12 +108,14 @@ const View = (props) => {
             </div>
             <div className="view_page_buttons_list">
             <Link to={`/edit/${job.jobId}`}>
-            <ButtonOutlined 
-              style={{ marginRight: "0.5em", marginBottom: "0.5em" }} 
-              startIcon={<CreateOutlined />}
-              >
-                Edit
-              </ButtonOutlined>
+              {(props.authenticated) && job.author === user.uid && (
+                <ButtonOutlined 
+                style={{ marginRight: "0.5em", marginBottom: "0.5em" }} 
+                startIcon={<CreateOutlined />}
+                >
+                  Edit
+                </ButtonOutlined>
+              )}
             </Link>
               <ButtonOutlined
                 style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
@@ -122,13 +124,15 @@ const View = (props) => {
               >
                 Copy Link
               </ButtonOutlined>
-              <ButtonOutlined
+              {(props.authenticated) && job.author === user.uid && (
+                <ButtonOutlined
                 style={{ marginRight: "0.5em", marginBottom: "0.5em" }}
                 startIcon={<HighlightOff />}
                 onClick={() => handleDelete()}
               >
                 Delete
               </ButtonOutlined>
+              )}
               {copySuccess && (
                 <Alert
                   variant="outlined"

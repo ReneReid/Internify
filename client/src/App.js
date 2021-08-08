@@ -11,6 +11,7 @@ import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import Home from "./components/pages/Home";
 import Prefill from "./components/pages/Prefill";
+import Templates from "./components/pages/Templates";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -71,6 +72,11 @@ function App() {
           <Prefill />
           <Footer absolute={true}/>
         </Route>
+        <Route path="/templates">
+          <AuthNavbar />
+          <Templates />
+          <Footer />
+        </Route>
         <Route path="/create">
           <AuthNavbar />
           <Create />
@@ -78,7 +84,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View user={user}/>
+          <View user={user} authenticated={true}/>
           <Footer />
         </Route>
         <Route path="/edit/:slug">
@@ -94,6 +100,10 @@ function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/view/:slug">
+          <View authenticated={false}/>
+          <Footer />
         </Route>
         <Route path="/">
           <Landing />
