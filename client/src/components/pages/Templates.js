@@ -4,6 +4,9 @@ import { Grid } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import { ButtonClear } from "../atoms";
 import { TemplatePosting } from "../molecules/index";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { setSelectedJob } from "../../store/actions/jobPostActions";
 import {
   backEndStudent,
   frontEndStudent,
@@ -12,7 +15,7 @@ import {
 } from "../../models/templateJobDataObjects";
 import "./styles/Templates.css";
 
-const Templates = () => {
+const Templates = (props) => {
   return (
     <Grid>
       <Grid item xs={2}>
@@ -38,18 +41,26 @@ const Templates = () => {
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
-              <div className="template">
-                <TemplatePosting data={backEndStudent} hide={true} />
-              </div>
-              <div className="template">
-                <TemplatePosting data={frontEndStudent} hide={true} />
-              </div>
-              <div className="template">
-                <TemplatePosting data={dataScienceStudent} hide={true} />
-              </div>
-              <div className="template">
-                <TemplatePosting data={fullStackStudent} hide={true} />
-              </div>
+            <div className="template" onClick={() => props.actions.setSelectedJob("backEnd")}>
+            <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
+              <TemplatePosting data={backEndStudent} hide={true} />
+            </Link>
+            </div>
+            <div className="template" onClick={() => props.actions.setSelectedJob("frontEnd")}>
+            <Link to="/create" style={{textDecoration: 'none', color: "black"}}>
+              <TemplatePosting data={frontEndStudent} hide={true} />
+            </Link>
+            </div>
+            <div className="template" onClick={() => props.actions.setSelectedJob("dataScience")}>
+            <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
+              <TemplatePosting data={dataScienceStudent} hide={true} />
+            </Link>
+            </div>
+            <div className="template" onClick={() => props.actions.setSelectedJob("fullStack")}>
+            <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
+              <TemplatePosting data={fullStackStudent} hide={true} />
+            </Link>
+            </div>
             </div>
           </Grid>
         </Grid>
@@ -58,4 +69,21 @@ const Templates = () => {
   );
 };
 
-export default Templates;
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        setSelectedJob: setSelectedJob
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Templates);
