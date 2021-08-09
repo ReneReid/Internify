@@ -19,6 +19,8 @@ const RegisteredKeys = (props) => {
           } else {
             return <ChipBasic label={current} key={uuidv4()} />;
           }
+        } else {
+          return null;
         }
       })}
     </div>

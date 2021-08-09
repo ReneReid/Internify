@@ -48,7 +48,7 @@ const View = (props) => {
     return () => {
       setMount(false);
     }
-  }, [slug, props.actions, props.students.studentList.length]);
+  }, [slug, props.actions, props.students.studentList.length, mounted]);
 
   function copyToClipboard() {
     navigator.clipboard
