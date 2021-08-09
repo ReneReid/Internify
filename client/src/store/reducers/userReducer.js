@@ -1,4 +1,3 @@
-import { NewReleasesTwoTone } from "@material-ui/icons";
 import {
   ADD_USER,
   REMOVE_USER,
