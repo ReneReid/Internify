@@ -9,6 +9,7 @@ import { ReactComponent as MatchesData } from "../../assets/Landing/matches_data
 import { ReactComponent as TableAsset } from "../../assets/Landing/table_asset.svg";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { ButtonOutlined } from "../atoms";
 import "./styles/Landing.css";
 
 const Landing = () => {
@@ -26,7 +27,7 @@ const Landing = () => {
     <div className="landing_page">
       <Navbar />
       <Hero />
-      <div className="landing_section_matches">
+      <div id="landing_section_matches" className="landing_section_matches">
         <div className="landing_section_matches_paragraph">
           <h2>Create job posts with gradual, dynamic feedback.</h2>
           <p>
@@ -83,7 +84,7 @@ const Landing = () => {
           <motion.div
             ref={blueCircleRef}
             initial={{ y: 200, opacity: 0 }}
-            animate={{ y: blueCircleRefInView ? 350 : 0, opacity: 1 }}
+            animate={{ y: blueCircleRefInView ? 250 : 0, opacity: 1 }}
             transition={{ duration: 1, type: "tween" }}
           >
             <img
@@ -94,6 +95,16 @@ const Landing = () => {
           </motion.div>
           <TableAsset className="landing_section_table_asset_table" />
         </div>
+      </div>
+      <div className="landing_section_final">
+        <h2>Interested? Great</h2>
+        <ButtonOutlined
+          onClick={() => {
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
+        >
+          Get Started
+        </ButtonOutlined>
       </div>
       <Footer />
     </div>

@@ -12,7 +12,8 @@ const Hero = (props) => {
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
   const learnMore = () => {
-    console.log("learn more");
+    const element = document.getElementById("landing_section_matches");
+    element.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleGoogleLogin = () => {
@@ -91,8 +92,6 @@ const Hero = (props) => {
     }
   };
 
-  
-
   return (
     <div className="hero">
       <div className="hero_header_container">
@@ -152,7 +151,10 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addUser: addUser, getUser: getUser }, dispatch),
+    actions: bindActionCreators(
+      { addUser: addUser, getUser: getUser },
+      dispatch
+    ),
   };
 }
 
