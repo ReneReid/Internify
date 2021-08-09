@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-import { TextField, FormHelperText } from "@material-ui/core";
+import { FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
