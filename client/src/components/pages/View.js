@@ -41,7 +41,7 @@ const View = (props) => {
           props.actions.addJobsData(res.data);
         })
         .catch((err) => console.error(err)); 
-  }.bind(this), 500)
+    }.bind(this), 500)
   }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
