@@ -11,16 +11,6 @@ const Navbar = () => {
             About us
           </a>
         </li>
-        <li className="navbar_main_item">
-          <a href="thing2" className="navbar_main_link">
-            Our mission
-          </a>
-        </li>
-        <li className="navbar_main_item">
-          <a href="thing3" className="navbar_main_link">
-            Contact us
-          </a>
-        </li>
       </ul>
 
       <Link className="navbar_logo" to="/">
