@@ -97,13 +97,13 @@ const Landing = () => {
         </div>
       </div>
       <div className="landing_section_final">
-        <h2>Interested? Great</h2>
+        <h2>Interested? Great, let's get started.</h2>
         <ButtonOutlined
           onClick={() => {
             window.scroll({ top: 0, behavior: "smooth" });
           }}
         >
-          Get Started
+          Let's go
         </ButtonOutlined>
       </div>
       <Footer />
