@@ -33,15 +33,15 @@ const View = (props) => {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
-    delay(500).then(() => {
+    setTimeout(function() {
       axios
         .get(`/api/jobs/${slug}`)
         .then((res) => {
           setJob(res.data);
           props.actions.addJobsData(res.data);
         })
-        .catch((err) => console.error(err));
-    });
+        .catch((err) => console.error(err)); 
+  }.bind(this), 500)
   }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
