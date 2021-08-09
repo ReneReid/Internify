@@ -28,20 +28,26 @@ const View = (props) => {
   const [job, setJob] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
   const [display, setDisplay] = useState(false);
+  const [mounted, setMount] = useState(true);
 
   useEffect(() => {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
-    delay(500).then(() => {
-      axios
-        .get(`/api/jobs/${slug}`)
-        .then((res) => {
-          setJob(res.data);
-          props.actions.addJobsData(res.data);
-        })
-        .catch((err) => console.error(err));
-    });
+    if (mounted){
+      delay(500).then(() => {
+        axios
+          .get(`/api/jobs/${slug}`)
+          .then((res) => {
+            setJob(res.data);
+            props.actions.addJobsData(res.data);
+          })
+          .catch((err) => console.error(err));
+      });
+    };
+    return () => {
+      setMount(false);
+    }
   }, [slug, props.actions, props.students.studentList.length]);
 
   function copyToClipboard() {
