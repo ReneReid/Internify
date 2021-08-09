@@ -20,7 +20,6 @@ import {
   AccountCircle,
 } from "@material-ui/icons";
 import { ChipRed, ChipYellow, ChipBlue } from "../atoms/Chips";
-import { StarPlain, StarColoured } from "../atoms/Icon";
 import "./styles/Table.css";
 
 const useStyles = makeStyles({
