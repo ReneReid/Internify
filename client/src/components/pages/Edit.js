@@ -52,11 +52,26 @@ function Edit(props) {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
+    if(Object.keys(props.jobs.currentPosting).length === 0){
+      axios
+      .get(`/api/jobs/${slug}`)
+      .then((res) => {
+        setJobData(res.data);
+        props.actions.addJobsData(res.data);
+      })
+      .catch((err) => console.error(err));
+    }
     props.actions.setKey(key, true);
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions, props.students.studentList.length, slug, key]);
+  }, [ 
+    props.actions, 
+    props.students.studentList.length, 
+    props.jobs.currentPosting,
+    slug, 
+    key
+  ]);
 
   function editJob(data, jobId) {
     axios
