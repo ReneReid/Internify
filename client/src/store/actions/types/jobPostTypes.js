@@ -6,3 +6,5 @@ export const DELETE_JOB = "DELETE_JOB";
 export const ADD_JOB_HEADER = "ADD_JOB_HEADER";
 export const UPDATE_KEYS = "UPDATE_KEYS";
 export const RESET_KEY = "RESET_KEY";
+export const SET_JOB_TYPE = "SET_JOB_TYPE";
+export const SET_KEY = "SET_KEY";

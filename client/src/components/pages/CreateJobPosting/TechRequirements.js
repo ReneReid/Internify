@@ -31,6 +31,8 @@ const WorkingExperience = (props) => {
 
 const GradePoint = (props) => {
   const handleChange = props.handleChange;
+  const [value, setValue] = useState(checkVal());
+ 
   const marks = [
     {
       value: 50,
@@ -60,6 +62,16 @@ const GradePoint = (props) => {
 
   const gpaData = ["Required", "Optional"];
 
+  function checkVal() {
+    let gpaVal = props.jobData.requirements.gpaValue;
+    return gpaVal !== "" ? parseInt(gpaVal, 10) : 50;
+  }
+
+  function updateSliderValue(e, v){
+    setValue(parseInt(v, 10));
+    handleChange({...props.jobData.requirements, gpaValue: v})
+  }
+
   return (
     <React.Fragment>
       <h3>GPA</h3>
@@ -76,14 +88,14 @@ const GradePoint = (props) => {
       </div>
       <div className="gpa_slider">
         <Slider
-          defaultValue={props.jobData.requirements.gpaValue === "" ? 50 : props.jobData.requirements.gpaValue}
           aria-labelledby="discrete-slider-always"
+          value={value}
           step={1}
           min={50}
           max={100}
           marks={marks}
           valueLabelDisplay="on"
-          onChange={(e, v) => handleChange({...props.jobData.requirements, gpaValue: v})}
+          onChange={(e, v) => updateSliderValue(e, v)}
         />
       </div>
       <FormHelperText>Required</FormHelperText>

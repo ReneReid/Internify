@@ -10,13 +10,15 @@ const RegisteredKeys = (props) => {
     <div className="registed_keys_container" style={{ display: "flexbox" }}>
       {Object.keys(registeredKeys).map((key) => {
         const current = registeredKeys[key];
-        if (Array.isArray(current)) {
-          const result = current.map((ele) => {
-            return <ChipBasic label={ele} key={uuidv4()} />;
-          });
-          return result;
-        } else {
-          return <ChipBasic label={current} key={uuidv4()} />;
+        if(current !== "" && current != null){
+          if (Array.isArray(current)) {
+            const result = current.map((ele) => {
+              return <ChipBasic label={ele} key={uuidv4()} />;
+            });
+            return result;
+          } else {
+            return <ChipBasic label={current} key={uuidv4()} />;
+          }
         }
       })}
     </div>
