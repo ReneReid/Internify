@@ -11,6 +11,7 @@ import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
 import Home from "./components/pages/Home";
 import Prefill from "./components/pages/Prefill";
+import Templates from "./components/pages/Templates";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -40,16 +41,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      }
-      setIsLoading(false);
-    });
+    const userLocal = JSON.parse(localStorage.getItem("user"));
+
+    if (userLocal) {
+      setUser(userLocal);
+    } else {
+      setUser(null);
+    }
+  }, []);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+    } else {
+      localStorage.removeItem("user");
+    }
   });
 
   let routes;
@@ -58,7 +68,7 @@ function App() {
       <Switch>
         <Route path="/home">
           <AuthNavbar />
-          <Home user={user}/>
+          <Home user={user} />
           <Footer />
         </Route>
         <Route path="/profile">
@@ -69,7 +79,12 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
+        </Route>
+        <Route path="/templates">
+          <AuthNavbar />
+          <Templates />
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
@@ -78,7 +93,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View user={user}/>
+          <View user={user} authenticated={true} />
           <Footer />
         </Route>
         <Route path="/edit/:slug">
@@ -94,6 +109,10 @@ function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/view/:slug">
+          <View authenticated={false} />
+          <Footer />
         </Route>
         <Route path="/">
           <Landing />

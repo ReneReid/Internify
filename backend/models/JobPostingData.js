@@ -18,14 +18,17 @@ const JobPostingSchema = new Schema({
   matches: {
     type: Number,
   },
+  students: {
+    type: [String],
+  },
   dateCreated: {
     type: Date,
   },
   dateUpdated: {
     type: Date,
   },
-  matches: {
-    type: Number,
+  notes: {
+    type: Object,
   },
   header: {
     title: {

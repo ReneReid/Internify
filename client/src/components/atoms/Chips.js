@@ -32,7 +32,7 @@ export const ChipNote = withStyles(() => ({
     color: "#000000",
     fontWeight: "bold",
     borderRadius: "20px",
-    fontSize: "16px",
+    fontSize: "14px",
     fontFamily: "Helvetica",
   },
 }))(Chip);

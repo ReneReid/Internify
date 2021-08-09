@@ -38,27 +38,27 @@ const JobPosting = (props) => {
 
   const matchesObject = props.matches;
 
-  function sendMatch() {
+  function createNotes() {
     const allStudents = matchesObject.page3Object.page3Students;
     let studentIDs = [];
     for (let i = 0; i < allStudents.length; i++) {
       studentIDs.push(allStudents[i]["_id"]);
     }
 
-    let matchesObj = {};
-    matchesObj["jobId"] = jobId;
-    matchesObj["matches"] = studentIDs;
-    matchesObj["seeking"] = matchesObject.page1Object.seeking;
-    matchesObj["concepts"] = matchesObject.page2Object.concepts;
-    matchesObj["experience"] = matchesObject.page2Object.experience;
-    matchesObj["frameworks"] = matchesObject.page2Object.frameworks;
-    matchesObj["gpa"] = matchesObject.page2Object.gpa;
-    matchesObj["languages"] = matchesObject.page2Object.languages;
-    matchesObj["academicReq"] = matchesObject.page3Object.academicReq;
-    matchesObj["candidates"] = matchesObject.page3Object.candidates;
-    matchesObj["coop"] = matchesObject.page3Object.coop;
+    let notesObj = {};
+    notesObj["seeking"] = matchesObject.page1Object.seeking;
+    notesObj["experience"] = matchesObject.page2Object.experience;
+    notesObj["gpa"] = matchesObject.page2Object.gpa;
+    notesObj["languages"] = matchesObject.page2Object.languages;
+    notesObj["frameworks"] = matchesObject.page2Object.frameworks;
+    notesObj["toolsMatches"] = matchesObject.page2Object.toolsMatches;
+    notesObj["concepts"] = matchesObject.page2Object.concepts;
+    notesObj["candidates"] = matchesObject.page3Object.candidates;
+    notesObj["coop"] = matchesObject.page3Object.coop;
+    notesObj["academicReq"] = matchesObject.page3Object.academicReq;
 
-    props.actions.addMatch(matchesObj);
+    data.notes = notesObj;
+    data.students = studentIDs;
   }
 
   return (
@@ -179,8 +179,8 @@ const JobPosting = (props) => {
         <Link to={`/view/${jobId}`}>
           <ButtonFilled
             onClick={() => {
+              createNotes();
               props.onSubmit(data, jobId, props);
-              sendMatch();
             }}
             startIcon={<AddCircleOutline />}
           >
