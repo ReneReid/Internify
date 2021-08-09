@@ -31,7 +31,7 @@ const WorkingExperience = (props) => {
 
 const GradePoint = (props) => {
   const handleChange = props.handleChange;
-  const [value, setValue] = React.useState(checkStore());
+  const [value, setValue] = useState(props.jobData.requirements.gpaValue);
  
   const marks = [
     {
@@ -62,12 +62,7 @@ const GradePoint = (props) => {
 
   const gpaData = ["Required", "Optional"];
 
-  function checkStore(){
-    let storedGpaValue = props.jobData.requirements.gpaValue;
-    storedGpaValue === "" ? 50 : parseInt(storedGpaValue, 10);
-  }
-
-  function onChange(e, v){
+  function updateSliderValue(e, v){
     setValue(v);
     handleChange({...props.jobData.requirements, gpaValue: v})
   }
@@ -95,7 +90,7 @@ const GradePoint = (props) => {
           max={100}
           marks={marks}
           valueLabelDisplay="on"
-          onChange={(e, v) => onChange(e, v)}
+          onChange={(e, v) => updateSliderValue(e, v)}
         />
       </div>
       <FormHelperText>Required</FormHelperText>
