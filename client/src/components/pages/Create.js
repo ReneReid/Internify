@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  CreateJobHeader,
-  ContactDetails,
-  TechRequirements,
-  JobDetail,
-  Review,
-} from "./CreateJobPosting/index";
+import { CreateJobHeader, ContactDetails, TechRequirements, JobDetail, Review } from "./CreateJobPosting/index";
 import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import RegisteredKeys from "../molecules/RegisteredKeys";
@@ -13,68 +7,18 @@ import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
-import { mockJobDetailData } from "../../models/mockData";
+import { mockJobDetailData, chipsList, mockTechStackData, currStep } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import {
-  addJobsData,
-  resetKey,
-  updateRegKeys,
-} from "../../store/actions/jobPostActions";
+import { addJobsData, resetKey, updateRegKeys, setKey } from "../../store/actions/jobPostActions";
+import { backEndStudent, frontEndStudent, dataScienceStudent, fullStackStudent, blankStudent } from "../../models/templateJobDataObjects";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
 import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
-
-const mockTechStackData = {
-  languages: [
-    "C",
-    "C#",
-    "C++",
-    "CSS",
-    "HTML",
-    "Java",
-    "JavaScript",
-    "MATLAB",
-    "Python",
-    "R",
-    "SQL",
-    "TypeScript"
-  ],
-  frameworks: [
-    "AWS",
-    "Angular",
-    "Bootstrap",
-    "Docker",
-    "Google Cloud",
-    "Linux",
-    "MongoDB",
-    "Node",
-    "React",
-    "Ruby on Rails",
-    "Unix",
-  ],
-  workTools: [
-    "Azure",
-    "GitHub",
-    "Jira",
-    "Jupyter"
-  ],
-  csConcepts: [
-    "Agile Development",
-    "Algorithms",
-    "Asynchronous Programming",
-    "Data Structures",
-    "Design Principles & Patterns",
-    "Functional Programming",
-    "Object Oriented Programming",
-    "RESTify Services",
-    "Recursion",
-    "Web APIs",
-  ],
-};
+import { keysListEffect, setKeys, keysTextEffect  }from "../../effects/keys.effects";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,81 +32,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const currStep = {
-  1: "header",
-  2: "requirements",
-  3: "details",
-  4: "contact",
-};
-
-const chipsList = [
-  "title",
-  "position",
-  "location",
-  "experience",
-  "languages",
-  "frameworks",
-  "tools",
-  "concepts",
-  "pay",
-  "candidates",
-  "academicReq",
-  "positionType",
-];
-
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
   const user = firebase.auth().currentUser;
-
-  const [jobData, setJobData] = useState({
-    jobId: uuidv4(),
-    author: user.uid,
-    dateCreated: "",
-    dateUpdated: "",
-    matches: 0,
-    students: [],
-    notes: {},
-    header: {
-      title: "",
-      company: "",
-      location: "",
-      startDate: "",
-      position: [],
-      length: "",
-    },
-    requirements: {
-      experience: "",
-      gpa: "",
-      gpaValue: "",
-      languages: [],
-      frameworks: [],
-      tools: [],
-      concepts: [],
-    },
-    details: {
-      description: "",
-      positionType: "",
-      pay: "",
-      candidates: "",
-      academicReq: [],
-      coOp: "",
-    },
-    contact: {
-      name: "",
-      email: "",
-      linkedIn: "",
-      other: "",
-      applicationSteps: "",
-    },
-  });
+  const [jobData, setJobData] = useState(setJobState());
+  const [key] = useState(setKeys(jobData));
 
   // Grab all students from database
   const allStudents = props.students.studentList;
   const page1Object = props.matches.page1Object;
   const page2Object = props.matches.page2Object;
+
+  function setJobState(){
+    switch(props.jobs.selectedJobType) {
+      case "frontEnd":
+        return {...frontEndStudent, jobId: uuidv4(), author: user.uid};
+      case "backEnd":
+        return {...backEndStudent, jobId: uuidv4(), author: user.uid};
+      case "dataScience":
+        return {...dataScienceStudent, jobId: uuidv4(), author: user.uid};
+      case "fullStack":
+        return {...fullStackStudent, jobId: uuidv4(), author: user.uid};
+      default:
+        return {...blankStudent, jobId: uuidv4(), author: user.uid};
+      }
+  }
 
   function addNewJob(data, jobId, props) {
     props.actions.addJob({
@@ -176,38 +73,23 @@ function Create(props) {
   }
 
   function updateKeysList(event, key, label) {
-    if (chipsList.includes(key)) {
-      if (registeredKeys.hasOwnProperty(key)) {
-        if (event.target.checked && !registeredKeys[key].includes(label)) {
-          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
-        } else {
-          if (registeredKeys[key].includes(label)) {
-            registeredKeys[key] = registeredKeys[key].filter(
-              (obj) => obj !== label
-            );
-            props.actions.updateRegKeys(key, registeredKeys[key]);
-          }
-        }
-      } else {
-        props.actions.updateRegKeys(key, [label]);
-      }
-    }
+    keysListEffect(event, key, label, registeredKeys, props.actions.updateRegKeys);
   }
 
   function updateKeysText(v, data) {
-    if (chipsList.includes(v)) {
-      props.actions.updateRegKeys(v, data[v]);
-    }
+    keysTextEffect(v, data, props.actions.updateRegKeys);
   }
-
+  
   useEffect(() => {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
+    props.actions.addJobsData(jobData);
+    props.actions.setKey(key);
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions, props.students.studentList.length]);
+  }, [props.actions, props.students.studentList.length, jobData, key]);
 
   function updateStore() {
     // dispatch to matches reducer
@@ -374,6 +256,7 @@ function matchDispatchToProps(dispatch) {
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
         resetKey: resetKey,
+        setKey: setKey
       },
       dispatch
     ),

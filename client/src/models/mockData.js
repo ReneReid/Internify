@@ -18,14 +18,73 @@ const mockJobDetailData = {
   coopReq: ["Yes", "No"],
 };
 
+const currStep = {
+  1: "header",
+  2: "requirements",
+  3: "details",
+  4: "contact",
+};
+
+const chipsList = [
+  "title",
+  "position",
+  "location",
+  "experience",
+  "languages",
+  "frameworks",
+  "tools",
+  "concepts",
+  "pay",
+  "candidates",
+  "academicReq",
+  "positionType",
+];
+
 const mockTechStackData = {
-  languages: ["Java", "JavaScript", "C++", "C"],
-  frameworks: ["React", "Angular", "HTML", "CSS"],
-  workTools: ["Jira", "Asana", "Confluence", "Notion"],
+  languages: [
+    "C",
+    "C#",
+    "C++",
+    "CSS",
+    "HTML",
+    "Java",
+    "JavaScript",
+    "MATLAB",
+    "Python",
+    "R",
+    "SQL",
+    "TypeScript"
+  ],
+  frameworks: [
+    "AWS",
+    "Angular",
+    "Bootstrap",
+    "Docker",
+    "Google Cloud",
+    "Linux",
+    "MongoDB",
+    "Node",
+    "React",
+    "Ruby on Rails",
+    "Unix",
+  ],
+  workTools: [
+    "Azure",
+    "GitHub",
+    "Jira",
+    "Jupyter"
+  ],
   csConcepts: [
-    "Object Oriented Programming",
+    "Agile Development",
+    "Algorithms",
+    "Asynchronous Programming",
+    "Data Structures",
+    "Design Principles & Patterns",
     "Functional Programming",
+    "Object Oriented Programming",
+    "RESTify Services",
     "Recursion",
+    "Web APIs",
   ],
 };
 
@@ -139,4 +198,6 @@ export {
   mockTechStackData,
   mockJobPosting,
   mockProfileData,
+  chipsList,
+  currStep
 };
