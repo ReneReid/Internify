@@ -41,16 +41,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      }
-      setIsLoading(false);
-    });
+    const userLocal = JSON.parse(localStorage.getItem("user"));
+
+    if (userLocal) {
+      setUser(userLocal);
+    } else {
+      setUser(null);
+    }
+  }, []);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+    } else {
+      localStorage.removeItem("user");
+    }
   });
 
   let routes;
@@ -59,7 +68,7 @@ function App() {
       <Switch>
         <Route path="/home">
           <AuthNavbar />
-          <Home user={user}/>
+          <Home user={user} />
           <Footer />
         </Route>
         <Route path="/profile">
@@ -70,7 +79,7 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
         </Route>
         <Route path="/templates">
           <AuthNavbar />
@@ -84,7 +93,7 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View user={user} authenticated={true}/>
+          <View user={user} authenticated={true} />
           <Footer />
         </Route>
         <Route path="/edit/:slug">
@@ -102,7 +111,7 @@ function App() {
           <Login />
         </Route>
         <Route path="/view/:slug">
-          <View authenticated={false}/>
+          <View authenticated={false} />
           <Footer />
         </Route>
         <Route path="/">
