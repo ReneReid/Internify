@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../organisms/Navbar";
 import Hero from "../organisms/Hero";
 import Footer from "../organisms/Footer";
-import { Grid } from "@material-ui/core";
-import { ReactComponent as GradientCircles } from "../../assets/Landing/gradient_circles.svg";
+import CircleBlue from "../../assets/Landing/circle_blue.png";
+import CircleRed from "../../assets/Landing/circle_red.png";
 import { ReactComponent as JobTemplates } from "../../assets/Landing/job_templates.svg";
 import { ReactComponent as MatchesData } from "../../assets/Landing/matches_data.svg";
 import { ReactComponent as TableAsset } from "../../assets/Landing/table_asset.svg";
@@ -33,6 +33,29 @@ const Landing = () => {
             templates that fill in the important details to help you get
             started.
           </p>
+        </div>
+      </div>
+      <div className="landing_section_table">
+        <div className="landing_section_table_paragraph">
+          <h2>Share, collaborate, and learn from others.</h2>
+          <p>
+            Create job postings, share, and see how others are performing! Get
+            an insight on how well other people’s job postings are making
+            matches in our database.
+          </p>
+        </div>
+        <div className="landing_section_table_asset">
+          <img
+            src={CircleRed}
+            alt="red circle"
+            className="landing_section_table_asset_circle_red"
+          />
+          <img
+            src={CircleBlue}
+            alt="blue circle"
+            className="landing_section_table_asset_circle_blue"
+          />
+          <TableAsset className="landing_section_table_asset_table" />
         </div>
       </div>
       <Footer />
