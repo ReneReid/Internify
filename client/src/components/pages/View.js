@@ -122,7 +122,7 @@ const View = (props) => {
               </ul>
             </div>
             <div className="view_page_buttons_list">
-            <Link to={`/edit/${job.jobId}`}>
+            <Link to={`/edit/${job.jobId}`} style={{ textDecoration: 'none' }}>
               {(props.authenticated) && job.author === user.uid && (
                 <ButtonOutlined 
                 style={{ marginRight: "0.5em", marginBottom: "0.5em" }} 
