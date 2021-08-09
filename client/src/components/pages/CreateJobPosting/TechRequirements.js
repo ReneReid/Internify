@@ -31,7 +31,7 @@ const WorkingExperience = (props) => {
 
 const GradePoint = (props) => {
   const handleChange = props.handleChange;
-  const [value, setValue] = useState(props.jobData.requirements.gpaValue);
+  const [value, setValue] = useState(checkVal());
  
   const marks = [
     {
@@ -62,8 +62,13 @@ const GradePoint = (props) => {
 
   const gpaData = ["Required", "Optional"];
 
+  function checkVal() {
+    let gpaVal = props.jobData.requirements.gpaValue;
+    return gpaVal !== "" ? parseInt(gpaVal, 10) : 50;
+  }
+
   function updateSliderValue(e, v){
-    setValue(v);
+    setValue(parseInt(v, 10));
     handleChange({...props.jobData.requirements, gpaValue: v})
   }
 
