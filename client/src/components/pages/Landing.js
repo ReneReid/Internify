@@ -24,7 +24,17 @@ const Landing = () => {
         </div>
         <MatchesData className="landing_section_matches_asset" />
       </div>
-
+      <div className="landing_section_templates">
+        <JobTemplates className="landing_section_templates_asset" />
+        <div className="landing_section_templates_paragraph">
+          <h2>Select from prefilled templates.</h2>
+          <p>
+            Not sure how to get started on your job posting? We offer prefilled
+            templates that fill in the important details to help you get
+            started.
+          </p>
+        </div>
+      </div>
       <Footer />
     </div>
   );
