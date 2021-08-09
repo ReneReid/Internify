@@ -96,7 +96,7 @@
     max-width: 1270px;
     max-height: none;
     position: absolute;
-    transform: translateX(-45%);
+    transform: translate(-120%, -50%);
   }
 
   .landing_section_table {
@@ -111,14 +111,14 @@
     position: absolute;
     z-index: -1;
     right: 40%;
-    top: 10%;
+    top: 80%;
   }
 
   .landing_section_table_asset_circle_blue {
     position: absolute;
     z-index: -1;
     left: 60%;
-    bottom: 40%;
+    bottom: 0%;
   }
 
   .landing_section_table_asset_table {
@@ -126,7 +126,7 @@
     border-radius: 10px;
     position: absolute;
     right: 10%;
-    bottom: 30%;
+    bottom: 40%;
     max-width: 700px;
     max-height: none;
   }
@@ -140,4 +140,5 @@
 
 .landing_section_matches_asset {
   min-width: 384px;
+  transform: translateX(200%);
 }
