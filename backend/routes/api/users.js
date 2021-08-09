@@ -109,7 +109,7 @@ router.put("/:id", function (req, res, next) {
       if (jobPosting) {
         UserData.findOneAndUpdate(
           { authId: authId },
-          { $push: { jobPostings: jobPosting } },
+          { $addToSet: { jobPostings: jobPosting } },
           { useFindAndModify: false }
         )
           .then(() => res.status(200).json(user[0]))

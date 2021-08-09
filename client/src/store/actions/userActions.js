@@ -50,7 +50,7 @@ export const updateJobsOfUser = (data) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: UPDATE_JOBS_OF_USER,
-        payload: data.jobId,
+        payload: data,
       });
     })
     .catch((err) => {
