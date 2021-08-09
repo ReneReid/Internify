@@ -11,7 +11,6 @@ const LoginForm = (props) => {
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
   const handleGoogleLogin = () => {
-    console.log("continue with google");
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -33,8 +32,6 @@ const LoginForm = (props) => {
 
   const login = (event, email, password) => {
     event.preventDefault();
-    console.log("We are attempting to login a pre-existing user!");
-
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)

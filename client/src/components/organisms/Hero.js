@@ -12,11 +12,11 @@ const Hero = (props) => {
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
   const learnMore = () => {
-    console.log("learn more");
+    const element = document.getElementById("landing_section_matches");
+    element.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleGoogleLogin = () => {
-    console.log("continue with google");
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -48,8 +48,6 @@ const Hero = (props) => {
 
   const createWEmail = (event, email, password) => {
     event.preventDefault();
-    console.log("We are creating a new user, via email and password!");
-
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -90,8 +88,6 @@ const Hero = (props) => {
       setPassword(value);
     }
   };
-
-  
 
   return (
     <div className="hero">
@@ -152,7 +148,10 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addUser: addUser, getUser: getUser }, dispatch),
+    actions: bindActionCreators(
+      { addUser: addUser, getUser: getUser },
+      dispatch
+    ),
   };
 }
 
