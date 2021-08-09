@@ -17,7 +17,6 @@ const Hero = (props) => {
   };
 
   const handleGoogleLogin = () => {
-    console.log("continue with google");
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -49,8 +48,6 @@ const Hero = (props) => {
 
   const createWEmail = (event, email, password) => {
     event.preventDefault();
-    console.log("We are creating a new user, via email and password!");
-
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
