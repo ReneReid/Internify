@@ -1,3 +1,30 @@
-.landing_page {
-  overflow: hidden;
+
+.landing_section_matches {
+  margin: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing_section_matches_paragraph {
+  padding-bottom: 10%;
+}
+
+@media only screen and (min-width: 768px) {
+  .landing_page {
+    overflow: hidden;
+  }
+
+  .landing_section_matches {
+    flex-direction: row;
+    margin: 10% 15%;
+  }
+
+  .landing_section_matches_paragraph {
+    padding-right: 10%;
+  }
+}
+
+.landing_section_matches_asset {
+  min-width: 384px;
 }
