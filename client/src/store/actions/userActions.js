@@ -67,12 +67,14 @@ export const getUsers = (data) => (dispatch) => {
   });
 };
 
-export const getUser = (data) => (dispatch) => {
+export const getUser = (data, callJobs) => (dispatch) => {
   axios.get(`api/users/${data}`).then((res) => {
     dispatch({
       type: GET_USER,
       payload: res.data,
     });
-    dispatch(getJobs(res.data));
+    if(callJobs && res.data.jobPostings.length !== 0){
+      dispatch(getJobs(res.data));
+    }
   });
 };
