@@ -57,3 +57,8 @@ ul#profile_labels_list li {
 .profile_no_posting_message {
   margin-right: 4em;
 }
+
+.profile_left_posting_table{
+  max-height: 21em;
+  overflow-y: scroll;
+}

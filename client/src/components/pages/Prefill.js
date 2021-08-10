@@ -4,6 +4,9 @@ import { ButtonFilled } from "../atoms/index";
 import { ReactComponent as PrefillFilledIcon } from "../../assets/Prefill/prefill_icon.svg";
 import { ReactComponent as PrefillEmptyIcon } from "../../assets/Prefill/prefill_empty_icon.svg";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { setSelectedJob } from "../../store/actions/jobPostActions";
 import "./styles/Prefill.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,12 +20,10 @@ const useStyles = makeStyles((theme) => ({
     prefill_btn_right: {
       marginRight: "0.5em",
       marginTop: "-0.5em"
-    },
-    
-
+    }
   }));
 
-function Prefill() {
+function Prefill(props) {
     const classes = useStyles();
 
     return (
@@ -52,13 +53,17 @@ function Prefill() {
         spacing={7}
         >
           <Grid item>
-          <Link to="/create" style={{ textDecoration: "none" }}>
+          <Link to="/templates" style={{ textDecoration: "none" }}>
           <ButtonFilled className={classes.prefill_btn_left}>Preview Prefills</ButtonFilled>
           </Link>
           </Grid>
           <Grid item>
           <Link to="/create" style={{ textDecoration: "none" }}>
-          <ButtonFilled className={classes.prefill_btn_right}>Make New Posting</ButtonFilled>
+          <ButtonFilled 
+          className={classes.prefill_btn_right} 
+          onClick={() => props.actions.setSelectedJob("blank")}>
+            Make New Posting
+          </ButtonFilled>
           </Link>
           </Grid>
         </Grid>
@@ -66,5 +71,21 @@ function Prefill() {
     )
 }
 
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs,
+  };
+}
 
-  export default Prefill;
+function matchDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        setSelectedJob: setSelectedJob
+      },
+      dispatch
+    ),
+  };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Prefill);

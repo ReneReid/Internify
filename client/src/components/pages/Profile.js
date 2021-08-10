@@ -5,6 +5,7 @@ import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getUser } from "../../store/actions/userActions";
+import { getStudents } from "../../store/actions/studentActions";
 import {
   RoomOutlined,
   MailOutlineOutlined,
@@ -21,9 +22,24 @@ const Profile = (props) => {
   var labels = [`${props.users.user.jobPostings?.length} Postings`];
 
   useEffect(() => {
-    props.actions.getUser(props.user.uid);
-  }, [props.actions, props.user]);
+    props.actions.getUser(props.user.uid, true);
+    if(props.students.studentList.length === 0){
+      props.actions.getStudents();
+    }
+  }, [props.actions, props.user, props.students.studentList.length]);
 
+
+  function removeDuplicates(arr) {
+    let idSet = new Set();
+    let uniqArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (!idSet.has(arr[i].jobId)) {
+        idSet.add(arr[i].jobId);
+        uniqArr.push(arr[i]);
+      }
+    }
+    return uniqArr;
+  }
 
   return (
     <Grid
@@ -120,7 +136,7 @@ const Profile = (props) => {
                     <li key={label}>
                       <ChipBasic
                         icon={<CheckCircleOutline style={{ color: "white" }} />}
-                        label={label}
+                        label={`${removeDuplicates(props.jobs.currentListOfJobs).length} Postings`}
                       />
                     </li>
                   ))}
@@ -199,9 +215,9 @@ const Profile = (props) => {
                 {props.users.user.status ? (
                   <>
                     <h2>Status </h2>
-                    <li>
+                    <li key="Status">
                       <Star color="secondary" fontSize="inherit" />
-                      <b>{props.users.user.status}</b> {"  "}
+                      <b>{"  "}{props.users.user.status}</b>
                     </li>
                   </>
                 ) : null}
@@ -214,7 +230,7 @@ const Profile = (props) => {
             <h2>Postings</h2>
             <div className="profile_left_posting_table">
               {props.jobs.currentListOfJobs ? (
-                <TableBasic className="posting_table" data={props.jobs.currentListOfJobs} />
+                <TableBasic className="posting_table" data={removeDuplicates(props.jobs.currentListOfJobs)} />
               ) : (
                 <div className="profile_no_posting_message">
                   You don't have any job postings. Create one by clicking on the
@@ -234,14 +250,17 @@ const Profile = (props) => {
 function mapStateToProps(state) {
   return {
     users: state.users,
-    jobs: state.jobs
+    jobs: state.jobs,
+    students: state.students,
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
-      { getUser: getUser },
+      { getUser: getUser,
+        getStudents: getStudents,
+      },
       dispatch
     ),
   };

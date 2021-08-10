@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { CheckBox } from "../atoms";
 import RadioButtonsGroup from "./RadioButtonsGroup";
-import { TextField, FormHelperText } from "@material-ui/core";
+import { FormHelperText } from "@material-ui/core";
 
 function ApplicantDetails(props) {
   let jobData = props.jobData;
@@ -10,8 +10,10 @@ function ApplicantDetails(props) {
   const citizenship = props.citizenship;
   const academicReq = props.academicReq;
   const coopReq = props.coopReq;
+  const [checkedState, setCheckedState] = useState(false);
 
   const handleChange = (event, key, label) => {
+    setCheckedState(!checkedState);
     props.updateKeysList(event, key, label);
     if (event.target.checked) {
       jobData["academicReq"].push(event.target.name);
@@ -70,10 +72,9 @@ function ApplicantDetails(props) {
         <div className="job_details_radio_container">
           {academicReq.map((x) => {
             return (
-              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} />
+              <CheckBox key={x} name={x} label={x} onChange={(e) => handleChange(e, "academicReq", x)} checked={jobData.academicReq.includes(x) ? true : false}/>
             );
           })}
-          <TextField id="optional_academics" label="Other" variant="filled" />
         </div>
       </div>
       <FormHelperText>Required</FormHelperText>

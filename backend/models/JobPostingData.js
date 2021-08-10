@@ -6,8 +6,20 @@ const JobPostingSchema = new Schema({
   jobId: {
     type: String,
   },
+  profilePicture: {
+    type: String,
+  },
+  authorName: {
+    type: String,
+  },
+  author: {
+    type: String,
+  },
   matches: {
     type: Number,
+  },
+  students: {
+    type: [String],
   },
   dateCreated: {
     type: Date,
@@ -15,8 +27,8 @@ const JobPostingSchema = new Schema({
   dateUpdated: {
     type: Date,
   },
-  matches: {
-    type: Number,
+  notes: {
+    type: Object,
   },
   header: {
     title: {

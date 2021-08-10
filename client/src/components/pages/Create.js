@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import {
-  CreateJobHeader,
-  ContactDetails,
-  TechRequirements,
-  JobDetail,
-  Review,
-} from "./CreateJobPosting/index";
+import { CreateJobHeader, ContactDetails, TechRequirements, JobDetail, Review } from "./CreateJobPosting/index";
 import Feedback from "../organisms/Feedback";
 import { ButtonClear, ButtonFilled } from "../atoms/index";
 import RegisteredKeys from "../molecules/RegisteredKeys";
@@ -14,30 +7,18 @@ import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
-import { mockJobDetailData } from "../../models/mockData";
+import { mockJobDetailData, chipsList, mockTechStackData, currStep } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import {
-  addJobsData,
-  resetKey,
-  updateRegKeys,
-} from "../../store/actions/jobPostActions";
+import { addJobsData, resetKey, updateRegKeys, setKey } from "../../store/actions/jobPostActions";
+import { backEndStudent, frontEndStudent, dataScienceStudent, fullStackStudent, blankStudent } from "../../models/templateJobDataObjects";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "./styles/Create.css";
-
-const mockTechStackData = {
-  languages: ["Java", "JavaScript", "C++", "C"],
-  frameworks: ["React", "Angular", "HTML", "CSS"],
-  workTools: ["Jira", "Asana", "Confluence", "Notion"],
-  csConcepts: [
-    "Object Oriented Programming",
-    "Functional Programming",
-    "Recursion",
-  ],
-};
+import { createJobObject, checkIfEmpty } from "../../effects/filter.effects";
+import { keysListEffect, setKeys, keysTextEffect  }from "../../effects/keys.effects";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,217 +32,71 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const currStep = {
-  1: "header",
-  2: "requirements",
-  3: "details",
-  4: "contact",
-};
-
-const chipsList = [
-  "title",
-  "position",
-  "location",
-  "experience",
-  "languages",
-  "frameworks",
-  "tools",
-  "concepts",
-  "pay",
-  "candidates",
-  "academicReq",
-  "positionType",
-];
-
 function Create(props) {
   const classes = useStyles();
   const [currentStep, setCurrentStep] = useState(1);
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
-
-  const [jobData, setJobData] = useState({
-    jobId: uuidv4(),
-    dateCreated: "",
-    dateUpdated: "",
-    matches: 0,
-    header: {
-      title: "",
-      company: "",
-      location: "",
-      startDate: "",
-      position: [],
-      length: "",
-    },
-    requirements: {
-      experience: "",
-      gpa: "",
-      gpaValue: "",
-      languages: [],
-      frameworks: [],
-      tools: [],
-      concepts: [],
-    },
-    details: {
-      description: "",
-      positionType: "",
-      pay: "",
-      candidates: "",
-      academicReq: [],
-      coOp: "",
-    },
-    contact: {
-      name: "",
-      email: "",
-      linkedIn: "",
-      other: "",
-      applicationSteps: "",
-    },
-  });
   const user = firebase.auth().currentUser;
+  const [jobData, setJobData] = useState(setJobState());
+  const [key] = useState(setKeys(jobData));
 
   // Grab all students from database
-  const allStudents = useSelector((state) => state.students.studentList);
-  const page1Object = useSelector((state) => state.matches.page1Object);
-  const page2Object = useSelector((state) => state.matches.page2Object);
+  const allStudents = props.students.studentList;
+  const page1Object = props.matches.page1Object;
+  const page2Object = props.matches.page2Object;
 
-  function parseConcepts(concepts) {
-    let parsedConcepts = [];
-    for (let i = 0; i < concepts.length; i++) {
-      if (concepts[i] === "Object Oriented Programming") {
-        parsedConcepts.push("Object-Oriented Programming");
-      } else {
-        parsedConcepts.push(concepts[i]);
+  function setJobState(){
+    switch(props.jobs.selectedJobType) {
+      case "frontEnd":
+        return {...frontEndStudent, jobId: uuidv4(), author: user.uid};
+      case "backEnd":
+        return {...backEndStudent, jobId: uuidv4(), author: user.uid};
+      case "dataScience":
+        return {...dataScienceStudent, jobId: uuidv4(), author: user.uid};
+      case "fullStack":
+        return {...fullStackStudent, jobId: uuidv4(), author: user.uid};
+      default:
+        return {...blankStudent, jobId: uuidv4(), author: user.uid};
       }
-    }
-    return parsedConcepts;
   }
 
-  function parseExperience(experience) {
-    if (experience === "none") {
-      return 0;
-    } else {
-      const expArray = experience.split(" ");
-      return parseInt(expArray[1]);
-    }
-  }
-
-  function parseCitizenshipReqs(candidates) {
-    let reqs = [];
-    // anyone case
-    if (candidates === "Anyone") {
-      reqs = ["Anyone"]; // always return true in checker for this!
-      return reqs;
-    } else {
-      // logic-handling for other cases
-      const expArray = candidates.split(" ");
-      if (expArray.includes("Citizens") && expArray.includes("PR")) {
-        reqs = ["Citizen", "Permanent Residency"];
-        return reqs;
-      }
-      if (expArray.includes("Citizens")) {
-        reqs = ["Citizen"];
-        return reqs;
-      }
-      reqs = ["Citizen", "Permanent Residency", "International"];
-      return reqs;
-    }
-  }
-
-  function parseCoopReqs(coOp) {
-    if (coOp === "Yes") {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function parseLanguages(languages) {
-    let editedLanguages = [];
-    for (let i = 0; i < languages.length; i++) {
-      if (languages[i] === "C++") {
-        editedLanguages.push("Cpp");
-        editedLanguages.push("C++");
-      } else if (languages[i] === "Cpp") {
-        editedLanguages.push("C++");
-        editedLanguages.push("Cpp");
-      } else {
-        editedLanguages.push(languages[i]);
-      }
-    }
-    return editedLanguages;
-  }
-
-  function createJobObject(jobPosting) {
-    // parsing functions
-    const experience = parseExperience(jobPosting.requirements.experience);
-    const candidates = parseCitizenshipReqs(jobPosting.details.candidates);
-    const coOp = parseCoopReqs(jobPosting.details.coOp);
-    const concepts = parseConcepts(jobPosting.requirements.concepts);
-    const languages = parseLanguages(jobPosting.requirements.languages);
-
-    return {
-      jobId: jobPosting.jobId,
-      experience: experience,
-      gpa: jobPosting.requirements.gpa,
-      gpaValue: jobPosting.requirements.gpaValue,
-      languages: languages,
-      frameworks: jobPosting.requirements.frameworks,
-      tools: jobPosting.requirements.tools,
-      concepts: concepts,
-      candidates: candidates,
-      academicReq: jobPosting.details.academicReq,
-      coOp: coOp,
-    };
-  }
-  function checkIfEmpty(obj) {
-    const sub = jobData[obj];
-    for (var key in sub) {
-      const currVal = sub[key];
-      if (currVal === "" || currVal.length === 0) {
-        return true;
-      }
-    }
-    return false;
+  function addNewJob(data, jobId, props) {
+    props.actions.addJob({
+      ...data,
+      profilePicture: props.users.user.profilePicture,
+      authorName: props.users.user.name,
+      dateCreated: Date.now(),
+    });
+    props.actions.updateJobsOfUser({ authId: user.uid, jobPostings: [jobId] });
+    window.scrollTo(0, 0);
   }
 
   function updateKeysList(event, key, label) {
-    if (chipsList.includes(key)) {
-      if (registeredKeys.hasOwnProperty(key)) {
-        if (event.target.checked && !registeredKeys[key].includes(label)) {
-          props.actions.updateRegKeys(key, [...registeredKeys[key], label]);
-        } else {
-          if (registeredKeys[key].includes(label)) {
-            registeredKeys[key] = registeredKeys[key].filter(
-              (obj) => obj !== label
-            );
-            props.actions.updateRegKeys(key, registeredKeys[key]);
-          }
-        }
-      } else {
-        props.actions.updateRegKeys(key, [label]);
-      }
-    }
+    keysListEffect(event, key, label, registeredKeys, props.actions.updateRegKeys);
   }
 
   function updateKeysText(v, data) {
-    if (chipsList.includes(v)) {
-      props.actions.updateRegKeys(v, data[v]);
-    }
+    keysTextEffect(v, data, props.actions.updateRegKeys);
   }
-
+  
   useEffect(() => {
-    props.actions.getStudents();
+    if (props.students.studentList.length === 0) {
+      props.actions.getStudents();
+    }
+    props.actions.addJobsData(jobData);
+    props.actions.setKey(key);
     return () => {
       props.actions.resetKey();
     };
-  }, [props.actions]);
+  }, [props.actions, props.students.studentList.length, jobData, key]);
 
   function updateStore() {
     // dispatch to matches reducer
     window.scrollTo(0, 0);
     const curr = currStep[currentStep];
 
-    if (!checkIfEmpty(curr)) {
+    if (!checkIfEmpty(curr, jobData)) {
       setError(false);
 
       props.actions.addJobsData(jobData);
@@ -297,7 +132,7 @@ function Create(props) {
     } else {
       setError(true);
     }
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -328,6 +163,7 @@ function Create(props) {
             currentStep={currentStep}
             handleChange={setJobData}
             jobData={jobData}
+            title={"1. Create a Job Header"}
             keysList={chipsList}
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
@@ -359,7 +195,13 @@ function Create(props) {
             updateKeysList={updateKeysList}
             updateKeysText={updateKeysText}
           />
-          <Review currentStep={currentStep} jobData={jobData} user={user} />
+          <Review
+            currentStep={currentStep}
+            jobData={jobData}
+            user={user}
+            onSubmit={addNewJob}
+            buttonName={"Create"}
+          />
           {currentStep < 5 ? (
             <Container maxWidth="md">
               <ButtonFilled onClick={() => updateStore()}>
@@ -387,7 +229,7 @@ function Create(props) {
             </>
           ) : null}
           <h2 className="keys_title">Summary</h2>
-          <div className="reg_keys_container">
+          <div className="feedback_notes_container">
             <Feedback page={currentStep} />
           </div>
         </Grid>
@@ -400,6 +242,8 @@ function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     students: state.students,
+    matches: state.matches,
+    users: state.users,
   };
 }
 
@@ -412,6 +256,7 @@ function matchDispatchToProps(dispatch) {
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
         resetKey: resetKey,
+        setKey: setKey
       },
       dispatch
     ),

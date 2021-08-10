@@ -31,6 +31,8 @@ const WorkingExperience = (props) => {
 
 const GradePoint = (props) => {
   const handleChange = props.handleChange;
+  const [value, setValue] = useState(checkVal());
+ 
   const marks = [
     {
       value: 50,
@@ -60,6 +62,16 @@ const GradePoint = (props) => {
 
   const gpaData = ["Required", "Optional"];
 
+  function checkVal() {
+    let gpaVal = props.jobData.requirements.gpaValue;
+    return gpaVal !== "" ? parseInt(gpaVal, 10) : 50;
+  }
+
+  function updateSliderValue(e, v){
+    setValue(parseInt(v, 10));
+    handleChange({...props.jobData.requirements, gpaValue: v})
+  }
+
   return (
     <React.Fragment>
       <h3>GPA</h3>
@@ -76,14 +88,14 @@ const GradePoint = (props) => {
       </div>
       <div className="gpa_slider">
         <Slider
-          defaultValue={50}
           aria-labelledby="discrete-slider-always"
+          value={value}
           step={1}
           min={50}
           max={100}
           marks={marks}
           valueLabelDisplay="on"
-          onChange={(e, v) => handleChange({...props.jobData.requirements, gpaValue: v})}
+          onChange={(e, v) => updateSliderValue(e, v)}
         />
       </div>
       <FormHelperText>Required</FormHelperText>
@@ -93,20 +105,13 @@ const GradePoint = (props) => {
 
 function TechRequirements(props) {
   const data = props.data;
+  const jobData = props.jobData;
   const keysList = props.keysList;
 
-  const [requirements, setRequirements] = useState({
-    experience: "",
-    gpa: "",
-    gpaValue: "",
-    languages: [],
-    frameworks: [],
-    tools: [],
-    concepts: [],
-  });
+  const [requirements, setRequirements] = useState(jobData.requirements);
 
   useEffect(() => {
-    props.jobData.requirements = requirements;
+    jobData.requirements = requirements;
   });
 
   if (props.currentStep !== 2) {
@@ -124,11 +129,11 @@ function TechRequirements(props) {
             updateKeysList={props.updateKeysList}
             updateKeysText={props.updateKeysText} />
           <GradePoint 
-          handleChange={setRequirements} 
-          jobData={props.jobData}
-          keysList={keysList} 
-          updateKeysList={props.updateKeysList}
-          updateKeysText={props.updateKeysText} />
+            handleChange={setRequirements} 
+            jobData={props.jobData}
+            keysList={keysList} 
+            updateKeysList={props.updateKeysList}
+            updateKeysText={props.updateKeysText} />
           <TechStack
             languages={data.languages}
             frameworks={data.frameworks}
@@ -138,7 +143,8 @@ function TechRequirements(props) {
             jobData={requirements}
             keysList={keysList}
             updateKeysList={props.updateKeysList}
-            updateKeysText={props.updateKeysText} />
+            updateKeysText={props.updateKeysText}
+            />
         </Container>
       </div>
     );

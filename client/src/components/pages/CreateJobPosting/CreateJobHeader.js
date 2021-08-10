@@ -10,14 +10,7 @@ import "./styles/CreateJobHeader.css";
 
 function CreateJobHeader(props) {
   const keysList = props.keysList;
-  const [header, setHeader] = useState({
-    title: "",
-    company: "",
-    location: "",
-    startDate: "",
-    position: [],
-    length: "",
-  });
+  const [header, setHeader] = useState(props.jobData.header);
 
   useEffect(() => {
     props.jobData.header = header;
@@ -34,7 +27,7 @@ function CreateJobHeader(props) {
         >
           <Stepper stepNumber={0} />
           <div className="create_job_header_container">
-            <h1>1. Create a Job Header</h1>
+            <h1>{props.title}</h1>
             <InputFormJobHeader 
             handleChange={setHeader} 
             jobData={header}

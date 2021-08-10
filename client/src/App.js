@@ -6,9 +6,12 @@ import Landing from "./components/pages/Landing";
 import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Profile from "./components/pages/Profile";
+import Edit from "./components/pages/Edit";
 import Footer from "./components/organisms/Footer";
 import View from "./components/pages/View";
+import Home from "./components/pages/Home";
 import Prefill from "./components/pages/Prefill";
+import Templates from "./components/pages/Templates";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -38,22 +41,36 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      }
-      setIsLoading(false);
-    });
+    const userLocal = JSON.parse(localStorage.getItem("user"));
+
+    if (userLocal) {
+      setUser(userLocal);
+    } else {
+      setUser(null);
+    }
+  }, []);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+    } else {
+      localStorage.removeItem("user");
+    }
   });
 
   let routes;
   if (user) {
     routes = (
       <Switch>
+        <Route path="/home">
+          <AuthNavbar />
+          <Home user={user} />
+          <Footer />
+        </Route>
         <Route path="/profile">
           <AuthNavbar />
           <Profile user={user} />
@@ -62,7 +79,12 @@ function App() {
         <Route path="/selection">
           <AuthNavbar />
           <Prefill />
-          <Footer absolute={true}/>
+          <Footer absolute={true} />
+        </Route>
+        <Route path="/templates">
+          <AuthNavbar />
+          <Templates />
+          <Footer />
         </Route>
         <Route path="/create">
           <AuthNavbar />
@@ -71,10 +93,15 @@ function App() {
         </Route>
         <Route path="/view/:slug">
           <AuthNavbar />
-          <View />
+          <View user={user} authenticated={true} />
           <Footer />
         </Route>
-        <Redirect to="/profile" />
+        <Route path="/edit/:slug">
+          <AuthNavbar />
+          <Edit />
+          <Footer />
+        </Route>
+        <Redirect to="/home" />
       </Switch>
     );
   } else {
@@ -82,6 +109,10 @@ function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/view/:slug">
+          <View authenticated={false} />
+          <Footer />
         </Route>
         <Route path="/">
           <Landing />
