@@ -111,6 +111,6 @@ Many of our initial stretch goals featured a second user type that allowed users
   - Engineered CI pipeline and Heroku deployment
   - Tech lead and Product Management on story priority and planning
 - ##### [Tommy Tho](https://github.com/tommytwm)
-  - Primary UI/UX designer and front-end development
+  - Designed UI/UX pages and components on Figma and set up front-end React app with Atomic Design methodology
   - Team lead, tech lead, and product management on story priority and planning, as well as setting style conventions for project
-  - Implemented back-end routes and endpoints
+  - Developed atomic components and inital UI state management as well as back-end repository read/write database management
