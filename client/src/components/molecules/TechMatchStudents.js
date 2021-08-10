@@ -1,5 +1,5 @@
 import React from "react";
-import { ChipNote } from "../../atoms/Chips";
+import { ChipNote } from "../atoms/Chips";
 import "./styles/Feedback.css";
 
 const TechMatchStudents = ({ data, display }) => {
