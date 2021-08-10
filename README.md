@@ -93,3 +93,23 @@ We used [Heroku](https://heroku.com/) to serve our app.
 
 ### Above and Beyond Functionality
 Our [competitive market research](https://docs.google.com/spreadsheets/d/1RwHaJzBzlbhb0f8zTX8MSj9uOg5pcDzJ_NcD-DM48xI/edit?usp=sharing) findings have suggested that current tools that are offered today accomplish two functions: offer a platform for employers to engage with job seekers and provide a platform for job seekers to search for jobs. However, in our research, we have found little evidence to suggest that the tools assist in performing those functions well. Inspired by this gap, we sent out a [survey](https://docs.google.com/forms/d/1ov32kG-xpftnhp7Dh6pAyf6WEnococCOzd0Jgdo5FA8/edit?usp=drive_web) and built a matching algorithm based on our survey results for our job creation tool to help assist those who make the jobs understand the kinds of candidates they would be looking for. This in turn, helps recruiters justify the expectations they have and the decisions they make when creating such job postings so that it attracts optimal job seekers.
+
+### Next Steps
+
+### List of Contributions
+- ##### [Aleem Tariq](https://github.com/aleemer)
+  - Developed and designed matching algorithm and model schemas 
+  - Developed survey and recorded participation results
+  - Implemented react redux reducers and front-end pages
+- ##### [Rene Reid](https://github.com/ReneReid)
+  - Developed and designed matching algorithm and model schemas
+  - Collected and compiled survey results to generate student models based on survey data
+  - Implemented react redux reducers and front-end pages
+- ##### [Jude Shamsi](https://github.com/JudeShamsi)
+  - Constructed and set up back-end service and routes
+  - Engineered CI pipeline and Heroku deployment
+  - Tech lead and Product Management on story priority and planning
+- ##### [Tommy Tho](https://github.com/tommytwm)
+  - Primary UI/UX designer and front-end developer
+  - Team lead, tech lead, and product management on story priority and planning, as well as setting style conventions for project
+  - Implemented back-end routes and endpoints
