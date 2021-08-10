@@ -3,6 +3,12 @@ function parseConcepts(concepts) {
   for (let i = 0; i < concepts.length; i++) {
     if (concepts[i] === "Object Oriented Programming") {
       parsedConcepts.push("Object-Oriented Programming");
+    } else if (concepts[i] === "Asynchronous Programming") {
+      parsedConcepts.push("Asynchronous programming");
+    } else if (concepts[i] === "RESTify Services") {
+      parsedConcepts.push("RESTify services");
+    } else if (concepts[i] === "Web APIs") {
+      parsedConcepts.push("web APIs");
     } else {
       parsedConcepts.push(concepts[i]);
     }
