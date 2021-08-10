@@ -77,14 +77,13 @@ const mockTechStackData = {
   csConcepts: [
     "Agile Development",
     "Algorithms",
-    "Asynchronous Programming",
+    "Asynchronous programming",
     "Data Structures",
-    "Design Principles & Patterns",
     "Functional Programming",
     "Object Oriented Programming",
-    "RESTify Services",
+    "RESTify services",
     "Recursion",
-    "Web APIs",
+    "web APIs",
   ],
 };
 
