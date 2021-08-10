@@ -23,7 +23,7 @@
 
 ### Project Description
 
-Internify is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters reach their ideal candidate.
+[Internify](https://internify-cpsc455.herokuapp.com/) is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters reach their ideal candidate.
 
 ### Minimal Requirements
 
@@ -111,6 +111,6 @@ Many of our initial stretch goals featured a second user type that allowed users
   - Engineered CI pipeline and Heroku deployment
   - Tech lead and Product Management on story priority and planning
 - ##### [Tommy Tho](https://github.com/tommytwm)
-  - Designed UI/UX pages and components on Figma and set up front-end React app with Atomic Design methodology
+  - Designed UI/UX pages and components on [Figma](https://www.figma.com/file/OSYY2hPzDL2qstv9ZVEAag/CPSC-455-Mockups?node-id=159%3A3) and set up front-end React app with Atomic Design methodology
   - Team lead, tech lead, and product management on story priority and planning, as well as setting style conventions for project
   - Developed atomic components and inital UI state management as well as back-end repository read/write database management
