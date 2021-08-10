@@ -82,7 +82,7 @@ const View = (props) => {
       {/** Left side button */}
       <Grid item xs={2}>
         <Grid container justifyContent="flex-end">
-          <Link to="/profile">
+          <Link to="/profile" style={{ textDecoration: "none" }}>
             <ButtonClear startIcon={<ChevronLeft />}>Back</ButtonClear>
           </Link>
         </Grid>
