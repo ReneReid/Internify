@@ -53,7 +53,7 @@ const mockTechStackData = {
     "Python",
     "R",
     "SQL",
-    "TypeScript"
+    "TypeScript",
   ],
   frameworks: [
     "AWS",
@@ -68,22 +68,15 @@ const mockTechStackData = {
     "Ruby on Rails",
     "Unix",
   ],
-  workTools: [
-    "Azure",
-    "GitHub",
-    "Jira",
-    "Jupyter"
-  ],
+  workTools: ["Azure", "GitHub", "Jira", "Jupyter"],
   csConcepts: [
     "Agile Development",
     "Algorithms",
     "Asynchronous Programming",
     "Data Structures",
-    "Design Principles & Patterns",
     "Functional Programming",
     "Object Oriented Programming",
     "RESTify Services",
-    "Recursion",
     "Web APIs",
   ],
 };
@@ -199,5 +192,5 @@ export {
   mockJobPosting,
   mockProfileData,
   chipsList,
-  currStep
+  currStep,
 };

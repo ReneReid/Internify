@@ -1,24 +1,24 @@
 import React from "react";
-import { ChipNote } from "../../atoms/Chips";
+import { ChipNote } from "../atoms/Chips";
 import "./styles/Feedback.css";
 
-const TechMatchStudents = ({ data, display }) => {
+const FinalReqStudents = ({ data, display }) => {
   if (display) {
     const keyArray = Object.keys(data);
     return (
-      <div className="feedback_page3_inner">
+      <div className="feedback_page4_inner">
         <ul className="feedback_list">
           {keyArray.map((x) => {
-            if (x === "toolsMatches") {
-              const msg = `${data[x]} students also meet work tools requirements`;
+            if (x === "academicReq") {
+              const msg = `${data[x]} students also meet academic requirements`;
               return (
                 <li key={x}>
                   <ChipNote label={msg} />
                 </li>
               );
-            } else if (x === "page2Students") {
-              return null;
+            } else if (x === "page3Students") {
               // list refers to array of students within object
+              return null;
             } else {
               const msg = `${data[x]} students also meet ${x} requirements`;
               return (
@@ -36,4 +36,4 @@ const TechMatchStudents = ({ data, display }) => {
   }
 };
 
-export default TechMatchStudents;
+export default FinalReqStudents;

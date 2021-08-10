@@ -229,7 +229,7 @@ const Profile = (props) => {
           <Grid item>
             <h2>Postings</h2>
             <div className="profile_left_posting_table">
-              {props.jobs.currentListOfJobs ? (
+              {props.jobs.currentListOfJobs?.length > 0 ? (
                 <TableBasic className="posting_table" data={removeDuplicates(props.jobs.currentListOfJobs)} />
               ) : (
                 <div className="profile_no_posting_message">
