@@ -106,7 +106,8 @@ Many of our initial stretch goals featured a second user type that allowed users
   - Collected and compiled survey results to generate student models based on survey data
   - Implemented react redux reducers and front-end pages
 - ##### [Jude Shamsi](https://github.com/JudeShamsi)
-  - Constructed redux store and set up back-end service and routes and front-end development
+  - Developed skeleton of full-stack app by setting up Redux.js, Mongoose ODM, MongoDB Atlas connection, Express.js and Axios to connect front-end to back-end services
+  - Implemented RESTful APIs, developed front-end pages, and refactored code to utilize Redux.js state management
   - Engineered CI pipeline and Heroku deployment
   - Tech lead and Product Management on story priority and planning
 - ##### [Tommy Tho](https://github.com/tommytwm)
