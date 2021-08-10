@@ -22,7 +22,7 @@ const Profile = (props) => {
   var labels = [`${props.users.user.jobPostings?.length} Postings`];
 
   useEffect(() => {
-    props.actions.getUser(props.user.uid);
+    props.actions.getUser(props.user.uid, true);
     if(props.students.studentList.length === 0){
       props.actions.getStudents();
     }
