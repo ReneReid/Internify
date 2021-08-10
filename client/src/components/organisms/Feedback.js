@@ -4,9 +4,9 @@ import { ChipEye } from "../atoms/Chips";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import SeekingStudents from "../molecules/pages/SeekingStudents";
-import TechMatchStudents from "../molecules/pages/TechMatchStudents";
-import FinalReqStudents from "../molecules/pages/FinalReqStudents";
+import SeekingStudents from "../molecules/SeekingStudents";
+import TechMatchStudents from "../molecules/TechMatchStudents";
+import FinalReqStudents from "../molecules/FinalReqStudents";
 import "./styles/Feedback.css";
 
 const Feedback = ({ page }) => {
