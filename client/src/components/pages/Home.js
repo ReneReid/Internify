@@ -20,7 +20,7 @@ const Home = (props) => {
 
   return (
     <div className="home_page">
-      <Banner className="home_banner"/>
+      <Banner className="home_banner" />
       <Grid container spacing={2} direction="column">
         <Grid container alignItems="center" className="home_header">
           <Grid item className="home_header_picture">
@@ -45,12 +45,14 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid item style={{ paddingLeft: "15%"}}>
-            <TableUsers data={props.jobs.allJobPostings} />
+        <Grid item style={{ paddingLeft: "15%" }}>
+          <TableUsers data={props.jobs.allJobPostings} />
         </Grid>
       </Grid>
       <CreateJobButton />
-      <MatchesLegend />
+      <div className="home_legend">
+        <MatchesLegend />
+      </div>
     </div>
   );
 };
