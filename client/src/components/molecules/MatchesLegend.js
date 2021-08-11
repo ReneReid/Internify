@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   row: {
     borderBottom: "none",
     padding: "6px 0 0 0 ",
-  }
+  },
 });
 
 const MatchesLegend = () => {
@@ -29,21 +29,25 @@ const MatchesLegend = () => {
   return (
     <Table className={classes.root} aria-label="simple table legend">
       <TableHead>
-        <TableCell className={classes.head} align="center">Matches</TableCell>
+        <TableRow>
+          <TableCell className={classes.head} align="center">
+            Matches
+          </TableCell>
+        </TableRow>
       </TableHead>
       <TableBody className={classes.body} align="center">
         <TableRow key="blue-label">
           <TableCell className={classes.row} align="center">
-          <ChipBlue label={"> 75"} />
+            <ChipBlue label={"> 75"} />
           </TableCell>
         </TableRow>
-        <TableRow  key="yellow-label">
+        <TableRow key="yellow-label">
           <TableCell className={classes.row} align="center">
             <ChipYellow label={"> 25"} />
           </TableCell>
         </TableRow>
         <TableRow key="red-label">
-          <TableCell  className={classes.row} align="center">
+          <TableCell className={classes.row} align="center">
             <ChipRed label={"< 25"} />
           </TableCell>
         </TableRow>
