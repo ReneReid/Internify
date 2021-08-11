@@ -6,13 +6,11 @@ import RegisteredKeys from "../molecules/RegisteredKeys";
 import { Container, makeStyles, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { ChevronLeft } from "@material-ui/icons";
-import { v4 as uuidv4 } from "uuid";
 import { mockJobDetailData, chipsList, mockTechStackData, currStep } from "../../models/mockData";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getStudents } from "../../store/actions/studentActions";
-import { addJobsData, resetKey, updateRegKeys, setKey } from "../../store/actions/jobPostActions";
-import { backEndStudent, frontEndStudent, dataScienceStudent, fullStackStudent, blankStudent } from "../../models/templateJobDataObjects";
+import { addJobsData, resetKey, updateRegKeys, setKey, resetJob } from "../../store/actions/jobPostActions";
 import { processMatches } from "../../store/actions/matchesActions";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -38,28 +36,13 @@ function Create(props) {
   const [error, setError] = useState(false);
   const registeredKeys = props.jobs.registeredKeys;
   const user = firebase.auth().currentUser;
-  const [jobData, setJobData] = useState(setJobState());
+  const [jobData, setJobData] = useState(props.jobs.currentPosting);
   const [key] = useState(setKeys(jobData));
-
+  
   // Grab all students from database
   const allStudents = props.students.studentList;
   const page1Object = props.matches.page1Object;
   const page2Object = props.matches.page2Object;
-
-  function setJobState(){
-    switch(props.jobs.selectedJobType) {
-      case "frontEnd":
-        return {...frontEndStudent, jobId: uuidv4(), author: user.uid};
-      case "backEnd":
-        return {...backEndStudent, jobId: uuidv4(), author: user.uid};
-      case "dataScience":
-        return {...dataScienceStudent, jobId: uuidv4(), author: user.uid};
-      case "fullStack":
-        return {...fullStackStudent, jobId: uuidv4(), author: user.uid};
-      default:
-        return {...blankStudent, jobId: uuidv4(), author: user.uid};
-      }
-  }
 
   function addNewJob(data, jobId, props) {
     props.actions.addJob({
@@ -84,10 +67,10 @@ function Create(props) {
     if (props.students.studentList.length === 0) {
       props.actions.getStudents();
     }
-    props.actions.addJobsData(jobData);
     props.actions.setKey(key);
     return () => {
       props.actions.resetKey();
+      props.actions.resetJob();
     };
   }, [props.actions, props.students.studentList.length, jobData, key]);
 
@@ -256,7 +239,8 @@ function matchDispatchToProps(dispatch) {
         getStudents: getStudents,
         updateRegKeys: updateRegKeys,
         resetKey: resetKey,
-        setKey: setKey
+        setKey: setKey,
+        resetJob: resetJob
       },
       dispatch
     ),
