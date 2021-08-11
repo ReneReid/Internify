@@ -13,7 +13,9 @@ function CreateJobHeader(props) {
   const [header, setHeader] = useState(props.jobData.header);
 
   useEffect(() => {
-    props.jobData.header = header;
+    return () => {
+      props.jobData.header = header;
+    };
   });
 
   if (props.currentStep !== 1) {
