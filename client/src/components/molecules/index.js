@@ -12,6 +12,7 @@ import CreateJobButton from "./CreateJobButton";
 import ViewPosting from "./ViewPosting";
 import ViewFeedback from "./ViewFeedback";
 import TemplatePosting from "./TemplatePosting";
+import MatchesLegend from "./MatchesLegend";
 
 export {
   CreateJobButton,
@@ -20,6 +21,7 @@ export {
   InputFormJobHeader,
   LengthSubHeader,
   RadioButtonsGroup,
+  MatchesLegend,
   JobPosting,
   Stepper,
   TableBasic,

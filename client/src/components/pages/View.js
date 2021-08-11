@@ -159,7 +159,8 @@ const View = (props) => {
               )}
             </div>
             <div className="view_page_feedback">
-              <h2> 1000 total students </h2>
+              <h2>Summary</h2>
+              <h4> 1000 total students </h4>
               <ViewFeedback data={job.notes} display={display} />
               {display ? (
                 <ChipEye

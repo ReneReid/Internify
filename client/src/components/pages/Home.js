@@ -5,7 +5,7 @@ import { Grid } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import { getUser } from "../../store/actions/userActions";
 import { getAllJobs } from "../../store/actions/jobPostActions";
-import { TableUsers, CreateJobButton } from "../molecules/index";
+import { TableUsers, CreateJobButton, MatchesLegend } from "../molecules/index";
 import { ReactComponent as Banner } from "../../assets/Home/home_asset.svg";
 
 import "./styles/Home.css";
@@ -20,7 +20,7 @@ const Home = (props) => {
 
   return (
     <div className="home_page">
-      <Banner className="home_banner"/>
+      <Banner className="home_banner" />
       <Grid container spacing={2} direction="column">
         <Grid container alignItems="center" className="home_header">
           <Grid item className="home_header_picture">
@@ -45,11 +45,14 @@ const Home = (props) => {
           </Grid>
         </Grid>
 
-        <Grid item style={{ paddingLeft: "15%"}}>
-            <TableUsers data={props.jobs.allJobPostings} />
+        <Grid item style={{ paddingLeft: "15%" }}>
+          <TableUsers data={props.jobs.allJobPostings} />
         </Grid>
       </Grid>
       <CreateJobButton />
+      <div className="home_legend">
+        <MatchesLegend />
+      </div>
     </div>
   );
 };
