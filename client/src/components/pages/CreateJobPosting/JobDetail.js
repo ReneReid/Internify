@@ -11,7 +11,9 @@ function JobDetail(props) {
   const [details, setDetails] = useState(jobData.details);
 
   useEffect(() => {
-    jobData.details = details;
+    return () => {
+      jobData.details = details;
+    };
   });
 
   return props.currentStep === 3 ? (

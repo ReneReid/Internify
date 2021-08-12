@@ -111,7 +111,9 @@ function TechRequirements(props) {
   const [requirements, setRequirements] = useState(jobData.requirements);
 
   useEffect(() => {
-    jobData.requirements = requirements;
+    return () => {
+      jobData.requirements = requirements;
+    };
   });
 
   if (props.currentStep !== 2) {

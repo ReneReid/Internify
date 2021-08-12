@@ -6,7 +6,9 @@ const ContactDetails = (props) => {
   const [contact, setContact] = useState(props.jobData.contact);
 
   useEffect(() => {
-    props.jobData.contact = contact;
+    return () => {
+      props.jobData.contact = contact;
+    };
   });
 
   return props.currentStep === 4 ? (

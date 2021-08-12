@@ -5,11 +5,11 @@ import {
   UPDATE_KEYS,
   RESET_KEY,
   SET_JOB_TYPE,
-  SET_KEY
+  SET_KEY,
+  RESET_JOB
 } from "../actions/types/jobPostTypes";
 
 const initialState = {
-  selectedJobType: "blank",
   registeredKeys: {},
   currentPosting: {},
   currentListOfJobs: [],
@@ -36,6 +36,11 @@ export default function JobPostingReducer(state = initialState, action) {
         ...state,
         registeredKeys: {},
       };
+    case RESET_JOB:
+      return {
+        ...state,
+        currentPosting: {},
+      };
     case SET_KEY:
       return {
         ...state,
@@ -54,7 +59,7 @@ export default function JobPostingReducer(state = initialState, action) {
     case SET_JOB_TYPE:
       return {
         ...state, 
-        selectedJobType: action.payload
+        currentPosting: action.payload
       }
     default:
       return state;

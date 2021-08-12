@@ -6,7 +6,9 @@ import { ButtonClear } from "../atoms";
 import { TemplatePosting } from "../molecules/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setSelectedJob } from "../../store/actions/jobPostActions";
+import { setCurrentJob } from "../../store/actions/jobPostActions";
+import firebase from "firebase/app";
+import "firebase/auth";
 import {
   backEndStudent,
   frontEndStudent,
@@ -16,6 +18,8 @@ import {
 import "./styles/Templates.css";
 
 const Templates = (props) => {
+  const user = firebase.auth().currentUser;
+
   return (
     <Grid>
       <Grid item xs={2}>
@@ -41,22 +45,22 @@ const Templates = (props) => {
         <Grid item xs={10}>
           <Grid container direction="row">
             <div className="templates_container">
-            <div className="template" onClick={() => props.actions.setSelectedJob("backEnd")}>
+            <div className="template" onClick={() => props.actions.setCurrentJob("backEnd", user.uid)}>
             <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
               <TemplatePosting data={backEndStudent} hide={true} />
             </Link>
             </div>
-            <div className="template" onClick={() => props.actions.setSelectedJob("frontEnd")}>
+            <div className="template" onClick={() => props.actions.setCurrentJob("frontEnd", user.uid)}>
             <Link to="/create" style={{ textDecoration: 'none', color: "black"}}>
               <TemplatePosting data={frontEndStudent} hide={true} />
             </Link>
             </div>
-            <div className="template" onClick={() => props.actions.setSelectedJob("dataScience")}>
+            <div className="template" onClick={() => props.actions.setCurrentJob("dataScience", user.uid)}>
             <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
               <TemplatePosting data={dataScienceStudent} hide={true} />
             </Link>
             </div>
-            <div className="template" onClick={() => props.actions.setSelectedJob("fullStack")}>
+            <div className="template" onClick={() => props.actions.setCurrentJob("fullStack", user.uid)}>
             <Link to="/create" style={{ textDecoration: 'none', color: "black" }}>
               <TemplatePosting data={fullStackStudent} hide={true} />
             </Link>
@@ -79,7 +83,7 @@ function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
-        setSelectedJob: setSelectedJob
+        setCurrentJob: setCurrentJob
       },
       dispatch
     ),
