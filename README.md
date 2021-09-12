@@ -2,9 +2,30 @@
 
 https://internify-cpsc455.herokuapp.com/
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Internify — A CPSC 455 Project](#internify-a-cpsc-455-project)
+    - [Project Description](#project-description)
+    - [Minimal Requirements](#minimal-requirements)
+    - [Standard Requirements](#standard-requirements)
+    - [Stretch Requirements](#stretch-requirements)
+    - [Technologies Used](#technologies-used)
+      - [Unit 1 - HTML, CSS, and JS](#unit-1-html-css-and-js)
+      - [Unit 2 - React](#unit-2-react)
+      - [Unit 3 - Node and Express](#unit-3-node-and-express)
+      - [Unit 4 - NoSQL with MongoDB](#unit-4-nosql-with-mongodb)
+      - [Unit 5 - Release Engineering (Continuous Integration)](#unit-5-release-engineering-continuous-integration)
+    - [Above and Beyond Functionality](#above-and-beyond-functionality)
+    - [Next Steps](#next-steps)
+    - [List of Contributions](#list-of-contributions)
+
+<!-- /code_chunk_output -->
+
 ### Project Description
 
-Internify is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters reach their ideal candidate.
+[Internify](https://internify-cpsc455.herokuapp.com/) is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters reach their ideal candidate.
 
 ### List of Contributions
 - ##### [Aleem Tariq](https://github.com/aleemer)
@@ -47,4 +68,5 @@ We used [Heroku](https://heroku.com/) to serve our app so that we won't have to 
 Our [competitive market research](https://docs.google.com/spreadsheets/d/1RwHaJzBzlbhb0f8zTX8MSj9uOg5pcDzJ_NcD-DM48xI/edit?usp=sharing) findings have suggested that current tools that are offered today accomplish two functions: offer a platform for employers to engage with job seekers and provide a platform for job seekers to search for jobs. However, in our research, we have found little evidence to suggest that the tools assist in performing those functions well. Inspired by this gap, we sent out a [survey](https://docs.google.com/forms/d/1ov32kG-xpftnhp7Dh6pAyf6WEnococCOzd0Jgdo5FA8/edit?usp=drive_web) and built a matching algorithm based on our survey results for our job creation tool to help assist those who make the jobs understand the kinds of candidates they would be looking for. This in turn, helps recruiters justify the expectations they have and the decisions they make when creating such job postings so that it attracts optimal job seekers.
 
 ### Next Steps
+
 Moving forward we wish to integrate a second user type that allowes applicants to create an account, search and apply for jobs that recruiters have posted on our platform. We would also like to develop a dashboard showing graphical models of how well a user's job postings are performing on our site when compared to others. In the future, we would introduce these features so that the app could be as, if not, more informative, enriching, and diverse than competitors in the market today.

@@ -24,7 +24,6 @@ router.get("/:jobId", function (req, res, next) {
 //@desc     Insert a particular match
 //@access   Public
 router.post("/", function (req, res, next) {
-  console.log("POST request received.");
   var newMatch = new MatchesData({
     jobId: req.body.jobId,
     matches: req.body.matches,

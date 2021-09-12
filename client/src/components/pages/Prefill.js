@@ -6,7 +6,9 @@ import { ReactComponent as PrefillEmptyIcon } from "../../assets/Prefill/prefill
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setSelectedJob } from "../../store/actions/jobPostActions";
+import { setCurrentJob } from "../../store/actions/jobPostActions";
+import firebase from "firebase/app";
+import "firebase/auth";
 import "./styles/Prefill.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Prefill(props) {
     const classes = useStyles();
+    const user = firebase.auth().currentUser;
 
     return (
         <div className={classes.root}>
@@ -61,7 +64,7 @@ function Prefill(props) {
           <Link to="/create" style={{ textDecoration: "none" }}>
           <ButtonFilled 
           className={classes.prefill_btn_right} 
-          onClick={() => props.actions.setSelectedJob("blank")}>
+          onClick={() => props.actions.setCurrentJob("blank", user.uid)}>
             Make New Posting
           </ButtonFilled>
           </Link>
@@ -81,7 +84,7 @@ function matchDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(
       {
-        setSelectedJob: setSelectedJob
+        setCurrentJob: setCurrentJob
       },
       dispatch
     ),

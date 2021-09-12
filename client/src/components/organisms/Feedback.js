@@ -4,9 +4,9 @@ import { ChipEye } from "../atoms/Chips";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import SeekingStudents from "../molecules/pages/SeekingStudents";
-import TechMatchStudents from "../molecules/pages/TechMatchStudents";
-import FinalReqStudents from "../molecules/pages/FinalReqStudents";
+import SeekingStudents from "../molecules/SeekingStudents";
+import TechMatchStudents from "../molecules/TechMatchStudents";
+import FinalReqStudents from "../molecules/FinalReqStudents";
 import "./styles/Feedback.css";
 
 const Feedback = ({ page }) => {
@@ -19,14 +19,14 @@ const Feedback = ({ page }) => {
   if (page === 1) {
     return (
       <div className="feedback_outer">
-        <h3>{allStudents.length} total students</h3>
+        <h4>{allStudents.length} total students</h4>
       </div>
     );
   } else if (page === 2) {
     const msg = `${pageObjects.page1Object.page1Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h3> {allStudents.length} total students </h3>
+        <h4> {allStudents.length} total students </h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         {display ? (
           <ChipEye
@@ -63,7 +63,7 @@ const Feedback = ({ page }) => {
     const msg = `${pageObjects.page2Object.page2Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h3> {allStudents.length} total students </h3>
+        <h4> {allStudents.length} total students </h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         {display ? (
@@ -101,7 +101,7 @@ const Feedback = ({ page }) => {
     const msg = `${pageObjects.page3Object.page3Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h3>{allStudents.length} total students</h3>
+        <h4>{allStudents.length} total students</h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         <FinalReqStudents data={pageObjects.page3Object} display={display} />
@@ -140,7 +140,7 @@ const Feedback = ({ page }) => {
     const msg = `${pageObjects.page3Object.page3Students.length} total matches`;
     return (
       <div className="feedback_outer">
-        <h3> {allStudents.length} total students </h3>
+        <h4> {allStudents.length} total students </h4>
         <SeekingStudents data={pageObjects.page1Object} display={display} />
         <TechMatchStudents data={pageObjects.page2Object} display={display} />
         <FinalReqStudents data={pageObjects.page3Object} display={display} />

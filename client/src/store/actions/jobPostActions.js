@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
-import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS, SET_JOB_TYPE, SET_KEY} from "./types/jobPostTypes";
+import { ADD_JOB_HEADER, GET_ALL_JOBS, UPDATE_KEYS, RESET_KEY, GET_USER_JOBS, SET_JOB_TYPE, SET_KEY, RESET_JOB} from "./types/jobPostTypes";
+import { v4 as uuidv4 } from "uuid";
 
 export const getJob = (data) => async() => {
   const res = await axios
@@ -76,6 +77,12 @@ export const resetKey = () => (dispatch) => {
   });
 }
 
+export const resetJob = () => (dispatch) => {
+  dispatch({
+    type: RESET_JOB,
+  });
+}
+
 export const setKey = (regKeyObj) => (dispatch) => {
   dispatch({
     type: SET_KEY,
@@ -83,10 +90,244 @@ export const setKey = (regKeyObj) => (dispatch) => {
   });
 }
 
-export const setSelectedJob = (type) => (dispatch) => {
+export const setCurrentJob = (type, user_id) => (dispatch) => {
+  let result;  
+  switch(type) {
+      case "frontEnd":
+        result = {
+          jobId: uuidv4(),
+          author: user_id,
+          dateCreated: "",
+          dateUpdated: "",
+          matches: 0,
+          students: [],
+          notes: {},
+          header: {
+            position: ["Coop"],
+            title: "Frontend Developer",
+            company: "Insert Company Name",
+            location: "Location",
+            startDate: "1999-12-31",
+            length: "8 months",
+          },
+          requirements: {
+            languages: ["JavaScript", "HTML", "CSS"],
+            frameworks: ["React"],
+            tools: ["GitHub"],
+            concepts: [
+              "Object Oriented Programming",
+              "Asynchronous Programming",
+              "Recursion",
+            ],
+            experience: "none",
+            gpa: "Optional",
+            gpaValue: "70",
+          },
+          details: {
+            academicReq: ["Bachelor's Degree"],
+            description: "Insert Description",
+            positionType: "",
+            pay: "",
+            candidates: "",
+            coOp: "No",
+          },
+          contact: {
+            name: "Insert Name",
+            email: "Insert Email",
+            linkedIn: "Insert LinkedIn",
+            other: "Insert Other Information",
+            applicationSteps: "Insert Application Steps",
+          },
+        };
+        break;
+      case "backEnd":
+        result = {
+          jobId: uuidv4(),
+          author: user_id,
+          dateCreated: "",
+          dateUpdated: "",
+          matches: 0,
+          students: [],
+          notes: {},
+          header: {
+            position: ["Coop"],
+            title: "Backend Developer",
+            company: "Insert Company Name",
+            location: "Location",
+            startDate: "1999-12-31",
+            length: "8 months",
+          },
+          requirements: {
+            languages: ["Java", "C++", "C"],
+            frameworks: ["MongoDB"],
+            tools: ["GitHub"],
+            concepts: [
+              "Object Oriented Programming",
+              "Asynchronous Programming",
+              "Recursion",
+            ],
+            experience: "none",
+            gpa: "Optional",
+            gpaValue: "70",
+          },
+          details: {
+            academicReq: ["Bachelor's Degree"],
+            description: "Insert Description",
+            positionType: "",
+            pay: "",
+            candidates: "",
+            coOp: "No",
+          },
+          contact: {
+            name: "Insert Name",
+            email: "Insert Email",
+            linkedIn: "Insert LinkedIn",
+            other: "Insert Other Information",
+            applicationSteps: "Insert Application Steps",
+          },
+        };
+        break;
+      case "dataScience":
+        result = {
+          jobId: uuidv4(),
+          author: user_id,
+          dateCreated: "",
+          dateUpdated: "",
+          matches: 0,
+          students: [],
+          notes: {},
+          header: {
+            position: ["Coop"],
+            title: "Data Scientist",
+            company: "Insert Company Name",
+            location: "Location",
+            startDate: "1999-12-31",
+            length: "8 months",
+          },
+          requirements: {
+            languages: ["Python", "C++", "C", "SQL"],
+            frameworks: ["MongoDB"],
+            tools: ["GitHub"],
+            concepts: [
+              "Object Oriented Programming",
+              "Asynchronous Programming",
+              "Recursion",
+            ],
+            experience: "none",
+            gpa: "Optional",
+            gpaValue: "70",
+          },
+          details: {
+            academicReq: ["Bachelor's Degree"],
+            description: "Insert Description",
+            positionType: "",
+            pay: "",
+            candidates: "",
+            coOp: "No",
+          },
+          contact: {
+            name: "Insert Name",
+            email: "Insert Email",
+            linkedIn: "Insert LinkedIn",
+            other: "Insert Other Information",
+            applicationSteps: "Insert Application Steps",
+          },
+        };
+        break;
+      case "fullStack":
+        result = {
+          jobId: uuidv4(),
+          author: user_id,
+          dateCreated: "",
+          dateUpdated: "",
+          matches: 0,
+          students: [],
+          notes: {},
+          header: {
+            position: ["Coop"],
+            title: "Full Stack Developer",
+            company: "Insert Company Name",
+            location: "Location",
+            startDate: "1999-12-31",
+            length: "8 months",
+          },
+          requirements: {
+            languages: ["TypeScript", "JavaScript", "HTML", "CSS"],
+            frameworks: ["React", "Angular", "MongoDB"],
+            tools: ["GitHub"],
+            concepts: [
+              "Object Oriented Programming",
+              "Asynchronous Programming",
+              "Recursion",
+            ],
+            experience: "none",
+            gpa: "Optional",
+            gpaValue: "70",
+          },
+          details: {
+            academicReq: ["Bachelor's Degree"],
+            description: "Insert Description",
+            positionType: "",
+            pay: "",
+            candidates: "",
+            coOp: "No",
+          },
+          contact: {
+            name: "Insert Name",
+            email: "Insert Email",
+            linkedIn: "Insert LinkedIn",
+            other: "Insert Other Information",
+            applicationSteps: "Insert Application Steps",
+          },
+        };
+        break;
+      default:
+        result = {
+          jobId: uuidv4(),
+          author: user_id,
+          dateCreated: "",
+          dateUpdated: "",
+          matches: 0,
+          students: [],
+          notes: {},
+          header: {
+            title: "",
+            company: "",
+            location: "",
+            startDate: "",
+            position: [],
+            length: "",
+          },
+          requirements: {
+            experience: "",
+            gpa: "",
+            gpaValue: "",
+            languages: [],
+            frameworks: [],
+            tools: [],
+            concepts: [],
+          },
+          details: {
+            description: "",
+            positionType: "",
+            pay: "",
+            candidates: "",
+            academicReq: [],
+            coOp: "",
+          },
+          contact: {
+            name: "",
+            email: "",
+            linkedIn: "",
+            other: "",
+            applicationSteps: "",
+          },
+        };
+        break;
+      }
   dispatch({
     type: SET_JOB_TYPE,
-    payload: type
+    payload: result
   });
 }
 

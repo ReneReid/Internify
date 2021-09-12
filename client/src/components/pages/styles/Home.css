@@ -17,3 +17,9 @@
   left: -8%;
   z-index: -1;
 }
+
+.home_legend {
+  position: fixed;
+  top: 18%;
+  right: 5%;
+}

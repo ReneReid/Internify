@@ -8,3 +8,4 @@ export const UPDATE_KEYS = "UPDATE_KEYS";
 export const RESET_KEY = "RESET_KEY";
 export const SET_JOB_TYPE = "SET_JOB_TYPE";
 export const SET_KEY = "SET_KEY";
+export const RESET_JOB = "RESET_JOB";
