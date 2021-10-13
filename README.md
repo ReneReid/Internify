@@ -2,27 +2,6 @@
 
 https://internify-cpsc455.herokuapp.com/
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [Internify — A CPSC 455 Project](#internify-a-cpsc-455-project)
-    - [Project Description](#project-description)
-    - [Minimal Requirements](#minimal-requirements)
-    - [Standard Requirements](#standard-requirements)
-    - [Stretch Requirements](#stretch-requirements)
-    - [Technologies Used](#technologies-used)
-      - [Unit 1 - HTML, CSS, and JS](#unit-1-html-css-and-js)
-      - [Unit 2 - React](#unit-2-react)
-      - [Unit 3 - Node and Express](#unit-3-node-and-express)
-      - [Unit 4 - NoSQL with MongoDB](#unit-4-nosql-with-mongodb)
-      - [Unit 5 - Release Engineering (Continuous Integration)](#unit-5-release-engineering-continuous-integration)
-    - [Above and Beyond Functionality](#above-and-beyond-functionality)
-    - [Next Steps](#next-steps)
-    - [List of Contributions](#list-of-contributions)
-
-<!-- /code_chunk_output -->
-
 ### Project Description
 
 [Internify](https://internify-cpsc455.herokuapp.com/) is a job-posting creation tool that helps recruiters build the ideal job description for workers in tech. The tool stores demographic data via survey results and assesses your job posting dynamically as you are creating it, providing detailed summary on how well your post performs against our matching algorithm. Internify assists in creating accurate and detail-oriented job descriptions to help recruiters reach their ideal candidate.
