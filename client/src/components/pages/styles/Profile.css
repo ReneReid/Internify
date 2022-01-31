@@ -39,7 +39,12 @@ ul#profile_labels_list li {
 }
 
 .profile_inner_contact {
-  margin-left: -55%;
+  width: 400px;
+  height: auto;
+}
+
+.profile_inner_contact_list {
+  padding-left: 0%;
 }
 
 .profile_inner_contact_list > li{
@@ -61,4 +66,10 @@ ul#profile_labels_list li {
 .profile_left_posting_table{
   max-height: 21em;
   overflow-y: scroll;
+}
+
+.home_legend {
+  position: fixed;
+  top: 18%;
+  right: 5%;
 }
