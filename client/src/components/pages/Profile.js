@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { React, useEffect, useState } from "react";
-import { EditModal, TableBasic, CreateJobButton } from "../molecules/index";
+import { EditModal, TableBasic, CreateJobButton, MatchesLegend } from "../molecules/index";
 import { ButtonOutlined, ChipBasic } from "../atoms/index";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -208,6 +208,13 @@ const Profile = (props) => {
           justifyContent="center"
           style={{ paddingLeft: "5em" }}
         >
+          {/* Matches Legend */}
+          {props.jobs.currentListOfJobs.length > 0 ? (<Grid item>
+            <div className="home_legend">
+              <MatchesLegend />
+            </div>
+          </Grid> ) : (null)}
+
           {/* Recruiting status */}
           <Grid item>
             <div className="profile_left_status">
