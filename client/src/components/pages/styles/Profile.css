@@ -67,3 +67,9 @@ ul#profile_labels_list li {
   max-height: 21em;
   overflow-y: scroll;
 }
+
+.home_legend {
+  position: fixed;
+  top: 18%;
+  right: 5%;
+}
