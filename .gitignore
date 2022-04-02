@@ -6,6 +6,7 @@ node_modules
 .pnp.js
 package-lock.json
 yarn.lock
+/backend/config/keys.js
 
 # testing
 /coverage
