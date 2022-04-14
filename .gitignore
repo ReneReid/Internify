@@ -7,7 +7,7 @@ node_modules
 package-lock.json
 yarn.lock
 /backend/config/keys.js
-
+.env
 # testing
 /coverage
 
