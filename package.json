@@ -1,7 +1,10 @@
 {
   "name": "backend",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=12.8.x"
+  },
   "scripts": {
     "start": "node backend/bin/www",
     "server": "nodemon --watch backend --ignore client backend/bin/www",
